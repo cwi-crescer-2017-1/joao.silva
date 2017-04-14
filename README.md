@@ -1,5 +1,2 @@
 # joao.silva
-# Teste 1
-### Modificação 1
-### Mod 2 --
-### Mod 3
+# Pasta voltada para compartilhamento de projetos criados dentro do Projeto Crescer 2017
