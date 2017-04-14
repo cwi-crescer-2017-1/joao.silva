@@ -1,5 +1,4 @@
-public class Saint
-{
+public class Saint{
     private String nome;
     private Armadura armadura;
     private Genero genero = Genero.NAO_INFORMADO;
@@ -12,6 +11,9 @@ public class Saint
        this.armadura = armadura;
     }
     //ARMADURA
+    public Armadura getArmadura(){
+        return this.armadura;
+    }
     public void vestirArmadura(){
         this.armaduraVestida = true;
     }
