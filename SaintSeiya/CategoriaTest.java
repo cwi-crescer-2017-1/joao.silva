@@ -6,7 +6,7 @@ import org.junit.Test;
 public class CategoriaTest{
    @Test
    public void categoriaRetornaOValorCorreto(){
-       //ARRANGE, ACT, ASSERT -- teste de pré-definição
+       //ARRANGE, ACT, ASSERT -- teste de pré definição
        assertEquals(3,Categoria.OURO.getValor());
        assertEquals(2,Categoria.PRATA.getValor());
        assertEquals(1,Categoria.BRONZE.getValor());
