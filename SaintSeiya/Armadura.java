@@ -5,4 +5,7 @@ public class Armadura{
         this.constelacao = constelacao;
         this.categoria = categoria;
     }
+    public Categoria getCategoria(){
+        return this.categoria;
+    }
 }
