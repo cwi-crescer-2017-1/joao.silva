@@ -4,9 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BatalhaTest{
-   //ARMADURA
    private Saint seiya,marin,algol;
    private double vidaInicial;
+   //Número de testes: 3
    @Test
    public void aoBatalharCategoriaMaiorContraCategoriaMenor(){
        //ARRANGE
