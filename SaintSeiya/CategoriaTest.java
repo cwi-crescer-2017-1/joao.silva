@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CategoriaTest{
+   //Número de testes: 1
    @Test
    public void categoriaRetornaOValorCorreto(){
        //ARRANGE, ACT, ASSERT -- teste de pré definição
