@@ -6,6 +6,8 @@ import org.junit.Test;
 
 public class SaintTest{
    private Saint allMight;
+   private double vidaAnterior;
+   //Número de testes: 10
    //ARMADURA
    @Test
    public void vestirArmaduraDeixaArmaduraVestida(){
@@ -46,17 +48,8 @@ public class SaintTest{
        allMight = new Saint("YOLO", new Armadura("Vida", Categoria.OURO));
        //ACT -- teste de pré definição
        //ASSERT
-       assertEquals(StatusDeVida.VIVO, allMight.getStatusDeVida());
+       assertEquals(Status.VIVO, allMight.getStatus());
     }
-   @Test
-   public void alterarStatusDeVida(){
-       //ARRANGE
-       allMight = new Saint("Marcolino Pereira", new Armadura("Churrasqueira elétrica", Categoria.OURO));
-       //ACT
-       allMight.setStatusDeVida(StatusDeVida.MORTO);
-       //ASSERT
-       assertEquals(StatusDeVida.MORTO, allMight.getStatusDeVida());
-   }
    //VIDA
    @Test
    public void aoCriarSaintVidaIgualCem(){
@@ -67,13 +60,44 @@ public class SaintTest{
        assertEquals(100.0, allMight.getVida(), 0);
    }
    @Test
-   public void aoPerderVida(){
+   public void aoPerderCemDeVida(){
        //ARRANGE
        allMight = new Saint("Aioros", new Armadura("Sagitário", Categoria.OURO));
        //ACT
+       vidaAnterior=allMight.getVida();
        allMight.perderVida(100.0);
        //ASSERT
-       assertEquals(0.0, allMight.getVida(), 0);
+       assertEquals(vidaAnterior-100.0, allMight.getVida(), 0);
+   }
+   @Test
+   public void aoPerderDuzendoDeVida(){ //Atributo vida sem contenção para limitar número minimo de vida a zero
+       //ARRANGE
+       allMight = new Saint("Aioros", new Armadura("Sagitário", Categoria.OURO));
+       //ACT
+       vidaAnterior=allMight.getVida();
+       allMight.perderVida(200.0);
+       //ASSERT
+       assertEquals(vidaAnterior-200.0, allMight.getVida(), 0);
+   }
+   @Test
+   public void aoPerderNumeroQuebradoDeVida(){
+       //ARRANGE
+       allMight = new Saint("Aioros", new Armadura("Sagitário", Categoria.OURO));
+       //ACT
+       vidaAnterior=allMight.getVida();
+       allMight.perderVida(3.141592);
+       //ASSERT
+       assertEquals(vidaAnterior-3.141592, allMight.getVida(), 0);
+   }
+   @Test
+   public void aoPerderNumeroNegativoDeVida(){
+       //ARRANGE
+       allMight = new Saint("Aioros", new Armadura("Sagitário", Categoria.OURO));
+       //ACT
+       vidaAnterior=allMight.getVida();
+       allMight.perderVida(-100.0);
+       //ASSERT
+       assertEquals(vidaAnterior+100.0, allMight.getVida(), 0);
    }
     
 }
