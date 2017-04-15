@@ -1,3 +1,3 @@
-public enum StatusDeVida{
+public enum Status{
     VIVO, MORTO, DESACORDADO;
 }
