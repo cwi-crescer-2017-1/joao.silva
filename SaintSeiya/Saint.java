@@ -5,7 +5,7 @@ public class Saint{
     private Status status = Status.VIVO; 
     private boolean armaduraVestida;
     private double vida = 100.0;
-    private int qtSentidosDespertados;
+    protected int qtSentidosDespertados;
     
     public Saint(String nome, Armadura armadura) throws Exception{
        this.nome = nome;
@@ -13,19 +13,25 @@ public class Saint{
        //O valor de qtSentidosDespertados soma com o valor da Categoria da Armadura, BRONZE(0), PRATA(1) e OURO(2)
        //logo Ouro fica com (5+2=7) sentidos e Prata (5+1=6) sentidos  
        if(this.armadura.getCategoria() == Categoria.OURO){
-           this.qtSentidosDespertados = 7;
+           this.qtSentidosDespertados = 7; 
            String constelacao = armadura.getConstelacao();
-           if(!constelacao.equals("Áries") 
-           && !constelacao.equals("Touro") 
-           && !constelacao.equals("Sagitário") 
-           &&!constelacao.equals("Virgem")){
+           if(!constelacao.equals("Áries")
+            && !constelacao.equals("Touro")
+            && !constelacao.equals("Gêmeos")
+            && !constelacao.equals("Câncer")
+            && !constelacao.equals("Virgem")
+            && !constelacao.equals("Leão")
+            && !constelacao.equals("Libra")
+            && !constelacao.equals("Escorpião")
+            && !constelacao.equals("Sagitário")
+            && !constelacao.equals("Capricórnio")
+            && !constelacao.equals("Aquário")
+            && !constelacao.equals("Peixes")){
                //ERRO
                throw new Exception("Constelação inválida");
            }
         }else if(this.armadura.getCategoria() == Categoria.PRATA){
             this.qtSentidosDespertados = 6;
-        }else{ //BRONZE
-            this.qtSentidosDespertados = 5;
         }
     }
     //ARMADURA
