@@ -5,16 +5,28 @@ public class Saint{
     private Status status = Status.VIVO; 
     private boolean armaduraVestida;
     private double vida = 100.0;
-    private int qtSentidosDespertados= 5;//Default = 5
+    private int qtSentidosDespertados;
     
-    public Saint(String nome, Armadura armadura){
+    public Saint(String nome, Armadura armadura) throws Exception{
        this.nome = nome;
        this.armadura = armadura;
-       if(this.armadura.getCategoria()==Categoria.PRATA){
-           this.qtSentidosDespertados = 6;
-       }else if(this.armadura.getCategoria()==Categoria.OURO){
+       //O valor de qtSentidosDespertados soma com o valor da Categoria da Armadura, BRONZE(0), PRATA(1) e OURO(2)
+       //logo Ouro fica com (5+2=7) sentidos e Prata (5+1=6) sentidos  
+       if(this.armadura.getCategoria() == Categoria.OURO){
            this.qtSentidosDespertados = 7;
-       } //Se não for nenhuma dessas condições o valor será definido como default igual a 5
+           String constelacao = armadura.getConstelacao();
+           if(!constelacao.equals("Áries") 
+           && !constelacao.equals("Touro") 
+           && !constelacao.equals("Sagitário") 
+           &&!constelacao.equals("Virgem")){
+               //ERRO
+               throw new Exception("Constelação inválida");
+           }
+        }else if(this.armadura.getCategoria() == Categoria.PRATA){
+            this.qtSentidosDespertados = 6;
+        }else{ //BRONZE
+            this.qtSentidosDespertados = 5;
+        }
     }
     //ARMADURA
     public Armadura getArmadura(){
