@@ -3,4 +3,4 @@ public class BronzeSaint extends Saint{
        super(nome, armadura);
        this.qtSentidosDespertados = 5; 
     }
-}
+} 
