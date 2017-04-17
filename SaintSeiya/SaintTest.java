@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class SaintTest{
    private Saint allMight;
+   private BronzeSaint allMightBronze;
    private double vidaAnterior;
    //Número de testes: 10
    //ARMADURA
@@ -111,10 +112,10 @@ public class SaintTest{
    @Test
    public void aoCriarSaintBronzeNasceCom5SentidosDespertados() throws Exception{
        //ARRANGE
-       allMight = new Saint("Ikki", new Armadura("Fênix", Categoria.BRONZE));
+       allMightBronze = new BronzeSaint("Ikki", new Armadura("Fênix", Categoria.BRONZE));
        //ACT - TESTE DE PRÉ DEFINIÇÃO
        //ASSERT
-       assertEquals(5, allMight.getQtSentidosDespertados());
+       assertEquals(5, allMightBronze.getQtSentidosDespertados());
    }
    @Test
    public void aoCriarSaintPrataNasceCom6SentidosDespertados() throws Exception{
