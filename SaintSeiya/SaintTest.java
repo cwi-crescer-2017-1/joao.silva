@@ -9,7 +9,7 @@ public class SaintTest{
    private PrataSaint allMightPrata;
    private OuroSaint allMightOuro;
    private double vidaAnterior;
-   //Número de testes: 14
+   //Número de testes: 15
    //ARMADURA
    @Test
    public void vestirArmaduraDeixaArmaduraVestida() throws Exception{
@@ -70,9 +70,9 @@ public class SaintTest{
    }
    //aoPerderVida
    @Test
-   public void aoPerderVinteDeVida() throws Exception{
+   public void aoPerder20DeVida() throws Exception{
        //ARRANGE
-       allMightOuro = new OuroSaint("Aioros", new Armadura("Sagitário", Categoria.OURO));
+       allMightOuro = new OuroSaint("Aioros", new Armadura("Sagitário", Categoria.OURO)); //Recem criado tem 100 de vida
        //ACT
        vidaAnterior=allMightOuro.getVida();
        allMightOuro.perderVida(20.0);
@@ -80,14 +80,14 @@ public class SaintTest{
        assertEquals(vidaAnterior-20.0, allMightOuro.getVida(), 0.01);
    }
    @Test
-   public void aoPerderDuzendoDeVida() throws Exception{ //Atributo vida sem contenção para limitar número minimo de vida a zero, ajustar caso seja criada uma conteção
+   public void aoPerder200DeVida() throws Exception{ //Atributo vida sem contenção para limitar número minimo de vida a zero, ajustar caso seja criada uma conteção
        //ARRANGE
        allMightOuro = new OuroSaint("Aioros", new Armadura("Sagitário", Categoria.OURO));
        //ACT
        vidaAnterior=allMightOuro.getVida();
        allMightOuro.perderVida(200.0);
        //ASSERT
-       assertEquals(vidaAnterior-200.0, allMightOuro.getVida(), 0.01);
+       assertEquals(0.0, allMightOuro.getVida(), 0.01); //Ao perder mais vida do que possui ou perder toda sua vida o valor da vida fica zero
    }
    @Test
    public void aoPerderNumeroQuebradoDeVida() throws Exception{
@@ -99,15 +99,22 @@ public class SaintTest{
        //ASSERT
        assertEquals(vidaAnterior-3.141592, allMightOuro.getVida(), 0.01);
    }
-   @Test
+   @Test(expected=Exception.class)
    public void aoPerderNumeroNegativoDeVida() throws Exception{ //Teste deve ser removido caso se evite números negativos no método PerderVida()
        //ARRANGE
        allMightOuro = new OuroSaint("Aioros", new Armadura("Sagitário", Categoria.OURO));
        //ACT
-       vidaAnterior=allMightOuro.getVida();
        allMightOuro.perderVida(-100.0);
+       //ASSERT - O esperado é o retorno de um erro devido ao fato de ser proibido retirar um número negativo de vida
+   }
+   @Test
+   public void aoPerderTodaVidaEsperadoQueStatusSejaMorto() throws Exception{
+       //ARRANGE
+       allMightOuro = new OuroSaint("Aioros", new Armadura("Sagitário", Categoria.OURO)); //Recem criado tem 100 de vida
+       //ACT
+       allMightOuro.perderVida(100.0);
        //ASSERT
-       assertEquals(vidaAnterior+100.0, allMightOuro.getVida(), 0.01);
+       assertEquals(Status.MORTO, allMightOuro.getStatus());
    }
    //SENTIDOS
    @Test
