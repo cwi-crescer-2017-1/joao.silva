@@ -39,11 +39,11 @@ public class Saint{
         return this.vida;
     }
     public void perderVida(double vidaPerdida) throws Exception{
-        if(vidaPerdida<0){
+        if(vidaPerdida<0){ //Condição que nega valores negativos para a perda de vida
             throw new Exception("InvalidParameterException");
-        }else if(this.status!=Status.MORTO){
+        }else if(this.status!=Status.MORTO){ //Só retira a vida se o Saint não estiver Morto
             this.vida = this.vida - vidaPerdida;
-            if(this.vida<1){
+            if(this.vida<1){ //Caso a vida fique <1 configura o status como Morto
                     this.vida = 0;
                     this.status = Status.MORTO;
             }
