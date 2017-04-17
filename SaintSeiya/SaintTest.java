@@ -43,7 +43,7 @@ public class SaintTest{
        allMight.setGenero(Genero.FEMININO);
        assertEquals(Genero.FEMININO, allMight.getGenero());
    }
-   //STATUS DE VIDA
+   //STATUS //Dica de nome para o método: statusInicialDeveSerVivo, achei mais explicativo 
    @Test
    public void aoCriarSaintStatusDeVidaEVivo(){
        //ARRANGE
