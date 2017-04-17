@@ -5,10 +5,12 @@ public class Saint{
     private Status status = Status.VIVO; 
     private boolean armaduraVestida;
     private double vida = 100.0;
+    private int qtSentidosDespertados= 5;
     
     public Saint(String nome, Armadura armadura){
        this.nome = nome;
        this.armadura = armadura;
+       
     }
     //ARMADURA
     public Armadura getArmadura(){
@@ -38,4 +40,9 @@ public class Saint{
     public void perderVida(double vidaPerdida){
         this.vida = this.vida - vidaPerdida;
     }
+    //SENTIDOS
+    public int getQtSentidosDespertados(){
+        return this.qtSentidosDespertados;
+    }
+    
 }

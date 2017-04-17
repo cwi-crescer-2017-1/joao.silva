@@ -22,7 +22,7 @@ public class SaintTest{
    public void naoVestirArmaduraDeixaArmaduraNaoVestida(){
        //ARRANGE
        allMight = new Saint("Irineu", new Armadura("Sabe de nada", Categoria.PRATA));
-       //ACT -- teste de pré definição
+       //ACT - TESTE DE PRÉ DEFINIÇÃO
        //ASSERT
        assertEquals(false,allMight.getArmaduraVestida());
    }
@@ -31,7 +31,7 @@ public class SaintTest{
    public void aoCriarSaintGeneroENaoInformado(){
        //ARRANGE
        allMight = new Saint("Shaka", new Armadura("Virgem", Categoria.OURO));
-       //ACT -- teste de pré definição
+       //ACT - TESTE DE PRÉ DEFINIÇÃO
        //ASSERT
        assertEquals(Genero.NAO_INFORMADO, allMight.getGenero());
    }
@@ -53,7 +53,7 @@ public class SaintTest{
    public void aoCriarSaintStatusDeVidaEVivo(){
        //ARRANGE
        allMight = new Saint("YOLO", new Armadura("Vida", Categoria.OURO));
-       //ACT -- teste de pré definição
+       //ACT - TESTE DE PRÉ DEFINIÇÃO
        //ASSERT
        assertEquals(Status.VIVO, allMight.getStatus());
     }
@@ -62,7 +62,7 @@ public class SaintTest{
    public void aoCriarSaintVidaIgualCem(){ //aVidaInicialDeveSer100 -> Dica de outro nome para o teste
        //ARRANGE
        allMight = new Saint("Monstro", new Armadura("Whey", Categoria.BRONZE));
-       //ACT - teste de pré definição
+       //ACT - TESTE DE PRÉ DEFINIÇÃO
        //ASSERT
        assertEquals(100.0, allMight.getVida(), 0.01);
    }
@@ -106,6 +106,15 @@ public class SaintTest{
        allMight.perderVida(-100.0);
        //ASSERT
        assertEquals(vidaAnterior+100.0, allMight.getVida(), 0.01);
+   }
+   //SENTIDOS
+   @Test
+   public void aoCriarSaintNasceCom5SentidosDespertados(){
+       //ARRANGE
+       allMight = new Saint("Aioros", new Armadura("Sagitário", Categoria.OURO));
+       //ACT - TESTE DE PRÉ DEFINIÇÃO
+       //ASSERT
+       assertEquals(5, allMight.getQtSentidosDespertados());
    }
     
 }
