@@ -40,6 +40,8 @@ public class SaintTest{
        allMight = new Saint("Seiya", new Armadura("Pegaso",Categoria.BRONZE));
        allMight.setGenero(Genero.MASCULINO);
        assertEquals(Genero.MASCULINO, allMight.getGenero());
+       allMight.setGenero(Genero.FEMININO);
+       assertEquals(Genero.FEMININO, allMight.getGenero());
    }
    //STATUS DE VIDA
    @Test
