@@ -1,6 +1,6 @@
 public class Batalha{
-    private Saint lutadorUm;
-    private Saint lutadorDois;
+    private Saint lutadorUm, lutadorDois ;
+    
     public Batalha(Saint lutadorUm, Saint lutadorDois){
         this.lutadorUm = lutadorUm;
         this.lutadorDois = lutadorDois;
