@@ -62,17 +62,17 @@ public class SaintTest{
        assertEquals(100.0, allMight.getVida(), 0.01);
    }
    @Test
-   public void aoPerderCemDeVida(){
+   public void aoPerderVinteDeVida(){
        //ARRANGE
        allMight = new Saint("Aioros", new Armadura("Sagitário", Categoria.OURO));
        //ACT
        vidaAnterior=allMight.getVida();
-       allMight.perderVida(100.0);
+       allMight.perderVida(20.0);
        //ASSERT
-       assertEquals(vidaAnterior-100.0, allMight.getVida(), 0.01);
+       assertEquals(vidaAnterior-20.0, allMight.getVida(), 0.01);
    }
    @Test
-   public void aoPerderDuzendoDeVida(){ //Atributo vida sem contenção para limitar número minimo de vida a zero
+   public void aoPerderDuzendoDeVida(){ //Atributo vida sem contenção para limitar número minimo de vida a zero, ajustar caso seja criada uma conteção
        //ARRANGE
        allMight = new Saint("Aioros", new Armadura("Sagitário", Categoria.OURO));
        //ACT
@@ -92,7 +92,7 @@ public class SaintTest{
        assertEquals(vidaAnterior-3.141592, allMight.getVida(), 0.01);
    }
    @Test
-   public void aoPerderNumeroNegativoDeVida(){
+   public void aoPerderNumeroNegativoDeVida(){ //Teste deve ser removido caso se evite números negativos no método PerderVida()
        //ARRANGE
        allMight = new Saint("Aioros", new Armadura("Sagitário", Categoria.OURO));
        //ACT
