@@ -9,7 +9,7 @@ public class SaintTest{
    private PrataSaint allMightPrata;
    private OuroSaint allMightOuro;
    private double vidaAnterior;
-   //Número de testes: 10
+   //Número de testes: 14
    //ARMADURA
    @Test
    public void vestirArmaduraDeixaArmaduraVestida() throws Exception{
