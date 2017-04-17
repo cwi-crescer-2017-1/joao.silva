@@ -37,10 +37,15 @@ public class SaintTest{
    }
    @Test 
    public void alterarSaintGenero(){
+       //ARRANGE
        allMight = new Saint("Seiya", new Armadura("Pegaso",Categoria.BRONZE));
+       //ACT
        allMight.setGenero(Genero.MASCULINO);
+       //ASSERT
        assertEquals(Genero.MASCULINO, allMight.getGenero());
+       //ACT
        allMight.setGenero(Genero.FEMININO);
+       //ASSERT
        assertEquals(Genero.FEMININO, allMight.getGenero());
    }
    //STATUS //Dica de nome para o método: statusInicialDeveSerVivo, achei mais explicativo 
@@ -61,6 +66,7 @@ public class SaintTest{
        //ASSERT
        assertEquals(100.0, allMight.getVida(), 0.01);
    }
+   //aoPerderVida
    @Test
    public void aoPerderVinteDeVida(){
        //ARRANGE
