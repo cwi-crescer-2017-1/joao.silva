@@ -5,12 +5,16 @@ public class Saint{
     private Status status = Status.VIVO; 
     private boolean armaduraVestida;
     private double vida = 100.0;
-    private int qtSentidosDespertados= 5;
+    private int qtSentidosDespertados= 5;//Default = 5
     
     public Saint(String nome, Armadura armadura){
        this.nome = nome;
        this.armadura = armadura;
-       
+       if(this.armadura.getCategoria()==Categoria.PRATA){
+           this.qtSentidosDespertados = 6;
+       }else if(this.armadura.getCategoria()==Categoria.OURO){
+           this.qtSentidosDespertados = 7;
+       } //Se não for nenhuma dessas condições o valor será definido como default igual a 5
     }
     //ARMADURA
     public Armadura getArmadura(){

@@ -109,12 +109,28 @@ public class SaintTest{
    }
    //SENTIDOS
    @Test
-   public void aoCriarSaintNasceCom5SentidosDespertados(){
+   public void aoCriarSaintBronzeNasceCom5SentidosDespertados(){
+       //ARRANGE
+       allMight = new Saint("Ikki", new Armadura("Fênix", Categoria.BRONZE));
+       //ACT - TESTE DE PRÉ DEFINIÇÃO
+       //ASSERT
+       assertEquals(5, allMight.getQtSentidosDespertados());
+   }
+   @Test
+   public void aoCriarSaintPRATANasceCom6SentidosDespertados(){
+       //ARRANGE
+       allMight = new Saint("Irineu", new Armadura("Sabe de nada", Categoria.PRATA));
+       //ACT - TESTE DE PRÉ DEFINIÇÃO
+       //ASSERT
+       assertEquals(6, allMight.getQtSentidosDespertados());
+   }
+   @Test
+   public void aoCriarSaintBRONZENasceCom6SentidosDespertados(){
        //ARRANGE
        allMight = new Saint("Aioros", new Armadura("Sagitário", Categoria.OURO));
        //ACT - TESTE DE PRÉ DEFINIÇÃO
        //ASSERT
-       assertEquals(5, allMight.getQtSentidosDespertados());
+       assertEquals(7, allMight.getQtSentidosDespertados());
    }
     
 }
