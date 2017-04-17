@@ -54,12 +54,12 @@ public class SaintTest{
     }
    //VIDA
    @Test
-   public void aoCriarSaintVidaIgualCem(){
+   public void aoCriarSaintVidaIgualCem(){ //aVidaInicialDeveSer100 -> Dica de outro nome para o teste
        //ARRANGE
        allMight = new Saint("Monstro", new Armadura("Whey", Categoria.BRONZE));
        //ACT - teste de pré definição
        //ASSERT
-       assertEquals(100.0, allMight.getVida(), 0);
+       assertEquals(100.0, allMight.getVida(), 0.01);
    }
    @Test
    public void aoPerderCemDeVida(){
@@ -69,7 +69,7 @@ public class SaintTest{
        vidaAnterior=allMight.getVida();
        allMight.perderVida(100.0);
        //ASSERT
-       assertEquals(vidaAnterior-100.0, allMight.getVida(), 0);
+       assertEquals(vidaAnterior-100.0, allMight.getVida(), 0.01);
    }
    @Test
    public void aoPerderDuzendoDeVida(){ //Atributo vida sem contenção para limitar número minimo de vida a zero
@@ -79,7 +79,7 @@ public class SaintTest{
        vidaAnterior=allMight.getVida();
        allMight.perderVida(200.0);
        //ASSERT
-       assertEquals(vidaAnterior-200.0, allMight.getVida(), 0);
+       assertEquals(vidaAnterior-200.0, allMight.getVida(), 0.01);
    }
    @Test
    public void aoPerderNumeroQuebradoDeVida(){
@@ -89,7 +89,7 @@ public class SaintTest{
        vidaAnterior=allMight.getVida();
        allMight.perderVida(3.141592);
        //ASSERT
-       assertEquals(vidaAnterior-3.141592, allMight.getVida(), 0);
+       assertEquals(vidaAnterior-3.141592, allMight.getVida(), 0.01);
    }
    @Test
    public void aoPerderNumeroNegativoDeVida(){
@@ -99,7 +99,7 @@ public class SaintTest{
        vidaAnterior=allMight.getVida();
        allMight.perderVida(-100.0);
        //ASSERT
-       assertEquals(vidaAnterior+100.0, allMight.getVida(), 0);
+       assertEquals(vidaAnterior+100.0, allMight.getVida(), 0.01);
    }
     
 }
