@@ -1,5 +1,5 @@
 import static org.junit.Assert.*;
-import org.junit.After;
+import org.junit.After; 
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,7 +8,7 @@ public class BatalhaTest{
    private double vidaInicial1, vidaInicial2;
    //Número de testes: 3
    @Test
-   public void aoBatalharCategoriaMaiorContraCategoriaMenor(){ //Categoria do Lutador 1 maior que a do Lutador 2
+   public void aoBatalharCategoriaMaiorContraCategoriaMenor() throws Exception{ //Categoria do Lutador 1 maior que a do Lutador 2
        //ARRANGE
        seiya = new Saint("Seiya", new Armadura("Pégaso", Categoria.BRONZE));
        marin = new Saint("Marin", new Armadura("Águia", Categoria.PRATA));
@@ -21,7 +21,7 @@ public class BatalhaTest{
        assertEquals(vidaInicial2, marin.getVida(), 0.01);
     }
    @Test 
-   public void aoBatalharCategoriaMenorContraCategoriaMaior(){ //Cegoria do Lutador 2 maior que a do Lutador 1
+   public void aoBatalharCategoriaMenorContraCategoriaMaior()throws Exception{ //Cegoria do Lutador 2 maior que a do Lutador 1
        //ARRANGE
        seiya = new Saint("Seiya", new Armadura("Pégaso", Categoria.BRONZE));
        marin = new Saint("Marin", new Armadura("Águia", Categoria.PRATA));
@@ -34,7 +34,7 @@ public class BatalhaTest{
        assertEquals(vidaInicial2, marin.getVida(), 0.01);
     }
    @Test
-   public void aoBatalharCategoriasIguais(){
+   public void aoBatalharCategoriasIguais() throws Exception{
        //ARRANGE
        marin = new Saint("Marin", new Armadura("Águia", Categoria.PRATA));
        algol = new Saint("Algol", new Armadura("Perseu", Categoria.PRATA));
