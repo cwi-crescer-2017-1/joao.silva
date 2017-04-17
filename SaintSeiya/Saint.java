@@ -38,8 +38,16 @@ public class Saint{
     public double getVida(){
         return this.vida;
     }
-    public void perderVida(double vidaPerdida){
-        this.vida = this.vida - vidaPerdida;
+    public void perderVida(double vidaPerdida) throws Exception{
+        if(vidaPerdida<0){
+            throw new Exception("InvalidParameterException");
+        }else if(this.status!=Status.MORTO){
+            this.vida = this.vida - vidaPerdida;
+            if(this.vida<1){
+                    this.vida = 0;
+                    this.status = Status.MORTO;
+            }
+        }
     }
     //SENTIDOS
     public int getQtSentidosDespertados(){
