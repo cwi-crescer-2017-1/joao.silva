@@ -1,3 +1,4 @@
+import java.security.InvalidParameterException;
 public class Saint{
     private String nome;
     private Armadura armadura;
@@ -41,14 +42,16 @@ public class Saint{
     }
     public void perderVida(double vidaPerdida) throws Exception{
         if(vidaPerdida<0){ //Condição que nega valores negativos para a perda de vida
-            throw new Exception("InvalidParameterException");
-        }else if(this.status!=Status.MORTO){ //Só retira a vida se o Saint não estiver Morto
-            this.vida = this.vida - vidaPerdida;
-            if(this.vida<1){ //Caso a vida fique <1 configura o status como Morto
-                    this.vida = 0;
-                    this.status = Status.MORTO;
+            throw new InvalidParameterException("dano negativo: "+vidaPerdida);
+            //throw new IllegalArgumentException("dano"); - Mensagem de erro alternativa
+        }else if(this.status!=Status.MORTO){//Apenas cogita a hipótese se o status não for Morto
+            if(this.vida-vidaPerdida<1){ //Se a vida for ficar <1 quando diminuida o status passa para Morto e a vida para ZERO
+            this.vida = 0;
+            this.status = Status.MORTO;
+            }else{ //Caso passe pelos testes anteriores a vida é diminuida normalmente
+            this.vida = vida-vidaPerdida;
             }
-        }
+        }    
     }
     //SENTIDOS
     public int getQtSentidosDespertados(){
