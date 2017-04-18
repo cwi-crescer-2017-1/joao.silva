@@ -169,7 +169,7 @@ public class SaintTest{
        }
    }
    @Test(expected=Exception.class)
-   public void aoAdicionar6GolpesEsperadoErro() throws Exception{
+   public void aoAdicionar6GolpesUltimo3GolpesNaoAdicionaEsperadoErro() throws Exception{
        //ARRANGE
        allMightOuro = new OuroSaint("Aioros", new Armadura(new Constelacao("Sagitário"), Categoria.OURO));
        Golpe[] golpes = new Golpe[6];
@@ -183,7 +183,10 @@ public class SaintTest{
        for(int indice = 0; indice<golpes.length; indice++){ //Adiciona os 6 golpes, sendo que ficará gravado na classe os 3 últimos
            allMightOuro.aprenderGolpe(golpes[indice]);
        }
-       //ASSERT - Esperadi erro durante o ACT
+       //ASSERT - Esperado erro
+       for(int indice = 0; indice<golpes.length; indice++){ //Adiciona os 6 golpes, sendo que ficará gravado na classe os 3 últimos
+           assertEquals(golpes[indice].getNome(), allMightOuro.getGolpes()[indice].getNome());
+       }
    }
    @Test
    public void aoPegarOValorDoProximoGolpeEleRetornaOValorDoProximoGolpe() throws Exception{
