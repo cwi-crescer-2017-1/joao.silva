@@ -6,9 +6,37 @@ import org.junit.Test;
 
 public class ConstelacaoTest{
    private Constelacao capricornio;
-   //Número de testes: 2
+   //Número de testes: 4
    @Test
-   public void aoAdicionar3GolpesRetornaOs3GolpesCorretos(){
+   public void adicionarUmGolpe(){
+       //ARRANGE
+       capricornio = new Constelacao("Capricórnio");
+       //ACT
+       Golpe golpe = new Golpe("Soco", 5);
+       capricornio.adicionarGolpe(golpe);
+       
+       //ASSERT
+       assertEquals(golpe, capricornio.getGolpes()[0]);
+       for(int i=1;i<capricornio.getGolpes().length;i++){
+           assertNull(capricornio.getGolpes()[i]);
+       }
+   }
+   @Test
+   public void adicionarDoisGolpes(){
+        //ARRANGE
+       capricornio = new Constelacao("Capricórnio");
+       //ACT
+       Golpe golpe1 = new Golpe("Soco", 5);
+       Golpe golpe2 = new Golpe("Chute",10);
+       capricornio.adicionarGolpe(golpe1);
+       capricornio.adicionarGolpe(golpe2);
+       //ASSERT
+       assertEquals(golpe1, capricornio.getGolpes()[0]);
+       assertEquals(golpe2, capricornio.getGolpes()[1]);
+       assertNull(capricornio.getGolpes()[2]);
+   }
+   @Test
+   public void aoAdicionarTresGolpes(){
        //ARRANGE
        capricornio = new Constelacao("Capricórnio");
        //ACT
@@ -21,12 +49,11 @@ public class ConstelacaoTest{
        } 
        //ASSERT
        for(int indice = 0; indice<golpes.length; indice++){ //Realiza a comparação de Nome e fatorDeDano para cada golpe adicionado
-           assertEquals(golpes[indice].getNome(), capricornio.getGolpes()[indice].getNome()); //Compara o nome de cada casa do array com o nome realmente adicionado
-           assertEquals(golpes[indice].getFatorDano(), capricornio.getGolpes()[indice].getFatorDano()); // Compara o fatore de dano de cada casa do array com o fator de dano realmente adicionado
+           assertEquals(golpes[indice], capricornio.getGolpes()[indice]);
        }
    }
-   @Test(expected=Exception.class)
-   public void aoAdicionar4GolpesError(){
+   @Test(expected=ArrayIndexOutOfBoundsException.class)
+   public void aoAdicionarQuatroGolpesUltimoGolpeNaoAdicionaEsperadoErro(){
        //ARRANGE
        capricornio = new Constelacao("Capricórnio");
        //ACT
@@ -35,9 +62,11 @@ public class ConstelacaoTest{
        golpes[1] = new Golpe("Chute", 10);
        golpes[2] = new Golpe("Excalibur", 50);
        golpes[3] = new Golpe("Tapa", 5);
-       //ASSERT - Erro esperado
        for(int indice=0; indice<golpes.length;indice++){
        capricornio.adicionarGolpe(golpes[indice]);
        }
+       //ASSERT - Erro esperado
+       
+       
     }
 }
