@@ -58,18 +58,22 @@ public class Saint{
         return this.qtSentidosDespertados;
     }
     //GOLPES
+    private Constelacao getConstelacao(){ //Método para diminuir a repetição do this.armadura passando a ser this.getConstelacao(), o método é privado pois só é usado( e só deve ser usado) dentro da classe Saint
+        return this.armadura.getConstelacao();
+    }
     public Golpe[] getGolpes(){
-        return this.armadura.getConstelacao().getGolpes();
+        return this.getConstelacao().getGolpes();
     }
     public void aprenderGolpe(Golpe golpe){
-        this.armadura.getConstelacao().adicionarGolpe(golpe);
+        this.getConstelacao().adicionarGolpe(golpe);
     }
     public Golpe getProximoGolpe(){
-        int length = this.armadura.getConstelacao().getGolpes().length; //Guarda o tamanho do array de golpes 
-        if(proximoGolpe==length){ 
-            this.proximoGolpe = 0;
+        int length = this.getGolpes().length; //Guarda o tamanho do array de golpes 
+        if(this.proximoGolpe==length){ 
+           this.proximoGolpe = 0;
         }
+        int posicao = proximoGolpe;
         this.proximoGolpe++;
-        return this.armadura.getConstelacao().getGolpes()[this.proximoGolpe-1];
+        return this.getGolpes()[posicao];
     }
 }
