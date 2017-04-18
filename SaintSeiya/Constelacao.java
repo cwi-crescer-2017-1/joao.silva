@@ -5,8 +5,8 @@ public class Constelacao{
     public Constelacao(String nome){
         this.nome = nome;
     }
-    public void adicionarGolpe(String nome, int fatorDano){
-        this.golpes[contador] = new Golpe(nome,fatorDano);
+    public void adicionarGolpe(Golpe golpe){
+        this.golpes[contador] = golpe;
         contador++;
         if(contador==3){
             contador = 0; //Como o número de golpes é limitado devido ao array estático quando chegar ao limite ele irá transcrever o primeiro golpe
