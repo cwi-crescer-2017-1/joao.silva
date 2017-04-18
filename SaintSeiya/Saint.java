@@ -16,6 +16,10 @@ public class Saint{
        //O valor de qtSentidosDespertados soma com o valor da Categoria da Armadura, BRONZE(0), PRATA(1) e OURO(2)
        //logo Ouro fica com (5+2=7) sentidos e Prata (5+1=6) sentidos  
     }
+    //NOME
+    public String getNome(){
+        return this.nome;
+    }
     //ARMADURA
     public Armadura getArmadura(){
         return this.armadura;
