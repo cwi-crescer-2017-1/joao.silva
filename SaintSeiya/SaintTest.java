@@ -160,9 +160,8 @@ public class SaintTest{
        allMightOuro.aprenderGolpe(golpe);
        
        //ASSERT
-       assertEquals(golpe, allMightOuro.getGolpes()[0]);
-       assertNull(allMightOuro.getGolpes()[1]);
-       assertNull(allMightOuro.getGolpes()[2]);
+       assertEquals(golpe, allMightOuro.getGolpes().get(0));
+       assertEquals(1,allMightOuro.getGolpes().size());
    }
    @Test
    public void aprenderDoisGolpe() throws Exception{
@@ -175,9 +174,9 @@ public class SaintTest{
        allMightOuro.aprenderGolpe(golpe1);
        allMightOuro.aprenderGolpe(golpe2);
        //ASSERT
-       assertEquals(golpe1, allMightOuro.getGolpes()[0]);
-       assertEquals(golpe2, allMightOuro.getGolpes()[1]);
-       assertNull(allMightOuro.getGolpes()[2]);
+       assertEquals(golpe1, allMightOuro.getGolpes().get(0));
+       assertEquals(golpe2, allMightOuro.getGolpes().get(1));
+       assertEquals(2,allMightOuro.getGolpes().size()); //tamanho ArrayList = quantidade de valores adicionados
    }
    @Test
    public void aprenderTresGolpes() throws Exception{
@@ -193,10 +192,10 @@ public class SaintTest{
        }
        //ASSERT
        for(int indice = 0; indice<golpes.length; indice++){ //Verifica se os golpes foram adicionados corretamente
-           assertEquals(golpes[indice], allMightOuro.getGolpes()[indice]);  
+           assertEquals(golpes[indice], allMightOuro.getGolpes().get(indice));  
        }
    }
-   @Test(expected=Exception.class)
+   @Test
    public void aprenderSeisGolpesErroEsperado() throws Exception{
        //ARRANGE
        allMightOuro = new OuroSaint("Aioros", new Armadura(new Constelacao("Sagitário"), Categoria.OURO));
@@ -213,8 +212,9 @@ public class SaintTest{
        }
        //ASSERT - Esperado erro
        for(int indice = 0; indice<golpes.length; indice++){ //Adiciona os 6 golpes, sendo que ficará gravado na classe os 3 últimos
-           assertEquals(golpes[indice].getNome(), allMightOuro.getGolpes()[indice].getNome());
+           assertEquals(golpes[indice].getNome(), allMightOuro.getGolpes().get(indice).getNome());
        }
+       assertEquals(6,allMightOuro.getGolpes().size());
    }
    @Test
    public void aoPegarOValorDoProximoGolpeComDoisGolpes() throws Exception{
