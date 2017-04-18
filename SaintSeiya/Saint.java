@@ -6,6 +6,7 @@ public class Saint{
     private boolean armaduraVestida;
     private double vida = 100.0;
     protected int qtSentidosDespertados;
+    private int proximoGolpe;
     //Extendem Saint: BronzeSaint, PrataSaint e OuroSaint
     public Saint(String nome, Armadura armadura) throws Exception{
        this.nome = nome;
@@ -53,5 +54,19 @@ public class Saint{
     public int getQtSentidosDespertados(){
         return this.qtSentidosDespertados;
     }
-    
+    //GOLPES
+    public Golpe[] getGolpes(){
+        return this.armadura.getConstelacao().getGolpes();
+    }
+    public void aprenderGolpe(Golpe golpe){
+        this.armadura.getConstelacao().adicionarGolpe(golpe.getNome(), golpe.getFatorDano());
+    }
+    public Golpe getProximoGolpe(){
+        int length = this.armadura.getConstelacao().getGolpes().length; //Guarda o tamanho do array de golpes 
+        if(proximoGolpe==length){ 
+            this.proximoGolpe = 0;
+        }
+        this.proximoGolpe++;
+        return this.armadura.getConstelacao().getGolpes()[this.proximoGolpe-1];
+    }
 }
