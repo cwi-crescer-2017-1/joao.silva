@@ -25,8 +25,8 @@ public class ConstelacaoTest{
            assertEquals(golpes[indice].getFatorDano(), capricornio.getGolpes()[indice].getFatorDano()); // Compara o fatore de dano de cada casa do array com o fator de dano realmente adicionado
        }
    }
-   @Test
-   public void aoAdicionar4GolpesOQuartoGolpeReescreveOPrimeiroGolpeAdicionado(){
+   @Test(expected=Exception.class)
+   public void aoAdicionar4GolpesError(){
        //ARRANGE
        capricornio = new Constelacao("Capricórnio");
        //ACT
@@ -35,11 +35,9 @@ public class ConstelacaoTest{
        golpes[1] = new Golpe("Chute", 10);
        golpes[2] = new Golpe("Excalibur", 50);
        golpes[3] = new Golpe("Tapa", 5);
-       for(int indice = 0; indice<golpes.length; indice++){ //Adiciona todos os golpes registrados no array golpes para a constelação criada
-           capricornio.adicionarGolpe(golpes[indice]);
+       //ASSERT - Erro esperado
+       for(int indice=0; indice<golpes.length;indice++){
+       capricornio.adicionarGolpe(golpes[indice]);
        }
-       //ASSERT
-       assertEquals(golpes[golpes.length-1].getNome(), capricornio.getGolpes()[0].getNome()); //Compara os nomes
-       assertEquals(golpes[golpes.length-1].getFatorDano(), capricornio.getGolpes()[0].getFatorDano()); // Compara o fatorDano
-   }
+    }
 }

@@ -8,9 +8,6 @@ public class Constelacao{
     public void adicionarGolpe(Golpe golpe){
         this.golpes[contador] = golpe;
         contador++;
-        if(contador==3){
-            contador = 0; //Como o número de golpes é limitado devido ao array estático quando chegar ao limite ele irá transcrever o primeiro golpe
-        }
     }
     public Golpe[] getGolpes(){
         return this.golpes;
