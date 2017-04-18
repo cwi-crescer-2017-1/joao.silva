@@ -16,10 +16,8 @@ public class ConstelacaoTest{
        capricornio.adicionarGolpe(golpe);
        
        //ASSERT
-       assertEquals(golpe, capricornio.getGolpes()[0]);
-       for(int i=1;i<capricornio.getGolpes().length;i++){
-           assertNull(capricornio.getGolpes()[i]);
-       }
+       assertEquals(golpe, capricornio.getGolpes().get(0));
+       assertEquals(1, capricornio.getGolpes().size()); //tamanho ArrayList = quantidade de valores adicionados
    }
    @Test
    public void adicionarDoisGolpes(){
@@ -31,9 +29,9 @@ public class ConstelacaoTest{
        capricornio.adicionarGolpe(golpe1);
        capricornio.adicionarGolpe(golpe2);
        //ASSERT
-       assertEquals(golpe1, capricornio.getGolpes()[0]);
-       assertEquals(golpe2, capricornio.getGolpes()[1]);
-       assertNull(capricornio.getGolpes()[2]);
+       assertEquals(golpe1, capricornio.getGolpes().get(0));
+       assertEquals(golpe2, capricornio.getGolpes().get(1));
+       assertEquals(2, capricornio.getGolpes().size());
    }
    @Test
    public void aoAdicionarTresGolpes(){
@@ -49,24 +47,7 @@ public class ConstelacaoTest{
        } 
        //ASSERT
        for(int indice = 0; indice<golpes.length; indice++){ //Realiza a comparação de Nome e fatorDeDano para cada golpe adicionado
-           assertEquals(golpes[indice], capricornio.getGolpes()[indice]);
+           assertEquals(golpes[indice], capricornio.getGolpes().get(indice));
        }
    }
-   @Test(expected=ArrayIndexOutOfBoundsException.class)
-   public void aoAdicionarQuatroGolpesUltimoGolpeNaoAdicionaEsperadoErro(){
-       //ARRANGE
-       capricornio = new Constelacao("Capricórnio");
-       //ACT
-       Golpe[] golpes = new Golpe[4]; //Cria um array com os três golpes a serem adicionados
-       golpes[0] = new Golpe("Soco", 5);
-       golpes[1] = new Golpe("Chute", 10);
-       golpes[2] = new Golpe("Excalibur", 50);
-       golpes[3] = new Golpe("Tapa", 5);
-       for(int indice=0; indice<golpes.length;indice++){
-       capricornio.adicionarGolpe(golpes[indice]);
-       }
-       //ASSERT - Erro esperado
-       
-       
-    }
 }
