@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.security.InvalidParameterException;
 
 public class SaintTest{
    private BronzeSaint allMightBronze;
@@ -99,7 +99,7 @@ public class SaintTest{
        //ASSERT
        assertEquals(vidaAnterior-3.141592, allMightOuro.getVida(), 0.01);
    }
-   @Test(expected=Exception.class)
+   @Test(expected=InvalidParameterException.class)
    public void aoPerderNumeroNegativoDeVida() throws Exception{ //Teste deve ser removido caso se evite números negativos no método PerderVida()
        //ARRANGE
        allMightOuro = new OuroSaint("Aioros", new Armadura(new Constelacao("Sagitário"), Categoria.OURO));
