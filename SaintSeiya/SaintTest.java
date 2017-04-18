@@ -141,7 +141,7 @@ public class SaintTest{
        //ASSERT
        assertEquals(7, allMightOuro.getQtSentidosDespertados());
    }
-   //CONSTELAÇÃO
+   //CONSTELACAO
    @Test(expected=Exception.class)
    public void constelacaoInvalidaDeOuroDeveLancarErro() throws Exception{
        //ARRANGE
@@ -151,7 +151,36 @@ public class SaintTest{
     }
    //GOLPES
    @Test
-   public void aoAdicionar3GolpesOs3GolpesSaoAdicionadosCorretamente() throws Exception{
+   public void aprenderUmGolpe() throws Exception{
+       //ARRANGE
+       allMightOuro = new OuroSaint("Aioros", new Armadura(new Constelacao("Sagitário"), Categoria.OURO)); //Recem criado tem 100 de vida
+       Golpe golpe = new Golpe("Chute",10);
+       
+       //ACT
+       allMightOuro.aprenderGolpe(golpe);
+       
+       //ASSERT
+       assertEquals(golpe, allMightOuro.getGolpes()[0]);
+       assertNull(allMightOuro.getGolpes()[1]);
+       assertNull(allMightOuro.getGolpes()[2]);
+   }
+   @Test
+   public void aprenderDoisGolpe() throws Exception{
+       //ARRANGE
+       allMightOuro = new OuroSaint("Aioros", new Armadura(new Constelacao("Sagitário"), Categoria.OURO)); //Recem criado tem 100 de vida
+       Golpe golpe1 = new Golpe("Chute",10);
+       Golpe golpe2 = new Golpe("Soco", 10);
+       
+       //ACT
+       allMightOuro.aprenderGolpe(golpe1);
+       allMightOuro.aprenderGolpe(golpe2);
+       //ASSERT
+       assertEquals(golpe1, allMightOuro.getGolpes()[0]);
+       assertEquals(golpe2, allMightOuro.getGolpes()[1]);
+       assertNull(allMightOuro.getGolpes()[2]);
+   }
+   @Test
+   public void aprenderTresGolpes() throws Exception{
        //ARRANGE
        allMightOuro = new OuroSaint("Aioros", new Armadura(new Constelacao("Sagitário"), Categoria.OURO)); //Recem criado tem 100 de vida
        Golpe[] golpes = new Golpe[3];
@@ -164,12 +193,11 @@ public class SaintTest{
        }
        //ASSERT
        for(int indice = 0; indice<golpes.length; indice++){ //Verifica se os golpes foram adicionados corretamente
-           assertEquals(golpes[indice].getNome(), allMightOuro.getGolpes()[indice].getNome()); //Verifica o nome
-           assertEquals(golpes[indice].getFatorDano(), allMightOuro.getGolpes()[indice].getFatorDano()); //Verifica o FatorDano
+           assertEquals(golpes[indice], allMightOuro.getGolpes()[indice]);  
        }
    }
    @Test(expected=Exception.class)
-   public void aoAdicionar6GolpesUltimo3GolpesNaoAdicionaEsperadoErro() throws Exception{
+   public void aprenderSeisGolpesErroEsperado() throws Exception{
        //ARRANGE
        allMightOuro = new OuroSaint("Aioros", new Armadura(new Constelacao("Sagitário"), Categoria.OURO));
        Golpe[] golpes = new Golpe[6];
@@ -189,7 +217,25 @@ public class SaintTest{
        }
    }
    @Test
-   public void aoPegarOValorDoProximoGolpeEleRetornaOValorDoProximoGolpe() throws Exception{
+   public void aoPegarOValorDoProximoGolpeComDoisGolpes() throws Exception{
+       //ARRANGE
+       allMightOuro = new OuroSaint("Aioros", new Armadura(new Constelacao("Sagitário"), Categoria.OURO)); //Recem criado tem 100 de vida
+       Golpe golpe;
+       Golpe[] golpes = new Golpe[2];
+       golpes[0] = new Golpe("Chute",10);
+       golpes[1] = new Golpe("Soco",10);
+       //ACT
+       for(int indice = 0; indice<golpes.length; indice++){ //Adiciona os 3 golpes
+           allMightOuro.aprenderGolpe(golpes[indice]);
+       }
+       //ASSERT
+       for(int indice = 0; indice<golpes.length; indice++){
+            golpe = allMightOuro.getProximoGolpe();
+            assertEquals(golpes[indice], golpe); //Verifica o nome
+       }
+   }
+   @Test
+   public void aoPegarOValorDoProximoGolpeSeisVezesComTresGolpes() throws Exception{
        //ARRANGE
        allMightOuro = new OuroSaint("Aioros", new Armadura(new Constelacao("Sagitário"), Categoria.OURO)); //Recem criado tem 100 de vida
        Golpe golpe;
@@ -205,8 +251,7 @@ public class SaintTest{
        for(int i = 0; i<2; i++){ //Executa o segundo "for" duas vezes para passar mais de uma vez por todos os valores no getProximoGolpe()
            for(int indice = 0; indice<golpes.length; indice++){
                golpe = allMightOuro.getProximoGolpe();
-               assertEquals(golpes[indice].getNome(), golpe.getNome()); //Verifica o nome
-               assertEquals(golpes[indice].getFatorDano(), golpe.getFatorDano()); //Verifica o FatorDano
+               assertEquals(golpes[indice], golpe); //Verifica o nome
             }
         }
    }
