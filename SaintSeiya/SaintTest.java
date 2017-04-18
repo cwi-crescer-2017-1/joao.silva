@@ -168,8 +168,8 @@ public class SaintTest{
            assertEquals(golpes[indice].getFatorDano(), allMightOuro.getGolpes()[indice].getFatorDano()); //Verifica o FatorDano
        }
    }
-   @Test
-   public void aoAdicionar6GolpesOs3UltimosGolpesReescrevemOs3Primeiros() throws Exception{
+   @Test(expected=Exception.class)
+   public void aoAdicionar6GolpesEsperadoErro() throws Exception{
        //ARRANGE
        allMightOuro = new OuroSaint("Aioros", new Armadura(new Constelacao("Sagitário"), Categoria.OURO));
        Golpe[] golpes = new Golpe[6];
@@ -183,11 +183,7 @@ public class SaintTest{
        for(int indice = 0; indice<golpes.length; indice++){ //Adiciona os 6 golpes, sendo que ficará gravado na classe os 3 últimos
            allMightOuro.aprenderGolpe(golpes[indice]);
        }
-       //ASSERT
-       for(int indice = 0; indice<allMightOuro.getGolpes().length; indice++){ //Verifica se os golpes foram adicionados corretamente
-           assertEquals(golpes[indice+3].getNome(), allMightOuro.getGolpes()[indice].getNome()); //Verifica o nome
-           assertEquals(golpes[indice+3].getFatorDano(), allMightOuro.getGolpes()[indice].getFatorDano()); //Verifica o FatorDano
-       }
+       //ASSERT - Esperadi erro durante o ACT
    }
    @Test
    public void aoPegarOValorDoProximoGolpeEleRetornaOValorDoProximoGolpe() throws Exception{
