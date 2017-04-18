@@ -11,8 +11,8 @@ public class BatalhaTest{
    @Test
    public void aoBatalharCategoriaMaiorContraCategoriaMenor() throws Exception{ //Categoria do Lutador 1 maior que a do Lutador 2
        //ARRANGE
-       seiya = new BronzeSaint("Seiya", new Armadura("Pégaso", Categoria.BRONZE));
-       marin = new PrataSaint("Marin", new Armadura("Águia", Categoria.PRATA));
+       seiya = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pégaso"), Categoria.BRONZE));
+       marin = new PrataSaint("Marin", new Armadura(new Constelacao("Águia"), Categoria.PRATA));
        vidaInicial1 = seiya.getVida();
        vidaInicial2 = marin.getVida();
        //ACT
@@ -24,8 +24,8 @@ public class BatalhaTest{
    @Test 
    public void aoBatalharCategoriaMenorContraCategoriaMaior()throws Exception{ //Cegoria do Lutador 2 maior que a do Lutador 1
        //ARRANGE
-       seiya = new BronzeSaint("Seiya", new Armadura("Pégaso", Categoria.BRONZE));
-       marin = new PrataSaint("Marin", new Armadura("Águia", Categoria.PRATA));
+       seiya = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pégaso"), Categoria.BRONZE));
+       marin = new PrataSaint("Marin", new Armadura(new Constelacao("Águia"), Categoria.PRATA));
        vidaInicial1 = seiya.getVida();
        vidaInicial2 = marin.getVida();
        //ACT
@@ -37,8 +37,8 @@ public class BatalhaTest{
    @Test
    public void aoBatalharCategoriasIguais() throws Exception{
        //ARRANGE
-       marin = new PrataSaint("Marin", new Armadura("Águia", Categoria.PRATA));
-       algol = new PrataSaint("Algol", new Armadura("Perseu", Categoria.PRATA));
+       marin = new PrataSaint("Marin", new Armadura(new Constelacao("Águia"), Categoria.PRATA));
+       algol = new PrataSaint("Algol", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
        vidaInicial1 = algol.getVida();
        vidaInicial2 = marin.getVida();
        //ACT
