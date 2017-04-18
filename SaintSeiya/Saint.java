@@ -1,4 +1,5 @@
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 public class Saint{
     private String nome;
     private Armadura armadura;
@@ -61,19 +62,19 @@ public class Saint{
     private Constelacao getConstelacao(){ //Método para diminuir a repetição do this.armadura passando a ser this.getConstelacao(), o método é privado pois só é usado( e só deve ser usado) dentro da classe Saint
         return this.armadura.getConstelacao();
     }
-    public Golpe[] getGolpes(){
+    public ArrayList<Golpe> getGolpes(){
         return this.getConstelacao().getGolpes();
     }
     public void aprenderGolpe(Golpe golpe){
         this.getConstelacao().adicionarGolpe(golpe);
     }
     public Golpe getProximoGolpe(){
-        int length = this.getGolpes().length; //Guarda o tamanho do array de golpes 
-        if(this.proximoGolpe==length){ 
+        int size = this.getGolpes().size(); //Guarda o tamanho do array de golpes 
+        if(this.proximoGolpe==size){ 
            this.proximoGolpe = 0;
         }
         int posicao = proximoGolpe;
         this.proximoGolpe++;
-        return this.getGolpes()[posicao];
+        return this.getGolpes().get(posicao);
     }
 }
