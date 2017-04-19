@@ -86,7 +86,27 @@ public class ListaSaints{
 		   }
 		}while(posicoesSendoTrocadas);
     }
-	public void ordenar(){
-		
+	//ORDENACAO POR PARAMETRO TIPOORDENACAO
+	public void ordenar(TipoOrdenacao tipoOrdenacao){
+		boolean ascendente = tipoOrdenacao==TipoOrdenacao.ASCENDENTE;
+		if(ascendente){
+			ordenar();
+		}else{
+			boolean posicoesSendoTrocadas=true;
+			do{
+		  		posicoesSendoTrocadas=false;
+		   		for(int i =0; i<this.lista.size()-1;i++){
+		   	 		Saint atual = this.lista.get(i);
+			 		Saint proximo = this.lista.get(i+1);
+			 		boolean precisaTrocar= atual.getVida()<proximo.getVida();
+			 		if(precisaTrocar){
+			    		this.lista.set(i,proximo);
+						this.lista.set(i+1,atual);
+						posicoesSendoTrocadas=true;
+			   		}		
+		   	 	}
+			}while(posicoesSendoTrocadas);
+		}
 	}
+	
 }
