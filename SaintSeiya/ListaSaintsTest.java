@@ -286,7 +286,7 @@ public class ListaSaintsTest{
   }
   //ORDENAR por vida(Ordem ascendente)
   @Test
-  public void aoOrdenar() throws Exception{
+  public void aoOrdenarListaComSeisSaints() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
@@ -316,5 +316,27 @@ public class ListaSaintsTest{
       assertEquals(this.saint4,this.lista.get(3));
       assertEquals(this.saint2,this.lista.get(4));
       assertEquals(this.saint1,this.lista.get(5));
+	  assertEquals(6,this.lista.getTamanho());
+  }
+  @Test
+  public void aoOrdenarListaVazia() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      //ACT
+      this.lista.ordenar();
+      //ASSERT
+      assertEquals(0,lista.getTamanho());
+  }
+  @Test
+  public void aoOrdenarListaComUmSaint() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      //ACT
+      this.lista.adicionar(this.saint1);
+      this.lista.ordenar();
+      //ASSERT
+      assertEquals(this.saint1,this.lista.get(0));
+	  assertEquals(1,this.lista.getTamanho());
   }
 }
