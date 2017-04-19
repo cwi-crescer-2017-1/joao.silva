@@ -8,6 +8,8 @@ public class ListaSaintsTest{
     private Saint saint1, saint2, saint3,saint4,saint5,saint6;
     private ListaSaints lista;
     private ArrayList<Saint> listDeSaints;
+
+  //´Número de testes: 9
   //ADICIONAR && GET
   @Test
   public void aoAdicionarUmSaintAListaRetornaGetOSaintCorreto() throws Exception{

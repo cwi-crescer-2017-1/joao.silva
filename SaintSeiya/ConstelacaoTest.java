@@ -6,11 +6,11 @@ import org.junit.Test;
 
 public class ConstelacaoTest{
    private Constelacao capricornio;
-   //Número de testes: 4
+   //Número de testes: 3
    @Test
    public void adicionarUmGolpe(){
        //ARRANGE
-       capricornio = new Constelacao("Capricórnio");
+       this.capricornio = new Constelacao("Capricórnio");
        //ACT
        Golpe golpe = new Golpe("Soco", 5);
        capricornio.adicionarGolpe(golpe);
@@ -22,7 +22,7 @@ public class ConstelacaoTest{
    @Test
    public void adicionarDoisGolpes(){
         //ARRANGE
-       capricornio = new Constelacao("Capricórnio");
+       this.capricornio = new Constelacao("Capricórnio");
        //ACT
        Golpe golpe1 = new Golpe("Soco", 5);
        Golpe golpe2 = new Golpe("Chute",10);
@@ -36,18 +36,18 @@ public class ConstelacaoTest{
    @Test
    public void aoAdicionarTresGolpes(){
        //ARRANGE
-       capricornio = new Constelacao("Capricórnio");
+       this.capricornio = new Constelacao("Capricórnio");
        //ACT
        Golpe[] golpes = new Golpe[3]; //Cria um array com os três golpes a serem adicionados
        golpes[0] = new Golpe("Soco", 5);
        golpes[1] = new Golpe("Chute", 10);
        golpes[2] = new Golpe("Excalibur", 50);
        for(int indice = 0; indice<golpes.length; indice++){ //Adiciona todos os golpes registrados no array golpes para a constelação criada
-           capricornio.adicionarGolpe(golpes[indice]);
+           this.capricornio.adicionarGolpe(golpes[indice]);
        } 
        //ASSERT
        for(int indice = 0; indice<golpes.length; indice++){ //Realiza a comparação de Nome e fatorDeDano para cada golpe adicionado
-           assertEquals(golpes[indice], capricornio.getGolpes().get(indice));
+           assertEquals(golpes[indice], this.capricornio.getGolpes().get(indice));
        }
-   }
+   } 
 }
