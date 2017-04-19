@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 public class ListaSaints{
-    private ArrayList<Saint> lista = new ArrayList<Saint>();
-    public ListaSaints(){ }
+    private ArrayList<Saint> lista = new ArrayList<Saint>();;
+    public ListaSaints(){}
     public void adicionar(Saint saint){
         this.lista.add(saint);
     }
@@ -14,22 +16,26 @@ public class ListaSaints{
     public void remover(Saint saint){
         this.lista.remove(saint);
     }
+ 	
     public Saint buscarPorNome(String nome){
-        for(int i=0;i<this.lista.size();i++){
-           if(this.lista.get(i).getNome().equals(nome)){
-               return this.lista.get(i);
-           }
-        }
-        return null;
+		/*
+		for(Saint saint : this.lista){
+			if(saint.getNome().equals(nome)){
+				return saint;
+			}
+		}
+		return null;
+		*///Método alternativo (válido em java 8 +)
+		return this.lista.stream()
+			.filter(s -> s.getNome().equals(nome))
+			.findFirst()
+			.orElse(null);
     }
     public ArrayList<Saint> buscarPorCategoria(Categoria categoria){
-        ArrayList<Saint> retorno = new ArrayList<Saint>();
-        for(Saint saint : lista){
-            if(saint.getArmadura().getCategoria() == categoria){
-                retorno.add(saint);
-            }
-        }
-        return retorno;
+     	return (ArrayList<Saint>)this.lista.stream()
+		   .filter(s -> s.getArmadura().getCategoria()==categoria)
+           .collect(Collectors.toList());
+		
     }
     public ArrayList<Saint> buscarPorStatus(Status status){
         ArrayList<Saint> retorno = new ArrayList<Saint>();
