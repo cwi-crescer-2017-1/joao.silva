@@ -16,7 +16,9 @@ public class ListaSaints{
     public void remover(Saint saint){
         this.lista.remove(saint);
     }
- 	
+	public int getTamanho(){
+		return this.lista.size();
+	}
     public Saint buscarPorNome(String nome){
 		/*
 		for(Saint saint : this.lista){
@@ -69,18 +71,22 @@ public class ListaSaints{
         return saintMenorVida;
     }
     public void ordenar(){
-        double menor;
-        for(int x=0;x<this.lista.size();x++){ 
-            Saint saintTemp = null;
-            menor = 999999999;
-            for(int i=x;i<this.lista.size();i++){
-                if(this.get(i).getVida() < menor){
-                    menor=this.lista.get(i).getVida();
-                    saintTemp=this.get(x);
-                    lista.set(x,this.get(i));
-                    lista.set(i,saintTemp);
-                }
-            }
-        }
+		boolean posicoesSendoTrocadas=true;
+		do{
+		   posicoesSendoTrocadas=false;
+		   for(int i =0; i<this.lista.size()-1;i++){
+		   	   Saint atual = this.lista.get(i);
+			   Saint proximo = this.lista.get(i+1);
+			   boolean precisaTrocar= atual.getVida()>proximo.getVida();
+			   if(precisaTrocar){
+			      this.lista.set(i,proximo);
+				  this.lista.set(i+1,atual);
+				  posicoesSendoTrocadas=true;
+			   }
+		   }
+		}while(posicoesSendoTrocadas);
     }
+	public void ordenar(){
+		
+	}
 }
