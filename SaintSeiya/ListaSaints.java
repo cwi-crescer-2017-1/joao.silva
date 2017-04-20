@@ -169,7 +169,7 @@ public class ListaSaints{
         String retorno="";
         for(Saint saint : this.lista){
            if(saint!=null){
-            retorno+=saint.getNome()+","+saint.getVida()+","+saint.getArmadura().getConstelacao().getNome()+","+saint.getArmadura().getCategoria()+","+saint.getStatus()+","+saint.getGenero()+","+saint.getArmaduraVestida()+quebraLinha;
+               retorno+=saint.getCSV()+quebraLinha;
            }
         }
         return retorno;
