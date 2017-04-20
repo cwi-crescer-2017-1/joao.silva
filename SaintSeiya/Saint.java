@@ -16,6 +16,7 @@ public class Saint{
        //O valor de qtSentidosDespertados soma com o valor da Categoria da Armadura, BRONZE(0), PRATA(1) e OURO(2)
        //logo Ouro fica com (5+2=7) sentidos e Prata (5+1=6) sentidos  
     }
+    public Saint(){}
     /*public boolean equals(Object object){//Verifica se um objeto possui os mesmos valores que outro objeto
        Saint outroSaint = (Saint) object;
        return this.nome.equals(outroSaint.nome) 
@@ -104,5 +105,30 @@ public class Saint{
             this.genero,
             this.armaduraVestida
         );
+    }
+    /*Testar*/
+    public void criarSaintViaCSV(String csv) throws Exception{
+        String[] saintCSV = csv.split(",");
+        Categoria categoria;
+        if(saintCSV[3].equals("BRONZE")){
+            categoria = Categoria.BRONZE;
+        }else if(saintCSV[3].equals("PRATA")){
+            categoria = Categoria.PRATA;
+        }else{
+            categoria = Categoria.OURO;
+        }
+        if(saintCSV[5].equals("FEMININO")){
+            this.genero = Genero.FEMININO;
+        }else if(saintCSV[5].equals("MASCULINO")){
+            this.genero = Genero.MASCULINO;
+        }else{
+            this.genero = Genero.NAO_INFORMADO;
+        }
+        if(saintCSV[6].equals("true")){
+            this.armaduraVestida=true;
+        }
+        this.nome=saintCSV[0];
+        this.armadura = new Armadura(new Constelacao(saintCSV[2]), categoria);
+        this.perderVida(100-Double.parseDouble(saintCSV[1]));
     }
 }
