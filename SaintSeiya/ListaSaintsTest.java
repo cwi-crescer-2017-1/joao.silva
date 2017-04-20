@@ -8,7 +8,7 @@ public class ListaSaintsTest{
     private Saint saint1, saint2, saint3,saint4,saint5,saint6;
     private ListaSaints lista,lista2,lista3,lista4;
     private ArrayList<Saint> listDeSaints;
-    private final String quebraLinha = System.lineSeparator();
+    private final String quebraLinha = System.getProperty("line.separator");
 
   //´Número de testes: 41 - Total: 69
   //BUSCA SAINT POR NOME
@@ -647,6 +647,19 @@ public class ListaSaintsTest{
   }
   //CSV
   @Test
+  public void aoPegarCSVDaListaSaintsComUmSaintApenas() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      saint1.setGenero(Genero.MASCULINO);
+      saint1.perderVida(50);
+      //ACT
+      this.lista.adicionar(saint1);
+      String csv = lista.getCSV();
+      //ASSERT
+      assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false",csv);
+  }
+  @Test
   public void aoPegarCSVDaListaSaintsComDoisSaints() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
@@ -661,61 +674,6 @@ public class ListaSaintsTest{
       this.lista.adicionar(saint2);
       String csv = lista.getCSV();
       //ASSERT
-      assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false"+quebraLinha+"Seiya,0.0,Pegasos,BRONZE,MORTO,NAO_INFORMADO,true"+quebraLinha, csv);
-  }
-  @Test
-  public void aoPegarCSVDaListaSaintsComDoisSaintsSendoUmNulo() throws Exception{
-      //ARRANGE
-      this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = null;
-      saint1.setGenero(Genero.MASCULINO);
-      saint1.perderVida(50);
-      //ACT
-      this.lista.adicionar(saint1);
-      this.lista.adicionar(saint2);
-      String csv = lista.getCSV();
-      //ASSERT
-      assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false"+quebraLinha, csv);
-  }
-  @Test
-  public void aoPegarCSVDaListaSaintsComDoisSaintsNulos() throws Exception{
-      //ARRANGE
-      this.lista = new ListaSaints();
-      this.saint1 = null;
-      this.saint2 = null;
-      //ACT
-      this.lista.adicionar(saint1);
-      this.lista.adicionar(saint2);
-      String csv = lista.getCSV();
-      //ASSERT
-      assertEquals("", csv);
-  }
-  @Test
-  public void aoPegarCSVDaListaSaintsComSeisSaintsSendoTresNulos() throws Exception{
-      //ARRANGE
-      this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new PrataSaint("Shaina", new Armadura(new Constelacao("Ofiúco"), Categoria.PRATA));
-      this.saint4 = null;
-      this.saint5 = null;
-      this.saint6 = null;
-      saint1.setGenero(Genero.MASCULINO);
-      saint1.perderVida(50);
-      saint2.perderVida(100);
-      saint2.vestirArmadura();
-      saint3.setGenero(Genero.FEMININO);
-      saint3.perderVida(10);
-      //ACT
-      this.lista.adicionar(saint1);
-      this.lista.adicionar(saint2);
-      this.lista.adicionar(saint3);
-      this.lista.adicionar(saint4);
-      this.lista.adicionar(saint5);
-      this.lista.adicionar(saint6);
-      String csv = lista.getCSV();
-      //ASSERT
-      assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false"+quebraLinha+"Seiya,0.0,Pegasos,BRONZE,MORTO,NAO_INFORMADO,true"+quebraLinha+"Shaina,90.0,Ofiúco,PRATA,VIVO,FEMININO,false"+quebraLinha, csv);
+      assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false"+quebraLinha+"Seiya,0.0,Pegasos,BRONZE,MORTO,NAO_INFORMADO,true", csv);
   }
 }
