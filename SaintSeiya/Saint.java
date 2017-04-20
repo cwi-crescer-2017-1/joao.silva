@@ -5,7 +5,7 @@ public class Saint{
     private Armadura armadura;
     private Genero genero = Genero.NAO_INFORMADO;
     private Status status = Status.VIVO; 
-    private boolean armaduraVestida;
+    private boolean armaduraVestida = false;
     private double vida = 100.0;
     protected int qtSentidosDespertados;
     private int proximoGolpe;
@@ -16,6 +16,18 @@ public class Saint{
        //O valor de qtSentidosDespertados soma com o valor da Categoria da Armadura, BRONZE(0), PRATA(1) e OURO(2)
        //logo Ouro fica com (5+2=7) sentidos e Prata (5+1=6) sentidos  
     }
+    /*public boolean equals(Object object){//Verifica se um objeto possui os mesmos valores que outro objeto
+       Saint outroSaint = (Saint) object;
+       return this.nome.equals(outroSaint.nome) 
+       && this.armadura.equals(outroSaint.armadura)
+       && this.genero.equals(outroSaint.genero)
+       && this.status.equals(outroSaint.status)
+       && this.armaduraVestida==outroSaint.armaduraVestida
+       && this.vida == outroSaint.vida
+       && this.qtSentidosDespertados == outroSaint.qtSentidosDespertados
+       && this.proximoGolpe == outroSaint.proximoGolpe
+       ;
+    }*/
     //NOME
     public String getNome(){
         return this.nome;
