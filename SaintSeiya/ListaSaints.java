@@ -165,13 +165,16 @@ public class ListaSaints{
         return retorno;
     }
     public String getCSV(){
-        String quebraLinha = System.lineSeparator();
-        String retorno="";
-        for(Saint saint : this.lista){
-           if(saint!=null){
-               retorno+=saint.getCSV()+quebraLinha;
-           }
+        String quebraLinha = System.getProperty("line.separator");
+        String retorno;
+        StringBuilder builder = new StringBuilder(512);
+        if(this.lista.isEmpty()){
+            return "";
         }
-        return retorno;
+        builder.append(this.lista.get(0).getCSV());
+        for(int i=1;i<this.lista.size();i++){
+            builder.append(quebraLinha+this.lista.get(i).getCSV());
+        }
+        return builder.toString();
     }
 }
