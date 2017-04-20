@@ -93,4 +93,16 @@ public class Saint{
         this.proximoGolpe++;
         return this.getGolpes().get(posicao);
     }
+    public String getCSV(){
+        return String.format(
+            "%s,%s,%s,%s,%s,%s,%s",
+            this.nome,
+            this.vida, //É %s pois o java converte o valor para String
+            this.armadura.getConstelacao().getNome(),
+            this.armadura.getCategoria(),
+            this.status,
+            this.genero,
+            this.armaduraVestida
+        );
+    }
 }
