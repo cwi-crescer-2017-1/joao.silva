@@ -113,24 +113,55 @@ public class ListaSaints{
     }
     public ListaSaints unir(ListaSaints listaSaints){
         ListaSaints resultado = new ListaSaints();
-        resultado.todos().addAll(this.lista);
-        resultado.todos().addAll(listaSaints.todos());
+        /*resultado.adicionar(this.lista);
+         *resultado.adicionar(listaSaints.todos());
+         */
+        
+        for(Saint saint : this.lista){
+            resultado.adicionar(saint);
+        }
+        for(Saint saint : listaSaints.todos()){
+            resultado.adicionar(saint);
+        }
+        
         return resultado;
     }
     public ListaSaints diff(ListaSaints listaSaints){
         ListaSaints retorno = new ListaSaints();
-        ArrayList<Saint> resultado = new ArrayList<Saint>();
-        resultado = this.lista;
-        resultado.removeAll(listaSaints.todos());
-        retorno.adicionar(resultado);
+        /*
+        ArrayList<Saint> arrayResultado = new ArrayList<Saint>();
+        arrayResultado = this.lista;
+        arrayResultado.removeAll(listaSaints.todos());
+        retorno.adicionar(arrayResultado);
+        */
+        boolean saintsIguais;
+        retorno.adicionar(this.lista);
+        for(Saint saint : this.lista){
+            for(Saint saint2 : listaSaints.todos()){
+                saintsIguais = saint.equals(saint2);
+                if(saintsIguais){
+                    retorno.remover(saint2);
+                }
+            }
+        }
         return retorno;
     }
     public ListaSaints intersec(ListaSaints listaSaints){
         ListaSaints retorno = new ListaSaints();
-        ArrayList<Saint> resultado = new ArrayList<Saint>();
-        resultado = this.lista;
-        resultado.retainAll(listaSaints.todos());
-        retorno.adicionar(resultado);
+        /*
+        ArrayList<Saint> arrayResultado = new ArrayList<Saint>();
+        arrayResultado.retainAll(listaSaints.todos());
+        retorno.adicionar(arrayResultado);
+        */
+        boolean saintsIguais;
+        for(Saint saint : this.lista){
+            for(Saint saint2 : listaSaints.todos()){
+                saintsIguais = saint.equals(saint2);
+                if(saintsIguais){
+                    retorno.adicionar(saint);
+                }
+            }
+        }
         return retorno;
     }
     public String getCSV(){
