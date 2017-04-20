@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class ListaSaints{
-    private ArrayList<Saint> lista = new ArrayList<Saint>();;
+    private ArrayList<Saint> lista = new ArrayList<Saint>();
+    private final String quebraLinha = System.getProperty("line.separator");
     public ListaSaints(){}
     public void adicionar(Saint saint){
         this.lista.add(saint);
@@ -10,6 +11,7 @@ public class ListaSaints{
     public void adicionar(ArrayList<Saint> listaSaint){
         this.lista.addAll(listaSaint);
     }
+    
     public Saint get(int indice){
         return this.lista.get(indice);
     }
@@ -165,7 +167,6 @@ public class ListaSaints{
         return retorno;
     }
     public String getCSV(){
-        String quebraLinha = System.getProperty("line.separator");
         String retorno;
         StringBuilder builder = new StringBuilder(512);
         if(this.lista.isEmpty()){
@@ -173,7 +174,7 @@ public class ListaSaints{
         }
         builder.append(this.lista.get(0).getCSV());
         for(int i=1;i<this.lista.size();i++){
-            builder.append(quebraLinha+this.lista.get(i).getCSV());
+            builder.append(this.quebraLinha+this.lista.get(i).getCSV());
         }
         return builder.toString();
     }
