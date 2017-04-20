@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ListaSaintsTest{
     private Saint saint1, saint2, saint3,saint4,saint5,saint6;
-    private ListaSaints lista;
+    private ListaSaints lista,lista2,lista3,lista4;
     private ArrayList<Saint> listDeSaints;
 
   //´Número de testes: 5
@@ -53,7 +53,7 @@ public class ListaSaintsTest{
       assertNull(this.lista.buscarPorNome("Mu"));
   }
   @Test
-  public void aoBuscarSaintPorNomeComListaVaziaRetornaNull() throws Exception{
+  public void aoBuscarSaintPorNomeComListaSaintsVaziaRetornaNull() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       //ACT
@@ -130,16 +130,16 @@ public class ListaSaintsTest{
       this.lista.adicionar(this.saint1);
       this.lista.adicionar(this.saint2);
       this.lista.adicionar(this.saint3);
-	  this.listDeSaints = this.lista.buscarPorCategoria(Categoria.OURO);
+      this.listDeSaints = this.lista.buscarPorCategoria(Categoria.OURO);
       //ASSERT
       assertEquals(0,this.listDeSaints.size());
   }
   @Test
-  public void aoBuscarPorCategoriaComListaVazia() throws Exception{
+  public void aoBuscarPorCategoriaComListaSaintsVazia() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       //ACT
-	  this.listDeSaints = this.lista.buscarPorCategoria(Categoria.BRONZE);
+      this.listDeSaints = this.lista.buscarPorCategoria(Categoria.BRONZE);
       //ASSERT
       assertEquals(0,this.listDeSaints.size());
   }
@@ -171,11 +171,11 @@ public class ListaSaintsTest{
       assertEquals(this.saint6,this.listDeSaints.get(2));
   }
   @Test
-  public void aoBuscarPorStatusComListaVazia() throws Exception{
+  public void aoBuscarPorStatusComListaSaintsVazia() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       //ACT
-	  this.listDeSaints = this.lista.buscarPorStatus(Status.VIVO);
+      this.listDeSaints = this.lista.buscarPorStatus(Status.VIVO);
       //ASSERT
       assertEquals(0,this.listDeSaints.size());
   }
@@ -187,7 +187,7 @@ public class ListaSaintsTest{
       this.saint2 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
       this.saint3 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
       //ACT
-	  this.lista.adicionar(this.saint1);
+      this.lista.adicionar(this.saint1);
       this.lista.adicionar(this.saint2);
       this.lista.adicionar(this.saint3); 
       this.listDeSaints = this.lista.buscarPorStatus(Status.MORTO);
@@ -202,10 +202,10 @@ public class ListaSaintsTest{
       this.saint2 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
       this.saint3 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
       //ACT
-	  this.saint1.perderVida(100);
+      this.saint1.perderVida(100);
       this.saint2.perderVida(100);
       this.saint3.perderVida(100);
- 	  this.lista.adicionar(this.saint1);
+      this.lista.adicionar(this.saint1);
       this.lista.adicionar(this.saint2);
       this.lista.adicionar(this.saint3);
       this.listDeSaints = this.lista.buscarPorStatus(Status.VIVO);
@@ -214,7 +214,7 @@ public class ListaSaintsTest{
   }
   //GET SAINT COM MAIOR VIDA
   @Test
-  public void aoBuscarSaintComMaiorVidaListaComApenasUmSaint() throws Exception{
+  public void aoBuscarSaintComMaiorVidaListaSaintsComApenasUmSaint() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
@@ -229,7 +229,7 @@ public class ListaSaintsTest{
       this.lista = new ListaSaints();
       this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
       this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new BronzeSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
       //ACT
       this.saint1.perderVida(10);//Maior
       this.saint2.perderVida(30);
@@ -241,7 +241,7 @@ public class ListaSaintsTest{
       assertEquals(this.saint1,this.lista.getSaintMaiorVida());
   }
   @Test
-  public void aoBuscarSaintComMaiorVidaComListaVazia() throws Exception{
+  public void aoBuscarSaintComMaiorVidaComListaSaintsVazia() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       //ACT
@@ -250,7 +250,7 @@ public class ListaSaintsTest{
   }
   //GET SAINT COM MENOR VIDA
   @Test
-  public void aoBuscarSaintComMenorVidaListaComApenasUmSaint() throws Exception{
+  public void aoBuscarSaintComMenorVidaListaSaintsComApenasUmSaint() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
@@ -265,7 +265,7 @@ public class ListaSaintsTest{
       this.lista = new ListaSaints();
       this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
       this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new BronzeSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
       //ACT
       this.saint1.perderVida(10);//Maior
       this.saint2.perderVida(30);
@@ -277,7 +277,7 @@ public class ListaSaintsTest{
       assertEquals(this.saint3,this.lista.getSaintMenorVida());
   }
   @Test
-  public void aoBuscarSaintComMenorVidaComListaVazia() throws Exception{
+  public void aoBuscarSaintComMenorVidaComListaSaintsVazia() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       //ACT
@@ -286,12 +286,12 @@ public class ListaSaintsTest{
   }
   //ORDENAR por vida(Ordem ascendente)
   @Test
-  public void aoOrdenarListaComSeisSaints() throws Exception{
+  public void aoOrdenarListaSaintsComSeisSaints() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
       this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new BronzeSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
       this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
       this.saint5 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
       this.saint6 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
@@ -316,10 +316,10 @@ public class ListaSaintsTest{
       assertEquals(this.saint4,this.lista.get(3));
       assertEquals(this.saint2,this.lista.get(4));
       assertEquals(this.saint1,this.lista.get(5));
-	  assertEquals(6,this.lista.getTamanho());
+      assertEquals(6,this.lista.getTamanho());
   }
   @Test
-  public void aoOrdenarListaVazia() throws Exception{
+  public void aoOrdenarListaSaintsVazia() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       //ACT
@@ -328,7 +328,7 @@ public class ListaSaintsTest{
       assertEquals(0,lista.getTamanho());
   }
   @Test
-  public void aoOrdenarListaComUmSaint() throws Exception{
+  public void aoOrdenarListaSaintsComUmSaint() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
@@ -337,15 +337,15 @@ public class ListaSaintsTest{
       this.lista.ordenar();
       //ASSERT
       assertEquals(this.saint1,this.lista.get(0));
-	  assertEquals(1,this.lista.getTamanho());
+      assertEquals(1,this.lista.getTamanho());
   }
   @Test
-  public void aoOrdenarDeFormaDescendenteListaComSeisSaints() throws Exception{
+  public void aoOrdenarDeFormaDescendenteListaSaintsComSeisSaints() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
       this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new BronzeSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
       this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
       this.saint5 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
       this.saint6 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
@@ -370,15 +370,15 @@ public class ListaSaintsTest{
       assertEquals(this.saint6,this.lista.get(3));
       assertEquals(this.saint5,this.lista.get(4));
       assertEquals(this.saint3,this.lista.get(5));
-	  assertEquals(6,this.lista.getTamanho());
+      assertEquals(6,this.lista.getTamanho());
   }
   @Test
-  public void aoOrdenarDeFormaAscendenteListaComSeisSaints() throws Exception{
+  public void aoOrdenarDeFormaAscendenteListaSaintsComSeisSaints() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
       this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new BronzeSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
       this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
       this.saint5 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
       this.saint6 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
@@ -403,10 +403,10 @@ public class ListaSaintsTest{
       assertEquals(this.saint4,this.lista.get(3));
       assertEquals(this.saint2,this.lista.get(4));
       assertEquals(this.saint1,this.lista.get(5));
-	  assertEquals(6,this.lista.getTamanho());
+      assertEquals(6,this.lista.getTamanho());
   }
    @Test
-  public void aoOrdenarAscendenteListaVazia() throws Exception{
+  public void aoOrdenarAscendenteListaSaintsVazia() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       //ACT
@@ -415,7 +415,7 @@ public class ListaSaintsTest{
       assertEquals(0,lista.getTamanho());
   }
   @Test
-  public void aoOrdenarAscendenteListaComUmSaint() throws Exception{
+  public void aoOrdenarAscendenteListaSaintsComUmSaint() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
@@ -424,10 +424,10 @@ public class ListaSaintsTest{
       this.lista.ordenar(TipoOrdenacao.ASCENDENTE);
       //ASSERT
       assertEquals(this.saint1,this.lista.get(0));
-	  assertEquals(1,this.lista.getTamanho());
+      assertEquals(1,this.lista.getTamanho());
   } 
   @Test
-  public void aoOrdenarDescendenteListaVazia() throws Exception{
+  public void aoOrdenarDescendenteListaSaintsVazia() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       //ACT
@@ -436,7 +436,7 @@ public class ListaSaintsTest{
       assertEquals(0,lista.getTamanho());
   }
   @Test
-  public void aoOrdenarDescendenteListaComUmSaint() throws Exception{
+  public void aoOrdenarDescendenteListaSaintsComUmSaint() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
       this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
@@ -445,6 +445,272 @@ public class ListaSaintsTest{
       this.lista.ordenar(TipoOrdenacao.DESCENDENTE);
       //ASSERT
       assertEquals(this.saint1,this.lista.get(0));
-	  assertEquals(1,this.lista.getTamanho());
+      assertEquals(1,this.lista.getTamanho());
+  }
+  //UNIR
+  @Test
+  public void aoUnirDuasListasSaintsComTresElementosCada() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.lista2 = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
+      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
+      this.saint5 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
+      this.saint6 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      //ACT
+      this.lista.adicionar(saint1);
+      this.lista.adicionar(saint2);
+      this.lista.adicionar(saint3);
+      this.lista2.adicionar(saint4);
+      this.lista2.adicionar(saint5);
+      this.lista2.adicionar(saint6);
+      this.lista3 = this.lista.unir(this.lista2);
+      //ASSERT
+      assertEquals(saint1,this.lista3.get(0));
+      assertEquals(saint2,this.lista3.get(1));
+      assertEquals(saint3,this.lista3.get(2));
+      assertEquals(saint4,this.lista3.get(3));
+      assertEquals(saint5,this.lista3.get(4));
+      assertEquals(saint6,this.lista3.get(5));
+      assertEquals(6,this.lista3.getTamanho());
+  }
+  @Test
+  public void aoUnirDuasListasSaintsSendoUmaVazia() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.lista2 = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
+      //ACT
+      this.lista.adicionar(saint1);
+      this.lista.adicionar(saint2);
+      this.lista.adicionar(saint3);
+      this.lista3 = this.lista.unir(this.lista2);
+      //ASSERT
+      assertEquals(saint1,this.lista3.get(0));
+      assertEquals(saint2,this.lista3.get(1));
+      assertEquals(saint3,this.lista3.get(2));
+      assertEquals(3,this.lista3.getTamanho());
+  }
+  @Test
+  public void aoUnirTresListasSaintsVazias() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.lista2 = new ListaSaints();
+      this.lista3 = new ListaSaints();
+      this.lista4 = new ListaSaints();
+      //ACT
+      this.lista4 = this.lista.unir(this.lista2.unir(lista3));
+      //ASSERT
+      assertEquals(0,this.lista3.getTamanho());
+  }
+  @Test
+  public void aoUnirTresListasSaintsComDoisElementosCada() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.lista2 = new ListaSaints();
+      this.lista3 = new ListaSaints();
+      this.lista4 = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
+      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.OURO));
+      this.saint5 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
+      this.saint6 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+   
+      //ACT
+      this.lista.adicionar(saint1);
+      this.lista.adicionar(saint2);
+      this.lista2.adicionar(saint3);
+      this.lista2.adicionar(saint4);
+      this.lista3.adicionar(saint5);
+      this.lista3.adicionar(saint6);
+      this.lista4 = this.lista.unir(this.lista2.unir(lista3));
+      //ASSERT
+      assertEquals(saint1,this.lista4.get(0));
+      assertEquals(saint2,this.lista4.get(1));
+      assertEquals(saint3,this.lista4.get(2));
+      assertEquals(saint4,this.lista4.get(3));
+      assertEquals(saint5,this.lista4.get(4));
+      assertEquals(saint6,this.lista4.get(5));
+      assertEquals(6,this.lista4.getTamanho());
+  }
+  //DIFF
+  @Test
+  public void aoDiffUmaListaSaintsComOutraListaSaintsDe3Elementos() throws Exception{
+      //comparar duas listas e retornar a os valores da primeira lista que não se repetem na segunda
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.lista2 = new ListaSaints();
+      this.lista3 = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
+      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
+      //ACT
+      this.lista.adicionar(saint1);
+      this.lista.adicionar(saint2);
+      this.lista.adicionar(saint3);
+      this.lista2.adicionar(saint4);
+      this.lista2.adicionar(saint2);
+      this.lista2.adicionar(saint3);
+      this.lista3 = lista.diff(lista2);
+      //ASSERT
+      assertEquals(saint1,this.lista3.get(0));
+      assertEquals(1,this.lista3.getTamanho());
+  }
+  @Test
+  public void aoDiffUmaListaSaintsComOutraListaSaintsVazia() throws Exception{
+      //comparar duas listas e retornar a os valores da primeira lista que não se repetem na segunda
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.lista2 = new ListaSaints();
+      this.lista3 = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
+      //ACT
+      this.lista.adicionar(saint1);
+      this.lista.adicionar(saint2);
+      this.lista.adicionar(saint3);
+      this.lista3 = lista.diff(lista2);
+      //ASSERT
+      assertEquals(saint1,this.lista3.get(0));
+      assertEquals(saint2,this.lista3.get(1));
+      assertEquals(saint3,this.lista3.get(2));
+      assertEquals(3,this.lista3.getTamanho());
+  }
+  //INTERSEC
+  @Test
+  public void aoIntersectarDuasListasSaintsComTresElementosCadaSendoDoisIguais() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.lista2 = new ListaSaints();
+      this.lista3 = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
+      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
+      //ACT
+      this.lista.adicionar(saint1);
+      this.lista.adicionar(saint2);
+      this.lista.adicionar(saint3);
+      this.lista2.adicionar(saint4);
+      this.lista2.adicionar(saint2);
+      this.lista2.adicionar(saint3);
+      this.lista3 = lista.intersec(lista2);
+      //ASSERT
+      assertEquals(saint2,this.lista3.get(0));
+      assertEquals(saint3,this.lista3.get(1));
+      assertEquals(2,this.lista3.getTamanho());
+  }
+  @Test
+  public void aoIntersectarDuasListasSaintsSendoUmaDelasVazia() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.lista2 = new ListaSaints();
+      this.lista3 = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
+      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
+      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
+      //ACT
+      this.lista.adicionar(saint1);
+      this.lista.adicionar(saint2);
+      this.lista.adicionar(saint3);
+      this.lista3 = lista.intersec(lista2);
+      //ASSERT
+      assertEquals(0,this.lista3.getTamanho());
+  }
+  @Test
+  public void aoIntersectarDuasListasSaintsSendoAsDuasVazias() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.lista2 = new ListaSaints();
+      this.lista3 = new ListaSaints();
+      //ACT
+      this.lista3 = lista.intersec(lista2);
+      //ASSERT
+      assertEquals(0,this.lista3.getTamanho());
+  }
+  //CSV
+  @Test
+  public void aoPegarCSVDaListaSaintsComDoisSaints() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
+      saint1.setGenero(Genero.MASCULINO);
+      saint1.perderVida(50);
+      saint2.perderVida(100);
+      saint2.vestirArmadura();
+      //ACT
+      this.lista.adicionar(saint1);
+      this.lista.adicionar(saint2);
+      String csv = lista.getCSV();
+      String quebraLinha = System.lineSeparator();
+      //ASSERT
+      assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false"+quebraLinha+"Seiya,0.0,Pegasos,BRONZE,MORTO,NAO_INFORMADO,true"+quebraLinha, csv);
+  }
+  @Test
+  public void aoPegarCSVDaListaSaintsComDoisSaintsSendoUmNulo() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint2 = null;
+      saint1.setGenero(Genero.MASCULINO);
+      saint1.perderVida(50);
+      //ACT
+      this.lista.adicionar(saint1);
+      this.lista.adicionar(saint2);
+      String csv = lista.getCSV();
+      String quebraLinha = System.lineSeparator();
+      //ASSERT
+      assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false"+quebraLinha, csv);
+  }
+  @Test
+  public void aoPegarCSVDaListaSaintsComDoisSaintsNulos() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = null;
+      this.saint2 = null;
+      //ACT
+      this.lista.adicionar(saint1);
+      this.lista.adicionar(saint2);
+      String csv = lista.getCSV();
+      String quebraLinha = System.lineSeparator();
+      //ASSERT
+      assertEquals("", csv);
+  }
+  @Test
+  public void aoPegarCSVDaListaSaintsComSeisSaintsSendoTresNulos() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
+      this.saint3 = new PrataSaint("Shaina", new Armadura(new Constelacao("Ofiúco"), Categoria.PRATA));
+      this.saint4 = null;
+      this.saint5 = null;
+      this.saint6 = null;
+      saint1.setGenero(Genero.MASCULINO);
+      saint1.perderVida(50);
+      saint2.perderVida(100);
+      saint2.vestirArmadura();
+      saint3.setGenero(Genero.FEMININO);
+      saint3.perderVida(10);
+      //ACT
+      this.lista.adicionar(saint1);
+      this.lista.adicionar(saint2);
+      this.lista.adicionar(saint3);
+      this.lista.adicionar(saint4);
+      this.lista.adicionar(saint5);
+      this.lista.adicionar(saint6);
+      String csv = lista.getCSV();
+      String quebraLinha = System.lineSeparator();
+      //ASSERT
+      assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false"+quebraLinha+"Seiya,0.0,Pegasos,BRONZE,MORTO,NAO_INFORMADO,true"+quebraLinha+"Shaina,90.0,Ofiúco,PRATA,VIVO,FEMININO,false"+quebraLinha, csv);
   }
 }
