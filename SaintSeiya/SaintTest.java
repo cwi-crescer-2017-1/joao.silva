@@ -256,6 +256,20 @@ public class SaintTest{
             }
         }
    }
-   
+   //GET CSV
+   @Test
+   public void getCSVGeneroFeminino() throws Exception{
+       Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+       june.setGenero(Genero.FEMININO);
+       june.perderVida(15.5);
+       assertEquals("June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false",june.getCSV());
+   }
+   @Test
+   public void getCSVComArmaduraVestida() throws Exception{
+       Saint dohko = new Saint("Dohko", new Armadura(new Constelacao(""), Categoria.OURO));
+       dohko.perderVida(90);
+       dohko.vestirArmadura();
+       assertEquals("Dohko,10.0,,OURO,VIVO,NAO_INFORMADO,true",dohko.getCSV());
+   }
     
 }
