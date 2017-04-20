@@ -8,6 +8,7 @@ public class ListaSaintsTest{
     private Saint saint1, saint2, saint3,saint4,saint5,saint6;
     private ListaSaints lista,lista2,lista3,lista4;
     private ArrayList<Saint> listDeSaints;
+    private final String quebraLinha = System.lineSeparator();
 
   //´Número de testes: 41 - Total: 69
   //BUSCA SAINT POR NOME
@@ -550,13 +551,17 @@ public class ListaSaintsTest{
       this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
       this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
       this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
+      this.saint5 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));//=saint2
+      this.saint6 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));//=saint3
       //ACT
       this.lista.adicionar(saint1);
       this.lista.adicionar(saint2);
       this.lista.adicionar(saint3);
       this.lista2.adicionar(saint4);
       this.lista2.adicionar(saint2);
+      //this.lista2.adicionar(saint5);
       this.lista2.adicionar(saint3);
+      //this.lista2.adicionar(saint6);
       this.lista3 = lista.diff(lista2);
       //ASSERT
       assertEquals(saint1,this.lista3.get(0));
@@ -594,13 +599,17 @@ public class ListaSaintsTest{
       this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
       this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
       this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
+      this.saint5 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));//=saint2
+      this.saint6 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));//=saint3
       //ACT
       this.lista.adicionar(saint1);
       this.lista.adicionar(saint2);
       this.lista.adicionar(saint3);
       this.lista2.adicionar(saint4);
       this.lista2.adicionar(saint2);
+      //this.lista2.adicionar(saint5);
       this.lista2.adicionar(saint3);
+      //this.lista2.adicionar(saint6);
       this.lista3 = lista.intersec(lista2);
       //ASSERT
       assertEquals(saint2,this.lista3.get(0));
@@ -651,7 +660,6 @@ public class ListaSaintsTest{
       this.lista.adicionar(saint1);
       this.lista.adicionar(saint2);
       String csv = lista.getCSV();
-      String quebraLinha = System.lineSeparator();
       //ASSERT
       assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false"+quebraLinha+"Seiya,0.0,Pegasos,BRONZE,MORTO,NAO_INFORMADO,true"+quebraLinha, csv);
   }
@@ -667,7 +675,6 @@ public class ListaSaintsTest{
       this.lista.adicionar(saint1);
       this.lista.adicionar(saint2);
       String csv = lista.getCSV();
-      String quebraLinha = System.lineSeparator();
       //ASSERT
       assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false"+quebraLinha, csv);
   }
@@ -681,7 +688,6 @@ public class ListaSaintsTest{
       this.lista.adicionar(saint1);
       this.lista.adicionar(saint2);
       String csv = lista.getCSV();
-      String quebraLinha = System.lineSeparator();
       //ASSERT
       assertEquals("", csv);
   }
@@ -709,7 +715,6 @@ public class ListaSaintsTest{
       this.lista.adicionar(saint5);
       this.lista.adicionar(saint6);
       String csv = lista.getCSV();
-      String quebraLinha = System.lineSeparator();
       //ASSERT
       assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false"+quebraLinha+"Seiya,0.0,Pegasos,BRONZE,MORTO,NAO_INFORMADO,true"+quebraLinha+"Shaina,90.0,Ofiúco,PRATA,VIVO,FEMININO,false"+quebraLinha, csv);
   }
