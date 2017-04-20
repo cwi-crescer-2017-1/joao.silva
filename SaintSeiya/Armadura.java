@@ -11,4 +11,10 @@ public class Armadura{
     public Constelacao getConstelacao(){
         return this.constelacao;
     }
+    /*public boolean equals(Object object){//Verifica se um objeto possui os mesmos valores que outro objeto
+       Armadura outraArmadura = (Armadura) object;
+       return this.constelacao.equals(outraArmadura.constelacao) 
+       && this.categoria.equals(outraArmadura.categoria)
+       ;
+    }*/
 }

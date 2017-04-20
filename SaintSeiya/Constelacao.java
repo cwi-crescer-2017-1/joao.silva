@@ -14,5 +14,10 @@ public class Constelacao{
     public String getNome(){
         return this.nome;
     }
-    
+    /*public boolean equals(Object object){//Verifica se um objeto possui os mesmos valores que outro objeto
+       Constelacao outraConstelacao = (Constelacao) object;
+       return this.nome.equals(outraConstelacao.nome) 
+       && this.golpes.equals(outraConstelacao.golpes)
+       ;
+    }*/
 }
