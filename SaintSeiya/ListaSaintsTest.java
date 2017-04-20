@@ -9,7 +9,7 @@ public class ListaSaintsTest{
     private ListaSaints lista,lista2,lista3,lista4;
     private ArrayList<Saint> listDeSaints;
 
-  //´Número de testes: 5
+  //´Número de testes: 41 - Total: 69
   //BUSCA SAINT POR NOME
   @Test
   public void aoBuscarSaintPorNome() throws Exception{
