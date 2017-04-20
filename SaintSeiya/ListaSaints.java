@@ -74,7 +74,7 @@ public class ListaSaints{
         return saintMenorVida;
     }
     public void ordenar(){ //Ordem Ascendente
-        boolean posicoesSendoTrocadas=true;
+        /*boolean posicoesSendoTrocadas=true;
         do{
            posicoesSendoTrocadas=false;
            for(int i =0; i<this.lista.size()-1;i++){
@@ -87,29 +87,29 @@ public class ListaSaints{
                   posicoesSendoTrocadas=true;
                }
            }
-        }while(posicoesSendoTrocadas);
+        }while(posicoesSendoTrocadas);*/
+        ordenar(TipoOrdenacao.ASCENDENTE);
     }
     //ORDENACAO POR PARAMETRO TIPOORDENACAO
     public void ordenar(TipoOrdenacao tipoOrdenacao){
-        boolean ascendente = tipoOrdenacao==TipoOrdenacao.ASCENDENTE;
-        if(ascendente){
-            ordenar();
-        }else{
-            boolean posicoesSendoTrocadas=true;
-            do{
-                posicoesSendoTrocadas=false;
-                for(int i =0; i<this.lista.size()-1;i++){
-                    Saint atual = this.lista.get(i);
-                    Saint proximo = this.lista.get(i+1);
-                    boolean precisaTrocar= atual.getVida()<proximo.getVida();
-                    if(precisaTrocar){
-                        this.lista.set(i,proximo);
-                        this.lista.set(i+1,atual);
-                        posicoesSendoTrocadas=true;
-                    }       
-                }
-            }while(posicoesSendoTrocadas);
-        }
+        boolean descendente = tipoOrdenacao==TipoOrdenacao.DESCENDENTE,
+                posicoesSendoTrocadas;
+        do{
+            posicoesSendoTrocadas=false;
+            for(int i =0; i<this.lista.size()-1;i++){
+                Saint atual = this.lista.get(i);
+                Saint proximo = this.lista.get(i+1);
+                boolean precisaTrocar =  
+                    descendente ? atual.getVida() < proximo.getVida() 
+                    :
+                    atual.getVida() > proximo.getVida();
+                if(precisaTrocar){
+                   this.lista.set(i,proximo);
+                   this.lista.set(i+1,atual);
+                   posicoesSendoTrocadas=true;
+                }       
+            }
+        }while(posicoesSendoTrocadas);
     }
     public ListaSaints unir(ListaSaints listaSaints){
         ListaSaints resultado = new ListaSaints();
