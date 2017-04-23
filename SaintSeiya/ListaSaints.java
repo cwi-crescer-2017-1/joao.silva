@@ -12,20 +12,14 @@ public class ListaSaints{
         this.lista.addAll(listaSaint);
     }
      /*Implementar para adicionar mais de um saint*/
-    public void adicionarSaintViaCSV(String csv) throws Exception{
+    public void adicionarSaintViaCSV(String csv) throws Exception{ 
+        //Formato: NomeSaint,Vida,Constelação,CategoriaDaArmadura,Status,Genero,Boolean armaduraVestida
         String[] saintCSV = csv.split(",");
         Categoria categoria;
         Genero genero;
         boolean armaduraVestida = saintCSV[6].equals("true");
         String nome;
         Armadura armadura;
-        if(saintCSV[3].equals("BRONZE")){
-            categoria = Categoria.BRONZE;
-        }else if(saintCSV[3].equals("PRATA")){
-            categoria = Categoria.PRATA;
-        }else{
-            categoria = Categoria.OURO;
-        }
         if(saintCSV[5].equals("FEMININO")){
             genero = Genero.FEMININO;
         }else if(saintCSV[5].equals("MASCULINO")){
@@ -34,8 +28,15 @@ public class ListaSaints{
             genero = Genero.NAO_INFORMADO;
         }
         nome=saintCSV[0];
-        armadura = new Armadura(new Constelacao(saintCSV[2]), categoria);
-        Saint novoSaint = new Saint(nome,armadura);
+        Saint novoSaint;
+        System.out.println(saintCSV[3]);
+        if(saintCSV[3].equals("BRONZE")){
+            novoSaint = new BronzeSaint(nome,saintCSV[2]);
+        }else if(saintCSV[3].equals("PRATA")){
+            novoSaint = new PrataSaint(nome,saintCSV[2]);
+        }else{
+            novoSaint = new OuroSaint(nome,saintCSV[2]);
+        }
         novoSaint.perderVida(100-Double.parseDouble(saintCSV[1]));
         if(armaduraVestida){
             novoSaint.vestirArmadura();
