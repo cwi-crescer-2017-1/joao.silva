@@ -11,7 +11,7 @@ public class ListaSaints{
     public void adicionar(ArrayList<Saint> listaSaint){
         this.lista.addAll(listaSaint);
     }
-     /*Testar*/
+     /*Implementar para adicionar mais de um saint*/
     public void adicionarSaintViaCSV(String csv) throws Exception{
         String[] saintCSV = csv.split(",");
         Categoria categoria;
