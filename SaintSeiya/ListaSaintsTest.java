@@ -9,16 +9,16 @@ public class ListaSaintsTest{
     private ListaSaints lista,lista2,lista3,lista4;
     private ArrayList<Saint> listDeSaints;
     private final String quebraLinha = System.getProperty("line.separator");
-
+    
   //´Número de testes: 41 - Total: 69
   //BUSCA SAINT POR NOME
   @Test
   public void aoBuscarSaintPorNome() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint3 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
+      this.saint1 = new BronzeSaint("Ikki","Fênix");
+      this.saint2 = new PrataSaint("Dio","Mosca");
+      this.saint3 = new OuroSaint("Mu","Áries");
       //ACT
       this.lista.adicionar(this.saint1);
       this.lista.adicionar(this.saint2);
@@ -32,8 +32,8 @@ public class ListaSaintsTest{
   public void aoBuscarSaintPorNomeComNomesRepetidos() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new PrataSaint("Ikki", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new PrataSaint("Ikki", "Mosca");
       //ACT
       this.lista.adicionar(this.saint1);
       this.lista.adicionar(this.saint2);
@@ -45,8 +45,8 @@ public class ListaSaintsTest{
   public void aoBuscarSaintInexistentePorNomeRetornaNull() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new PrataSaint("Dio", "Mosca");
       //ACT
       this.lista.adicionar(this.saint1);
       this.lista.adicionar(this.saint2);
@@ -66,10 +66,10 @@ public class ListaSaintsTest{
   public void aoBuscarPorCategoriaBronze() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
-      this.saint4 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new BronzeSaint("Seiya","Pegasos");
+      this.saint3 = new OuroSaint("Shaka", "Virgem");
+      this.saint4 = new PrataSaint("Argor", "Perseu");
       //ACT
       this.lista.adicionar(this.saint1);
       this.lista.adicionar(this.saint2);
@@ -85,10 +85,10 @@ public class ListaSaintsTest{
   public void aoBuscarPorCategoriaPrata() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint3 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
-      this.saint4 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new PrataSaint("Dio", "Mosca");
+      this.saint3 = new OuroSaint("Mu", "Áries");
+      this.saint4 = new PrataSaint("Argor", "Perseu");
       //ACT
       this.lista.adicionar(this.saint1);
       this.lista.adicionar(this.saint2);
@@ -104,10 +104,10 @@ public class ListaSaintsTest{
   public void aoBuscarPorCategoriaOuro() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
-      this.saint3 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint4 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new OuroSaint("Shaka","Virgem");
+      this.saint3 = new PrataSaint("Dio", "Mosca");
+      this.saint4 = new OuroSaint("Mu", "Áries");
       
       //ACT
       this.lista.adicionar(this.saint1);
@@ -124,9 +124,9 @@ public class ListaSaintsTest{
   public void aoBuscarPorCategoriaComZeroSaintsNaCategoria() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint3 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki","Fênix");
+      this.saint2 = new PrataSaint("Dio","Mosca");
+      this.saint3 = new PrataSaint("Argor", "Perseu");
       //ACT
       this.lista.adicionar(this.saint1);
       this.lista.adicionar(this.saint2);
@@ -149,12 +149,12 @@ public class ListaSaintsTest{
   public void aoBuscarPorStatus() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
-      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint5 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
-      this.saint6 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new BronzeSaint("Seiya", "Pegasos");
+      this.saint3 = new OuroSaint("Shaka", "Virgem");
+      this.saint4 = new PrataSaint("Dio", "Mosca");
+      this.saint5 = new OuroSaint("Mu", "Áries");
+      this.saint6 = new PrataSaint("Argor", "Perseu");
       //ACT
       this.saint1.perderVida(100);
       this.saint3.perderVida(100);
@@ -184,9 +184,9 @@ public class ListaSaintsTest{
   public void aoBuscarPorStatusMortoTendoZeroSaintsMortos() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint3 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new PrataSaint("Dio", "Mosca");
+      this.saint3 = new PrataSaint("Argor", "Perseu");
       //ACT
       this.lista.adicionar(this.saint1);
       this.lista.adicionar(this.saint2);
@@ -199,9 +199,9 @@ public class ListaSaintsTest{
   public void aoBuscarPorStatusVivoTendoZeroSaintsVivos() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint3 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new PrataSaint("Dio", "Mosca");
+      this.saint3 = new PrataSaint("Argor", "Perseu");
       //ACT
       this.saint1.perderVida(100);
       this.saint2.perderVida(100);
@@ -218,7 +218,7 @@ public class ListaSaintsTest{
   public void aoBuscarSaintComMaiorVidaListaSaintsComApenasUmSaint() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");//Inicializa com 100 de vida
       //ACT
       this.lista.adicionar(this.saint1);
       //ASSERT
@@ -228,9 +228,9 @@ public class ListaSaintsTest{
   public void aoBuscarSaintComMaiorVida() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
+      this.saint1 = new BronzeSaint("Ikki","Fênix");//Inicializa com 100 de vida
+      this.saint2 = new BronzeSaint("Seiya", "Pegasos");
+      this.saint3 = new OuroSaint("Shaka", "Virgem");
       //ACT
       this.saint1.perderVida(10);//Maior
       this.saint2.perderVida(30);
@@ -254,7 +254,7 @@ public class ListaSaintsTest{
   public void aoBuscarSaintComMenorVidaListaSaintsComApenasUmSaint() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");//Inicializa com 100 de vida
       //ACT
       this.lista.adicionar(this.saint1);
       //ASSERT
@@ -264,9 +264,9 @@ public class ListaSaintsTest{
   public void aoBuscarSaintComMenorVidaDentreTresSaints() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
+      this.saint1 = new BronzeSaint("Ikki","Fênix");//Inicializa com 100 de vida
+      this.saint2 = new BronzeSaint("Seiya", "Pegasos");
+      this.saint3 = new OuroSaint("Shaka", "Virgem");
       //ACT
       this.saint1.perderVida(10);//Maior
       this.saint2.perderVida(30);
@@ -290,12 +290,12 @@ public class ListaSaintsTest{
   public void aoOrdenarListaSaintsComSeisSaints() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
-      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint5 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
-      this.saint6 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");//Inicializa com 100 de vida
+      this.saint2 = new BronzeSaint("Seiya", "Pegasos");
+      this.saint3 = new OuroSaint("Shaka", "Virgem");
+      this.saint4 = new PrataSaint("Dio", "Mosca");
+      this.saint5 = new OuroSaint("Mu", "Áries");
+      this.saint6 = new PrataSaint("Argor", "Perseu");
       //ACT
       this.saint1.perderVida(10);//6º - MaiorVida
       this.saint2.perderVida(15);//5º
@@ -332,7 +332,7 @@ public class ListaSaintsTest{
   public void aoOrdenarListaSaintsComUmSaint() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
       //ACT
       this.lista.adicionar(this.saint1);
       this.lista.ordenar();
@@ -344,12 +344,12 @@ public class ListaSaintsTest{
   public void aoOrdenarDeFormaDescendenteListaSaintsComSeisSaints() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
-      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint5 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
-      this.saint6 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");//Inicializa com 100 de vida
+      this.saint2 = new BronzeSaint("Seiya", "Pegasos");
+      this.saint3 = new OuroSaint("Shaka", "Virgem");
+      this.saint4 = new PrataSaint("Dio", "Mosca");
+      this.saint5 = new OuroSaint("Mu", "Áries");
+      this.saint6 = new PrataSaint("Argor", "Perseu");
       //ACT
       this.saint1.perderVida(10);//6º - MaiorVida
       this.saint2.perderVida(15);//5º
@@ -377,12 +377,12 @@ public class ListaSaintsTest{
   public void aoOrdenarDeFormaAscendenteListaSaintsComSeisSaints() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));//Inicializa com 100 de vida
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
-      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint5 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
-      this.saint6 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");//Inicializa com 100 de vida
+      this.saint2 = new BronzeSaint("Seiya","Pegasos");
+      this.saint3 = new OuroSaint("Shaka","Virgem");
+      this.saint4 = new PrataSaint("Dio", "Mosca");
+      this.saint5 = new OuroSaint("Mu", "Áries");
+      this.saint6 = new PrataSaint("Argor", "Perseu");
       //ACT
       this.saint1.perderVida(10);//6º - MaiorVida
       this.saint2.perderVida(15);//5º
@@ -419,7 +419,7 @@ public class ListaSaintsTest{
   public void aoOrdenarAscendenteListaSaintsComUmSaint() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
       //ACT
       this.lista.adicionar(this.saint1);
       this.lista.ordenar(TipoOrdenacao.ASCENDENTE);
@@ -440,7 +440,7 @@ public class ListaSaintsTest{
   public void aoOrdenarDescendenteListaSaintsComUmSaint() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
       //ACT
       this.lista.adicionar(this.saint1);
       this.lista.ordenar(TipoOrdenacao.DESCENDENTE);
@@ -454,12 +454,12 @@ public class ListaSaintsTest{
       //ARRANGE
       this.lista = new ListaSaints();
       this.lista2 = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
-      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint5 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
-      this.saint6 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new BronzeSaint("Seiya", "Pegasos");
+      this.saint3 = new OuroSaint("Shaka", "Virgem");
+      this.saint4 = new PrataSaint("Dio", "Mosca");
+      this.saint5 = new OuroSaint("Mu", "Áries");
+      this.saint6 = new PrataSaint("Argor", "Perseu");
       //ACT
       this.lista.adicionar(saint1);
       this.lista.adicionar(saint2);
@@ -482,9 +482,9 @@ public class ListaSaintsTest{
       //ARRANGE
       this.lista = new ListaSaints();
       this.lista2 = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new BronzeSaint("Seiya","Pegasos");
+      this.saint3 = new OuroSaint("Shaka","Virgem");
       //ACT
       this.lista.adicionar(saint1);
       this.lista.adicionar(saint2);
@@ -515,12 +515,12 @@ public class ListaSaintsTest{
       this.lista2 = new ListaSaints();
       this.lista3 = new ListaSaints();
       this.lista4 = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
-      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.OURO));
-      this.saint5 = new OuroSaint("Mu", new Armadura(new Constelacao("Áries"), Categoria.OURO));
-      this.saint6 = new PrataSaint("Argor", new Armadura(new Constelacao("Perseu"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new BronzeSaint("Seiya","Pegasos");
+      this.saint3 = new OuroSaint("Shaka","Virgem");
+      this.saint4 = new PrataSaint("Dio", "Mosca");
+      this.saint5 = new OuroSaint("Mu", "Áries");
+      this.saint6 = new PrataSaint("Argor", "Perseu");
    
       //ACT
       this.lista.adicionar(saint1);
@@ -547,12 +547,12 @@ public class ListaSaintsTest{
       this.lista = new ListaSaints();
       this.lista2 = new ListaSaints();
       this.lista3 = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
-      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint5 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));//=saint2
-      this.saint6 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));//=saint3
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new BronzeSaint("Seiya", "Pegasos");
+      this.saint3 = new OuroSaint("Shaka", "Virgem");
+      this.saint4 = new PrataSaint("Dio", "Mosca");
+      this.saint5 = new BronzeSaint("Seiya", "Pegasos");//=saint2
+      this.saint6 = new OuroSaint("Shaka", "Virgem");//=saint3
       //ACT
       this.lista.adicionar(saint1);
       this.lista.adicionar(saint2);
@@ -574,9 +574,9 @@ public class ListaSaintsTest{
       this.lista = new ListaSaints();
       this.lista2 = new ListaSaints();
       this.lista3 = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new BronzeSaint("Seiya", "Pegasos");
+      this.saint3 = new OuroSaint("Shaka", "Virgem");
       //ACT
       this.lista.adicionar(saint1);
       this.lista.adicionar(saint2);
@@ -595,12 +595,12 @@ public class ListaSaintsTest{
       this.lista = new ListaSaints();
       this.lista2 = new ListaSaints();
       this.lista3 = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
-      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
-      this.saint5 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));//=saint2
-      this.saint6 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));//=saint3
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new BronzeSaint("Seiya", "Pegasos");
+      this.saint3 = new OuroSaint("Shaka", "Virgem");
+      this.saint4 = new PrataSaint("Dio", "Mosca");
+      this.saint5 = new BronzeSaint("Seiya", "Pegasos");//=saint2
+      this.saint6 = new OuroSaint("Shaka", "Virgem");//=saint3
       //ACT
       this.lista.adicionar(saint1);
       this.lista.adicionar(saint2);
@@ -622,10 +622,10 @@ public class ListaSaintsTest{
       this.lista = new ListaSaints();
       this.lista2 = new ListaSaints();
       this.lista3 = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
-      this.saint3 = new OuroSaint("Shaka", new Armadura(new Constelacao("Virgem"), Categoria.OURO));
-      this.saint4 = new PrataSaint("Dio", new Armadura(new Constelacao("Mosca"), Categoria.PRATA));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      this.saint2 = new BronzeSaint("Seiya","Pegasos");
+      this.saint3 = new OuroSaint("Shaka", "Virgem");
+      this.saint4 = new PrataSaint("Dio","Mosca");
       //ACT
       this.lista.adicionar(saint1);
       this.lista.adicionar(saint2);
@@ -650,7 +650,7 @@ public class ListaSaintsTest{
   public void aoPegarCSVDaListaSaintsComUmSaintApenas() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
       saint1.setGenero(Genero.MASCULINO);
       saint1.perderVida(50);
       //ACT
@@ -663,8 +663,8 @@ public class ListaSaintsTest{
   public void aoPegarCSVDaListaSaintsComDoisSaints() throws Exception{
       //ARRANGE
       this.lista = new ListaSaints();
-      this.saint1 = new BronzeSaint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
-      this.saint2 = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pegasos"), Categoria.BRONZE));
+      this.saint1 = new BronzeSaint("Ikki","Fênix");
+      this.saint2 = new BronzeSaint("Seiya", "Pegasos");
       saint1.setGenero(Genero.MASCULINO);
       saint1.perderVida(50);
       saint2.perderVida(100);
@@ -681,7 +681,7 @@ public class ListaSaintsTest{
    public void adicionarSaintViaCSVTest() throws Exception{
        this.lista = new ListaSaints();
        String saintCSV = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false";
-       Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+       Saint june = new BronzeSaint("June","Camaleão");
        this.lista.adicionarSaintViaCSV(saintCSV);
        june.setGenero(Genero.FEMININO);
        june.perderVida(15.5);
@@ -693,7 +693,7 @@ public class ListaSaintsTest{
    public void adicionarSaintViaCSVTestECompararComSaintDiferente() throws Exception{
        this.lista = new ListaSaints();
        String saintCSV = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false";
-       Saint june = new Saint("Juno", new Armadura(new Constelacao("Lagarto"), Categoria.BRONZE));
+       Saint june = new BronzeSaint("Juno", "Lagarto");
        this.lista.adicionarSaintViaCSV(saintCSV);
        june.setGenero(Genero.MASCULINO);//Um é FEMININO E OUTRO É MASCULINO
        june.perderVida(15.5);
