@@ -9,6 +9,8 @@ public abstract class Saint{
     private double vida = 100.0;
     protected int qtSentidosDespertados;
     private int proximoGolpe;
+    private int proximoMovimento;
+    private ArrayList<Movimento> movimentos = new ArrayList<Movimento>();
     //Extendem Saint: BronzeSaint, PrataSaint e OuroSaint
     public Saint(String nome, Armadura armadura) throws Exception{
        this.nome = nome;
@@ -57,7 +59,7 @@ public abstract class Saint{
     public double getVida(){
         return this.vida;
     }
-    public void perderVida(double vidaPerdida) throws Exception{
+    public void perderVida(double vidaPerdida){
         if(vidaPerdida<0){ //Condição que nega valores negativos para a perda de vida
             throw new InvalidParameterException("dano negativo: "+vidaPerdida);
             //throw new IllegalArgumentException("dano"); - Mensagem de erro alternativa
@@ -85,6 +87,9 @@ public abstract class Saint{
         this.getConstelacao().adicionarGolpe(golpe);
     }
     public Golpe getProximoGolpe(){
+        if(this.getGolpes().isEmpty()){
+            return null;
+        }
         int size = this.getGolpes().size(); //Guarda o tamanho do array de golpes 
         if(this.proximoGolpe==size){ 
            this.proximoGolpe = 0;
@@ -105,5 +110,19 @@ public abstract class Saint{
             this.armaduraVestida
         );
     }
-   
+    public void adicionarMovimento(Movimento movimento){
+        this.movimentos.add(movimento);
+    }
+    public Movimento getProximoMovimento(){
+        if(this.movimentos.isEmpty()){
+            return null;
+        }
+        int size = this.movimentos.size(); //Guarda o tamanho do array de golpes 
+        if(this.proximoMovimento==size){ 
+           this.proximoMovimento = 0;
+        }
+        int posicao = proximoMovimento;
+        this.proximoMovimento++;
+        return this.movimentos.get(posicao);
+    }
 }

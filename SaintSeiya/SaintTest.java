@@ -9,6 +9,7 @@ public class SaintTest{
    private PrataSaint saintPrata;
    private OuroSaint saintOuro;
    private double vidaAnterior;
+   private Movimento movimento;
    //Número de testes: 21
    //ARMADURA
    public void newSaintBronze() throws Exception{ //Criar saintBronze
@@ -265,6 +266,14 @@ public class SaintTest{
             }
         }
    }
+   @Test
+   public void aoPegarOValorDoProximoGolpeComListaVazia() throws Exception{
+       //ARRANGE
+       newSaintOuro();
+       //ACT
+       //ASSERT
+       assertNull(this.saintOuro.getProximoGolpe()); 
+   }
    //GET CSV
    @Test
    public void getCSVGeneroFeminino() throws Exception{
@@ -281,5 +290,59 @@ public class SaintTest{
        this.saintOuro.perderVida(90);
        this.saintOuro.vestirArmadura();
        assertEquals("Dohko,10.0,Libra,OURO,VIVO,NAO_INFORMADO,true",this.saintOuro.getCSV());
+   }
+   
+   //GetProximoMovimento
+   @Test
+   public void aoPegarOValorDoProximoMovimentoComDoisMovimentosDeDiferentesTipos() throws Exception{
+       //ARRANGE
+       newSaintOuro();
+       newSaintPrata();
+       Movimento[] movimentos = new Movimento[2];
+       movimentos[0] = new VestirArmadura(saintOuro);
+       //movimentos[1] = new Golpear(saintOuro,saintPrata);
+       //ACT
+       
+       for(int indice = 0; indice<movimentos.length; indice++){ //Adiciona os 3 movimentos
+           this.saintOuro.adicionarMovimento(movimentos[indice]);
+       }
+       //ASSERT
+       for(int indice = 0; indice<movimentos.length; indice++){
+            this.movimento = this.saintOuro.getProximoMovimento();
+            assertEquals(movimentos[indice], this.movimento); 
+            //Verifica os movimentos do array com os movimentos adicionados no Saint utilizando o método getProximoMovimento
+       }
+   }
+   @Test
+   public void aoPegarOValorDoProximoMovimentoSeisVezesComTresMovimentos() throws Exception{
+       //ARRANGE
+       newSaintOuro();
+       newSaintPrata();
+       Movimento[] movimentos = new Movimento[3];
+       movimentos[0] = new VestirArmadura(saintOuro);
+       movimentos[1] = new Golpear(saintOuro,saintPrata);
+       movimentos[2] = new Golpear(saintOuro,saintPrata);
+       //ACT
+       for(int indice = 0; indice<movimentos.length; indice++){ //Adiciona os 3 movimentos
+           this.saintOuro.adicionarMovimento(movimentos[indice]);
+           System.out.println("Indice: "+indice);
+       }
+       //ASSERT
+       for(int i = 0; i<2; i++){ //Executa o segundo "for" duas vezes para passar mais de uma vez por todos os valores no getProximoMovimento()
+           for(int indice = 0; indice<movimentos.length; indice++){
+               this.movimento = this.saintOuro.getProximoMovimento();
+               assertEquals(movimentos[indice], this.movimento);
+               //System.out.println("Indice: "+indice+" I: "+i);
+               //Verifica os movimentos do array com os movimentos adicionados no Saint utilizando o método getProximoMovimento
+           }
+        }
+   }
+   @Test
+   public void aoPegarOValorDoProximoMovimentoComListaVazia() throws Exception{
+       //ARRANGE
+       newSaintOuro();
+       //ACT
+       //ASSERT
+       assertNull(this.saintOuro.getProximoMovimento()); 
    }
 }
