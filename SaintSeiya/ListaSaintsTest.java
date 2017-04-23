@@ -676,4 +676,29 @@ public class ListaSaintsTest{
       //ASSERT
       assertEquals("Ikki,50.0,Fênix,BRONZE,VIVO,MASCULINO,false"+quebraLinha+"Seiya,0.0,Pegasos,BRONZE,MORTO,NAO_INFORMADO,true", csv);
   }
+  //ADICIONAR SAINT VIA CSV
+   @Test
+   public void adicionarSaintViaCSVTest() throws Exception{
+       this.lista = new ListaSaints();
+       String saintCSV = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false";
+       Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+       this.lista.adicionarSaintViaCSV(saintCSV);
+       june.setGenero(Genero.FEMININO);
+       june.perderVida(15.5);
+       boolean osDoisSaintsSaoIguais = june.getCSV().equals(this.lista.get(0).getCSV());
+       assertEquals(true,osDoisSaintsSaoIguais);
+       assertEquals(1,this.lista.getTamanho());
+   }
+   @Test
+   public void adicionarSaintViaCSVTestECompararComSaintDiferente() throws Exception{
+       this.lista = new ListaSaints();
+       String saintCSV = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false";
+       Saint june = new Saint("Juno", new Armadura(new Constelacao("Lagarto"), Categoria.BRONZE));
+       this.lista.adicionarSaintViaCSV(saintCSV);
+       june.setGenero(Genero.MASCULINO);//Um é FEMININO E OUTRO É MASCULINO
+       june.perderVida(15.5);
+       boolean osDoisSaintsSaoIguais = june.getCSV().equals(this.lista.get(0).getCSV());
+       assertEquals(false,osDoisSaintsSaoIguais);
+       assertEquals(1,this.lista.getTamanho());
+   }
 }

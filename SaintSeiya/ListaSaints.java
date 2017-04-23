@@ -11,7 +11,38 @@ public class ListaSaints{
     public void adicionar(ArrayList<Saint> listaSaint){
         this.lista.addAll(listaSaint);
     }
-    
+     /*Testar*/
+    public void adicionarSaintViaCSV(String csv) throws Exception{
+        String[] saintCSV = csv.split(",");
+        Categoria categoria;
+        Genero genero;
+        boolean armaduraVestida = saintCSV[6].equals("true");
+        String nome;
+        Armadura armadura;
+        if(saintCSV[3].equals("BRONZE")){
+            categoria = Categoria.BRONZE;
+        }else if(saintCSV[3].equals("PRATA")){
+            categoria = Categoria.PRATA;
+        }else{
+            categoria = Categoria.OURO;
+        }
+        if(saintCSV[5].equals("FEMININO")){
+            genero = Genero.FEMININO;
+        }else if(saintCSV[5].equals("MASCULINO")){
+            genero = Genero.MASCULINO;
+        }else{
+            genero = Genero.NAO_INFORMADO;
+        }
+        nome=saintCSV[0];
+        armadura = new Armadura(new Constelacao(saintCSV[2]), categoria);
+        Saint novoSaint = new Saint(nome,armadura);
+        novoSaint.perderVida(100-Double.parseDouble(saintCSV[1]));
+        if(armaduraVestida){
+            novoSaint.vestirArmadura();
+        }
+        novoSaint.setGenero(genero);
+        this.lista.add(novoSaint);
+    }
     public Saint get(int indice){
         return this.lista.get(indice);
     }
