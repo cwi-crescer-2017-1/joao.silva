@@ -1,11 +1,7 @@
 public class OuroSaint extends Saint{
-    public OuroSaint(String nome,String constelacao) throws Exception {
-        this(nome, new Armadura(new Constelacao(constelacao), Categoria.OURO));
-    }
-    public OuroSaint(String nome, Armadura armadura) throws Exception{
-        super(nome, armadura);
+    public OuroSaint(String nome, String constelacao) throws Exception{
+        super(nome, new Armadura(new Constelacao(constelacao), Categoria.OURO));
         this.qtSentidosDespertados = 7;
-        String constelacao = armadura.getConstelacao().getNome();
         if(!constelacao.equals("Áries")
             && !constelacao.equals("Touro")
             && !constelacao.equals("Gêmeos")
