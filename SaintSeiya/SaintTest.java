@@ -271,26 +271,4 @@ public class SaintTest{
        dohko.vestirArmadura();
        assertEquals("Dohko,10.0,,OURO,VIVO,NAO_INFORMADO,true",dohko.getCSV());
    }
-   //CRIAR SAINT VIA CSV
-   @Test
-   public void criarSaintViaCSVTest() throws Exception{
-       String saintCSV = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false";
-       Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
-       Saint june2 = new Saint();
-       june2.criarSaintViaCSV(saintCSV);
-       june.setGenero(Genero.FEMININO);
-       june.perderVida(15.5);
-       assertEquals(june.getCSV(),june2.getCSV());
-   }
-   @Test
-   public void criarSaintViaCSVTestECompararComSaintDiferente() throws Exception{
-       String saintCSV = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false";
-       Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
-       Saint june2 = new Saint();
-       june2.criarSaintViaCSV(saintCSV);
-       june.setGenero(Genero.MASCULINO);//Um é FEMININO E OUTRO É MASCULINO
-       june.perderVida(15.5);
-       boolean resultado = june.getCSV().equals(june2.getCSV());
-       assertEquals(false,resultado);
-   }
 }
