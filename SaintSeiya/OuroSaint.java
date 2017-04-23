@@ -2,7 +2,6 @@ public class OuroSaint extends Saint{
     public OuroSaint(String nome,String constelacao) throws Exception {
         this(nome, new Armadura(new Constelacao(constelacao), Categoria.OURO));
     }
-    public OuroSaint(){}
     public OuroSaint(String nome, Armadura armadura) throws Exception{
         super(nome, armadura);
         this.qtSentidosDespertados = 7;
