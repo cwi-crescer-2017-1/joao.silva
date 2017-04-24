@@ -12,7 +12,8 @@ public abstract class Saint{
     private int proximoMovimento;
     private ArrayList<Movimento> movimentos = new ArrayList<Movimento>();
     //Extendem Saint: BronzeSaint, PrataSaint e OuroSaint
-    public Saint(String nome, Armadura armadura) throws Exception{
+    protected Saint(String nome, Armadura armadura) throws Exception{ 
+       //Protected deixa claro que isso só será acessado pela própria classe ou por suas classes filhas
        this.nome = nome;
        this.armadura = armadura;
        //O valor de qtSentidosDespertados soma com o valor da Categoria da Armadura, BRONZE(0), PRATA(1) e OURO(2)
