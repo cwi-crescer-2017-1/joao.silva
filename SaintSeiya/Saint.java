@@ -9,7 +9,7 @@ public abstract class Saint{
     private double vida = 100.0;
     protected int qtSentidosDespertados;
     private int proximoGolpe;
-    private int proximoMovimento;
+    private int acumuladorProximoGolpe = 0;
     private ArrayList<Movimento> movimentos = new ArrayList<Movimento>();
     //Extendem Saint: BronzeSaint, PrataSaint e OuroSaint
     protected Saint(String nome, Armadura armadura) throws Exception{ 
@@ -117,16 +117,13 @@ public abstract class Saint{
     public void removerMovimento(Movimento movimento){
         this.movimentos.remove(movimento);
     }
-    public Movimento getProximoMovimento(){
+    public Movimento getProximoMovimento(){ //Implementação semelhante ao getProximoGolpe porém de forma diferente
         if(this.movimentos.isEmpty()){
             return null;
         }
-        int size = this.movimentos.size(); //Guarda o tamanho do array de golpes 
-        if(this.proximoMovimento==size){ 
-           this.proximoMovimento = 0;
-        }
-        int posicao = proximoMovimento;
-        this.proximoMovimento++;
+        int posicao = this.acumuladorProximoGolpe % this.movimentos.size();
+        acumuladorProximoGolpe++;
+
         return this.movimentos.get(posicao);
     }
     public ArrayList<Movimento> getMovimentos(){
