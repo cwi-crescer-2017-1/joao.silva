@@ -17,15 +17,12 @@ public class Batalha{
       if(lutadorUmSemMovimentos && lutadorDoisSemMovimentos){
           return; //Ambos lutadores não possuem movimentos
       }
-      //Seleciona o primeiro golpeador por categoria, APENAS quando este possui movimentos
-      if(valorCategoria2>valorCategoria1 && lutadorDoisSemMovimentos==false){ 
+      //Seleciona o primeiro golpeador por categoria
+      if(valorCategoria2>valorCategoria1){ 
           //Se a Categoria do lutador 2 for maior que a do 1 o lutador 2 inicia golpeando
           golpeadorDoTurno=lutadorDois; //LutadorDois golpeia primeiro
-      }else if(valorCategoria1>=valorCategoria2 && lutadorUmSemMovimentos==false){ 
-          //Caso a categoria seja a mesma ou a do lutador 1 for maior o lutador1 inicia golpeando
+      }else{ //Caso a categoria seja a mesma ou a do lutador 1 for maior o lutador1 inicia golpeando
           golpeadorDoTurno=lutadorUm; // LutadorUm golpeia primeiro
-      }else{//Caso lutadorUm possua a categoria maior mas lutadorUm não possua movimentos
-          golpeadorDoTurno=lutadorDois;
       }
       //Verificação de dano existente
       for(int i=0;i<lutadorUm.getGolpes().size();i++){
@@ -39,12 +36,14 @@ public class Batalha{
       }
       //Realização da troca de golpes
       do{
-          golpeadorDoTurno.getProximoMovimento().executar();
+          if(golpeadorDoTurno.getProximoMovimento() != null){
+              golpeadorDoTurno.getProximoMovimento().executar();
+          }
           aindaEstaoVivos=lutadorUm.getStatus() == Status.VIVO && lutadorDois.getStatus() == Status.VIVO;
           //Só trocará o golpeadorDoTurno se o próximo possuir um movimento
-          if(golpeadorDoTurno==lutadorUm && lutadorDoisSemMovimentos==false){
+          if(golpeadorDoTurno==lutadorUm){
               golpeadorDoTurno=lutadorDois;
-            }else if(golpeadorDoTurno==lutadorDois && lutadorUmSemMovimentos==false){
+            }else{ //golpeadorDoTurno==lutadorDois
                 golpeadorDoTurno=lutadorUm;
             }
       }while(aindaEstaoVivos);
