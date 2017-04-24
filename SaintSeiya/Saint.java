@@ -113,6 +113,9 @@ public abstract class Saint{
     public void adicionarMovimento(Movimento movimento){
         this.movimentos.add(movimento);
     }
+    public void removerMovimento(Movimento movimento){
+        this.movimentos.remove(movimento);
+    }
     public Movimento getProximoMovimento(){
         if(this.movimentos.isEmpty()){
             return null;
@@ -124,5 +127,8 @@ public abstract class Saint{
         int posicao = proximoMovimento;
         this.proximoMovimento++;
         return this.movimentos.get(posicao);
+    }
+    public ArrayList<Movimento> getMovimentos(){
+        return this.movimentos;
     }
 }
