@@ -12,17 +12,22 @@ public abstract class Saint{
     private int acumuladorProximoGolpe = 0;
     private ArrayList<Movimento> movimentos = new ArrayList<Movimento>();
 	private static int qtdSaints;
+	private int id;
     //Extendem Saint: BronzeSaint, PrataSaint e OuroSaint
     protected Saint(String nome, Armadura armadura) throws Exception{ 
        //Protected deixa claro que isso só será acessado pela própria classe ou por suas classes filhas
        this.nome = nome;
        this.armadura = armadura;
 	   Saint.qtdSaints++;
+	   this.id = qtdSaints;
        //O valor de qtSentidosDespertados soma com o valor da Categoria da Armadura, BRONZE(0), PRATA(1) e OURO(2)
        //logo Ouro fica com (5+2=7) sentidos e Prata (5+1=6) sentidos  
     }
 	public static int getQtdSaints(){
 		return Saint.qtdSaints;
+	}
+	public int getId(){
+	    return this.id;
 	}
     /*public boolean equals(Object object){//Verifica se um objeto possui os mesmos valores que outro objeto
        Saint outroSaint = (Saint) object;
