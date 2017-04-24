@@ -114,9 +114,11 @@ public abstract class Saint{
     public void adicionarMovimento(Movimento movimento){
         this.movimentos.add(movimento);
     }
+	/*
     public void removerMovimento(Movimento movimento){
         this.movimentos.remove(movimento);
     }
+	*/
     public Movimento getProximoMovimento(){ //Implementação semelhante ao getProximoGolpe porém de forma diferente
         if(this.movimentos.isEmpty()){
             return null;
