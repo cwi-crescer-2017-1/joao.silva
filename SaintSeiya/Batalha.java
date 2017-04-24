@@ -13,43 +13,38 @@ public class Batalha{
       Saint golpeadorDoTurno;
       int dano=0;
       
-      //Seleciona o primeiro golpeador
-      if(valorCategoria2>valorCategoria1){ //Se a Categoria do lutador 2 for maior que a do 1 o lutador 2 inicia golpeando
-          golpeadorDoTurno=lutadorDois; //LutadorDois golpeia primeiro
-      }else{ //Caso a categoria seja a mesma ou a do lutador 1 for maior o lutador1 inicia golpeando
-          golpeadorDoTurno=lutadorUm; // LutadorUm golpeia primeiro
-      }
-      
       //Verificação de movimento existente
       if(lutadorUmSemMovimentos && lutadorDoisSemMovimentos){
           return; //Ambos lutadores não possuem movimentos
-      }else{
-          if(lutadorUmSemMovimentos){
-              lutadorUm.adicionarMovimento(new Nada());//Lutador 1 não possue movimento mas o Lutador 2 possui
-          }
-          if(lutadorDoisSemMovimentos){
-              lutadorUm.adicionarMovimento(new Nada());//Lutador 1 não possue movimento mas o Lutador ' possui
-          }
       }
-      
+      //Seleciona o primeiro golpeador por categoria, APENAS quando este possui movimentos
+      if(valorCategoria2>valorCategoria1 && lutadorDoisSemMovimentos==false){ 
+          //Se a Categoria do lutador 2 for maior que a do 1 o lutador 2 inicia golpeando
+          golpeadorDoTurno=lutadorDois; //LutadorDois golpeia primeiro
+      }else if(valorCategoria1>=valorCategoria2 && lutadorUmSemMovimentos==false){ 
+          //Caso a categoria seja a mesma ou a do lutador 1 for maior o lutador1 inicia golpeando
+          golpeadorDoTurno=lutadorUm; // LutadorUm golpeia primeiro
+      }else{//Caso lutadorUm possua a categoria maior mas lutadorUm não possua movimentos
+          golpeadorDoTurno=lutadorDois;
+      }
       //Verificação de dano existente
       for(int i=0;i<lutadorUm.getGolpes().size();i++){
-         dano+=lutadorUm.getProximoGolpe().getFatorDano();
+         dano=lutadorUm.getProximoGolpe().getFatorDano()+dano;
       }
       for(int i=0;i<lutadorDois.getGolpes().size();i++){
-         dano+=lutadorDois.getProximoGolpe().getFatorDano();
+         dano=lutadorDois.getProximoGolpe().getFatorDano()+dano;
       }
       if(dano==0){
           return; //Lutadores não possuem dano
       }
-      
       //Realização da troca de golpes
       do{
           golpeadorDoTurno.getProximoMovimento().executar();
           aindaEstaoVivos=lutadorUm.getStatus() == Status.VIVO && lutadorDois.getStatus() == Status.VIVO;
-          if(golpeadorDoTurno==lutadorUm){
+          //Só trocará o golpeadorDoTurno se o próximo possuir um movimento
+          if(golpeadorDoTurno==lutadorUm && lutadorDoisSemMovimentos==false){
               golpeadorDoTurno=lutadorDois;
-            }else{//golpeadorDoTurno==lutadorDois
+            }else if(golpeadorDoTurno==lutadorDois && lutadorUmSemMovimentos==false){
                 golpeadorDoTurno=lutadorUm;
             }
       }while(aindaEstaoVivos);
