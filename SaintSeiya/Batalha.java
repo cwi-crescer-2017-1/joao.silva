@@ -36,11 +36,13 @@ public class Batalha{
       }
       //Realização da troca de golpes
       while(aindaEstaoVivos){
+		  //Realiza o próximo movimento, se o mesmo existir
           if(golpeadorDoTurno.getProximoMovimento() != null){
               golpeadorDoTurno.getProximoMovimento().executar();
           }
+		  //Verifica se os saints estão vivos
           aindaEstaoVivos=this.lutadorUm.getStatus() == Status.VIVO && this.lutadorDois.getStatus() == Status.VIVO;
-          //Só trocará o golpeadorDoTurno se o próximo possuir um movimento
+          //Definindo quem irá atuar no próximo round
 	      golpeadorDoTurno = golpeadorDoTurno == this.lutadorUm ? this.lutadorDois : this.lutadorUm;
       }
     }
