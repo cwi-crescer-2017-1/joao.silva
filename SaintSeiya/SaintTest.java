@@ -368,14 +368,32 @@ public class SaintTest{
     //GetQtdSaints(static)
     @Test
     public void aoPegarQtdSaints() throws Exception{
-		int qtdSaintsPreTeste = Saint.getQtdSaints();
+        //ARRANGE
+        int qtdSaintsPreTeste = Saint.getQtdSaints();
         //ACT
-		for(int i = 0; i<10; i++){ //10*3 Saints criados
-			Saint bronze = new BronzeSaint("Seiya","Pégasus");
-			Saint ouro = new OuroSaint("Aiolos","Sagitário");
-			Saint prata = new PrataSaint("Marin","Águia");
-		}
+        for(int i = 0; i<10; i++){ //10*3 Saints criados
+            Saint bronze = new BronzeSaint("Seiya","Pégasus");
+            Saint ouro = new OuroSaint("Aiolos","Sagitário");
+            Saint prata = new PrataSaint("Marin","Águia");
+        }
         //ASSERT
-		assertEquals(qtdSaintsPreTeste+30,Saint.getQtdSaints());
+        assertEquals(qtdSaintsPreTeste+30,Saint.getQtdSaints());
+    }
+    //Id
+    @Test
+    public void aoCriarSaintsIdsDiferentes() throws Exception{
+        //ARRANGE
+        int qtdSaintsPreTeste = Saint.getQtdSaints();
+        
+        //ACT
+        Saint bronze = new BronzeSaint("Seiya","Pégasus");
+        Saint ouro = new OuroSaint("Aiolos","Sagitário");
+        Saint prata = new PrataSaint("Marin","Águia");
+        
+        
+        //ASSERT
+        assertEquals(qtdSaintsPreTeste+1,bronze.getId());
+        assertEquals(qtdSaintsPreTeste+2,ouro.getId());
+        assertEquals(qtdSaintsPreTeste+3,prata.getId());
     }
 }
