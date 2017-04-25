@@ -11,7 +11,8 @@ public abstract class Saint{
     private int proximoGolpe;
     private int acumuladorProximoGolpe = 0;
     private ArrayList<Movimento> movimentos = new ArrayList<Movimento>();
-	private static int qtdSaints;
+	private static int qtdSaints=0;
+	private static int countSaintsCriados=0;//Never finalize
 	private int id;
     //Extendem Saint: BronzeSaint, PrataSaint e OuroSaint
     protected Saint(String nome, Armadura armadura) throws Exception{ 
@@ -19,9 +20,16 @@ public abstract class Saint{
        this.nome = nome;
        this.armadura = armadura;
 	   Saint.qtdSaints++;
-	   this.id = qtdSaints;
-       //O valor de qtSentidosDespertados soma com o valor da Categoria da Armadura, BRONZE(0), PRATA(1) e OURO(2)
+	   Saint.countSaintsCriados++;
+	   this.id = countSaintsCriados; //Inicia com 0
+       //O valor de qtSentidosDespertados soma com o valor da Categoria da Armadura, BRONZE(0), PRATA(1) e ThrowableOURO(2)
        //logo Ouro fica com (5+2=7) sentidos e Prata (5+1=6) sentidos  
+    }
+    protected void finalize() throws Throwable{
+        Saint.qtdSaints--;
+    }
+    public static int getCountSaintsCriados(){
+        return Saint.countSaintsCriados;
     }
 	public static int getQtdSaints(){
 		return Saint.qtdSaints;
