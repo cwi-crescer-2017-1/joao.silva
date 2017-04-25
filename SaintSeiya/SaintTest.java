@@ -391,7 +391,7 @@ public class SaintTest{
         for(int i=0; i<10; i++){
             newSaintBronze();
         }
-        assertEquals(11,Saint.getQtdSaints());//Por algum motivo desconhecido retorna 11 em vez de 10
+        assertEquals(10,Saint.getQtdSaints());//Por algum motivo desconhecido retorna 11 em vez de 10
     }
     
     //Id
