@@ -10,6 +10,7 @@ public class SaintTest{
     private OuroSaint saintOuro;
     private double vidaAnterior;
     private Movimento movimento;
+    
     //Número de testes: 21
     //ARMADURA
     public void newSaintBronze() throws Exception{ //Criar saintBronze
@@ -24,7 +25,7 @@ public class SaintTest{
         this.saintOuro = new OuroSaint("Aioros", "Sagitário");
     }
     
-    @After
+    @Before
     public void tearDown(){
         System.gc();
     }
@@ -387,10 +388,9 @@ public class SaintTest{
     
     //QtdSaints
     @Test
-    public void aoCriarDezSaintsQtdSaintsFicaDoisAfterGarbageColector() throws Exception{
-        Saint saint;
+    public void aoCriarDezSaintsQtdSaintsFicaDezAfterGarbageColector() throws Exception{
         for(int i=0; i<10; i++){
-            saint = new BronzeSaint("teste " +i,"armadura "+i);
+            Saint saint = new BronzeSaint("teste " +i,"armadura "+i);
         }
         assertEquals(10,Saint.getQtdSaints());//Por algum motivo desconhecido retorna 11 em vez de 10
     }
