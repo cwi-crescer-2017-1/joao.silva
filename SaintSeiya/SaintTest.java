@@ -10,11 +10,7 @@ public class SaintTest{
     private OuroSaint saintOuro;
     private double vidaAnterior;
     private Movimento movimento;
-    
-    @After
-    public void tearDown(){
-        System.gc();
-    }
+  
     //Número de testes: 21
     //ARMADURA
     public void newSaintBronze() throws Exception{ //Criar saintBronze
@@ -383,7 +379,10 @@ public class SaintTest{
         //ASSERT
         assertEquals(qtdSaintsPreTeste+30,Saint.getQtdSaints());
     }
-    
+    @After
+    public void tearDown(){
+        System.gc();
+    }
     //QtdSaints
     @Test
     public void aoCriarDezSaintsQtdSaintsFicaDezAfterGarbageColector() throws Exception{
