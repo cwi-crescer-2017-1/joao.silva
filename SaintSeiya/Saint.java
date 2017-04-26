@@ -19,9 +19,9 @@ public abstract class Saint{
        //Protected deixa claro que isso só será acessado pela própria classe ou por suas classes filhas
        this.nome = nome;
        this.armadura = armadura;
-	   Saint.qtdSaints++;
 	   Saint.countSaintsCriados++;
-	   this.id = countSaintsCriados; //Inicia com 0
+	   this.id = countSaintsCriados; //Inicia com 1
+	   Saint.qtdSaints++;
        //O valor de qtSentidosDespertados soma com o valor da Categoria da Armadura, BRONZE(0), PRATA(1) e ThrowableOURO(2)
        //logo Ouro fica com (5+2=7) sentidos e Prata (5+1=6) sentidos  
     }

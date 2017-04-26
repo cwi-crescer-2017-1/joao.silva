@@ -5,6 +5,11 @@ import org.junit.Test;
 import java.security.InvalidParameterException;
 
 public class SaintTest{
+    
+    @After
+    public void tearDown(){
+        System.gc();
+    }
     private BronzeSaint saintBronze;
     private PrataSaint saintPrata;
     private OuroSaint saintOuro;
@@ -12,6 +17,7 @@ public class SaintTest{
     private Movimento movimento;
   
     //Número de testes: 21
+  
     //ARMADURA
     public void newSaintBronze() throws Exception{ //Criar saintBronze
         this.saintBronze = new BronzeSaint("Ikki", "Fênix");
@@ -379,16 +385,12 @@ public class SaintTest{
         //ASSERT
         assertEquals(qtdSaintsPreTeste+30,Saint.getQtdSaints());
     }
-    @After
-    public void tearDown(){
-        System.gc();
-    }
+    
     //QtdSaints
     @Test
     public void aoCriarDezSaintsQtdSaintsFicaDezAfterGarbageColector() throws Exception{
-        Saint saint;
         for(int i=0; i<10; i++){
-            saint = new BronzeSaint("teste " +i,"armadura "+i);
+            new BronzeSaint("teste " +i,"armadura "+i);
         }
         assertEquals(10,Saint.getQtdSaints());//Por algum motivo desconhecido retorna 11 em vez de 10
     }
