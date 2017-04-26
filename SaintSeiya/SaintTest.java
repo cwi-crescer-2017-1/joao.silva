@@ -387,8 +387,9 @@ public class SaintTest{
     //QtdSaints
     @Test
     public void aoCriarDezSaintsQtdSaintsFicaDezAfterGarbageColector() throws Exception{
+        Saint saint;
         for(int i=0; i<10; i++){
-            Saint saint = new BronzeSaint("teste " +i,"armadura "+i);
+            saint = new BronzeSaint("teste " +i,"armadura "+i);
         }
         assertEquals(10,Saint.getQtdSaints());//Por algum motivo desconhecido retorna 11 em vez de 10
     }
