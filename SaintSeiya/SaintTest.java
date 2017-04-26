@@ -11,6 +11,10 @@ public class SaintTest{
     private double vidaAnterior;
     private Movimento movimento;
     
+    @After
+    public void tearDown(){
+        System.gc();
+    }
     //Número de testes: 21
     //ARMADURA
     public void newSaintBronze() throws Exception{ //Criar saintBronze
@@ -23,11 +27,6 @@ public class SaintTest{
 
     public void newSaintOuro() throws Exception{ //Criar saintOuro
         this.saintOuro = new OuroSaint("Aioros", "Sagitário");
-    }
-    
-    @Before
-    public void tearDown(){
-        System.gc();
     }
 
     @Test
@@ -350,7 +349,6 @@ public class SaintTest{
         //ACT
         for(int indice = 0; indice<movimentos.length; indice++){ //Adiciona os 3 movimentos
             this.saintOuro.adicionarMovimento(movimentos[indice]);
-            System.out.println("Indice: "+indice);
         }
         //ASSERT
         for(int i = 0; i<2; i++){ //Executa o segundo "for" duas vezes para passar mais de uma vez por todos os valores no getProximoMovimento()

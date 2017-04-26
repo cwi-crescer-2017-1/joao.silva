@@ -29,7 +29,6 @@ public class ListaSaints{
         }
         nome=saintCSV[0];
         Saint novoSaint;
-        System.out.println(saintCSV[3]);
         if(saintCSV[3].equals("BRONZE")){
             novoSaint = new BronzeSaint(nome,saintCSV[2]);
         }else if(saintCSV[3].equals("PRATA")){
@@ -57,14 +56,6 @@ public class ListaSaints{
         return this.lista.size();
     }
     public Saint buscarPorNome(String nome){
-        /*
-        for(Saint saint : this.lista){
-            if(saint.getNome().equals(nome)){
-                return saint;
-            }
-        }
-        return null;
-        *///Método alternativo (válido em java 8 +)
         return this.lista.stream()
             .filter(s -> s.getNome().equals(nome))
             .findFirst()
@@ -108,20 +99,6 @@ public class ListaSaints{
         return saintMenorVida;
     }
     public void ordenar(){ //Ordem Ascendente
-        /*boolean posicoesSendoTrocadas=true;
-        do{
-           posicoesSendoTrocadas=false;
-           for(int i =0; i<this.lista.size()-1;i++){
-               Saint atual = this.lista.get(i);
-               Saint proximo = this.lista.get(i+1);
-               boolean precisaTrocar= atual.getVida()>proximo.getVida();
-               if(precisaTrocar){
-                  this.lista.set(i,proximo);
-                  this.lista.set(i+1,atual);
-                  posicoesSendoTrocadas=true;
-               }
-           }
-        }while(posicoesSendoTrocadas);*/
         ordenar(TipoOrdenacao.ASCENDENTE);
     }
     //ORDENACAO POR PARAMETRO TIPOORDENACAO
