@@ -17,7 +17,7 @@ public class SaintTest{
     private Movimento movimento;
   
     //Número de testes: 21
-  
+    
     //ARMADURA
     public void newSaintBronze() throws Exception{ //Criar saintBronze
         this.saintBronze = new BronzeSaint("Ikki", "Fênix");
@@ -385,8 +385,8 @@ public class SaintTest{
         //ASSERT
         assertEquals(qtdSaintsPreTeste+30,Saint.getQtdSaints());
     }
-    
     //QtdSaints
+    
     @Test
     public void aoCriarDezSaintsQtdSaintsFicaDezAfterGarbageColector() throws Exception{
         for(int i=0; i<10; i++){
