@@ -1,15 +1,27 @@
 public class Jogo{
-    public static void main(String args[]){
-        System.out.println("Iniciando o jogo");
-        Jogo.imprimir(args);
-           
+    public static void main(String args[]){//Ordem de execução 1º
+        try{
+            System.out.println("Iniciando o jogo");
+            Jogo.imprimirArgumentos(args);
+        }catch (Exception e){
+            System.out.println("Erro");
+        }
     }
-    public static void imprimir(String args[]){
+    public static void imprimirInternamente(String args[]){//3º
+        System.out.println(args[0]);
+    }
+    public static void imprimirArgumentos(String args[]) throws Exception{//2º
        try{
-           System.out.println(args[0]);
-       }catch(Exception e){
+           imprimirInternamente(args);
+       }catch(ArrayIndexOutOfBoundsException ae){
            System.out.println("Ops... algo falhou");
-           System.out.println(e.toString());
+           ae.printStackTrace();
+           throw new Exception(ae);     
+       }catch(Exception e){
+           System.out.println("Erro inesperado! Sorry :(");
+           e.printStackTrace();
+       }finally{
+           System.out.println("Imprimiu argumento");
        }
     }
 }
