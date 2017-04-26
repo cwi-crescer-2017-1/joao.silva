@@ -4,10 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class GolpearTest{
-  Saint saint1, saint2, saint3;
-  Movimento movimento1,movimento2;
-  Golpear golpear1;
-  double vidaInicial1, vidaInicial2, vidaInicial3;
+  private Saint saint1, saint2, saint3;
+  private Movimento movimento1,movimento2;
+  private Golpear golpear1;
+  private double vidaInicial1, vidaInicial2, vidaInicial3;
   @Test
   public void umSaintSemArmaduraVestidaAplicaUmGolpeEmOutroSaint() throws Exception{
       //ARRANGE
