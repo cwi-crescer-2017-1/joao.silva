@@ -160,4 +160,25 @@ public class GolpearTest{
       assertEquals(vidaInicial2-((5*2)+(10*2)),this.saint2.getVida(),0.01);
       assertEquals(vidaInicial1,this.saint1.getVida(),0.01);
   }
+  @Test
+  public void umSaintComContraAtaqueAtivoEGolpeadoEOGolpeadorPerde25PorcentoDaVida() throws Exception{
+       //ARRANGE
+      Saint saint1 = new BronzeSaint("Ikki","Fênix"); 
+      saint1.aprenderGolpe(new Golpe("Soco",5));
+
+      Saint saint2 = new PrataSaint("Dio","Mosca");
+      saint2.perderVida(51);
+      double vidaInicial1 = saint1.getVida();
+      double vidaInicial2 = saint2.getVida();
+
+      Golpear movimento1 = new Golpear(saint1, saint2);
+      ContraAtaque movimento2 = new ContraAtaque(saint1, saint2);
+      movimento2.usarDadoFalso();
+      //ACT
+      movimento2.executar();
+      movimento1.executar();
+      //ASSERT
+      assertEquals(vidaInicial2,saint2.getVida(),0.01);
+      assertEquals(vidaInicial1*0.75,saint1.getVida(),0.01);
+  }
 }
