@@ -3,15 +3,19 @@ import java.util.stream.Collectors;
 
 public class ListaSaints{
     private ArrayList<Saint> lista = new ArrayList<Saint>();
+    private ArrayList<Saint> mortos = new ArrayList<Saint>();
     private final String quebraLinha = System.getProperty("line.separator");
     public ListaSaints(){}
+
     public void adicionar(Saint saint){
         this.lista.add(saint);
     }
+
     public void adicionar(ArrayList<Saint> listaSaint){
         this.lista.addAll(listaSaint);
     }
-     /*Implementar para adicionar mais de um saint*/
+
+    /*Implementar para adicionar mais de um saint*/
     public void adicionarSaintViaCSV(String csv) throws Exception{ 
         //Formato: NomeSaint,Vida,Constelação,CategoriaDaArmadura,Status,Genero,Boolean armaduraVestida
         String[] saintCSV = csv.split(",");
@@ -43,30 +47,53 @@ public class ListaSaints{
         novoSaint.setGenero(genero);
         this.lista.add(novoSaint);
     }
+
     public Saint get(int indice){
         return this.lista.get(indice);
     }
+
     public ArrayList<Saint> todos(){
         return this.lista;
     }
+
     public void remover(Saint saint){
         this.lista.remove(saint);
+    }
+    public void removerOsMortos(){
+        ArrayList<Saint> seraoRemovidos = new ArrayList<Saint>();
+        for(Saint saint : this.lista){
+            if(saint.getStatus()==Status.MORTO){
+                seraoRemovidos.add(saint);
+            }
+        }
+        for(Saint saint : seraoRemovidos){
+            this.mortos.add(saint);
+            this.remover(saint);
+        }
+    }
+    public ArrayList<Saint> getMortosRetirados(){
+        return this.mortos;
+    }
+    public Saint getMortosPorIndice(int i){
+        return this.mortos.get(i);
     }
     public int getTamanho(){
         return this.lista.size();
     }
+
     public Saint buscarPorNome(String nome){
         return this.lista.stream()
-            .filter(s -> s.getNome().equals(nome))
-            .findFirst()
-            .orElse(null);
+        .filter(s -> s.getNome().equals(nome))
+        .findFirst()
+        .orElse(null);
     }
+
     public ArrayList<Saint> buscarPorCategoria(Categoria categoria){
         return (ArrayList<Saint>)this.lista.stream()
-           .filter(s -> s.getArmadura().getCategoria()==categoria)
-           .collect(Collectors.toList());
-        
+        .filter(s -> s.getArmadura().getCategoria()==categoria)
+        .collect(Collectors.toList());
     }
+
     public ArrayList<Saint> buscarPorStatus(Status status){
         ArrayList<Saint> retorno = new ArrayList<Saint>();
         for(Saint saint : lista){
@@ -76,6 +103,7 @@ public class ListaSaints{
         }
         return retorno;
     }
+
     public Saint getSaintMaiorVida(){
         Saint saintMaiorVida=null;
         double maior = 0;
@@ -87,6 +115,7 @@ public class ListaSaints{
         }
         return saintMaiorVida;
     }
+
     public Saint getSaintMenorVida(){
         Saint saintMenorVida=null;
         double menor = 999999999;
@@ -98,53 +127,106 @@ public class ListaSaints{
         }
         return saintMenorVida;
     }
+
     public void ordenar(){ //Ordem Ascendente
         ordenar(TipoOrdenacao.ASCENDENTE);
     }
     //ORDENACAO POR PARAMETRO TIPOORDENACAO
     public void ordenar(TipoOrdenacao tipoOrdenacao){
         boolean descendente = tipoOrdenacao==TipoOrdenacao.DESCENDENTE,
-                posicoesSendoTrocadas;
-        do{
-            posicoesSendoTrocadas=false;
-            for(int i =0; i<this.lista.size()-1;i++){
-                Saint atual = this.lista.get(i);
-                Saint proximo = this.lista.get(i+1);
-                boolean precisaTrocar =  
-                    descendente ? atual.getVida() < proximo.getVida() 
-                    :
-                    atual.getVida() > proximo.getVida();
-                if(precisaTrocar){
-                   this.lista.set(i,proximo);
-                   this.lista.set(i+1,atual);
-                   posicoesSendoTrocadas=true;
-                }       
+        hierarquica = tipoOrdenacao==TipoOrdenacao.HIERARQUICA,
+        alternada = tipoOrdenacao==TipoOrdenacao.ALTERNADA,
+        posicoesSendoTrocadas;
+        if(alternada){
+            ArrayList<Saint> arrayBronze = new ArrayList<Saint>();
+            ArrayList<Saint> arrayPrata = new ArrayList<Saint>();
+            ArrayList<Saint> arrayOuro = new ArrayList<Saint>();
+            int proximoBronze = 0, proximoPrata=0, proximoOuro=0;
+            int proximo= 1; //1->Bronze 2->Prata 3->Ouro
+            for(Saint saint : this.lista){
+                switch (saint.getCategoria()) {
+                    case BRONZE:
+                    arrayBronze.add(saint);
+                    break;
+                    case PRATA:
+                    arrayPrata.add(saint);
+                    break;
+                    case OURO:
+                    arrayOuro.add(saint);
+                    break;
+                }
             }
-        }while(posicoesSendoTrocadas);
+            for(int i=0; i<this.lista.size(); i++){
+                System.out.println("Foi: "+i);
+                if(proximo==1){
+                    if(proximoBronze<arrayBronze.size()){
+                        this.lista.set(i,arrayBronze.get(proximoBronze));
+                        proximoBronze++;
+                        proximo=2;
+                        continue;
+                    }else{
+                        proximo=2;
+                    }
+                }
+                if(proximo==2){
+                    if(proximoPrata<arrayPrata.size()){
+                        this.lista.set(i,arrayPrata.get(proximoPrata));
+                        proximoPrata++;
+                        proximo=3;
+                        continue;
+                    }else{
+                        proximo=3;
+                    }
+                }
+                if(proximo==3){
+                    if(proximoOuro<arrayOuro.size()){
+                        this.lista.set(i,arrayOuro.get(proximoOuro));
+                        proximoOuro++;
+                        proximo=1;
+                        continue;
+                    }else{
+                        proximo=1;
+                    }
+                }
+            }
+        }else{
+            do{
+                posicoesSendoTrocadas=false;
+                for(int i =0; i<this.lista.size()-1;i++){
+                    Saint atual = this.lista.get(i);
+                    Saint proximo = this.lista.get(i+1);
+                    boolean precisaTrocar =  
+                        descendente ? atual.getVida() < proximo.getVida()
+                        :
+                        hierarquica ? 
+                            (atual.getCategoria() == Categoria.OURO && (proximo.getCategoria() == Categoria.PRATA || proximo.getCategoria() == Categoria.BRONZE))
+                            || 
+                            (atual.getCategoria()==Categoria.PRATA && proximo.getCategoria() == Categoria.BRONZE)
+                        :
+                        atual.getVida() > proximo.getVida();
+                    if(precisaTrocar){
+                        this.lista.set(i,proximo);
+                        this.lista.set(i+1,atual);
+                        posicoesSendoTrocadas=true;
+                    }       
+                }
+            }while(posicoesSendoTrocadas);
+        }
     }
+
     public ListaSaints unir(ListaSaints listaSaints){
         ListaSaints resultado = new ListaSaints();
-        /*resultado.adicionar(this.lista);
-         *resultado.adicionar(listaSaints.todos());
-         */
-        
         for(Saint saint : this.lista){
             resultado.adicionar(saint);
         }
         for(Saint saint : listaSaints.todos()){
             resultado.adicionar(saint);
         }
-        
         return resultado;
     }
+
     public ListaSaints diff(ListaSaints listaSaints){
         ListaSaints retorno = new ListaSaints();
-        /*
-        ArrayList<Saint> arrayResultado = new ArrayList<Saint>();
-        arrayResultado = this.lista;
-        arrayResultado.removeAll(listaSaints.todos());
-        retorno.adicionar(arrayResultado);
-        */
         boolean saintsIguais;
         retorno.adicionar(this.lista);
         for(Saint saint : this.lista){
@@ -157,13 +239,9 @@ public class ListaSaints{
         }
         return retorno;
     }
+
     public ListaSaints intersec(ListaSaints listaSaints){
         ListaSaints retorno = new ListaSaints();
-        /*
-        ArrayList<Saint> arrayResultado = new ArrayList<Saint>();
-        arrayResultado.retainAll(listaSaints.todos());
-        retorno.adicionar(arrayResultado);
-        */
         boolean saintsIguais;
         for(Saint saint : this.lista){
             for(Saint saint2 : listaSaints.todos()){
@@ -175,6 +253,7 @@ public class ListaSaints{
         }
         return retorno;
     }
+
     public String getCSV(){
         String retorno;
         StringBuilder builder = new StringBuilder(512);
