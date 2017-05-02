@@ -14,7 +14,13 @@ public class Golpear implements Movimento{
            }
        }
        if(golpeado!=null){ //Caso o golpeado não exista o golpe não é realizado mas tem seu dano salvo
-           this.golpeado.perderVida(dano);
+           if(golpeado.getContraAtaque()){ //Ativou o ContraAtaque do Golpeado
+                GolpeSimples golpe = new GolpeSimples(golpeado,golpeador); //O golpeado passa a ser o golpeador e o golpeador o golpeado
+                golpe.executar();
+                golpeado.desativarContraAtaque();
+           }else{
+              this.golpeado.perderVida(dano);
+           }
        }
     }
     public Golpear(Saint golpeador, Saint golpeado){
