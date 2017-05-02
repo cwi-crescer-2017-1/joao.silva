@@ -14,6 +14,7 @@ public abstract class Saint{
 	private static int qtdSaints=0;
 	private static int countSaintsCriados=0;//Never finalize
 	private int id;
+	private boolean contraAtaque=false;
     //Extendem Saint: BronzeSaint, PrataSaint e OuroSaint
     protected Saint(String nome, Armadura armadura) throws Exception{ 
        //Protected deixa claro que isso só será acessado pela própria classe ou por suas classes filhas
@@ -27,6 +28,15 @@ public abstract class Saint{
     }
     protected void finalize() throws Throwable{
         Saint.qtdSaints--;
+    }
+    public void ativarContraAtaque(){
+        this.contraAtaque=true;
+    }
+    public void desativarContraAtaque(){
+        this.contraAtaque=false;
+    }
+    public boolean getContraAtaque(){
+        return this.contraAtaque;
     }
     public static int getCountSaintsCriados(){
         return Saint.countSaintsCriados;
@@ -56,6 +66,9 @@ public abstract class Saint{
     //ARMADURA
     public Armadura getArmadura(){
         return this.armadura;
+    }
+    public Categoria getCategoria(){ //Facilitar o acesso a categoria pelo Saint
+        return this.armadura.getCategoria();
     }
     public void vestirArmadura(){
         this.armaduraVestida = true;
