@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class ListaSaintsTest{
-    private Saint saint1, saint2, saint3,saint4,saint5,saint6;
+    private Saint saint1, saint2, saint3,saint4,saint5,saint6,saint7,saint8;
     private ListaSaints lista,lista2,lista3,lista4;
     private ArrayList<Saint> listDeSaints;
     private final String quebraLinha = System.getProperty("line.separator");
@@ -444,6 +444,166 @@ public class ListaSaintsTest{
       //ACT
       this.lista.adicionar(this.saint1);
       this.lista.ordenar(TipoOrdenacao.DESCENDENTE);
+      //ASSERT
+      assertEquals(this.saint1,this.lista.get(0));
+      assertEquals(1,this.lista.getTamanho());
+  }
+  @Test
+  public void aoOrdenarDeFormaHierarquicaListaSaintsComSeisSaints() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = new OuroSaint("Mu", "Áries");
+      this.saint2 = new BronzeSaint("Seiya","Pegasos");
+      this.saint3 = new OuroSaint("Shaka","Virgem");
+      this.saint4 = new PrataSaint("Dio", "Mosca");
+      this.saint5 = new BronzeSaint("Ikki", "Fênix");
+      this.saint6 = new PrataSaint("Argor", "Perseu");
+      //ACT
+      this.lista.adicionar(this.saint1);
+      this.lista.adicionar(this.saint2);
+      this.lista.adicionar(this.saint3);
+      this.lista.adicionar(this.saint4);
+      this.lista.adicionar(this.saint5);
+      this.lista.adicionar(this.saint6);
+      this.lista.ordenar(TipoOrdenacao.HIERARQUICA);
+      //ASSERT -- 2 BRONZE, 2 PRATA E 2 OURO
+      assertEquals(Categoria.BRONZE,this.lista.get(0).getCategoria());
+      assertEquals(Categoria.BRONZE,this.lista.get(1).getCategoria());
+      assertEquals(Categoria.PRATA,this.lista.get(2).getCategoria());
+      assertEquals(Categoria.PRATA,this.lista.get(3).getCategoria());
+      assertEquals(Categoria.OURO,this.lista.get(4).getCategoria());
+      assertEquals(Categoria.OURO,this.lista.get(5).getCategoria());
+      assertEquals(6,this.lista.getTamanho());
+  }
+  @Test
+  public void aoOrdernarHierarquicaListaVazia() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      //ACT
+      this.lista.ordenar(TipoOrdenacao.HIERARQUICA);
+      //ASSERT
+      assertEquals(0,lista.getTamanho());
+  }
+  @Test
+  public void aoOrdenarHierarquicaListaSaintsComUmSaint() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      //ACT
+      this.lista.adicionar(this.saint1);
+      this.lista.ordenar(TipoOrdenacao.HIERARQUICA);
+      //ASSERT
+      assertEquals(this.saint1,this.lista.get(0));
+      assertEquals(1,this.lista.getTamanho());
+  }
+  @Test
+  public void aoOrdenarDeFormaAlternadaListaSaintsComSeisSaints() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = new OuroSaint("Mu", "Áries");
+      this.saint2 = new BronzeSaint("Seiya","Pegasos");
+      this.saint3 = new OuroSaint("Shaka","Virgem");
+      this.saint4 = new PrataSaint("Dio", "Mosca");
+      this.saint5 = new BronzeSaint("Ikki", "Fênix");
+      this.saint6 = new PrataSaint("Argor", "Perseu");
+      //ACT
+      this.lista.adicionar(this.saint1);
+      this.lista.adicionar(this.saint2);
+      this.lista.adicionar(this.saint3);
+      this.lista.adicionar(this.saint4);
+      this.lista.adicionar(this.saint5);
+      this.lista.adicionar(this.saint6);
+      this.lista.ordenar(TipoOrdenacao.ALTERNADA);
+      //ASSERT -- 2 BRONZE, 2 PRATA E 2 OURO
+      assertEquals(Categoria.BRONZE,this.lista.get(0).getCategoria());
+      assertEquals(Categoria.PRATA,this.lista.get(1).getCategoria());
+      assertEquals(Categoria.OURO,this.lista.get(2).getCategoria());
+      assertEquals(Categoria.BRONZE,this.lista.get(3).getCategoria());
+      assertEquals(Categoria.PRATA,this.lista.get(4).getCategoria());
+      assertEquals(Categoria.OURO,this.lista.get(5).getCategoria());
+      assertEquals(6,this.lista.getTamanho());
+  }
+  @Test
+  public void aoOrdenarDeFormaAlternadaListaSaintsComSeteSaints() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = new OuroSaint("Mu", "Áries");
+      this.saint2 = new BronzeSaint("Seiya","Pegasos");
+      this.saint3 = new OuroSaint("Shaka","Virgem");
+      this.saint4 = new OuroSaint("Aiolia","Leão");
+      this.saint5 = new BronzeSaint("Ikki", "Fênix");
+      this.saint6 = new PrataSaint("Argor", "Perseu");
+      this.saint7 = new PrataSaint("Dio", "Mosca");
+      //ACT
+      this.lista.adicionar(this.saint1);
+      this.lista.adicionar(this.saint2);
+      this.lista.adicionar(this.saint3);
+      this.lista.adicionar(this.saint4);
+      this.lista.adicionar(this.saint5);
+      this.lista.adicionar(this.saint6);
+      this.lista.adicionar(this.saint7);
+      this.lista.ordenar(TipoOrdenacao.ALTERNADA);
+      //ASSERT -- 2 BRONZE, 2 PRATA E 2 OURO
+      assertEquals(Categoria.BRONZE,this.lista.get(0).getCategoria());
+      assertEquals(Categoria.PRATA,this.lista.get(1).getCategoria());
+      assertEquals(Categoria.OURO,this.lista.get(2).getCategoria());
+      assertEquals(Categoria.BRONZE,this.lista.get(3).getCategoria());
+      assertEquals(Categoria.PRATA,this.lista.get(4).getCategoria());
+      assertEquals(Categoria.OURO,this.lista.get(5).getCategoria());
+      assertEquals(Categoria.OURO,this.lista.get(6).getCategoria()); 
+      //COMO NÃO HÁ MAIS SAINTS DE PRATA OU BRONZE PARA ALOCAR ELE INSERE O RESTANTE DE OURO
+      assertEquals(7,this.lista.getTamanho());
+  }
+   @Test
+  public void aoOrdenarDeFormaAlternadaListaSaintsComOitoSaints() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = new OuroSaint("Mu", "Áries");
+      this.saint2 = new BronzeSaint("Seiya","Pegasos");
+      this.saint3 = new OuroSaint("Shaka","Virgem");
+      this.saint4 = new PrataSaint("Dio", "Mosca");
+      this.saint5 = new BronzeSaint("Ikki", "Fênix");
+      this.saint6 = new PrataSaint("Argor", "Perseu");
+      this.saint7 = new OuroSaint("Aiolia","Leão");
+      this.saint8 = new PrataSaint("Marin", "Águia");
+      //ACT
+      this.lista.adicionar(this.saint1);
+      this.lista.adicionar(this.saint2);
+      this.lista.adicionar(this.saint3);
+      this.lista.adicionar(this.saint4);
+      this.lista.adicionar(this.saint5);
+      this.lista.adicionar(this.saint6);
+      this.lista.adicionar(this.saint7);
+      this.lista.adicionar(this.saint8);
+      this.lista.ordenar(TipoOrdenacao.ALTERNADA);
+      //ASSERT -- 2 BRONZE, 2 PRATA E 2 OURO
+      assertEquals(Categoria.BRONZE,this.lista.get(0).getCategoria());
+      assertEquals(Categoria.PRATA,this.lista.get(1).getCategoria());
+      assertEquals(Categoria.OURO,this.lista.get(2).getCategoria());
+      assertEquals(Categoria.BRONZE,this.lista.get(3).getCategoria());
+      assertEquals(Categoria.PRATA,this.lista.get(4).getCategoria());
+      assertEquals(Categoria.OURO,this.lista.get(5).getCategoria());
+      assertEquals(Categoria.PRATA,this.lista.get(6).getCategoria());//COMO NÃO EXISTEM MAIS SAINTS BRONZE ELE PULA PARA O PRATA
+      assertEquals(Categoria.OURO,this.lista.get(7).getCategoria());
+      assertEquals(8,this.lista.getTamanho());
+  }
+  @Test
+  public void aoOrdernarAlternadaListaVazia() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      //ACT
+      this.lista.ordenar(TipoOrdenacao.ALTERNADA);
+      //ASSERT
+      assertEquals(0,lista.getTamanho());
+  }
+  @Test
+  public void aoOrdenarAlternadaListaSaintsComUmSaint() throws Exception{
+      //ARRANGE
+      this.lista = new ListaSaints();
+      this.saint1 = new BronzeSaint("Ikki", "Fênix");
+      //ACT
+      this.lista.adicionar(this.saint1);
+      this.lista.ordenar(TipoOrdenacao.ALTERNADA);
       //ASSERT
       assertEquals(this.saint1,this.lista.get(0));
       assertEquals(1,this.lista.getTamanho());
