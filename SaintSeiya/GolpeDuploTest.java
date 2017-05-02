@@ -18,8 +18,8 @@ public class GolpeDuploTest{
 
         this.saint2 = new PrataSaint("Dio","Mosca"); 
 
-        vidaInicial1 = this.saint1.getVida();
-        vidaInicial2 = this.saint2.getVida();
+        this.vidaInicial1 = this.saint1.getVida();
+        this.vidaInicial2 = this.saint2.getVida();
 
         this.golpeDuplo1 = new GolpeDuplo(this.saint1, this.saint2);
         //ACT
