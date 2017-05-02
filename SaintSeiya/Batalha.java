@@ -46,4 +46,11 @@ public class Batalha{
 	      golpeadorDoTurno = golpeadorDoTurno == this.lutadorUm ? this.lutadorDois : this.lutadorUm;
       }
     }
+    public Saint getVencedor(){
+        if(this.lutadorUm.getStatus() == Status.MORTO){
+            return this.lutadorDois;
+        }else{//this.lutadorDois.getStatus() == Status.MORTO
+            return this.lutadorUm;
+        }
+    }
 }
