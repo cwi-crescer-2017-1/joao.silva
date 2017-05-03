@@ -1,3 +1,4 @@
+USE [crescer-2017];
 SELECT * FROM EMPREGADO;
 SELECT * FROM DEPARTAMENTO;
 
@@ -46,18 +47,28 @@ SELECT C2.Nome, C2.UF FROM Cidade C2 GROUP BY C2.Nome, C2.UF HAVING COUNT(C2.IDC
 
 --Exercicio 05
 
-Definindo Cidades
+DROP VIEW TodasCidadesRepetidas; --Limpeza para testes
+DROP VIEW CidadeRepetidasComMaiorID; --Limpeza para testes
 
-Faça uma alteraçao nas cidades que tenham nome+UF duplicados, 
-adicione no final do nome um asterisco. Mas atenção! apenas a cidade com maior ID deve ser alterada.
- 
-SELECT INTO CidadeAux FROM (SELECT C2.Nome, C2.UF FROM Cidade C2 GROUP BY C2.Nome, C2.UF HAVING COUNT(C2.IDCidade)>=2);
+CREATE VIEW TodasCidadesRepetidas AS
+SELECT ROW_NUMBER() OVER(ORDER BY C.Nome,C.IDCidade DESC) AS ID, C.IDCidade ,C.Nome, C.UF FROM Cidade C WHERE C.Nome+C.UF IN (
+	SELECT C.Nome+C.UF FROM Cidade C GROUP BY C.Nome, C.UF HAVING COUNT(C.IDCidade)>=2);
+
+CREATE VIEW CidadeRepetidasComMaiorID AS
+SELECT * FROM TodasCidadesRepetidas T WHERE T.ID%2<>0;
+
 BEGIN TRANSACTION
-UPDATE Cidade 
+UPDATE Cidade
 SET Nome = Nome+'*'
-WHERE Nome+UF IN(
-		SELECT DISTINCT C.Nome+C.UF FROM Cidade C GROUP BY C.Nome, C.UF HAVING COUNT(C.IDCidade)>=2
-)
+WHERE CAST(IDCidade AS VARCHAR)+Nome+UF IN (
+	SELECT CAST(CR.IDCidade AS VARCHAR)+CR.Nome+CR.UF FROM  CidadeRepetidasComMaiorID CR);
 
-SELECT * FROM Cidade C ORDER BY C.Nome;
+SELECT * FROM Cidade ORDER BY Cidade.Nome;
+--ROLLBACK --Limpeza pós teste para próximo teste
+
+
+
+
+
+
 ROLLBACK
