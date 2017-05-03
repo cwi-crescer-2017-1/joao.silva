@@ -1,6 +1,6 @@
+--Lista 05 de Exercicios - Modulo 02: Banco de Dados I - Crescer 2017
+
 USE [crescer-2017];
-SELECT * FROM EMPREGADO;
-SELECT * FROM DEPARTAMENTO;
 
 --Exercicio 01
 SELECT E.NomeEmpregado, D.NomeDepartamento, 
