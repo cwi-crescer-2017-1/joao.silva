@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="23D7B4D2-7560-2C01-D8D0-9F854623E596" name="Seguro">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:32:45 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDSeguro" id="3448EF0D-9E92-65D3-612D-7A4B0D0BB030">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:33:08 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Nome" id="B776F8A9-A92B-AB2D-3488-C691B0FFD610">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:32:50 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDSeguradora" id="85F817D5-23E4-2BDF-850C-26D26359B0BF">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:23 UTC</createdTime>
+<generatorID>1E0EDB82-069E-06AB-8B66-C71905E7CF51</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<referedAttribute>A31F001A-6911-CF6A-08E3-9C1D6EBD5D42</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8C688184-64DC-419F-73A5-CC0BE45C4DA1" name="Seguro PK">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:33:18 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3448EF0D-9E92-65D3-612D-7A4B0D0BB030</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

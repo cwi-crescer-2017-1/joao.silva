@@ -1,0 +1,112 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5124EEBC-8FC9-3DBE-5487-42B0574EAB43" name="Contrato">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:30:54 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDContrato" id="02ACBAAB-5E86-56E6-6D8B-216FAF74A56B">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:31:06 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataInicio" id="EB893AAE-6F49-2CFD-12E1-09569316B264">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:31:19 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataFim" id="6704A3BD-3F80-4371-7852-C710F6719601">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:31:40 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDCliente" id="0417B005-687C-43E7-D5F5-984C6EB2A8B4">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:41:24 UTC</createdTime>
+<generatorID>1A08792D-3B6B-516D-F771-E1373269CAB6</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<referedAttribute>45C68555-AAAA-4F20-94D5-292F16EACBC7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDSeguro" id="52313BE3-8A61-A30C-763C-E9044C2DA56A">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:44:13 UTC</createdTime>
+<generatorID>2B3067BB-9F2C-30D6-A77B-CE226B0B5ECD</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<referedAttribute>3448EF0D-9E92-65D3-612D-7A4B0D0BB030</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDSeguradora" id="E0269F18-9C6E-3305-E943-B345A472A481">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:44:41 UTC</createdTime>
+<generatorID>B6FD1F79-6C4B-B4EC-3830-975FC04FE23A</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<referedAttribute>A31F001A-6911-CF6A-08E3-9C1D6EBD5D42</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="41C3D062-5064-36AC-6031-9618DEDBF86D" name="Contrato PK">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:31:15 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>02ACBAAB-5E86-56E6-6D8B-216FAF74A56B</attributeRef>
+<attributeRef>52313BE3-8A61-A30C-763C-E9044C2DA56A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

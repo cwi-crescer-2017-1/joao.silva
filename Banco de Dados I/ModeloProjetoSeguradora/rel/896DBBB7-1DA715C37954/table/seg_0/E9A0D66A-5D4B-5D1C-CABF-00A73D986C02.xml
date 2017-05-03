@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E9A0D66A-5D4B-5D1C-CABF-00A73D986C02" name="Pessoa">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>380D40CB-3A09-82AB-C83E-7A11B1D2A56C</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDPessoa" id="E096A74A-4310-3057-4D0C-5786B57CFCB3">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>593A0FA1-C24C-C3A9-3EEE-EAED3AB1AD2B</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="554950C0-0E13-07AB-8EB7-177539026534">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>3F02EE6F-35F8-DCCD-9B3E-A4FCBF01FF06</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CPF" id="1D364C81-88FA-5FD2-C8F7-9325836F81D6">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>EB4A8815-102C-6E4D-4D54-357EE57A8478</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3FB206BF-F96D-221C-6774-1C777F4BB3A2" name="Pessoa_PK">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>2A6C2DBF-CFD7-92F1-EC07-F68AE75802F5</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E096A74A-4310-3057-4D0C-5786B57CFCB3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0EA6E798-988E-BB95-A1EB-D4B5E28AE5C8" name="Beneficiario">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:38:27 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDBeneficiario" id="BE01D6CE-1E1A-EA93-A89D-EE34F9828C1E">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:38:34 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Parentesco" id="D832F4B2-C50F-11B2-AA22-9A8E9CCC1AEE">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:38:41 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDPessoa" id="D603B3CD-822C-7DCF-601D-8E8CC6ABE823">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:41:00 UTC</createdTime>
+<generatorID>497196AB-53DA-D348-E9EC-54B67797D8F4</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<referedAttribute>593A0FA1-C24C-C3A9-3EEE-EAED3AB1AD2B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="FB893D9A-D79A-B3E2-5B78-8AD291B1F51A" name="Beneficiario PK">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:39:19 UTC</createdTime>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<engineerTo>
+<item key="896DBBB7-3CBA-6E45-ED43-1DA715C37954" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BE01D6CE-1E1A-EA93-A89D-EE34F9828C1E</attributeRef>
+<attributeRef>D603B3CD-822C-7DCF-601D-8E8CC6ABE823</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

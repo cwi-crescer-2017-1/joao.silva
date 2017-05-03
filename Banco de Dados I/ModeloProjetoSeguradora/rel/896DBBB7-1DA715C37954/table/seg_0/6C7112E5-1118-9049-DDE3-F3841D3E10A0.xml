@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6C7112E5-1118-9049-DDE3-F3841D3E10A0" name="Seguradora">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>28443178-4F7C-684C-1803-A7E3FB2D158D</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDSeguradora" id="79D63919-2A08-C9B1-DC9D-3BA3CB6D1851">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>A31F001A-6911-CF6A-08E3-9C1D6EBD5D42</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="51A3E8BD-33DA-3ECA-380E-2A98B1C0F673">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>B59D1B58-A2BE-DA8D-74CB-980F57B0BBC2</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D43F338C-1001-A477-7336-683E4271020B" name="Seguradora_PK">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>CEF75AC7-4488-ABC8-448B-484689B573BF</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="79D63919-2A08-C9B1-DC9D-3BA3CB6D1851"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

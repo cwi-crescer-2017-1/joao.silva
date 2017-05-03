@@ -1,0 +1,138 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E3E2D409-FD57-D751-FCA2-F74E3103506E" name="Contrato">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>5124EEBC-8FC9-3DBE-5487-42B0574EAB43</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDContrato" id="9E719E7B-5544-9F4E-A01C-259BB084C9F2">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>02ACBAAB-5E86-56E6-6D8B-216FAF74A56B</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataInicio" id="567B96F2-7D85-42D5-6F26-B0C62FCA2CAC">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>EB893AAE-6F49-2CFD-12E1-09569316B264</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataFim" id="983EDE44-CDFD-6012-284A-D6A4EA20BCAD">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>6704A3BD-3F80-4371-7852-C710F6719601</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Cliente_IDCliente" id="F8A26642-44A8-DB8F-8254-BF3D575828B7">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>0417B005-687C-43E7-D5F5-984C6EB2A8B4</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5533C223-86E8-84E4-701E-39C42A8D5F06" referredColumn="F04463DA-8209-2D32-D9C6-6D3874908C35"/>
+</associations>
+</Column>
+<Column name="Seguro_IDSeguro" id="FDC78D34-C8BF-B6FE-3687-301F0F93D107">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>52313BE3-8A61-A30C-763C-E9044C2DA56A</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D91EA972-A871-4BD2-07F8-6E1601FE9964" referredColumn="4FF40B42-4976-A4CF-1AF2-DD8CA61F5D3D"/>
+</associations>
+</Column>
+<Column name="Seguradora_IDSeguradora" id="90E5CD11-E6A9-126A-0BDA-0CA6EC049E8F">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>E0269F18-9C6E-3305-E943-B345A472A481</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="33242E42-0E42-7DD0-1E0C-B443467B79C1" referredColumn="79D63919-2A08-C9B1-DC9D-3BA3CB6D1851"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B9A9B808-7F8A-DE62-C94E-83B3BEF4572B" name="Contrato_PK">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>41C3D062-5064-36AC-6031-9618DEDBF86D</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9E719E7B-5544-9F4E-A01C-259BB084C9F2"/>
+<colUsage columnID="FDC78D34-C8BF-B6FE-3687-301F0F93D107"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F6D1CE84-72AC-2B4D-F882-AE675118A39B" name="Contrato_Cliente_FK">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>1A08792D-3B6B-516D-F771-E1373269CAB6</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F8A26642-44A8-DB8F-8254-BF3D575828B7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C3A4D2FA-1C32-E2B6-D270-DD11A6D86F34" name="Contrato_Seguradora_FK">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>B6FD1F79-6C4B-B4EC-3830-975FC04FE23A</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="90E5CD11-E6A9-126A-0BDA-0CA6EC049E8F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F6341CD3-9BCD-781B-62AA-2EB5B15FD621" name="Contrato_Seguro_FK">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 19:45:55 UTC</createdTime>
+<generatorID>2B3067BB-9F2C-30D6-A77B-CE226B0B5ECD</generatorID>
+<ownerDesignName>ModeloProjetoSeguradora</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FDC78D34-C8BF-B6FE-3687-301F0F93D107"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
