@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="86661A87-C8DD-4537-961C-294ABE963CAC" name="Empregado">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 17:00:56 UTC</createdTime>
+<generatorID>BEF3DC98-93A0-1AD6-2368-90A3FC29395B</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDEmpregado" id="6B67E067-DE59-EA02-9B1A-8F3D4C74C9F7">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 17:00:56 UTC</createdTime>
+<generatorID>45ADC2A9-16E6-398C-01BE-ACA01760DD3B</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="AB41880D-D00D-5365-74FA-021878080723">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 17:00:56 UTC</createdTime>
+<generatorID>369FD2A9-46F7-AB4C-DF88-B17B23DFADAD</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Situacao" id="887DDCD7-72FD-EF29-826F-17CD95C82DED">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 17:31:35 UTC</createdTime>
+<commentInRDBMS>ATIVO OU INATIVO</commentInRDBMS>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HorasDisponiveis" id="859ED84F-13E8-2DEC-0773-16A4F1D94256">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 17:37:39 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>13</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,13,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="56DC4806-BED4-1EA5-7E24-15BD7226ED83" name="Empregado_PK">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 17:00:56 UTC</createdTime>
+<generatorID>5BF358F5-9B8C-5F31-5C2C-2751B1A99F07</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6B67E067-DE59-EA02-9B1A-8F3D4C74C9F7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

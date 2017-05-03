@@ -1,0 +1,137 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7B28B314-C47B-EDD0-601F-CC330C7CE692" name="Projeto">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 16:49:03 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<engineerTo>
+<item key="7E5F8B89-AD69-51B9-D3F0-A292875827CC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDProjeto" id="85DEF0EF-A9EC-F632-BD30-164D836DE54C">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 16:49:15 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<engineerTo>
+<item key="7E5F8B89-AD69-51B9-D3F0-A292875827CC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Nome" id="77167619-BFF9-502C-36E1-5B6248B93571">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 16:49:40 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<engineerTo>
+<item key="7E5F8B89-AD69-51B9-D3F0-A292875827CC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataInicio" id="90E705C8-9AD4-724A-9EE6-EA7139AFDB83">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 16:49:59 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<engineerTo>
+<item key="7E5F8B89-AD69-51B9-D3F0-A292875827CC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataFimPrevisto" id="B093B8D2-FB08-5DB1-08FA-6C69847F6DEB">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 16:50:29 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<engineerTo>
+<item key="7E5F8B89-AD69-51B9-D3F0-A292875827CC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataFimReal" id="9BB4B53D-F7B1-0FF2-F092-F9EF2E85342B">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 16:51:01 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<engineerTo>
+<item key="7E5F8B89-AD69-51B9-D3F0-A292875827CC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ValorPrevisto" id="D6A353A3-1EF4-F163-8948-4F75A3A1B4F8">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 16:51:15 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<engineerTo>
+<item key="7E5F8B89-AD69-51B9-D3F0-A292875827CC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ValorRealizado" id="4F5666C4-1D6A-3EA0-8FC1-551927F4701B">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 16:52:07 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<engineerTo>
+<item key="7E5F8B89-AD69-51B9-D3F0-A292875827CC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ValorFaturado" id="22C0D3FE-D9C7-F5F3-18F9-6B8066C8FC4D">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 16:53:03 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<engineerTo>
+<item key="7E5F8B89-AD69-51B9-D3F0-A292875827CC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="7E3A879C-A707-19B4-AF43-B31ED1916FE9" name=" PK">
+<createdBy>joao.silva</createdBy>
+<createdTime>2017-05-03 16:49:30 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmpregado</ownerDesignName>
+<engineerTo>
+<item key="7E5F8B89-AD69-51B9-D3F0-A292875827CC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>85DEF0EF-A9EC-F632-BD30-164D836DE54C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
