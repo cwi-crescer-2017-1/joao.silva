@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="74827DE9-6240-6125-5F71-2B778EFF9C75" name="Celular">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>520EA27B-0FBB-073C-7934-D144FA55699E</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDCelular" id="44D5CB1D-08A8-64DF-1044-2FF462CAFB30">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>6B6680B2-DA6E-0283-A44E-9C3B0EABF89F</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDModeloCelular" id="02393079-468C-8573-36F5-27D2B2313B50">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>759E5877-FF60-2F8B-C948-F162BE3B80F1</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="87A3442A-6C94-62D0-3443-B8CF02456ABC" referredColumn="5FCA0D36-512B-210D-96C5-504E0EFC394B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8C3AE763-A465-7667-2159-97D8F6470DD4" name="PK_Celular">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>205BCB90-E5A4-7F88-E32D-2B654EFD1B3A</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="44D5CB1D-08A8-64DF-1044-2FF462CAFB30"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E34EABF4-3A8B-E73C-3D17-7CEFEC064F48" name="FK_Celular_ModeloCelular">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:05 UTC</createdTime>
+<generatorID>1D456641-F8A0-7AB3-9791-C032CF7E6C8E</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="02393079-468C-8573-36F5-27D2B2313B50"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

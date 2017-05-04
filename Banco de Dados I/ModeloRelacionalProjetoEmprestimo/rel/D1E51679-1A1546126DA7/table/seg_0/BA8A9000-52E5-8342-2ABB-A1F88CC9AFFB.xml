@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BA8A9000-52E5-8342-2ABB-A1F88CC9AFFB" name="EmprestimoChip">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:05 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Emprestimo_IDEmprestimo" id="ABF101C4-6D20-9795-E550-4A46AC32598B">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:05 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="028520FB-F552-0241-D2C6-779FA0D627D6" referredColumn="4F372859-48D9-6969-91FA-C82CF3B12B73"/>
+</associations>
+</Column>
+<Column name="IDChip" id="BEB95A2F-692E-3E47-9812-F27E55080A8A">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:05 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="25F5FEB6-DDF8-3A1C-37FE-09E4E814CF71" referredColumn="00A01436-B1D7-A0E8-0AD8-D0B6A5618214"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3B41C687-77DB-C077-9B15-C076AFC4C277" name="PK_EmprestimoChip">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:05 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ABF101C4-6D20-9795-E550-4A46AC32598B"/>
+<colUsage columnID="BEB95A2F-692E-3E47-9812-F27E55080A8A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="58378BF3-7F56-B7E3-40FD-C0A7D2FB1F45" name="FK_EmprestimoChip_Emprestimo">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:05 UTC</createdTime>
+<generatorID>EEAA701C-221C-F987-9F88-1DD3D065E1DE</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ABF101C4-6D20-9795-E550-4A46AC32598B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B4BE6871-2B37-5C60-AE9A-723E2E5D82D4" name="FK_EmprestimoChip_Chip">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:05 UTC</createdTime>
+<generatorID>EEAA701C-221C-F987-9F88-1DD3D065E1DE</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BEB95A2F-692E-3E47-9812-F27E55080A8A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CBB192D0-F197-A309-BD09-B2F4875D3E03" name="Chip">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>610AE8F6-9C87-7C69-9970-7C6508DA1681</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDChip" id="00A01436-B1D7-A0E8-0AD8-D0B6A5618214">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>09D0D2C6-80AE-78B1-B02A-DD5D87E0181E</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Numero" id="FCFB85B4-5031-7C39-F87F-F063DAE54DC5">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>F05608BC-FC2B-DB40-D6AA-BE4D1E18B12E</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>13</dataTypeSize>
+<ownDataTypeParameters>13,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Operadora" id="36C4CF4C-F016-44DE-BFF7-F1557675DBFD">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>AF6E1375-8D4E-7C0C-9174-C7CAB5078DD5</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EAE4C1F8-813D-6CDA-400D-75A056B867F9" name="PK_Chip">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>B3EAF7DC-F70C-AD33-F1C4-65BFA8336F38</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="00A01436-B1D7-A0E8-0AD8-D0B6A5618214"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

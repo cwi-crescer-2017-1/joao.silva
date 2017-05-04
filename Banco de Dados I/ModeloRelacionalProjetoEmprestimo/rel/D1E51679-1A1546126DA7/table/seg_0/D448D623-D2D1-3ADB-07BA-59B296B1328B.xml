@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D448D623-D2D1-3ADB-07BA-59B296B1328B" name="ModeloCelular">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>827ADFA1-EB4A-304D-B229-3ABF8A1EE37E</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDModeloCelular" id="5FCA0D36-512B-210D-96C5-504E0EFC394B">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>98F19F7E-770D-2279-072C-C8EACE5CAA8E</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Marca" id="D65F9781-DF9C-293D-BD08-7FE2B4AC62BC">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>4CD85071-DC6C-F3BC-4056-C604B618BA3E</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Tipo" id="44351CFA-E2C8-312D-8FCF-308E80DEACAA">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>8C73B84B-5A87-3EAF-D1DB-0F8DA98D7225</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DE757DA9-3D9B-CC96-DA23-28C2E552B393" name="PK_ModeloCelular">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>AC4B0100-A4EE-1D7B-A56F-F47199B2A02F</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5FCA0D36-512B-210D-96C5-504E0EFC394B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

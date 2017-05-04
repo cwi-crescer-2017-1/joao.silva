@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5595CDA8-FEC8-E10A-41E0-14BA1A0F6A95" containerWithKeyObject="7FDA9185-A294-EBC1-1259-839198277DBD" localFKIndex="B7884A86-CBEA-B238-01E1-A9F0DDA9F10C" name="FK_Emprestimo_Celula">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>7F9CE58A-A60A-4511-443C-D2AC3FC16BB7</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<referredTableLongName>Celular</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>74827DE9-6240-6125-5F71-2B778EFF9C75</referredTableID>
+<keyObject>8C3AE763-A465-7667-2159-97D8F6470DD4</keyObject>
+<referredKeyID>8C3AE763-A465-7667-2159-97D8F6470DD4</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>IDCelular</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

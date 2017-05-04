@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="38D7B3D8-CCB7-3FF4-7262-48A3E9FE2633" name="Projeto">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>9357BAAA-3E8C-D270-E6CE-397CC5C54C8B</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDProjeto" id="E7542F78-3DEF-7536-AFEA-337943D06A7E">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>79CBB0C1-F847-CBD7-4D73-826AC6E16B45</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="704E912A-5E57-0D8C-BDC9-CB1A16C0548D">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>7B5C0EBA-BA10-23E8-ABC7-05394AA8B5D5</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDCliente" id="16958A19-2C54-5528-40F0-12944F12C7F7">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>39DAEF86-59D9-9F44-D8D6-8E6DFA0A88D2</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1C1D1C1F-7696-03E6-2448-126E970BB5A0" referredColumn="5E652C47-4C8D-2B54-5239-616A6766FC75"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E276F198-7E66-098F-1CC3-E12D7A28473B" name="PK_Projeto">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>DBD00D1D-6E19-FF87-A519-89E1D510E8EA</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E7542F78-3DEF-7536-AFEA-337943D06A7E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D6DC1096-048E-8C66-D7ED-9580515EDDF2" name="FK_Projeto_Cliente">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:05 UTC</createdTime>
+<generatorID>C5DB37E2-B404-4684-92A1-E96AB8233645</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="16958A19-2C54-5528-40F0-12944F12C7F7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

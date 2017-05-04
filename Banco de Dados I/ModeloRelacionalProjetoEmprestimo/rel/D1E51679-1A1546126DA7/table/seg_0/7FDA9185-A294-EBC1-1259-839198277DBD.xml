@@ -1,0 +1,138 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7FDA9185-A294-EBC1-1259-839198277DBD" name="Emprestimo">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>9C49A346-778C-C6E7-6845-DD1C7EEF41F4</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDEmprestimo" id="4F372859-48D9-6969-91FA-C82CF3B12B73">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>9BB617D2-9970-4512-718A-730DF730BBAD</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataInicio" id="1F5F2BF4-60D2-23D5-300A-8D7B24E060A8">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>89898139-AD89-14F0-70F0-EB92AF02386D</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataFinal" id="A0553921-FB14-5D5A-EA57-5571C2E8B100">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>FF6084BE-7CAC-2E96-AFF8-8DAECDD8C55D</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDCelular" id="634DDFF1-3260-6F67-812D-C61080A4E66A">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>0254C6AD-8D29-AFCF-CEFF-BCEBB2A32F9C</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5595CDA8-FEC8-E10A-41E0-14BA1A0F6A95" referredColumn="44D5CB1D-08A8-64DF-1044-2FF462CAFB30"/>
+</associations>
+</Column>
+<Column name="IDProjeto" id="5DDD79E4-15E4-B5D5-D445-833DA85FE27F">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>CEFAAA44-6AF2-4FBC-3D55-BD7F052012B9</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DA7D428C-DBE4-7504-528A-8072FF53C988" referredColumn="E7542F78-3DEF-7536-AFEA-337943D06A7E"/>
+</associations>
+</Column>
+<Column name="IDColaborador" id="226AE765-4A76-1AEA-794B-3F3C4B697E3C">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>97C723DF-9459-0E9A-95A9-E3EB40EF5EC5</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CB896448-5C87-CD06-DE1A-6625FC304EBC" referredColumn="F5D9D6F5-D8E2-BF8A-BD5F-EE462AA78693"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="332F21B7-FEF0-21F8-02D9-93EA7A8CBE40" name="PK_Emprestimo">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>47592D91-2636-6985-595B-D06F4D1D1F05</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4F372859-48D9-6969-91FA-C82CF3B12B73"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B7884A86-CBEA-B238-01E1-A9F0DDA9F10C" name="FK_Emprestimo_Celula">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<generatorID>7F9CE58A-A60A-4511-443C-D2AC3FC16BB7</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="634DDFF1-3260-6F67-812D-C61080A4E66A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0CA37B7F-D11F-ED15-248A-B81898C7380D" name="FK_Emprestimo_Colaborador">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:05 UTC</createdTime>
+<generatorID>D8AC65CE-E7C5-8768-32FC-7DFE1BDF5410</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="226AE765-4A76-1AEA-794B-3F3C4B697E3C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4DB9BD07-A3CF-6117-6F05-AFE4AFF5727F" name="FK_Emprestimo_Projeto">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:48:05 UTC</createdTime>
+<generatorID>69F61F9D-E9DF-D7F0-98D4-F03568954E7B</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5DDD79E4-15E4-B5D5-D445-833DA85FE27F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
