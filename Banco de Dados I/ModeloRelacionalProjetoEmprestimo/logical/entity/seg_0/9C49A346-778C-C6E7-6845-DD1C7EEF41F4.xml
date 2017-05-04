@@ -1,0 +1,112 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9C49A346-778C-C6E7-6845-DD1C7EEF41F4" name="Emprestimo">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:23:57 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDEmprestimo" id="9BB617D2-9970-4512-718A-730DF730BBAD">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:24:04 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataInicio" id="89898139-AD89-14F0-70F0-EB92AF02386D">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:24:40 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataFinal" id="FF6084BE-7CAC-2E96-AFF8-8DAECDD8C55D">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:25:05 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDCelular" id="0254C6AD-8D29-AFCF-CEFF-BCEBB2A32F9C">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:34:29 UTC</createdTime>
+<generatorID>7F9CE58A-A60A-4511-443C-D2AC3FC16BB7</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<referedAttribute>6B6680B2-DA6E-0283-A44E-9C3B0EABF89F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDProjeto" id="CEFAAA44-6AF2-4FBC-3D55-BD7F052012B9">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:35:41 UTC</createdTime>
+<generatorID>69F61F9D-E9DF-D7F0-98D4-F03568954E7B</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<referedAttribute>79CBB0C1-F847-CBD7-4D73-826AC6E16B45</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDColaborador" id="97C723DF-9459-0E9A-95A9-E3EB40EF5EC5">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:37:37 UTC</createdTime>
+<generatorID>D8AC65CE-E7C5-8768-32FC-7DFE1BDF5410</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<referedAttribute>F147DDC0-28AC-0E69-6072-031543F2CA73</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="47592D91-2636-6985-595B-D06F4D1D1F05" name="Emprestimo PK">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:24:17 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9BB617D2-9970-4512-718A-730DF730BBAD</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

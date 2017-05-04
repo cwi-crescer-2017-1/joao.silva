@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="ProjetoEmprestimo" directorySegmentName="seg_0" id="69F61F9D-E9DF-D7F0-98D4-F03568954E7B">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:35:41 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<sourcePk>DBD00D1D-6E19-FF87-A519-89E1D510E8EA</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>9357BAAA-3E8C-D270-E6CE-397CC5C54C8B</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>9C49A346-778C-C6E7-6845-DD1C7EEF41F4</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

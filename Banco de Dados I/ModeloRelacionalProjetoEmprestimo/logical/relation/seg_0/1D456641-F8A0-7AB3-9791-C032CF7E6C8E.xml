@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CelularModeloCelular" directorySegmentName="seg_0" id="1D456641-F8A0-7AB3-9791-C032CF7E6C8E">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:36:04 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<sourcePk>AC4B0100-A4EE-1D7B-A56F-F47199B2A02F</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>827ADFA1-EB4A-304D-B229-3ABF8A1EE37E</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>520EA27B-0FBB-073C-7934-D144FA55699E</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

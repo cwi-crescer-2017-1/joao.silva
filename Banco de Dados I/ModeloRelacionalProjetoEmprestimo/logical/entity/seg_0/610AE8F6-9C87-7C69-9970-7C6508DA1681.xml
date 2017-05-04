@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="610AE8F6-9C87-7C69-9970-7C6508DA1681" name="Chip">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:22:20 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDChip" id="09D0D2C6-80AE-78B1-B02A-DD5D87E0181E">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:22:24 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Numero" id="F05608BC-FC2B-DB40-D6AA-BE4D1E18B12E">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:22:36 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>13</dataTypeSize>
+<ownDataTypeParameters>13,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Operadora" id="AF6E1375-8D4E-7C0C-9174-C7CAB5078DD5">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:23:22 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B3EAF7DC-F70C-AD33-F1C4-65BFA8336F38" name="Chip PK">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:22:34 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>09D0D2C6-80AE-78B1-B02A-DD5D87E0181E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

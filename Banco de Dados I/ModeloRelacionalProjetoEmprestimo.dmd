@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="ModeloRelacionalProjetoEmprestimo" id="A2BECCDA-0391-26C9-3008-A98AE8C76F02" version="3.5">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:15:39 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>A2BECCDA-0391-26C9-3008-A98AE8C76F02</designId>
+</OSDM_Design>

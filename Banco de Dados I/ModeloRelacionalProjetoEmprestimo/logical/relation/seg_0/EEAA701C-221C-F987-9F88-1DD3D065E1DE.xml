@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="EmprestimoChip" directorySegmentName="seg_0" id="EEAA701C-221C-F987-9F88-1DD3D065E1DE">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 00:37:13 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<engineerTo>
+<item key="D1E51679-C0F4-7DE2-F7E1-1A1546126DA7" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>9C49A346-778C-C6E7-6845-DD1C7EEF41F4</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>610AE8F6-9C87-7C69-9970-7C6508DA1681</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
