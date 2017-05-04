@@ -7,7 +7,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="Emprestimo_IDEmprestimo" id="ABF101C4-6D20-9795-E550-4A46AC32598B">
+<Column name="IDEmprestimo" id="ABF101C4-6D20-9795-E550-4A46AC32598B">
 <createdBy>jpedr</createdBy>
 <createdTime>2017-05-04 00:48:05 UTC</createdTime>
 <ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>

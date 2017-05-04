@@ -35,6 +35,17 @@
 <colAssociation fkAssociation="87A3442A-6C94-62D0-3443-B8CF02456ABC" referredColumn="5FCA0D36-512B-210D-96C5-504E0EFC394B"/>
 </associations>
 </Column>
+<Column name="Situacao" id="A37C969E-BB99-DF18-A306-0FEC07C2908B">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 03:31:36 UTC</createdTime>
+<commentInRDBMS>Situacao: Emprestado, Disponivel</commentInRDBMS>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="8C3AE763-A465-7667-2159-97D8F6470DD4" name="PK_Celular">
