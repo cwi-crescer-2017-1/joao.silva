@@ -1,6 +1,6 @@
 CREATE DATABASE EmprestimoCelular;
 USE [EmprestimoCelular];
-USE [Crescer17];
+--USE [Crescer17];
 
 -- Gerado por Oracle SQL Developer Data Modeler 4.2.0.932
 --   em:        2017-05-04 00:22:42 BRT

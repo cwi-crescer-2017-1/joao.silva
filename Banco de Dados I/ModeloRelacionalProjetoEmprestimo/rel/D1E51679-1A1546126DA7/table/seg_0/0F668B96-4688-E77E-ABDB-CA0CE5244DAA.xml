@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0F668B96-4688-E77E-ABDB-CA0CE5244DAA" name="DadosMoveis">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 17:04:58 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<ordsAlias>table_11</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDDadosMoveis" id="59119864-969D-58B5-4EAA-34FAF2ABD7B8">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 17:05:44 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="QuantidadeBytes" id="F7B02BEC-25C2-A846-8E0D-266F7AE1BA27">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 17:07:02 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Chip_IDChip" id="5BCC9406-3712-FEA8-A689-9EE54FEA0EBC">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 17:07:39 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D17F95BE-9A34-624A-899C-B146A3AD3ED2" referredColumn="00A01436-B1D7-A0E8-0AD8-D0B6A5618214"/>
+</associations>
+</Column>
+<Column name="Custo" id="BB0E23C3-D878-A78D-0167-C40306C930B2">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 17:08:35 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9D6D8F6F-9306-B7BA-8337-D975DDB604C6" name="DadosMoveis_PK">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 17:05:44 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59119864-969D-58B5-4EAA-34FAF2ABD7B8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="42799C29-3CF7-3B2B-3325-89058B23F31C" name="FK_DadosMoveis_Chip">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 17:07:39 UTC</createdTime>
+<generatorID>B3EAF7DC-F70C-AD33-F1C4-65BFA8336F38</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5BCC9406-3712-FEA8-A689-9EE54FEA0EBC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

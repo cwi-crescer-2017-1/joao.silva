@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D17F95BE-9A34-624A-899C-B146A3AD3ED2" containerWithKeyObject="0F668B96-4688-E77E-ABDB-CA0CE5244DAA" localFKIndex="42799C29-3CF7-3B2B-3325-89058B23F31C" name="FK_DadosMoveis_Chip">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 17:07:39 UTC</createdTime>
+<generatorID>B3EAF7DC-F70C-AD33-F1C4-65BFA8336F38</generatorID>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<referredTableLongName>Chip</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>CBB192D0-F197-A309-BD09-B2F4875D3E03</referredTableID>
+<keyObject>EAE4C1F8-813D-6CDA-400D-75A056B867F9</keyObject>
+<referredKeyID>EAE4C1F8-813D-6CDA-400D-75A056B867F9</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>IDChip</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

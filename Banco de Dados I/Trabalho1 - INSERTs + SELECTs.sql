@@ -1,5 +1,5 @@
 USE [EmprestimoCelular];
-USE [Crescer17];
+--USE [Crescer17];
 
 INSERT INTO Colaborador(IDColaborador, Nome)
 		VALUES(1,'Joelma'),
