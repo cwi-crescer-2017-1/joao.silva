@@ -48,9 +48,9 @@
 <ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -86,6 +86,28 @@
 <associations>
 <colAssociation fkAssociation="CB896448-5C87-CD06-DE1A-6625FC304EBC" referredColumn="F5D9D6F5-D8E2-BF8A-BD5F-EE462AA78693"/>
 </associations>
+</Column>
+<Column name="Situacao" id="25A6227F-CE92-3F0E-6C90-96E2A6BCA63D">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 18:18:58 UTC</createdTime>
+<commentInRDBMS>Devolvida, Em emprestimo, Atrasada</commentInRDBMS>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataDevolucaoReal" id="9019BDA2-BBB0-FD5C-1CB9-52CD1800DF3C">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 18:21:30 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

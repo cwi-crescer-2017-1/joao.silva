@@ -48,7 +48,6 @@
 <createdBy>jpedr</createdBy>
 <createdTime>2017-05-04 17:08:35 UTC</createdTime>
 <ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>

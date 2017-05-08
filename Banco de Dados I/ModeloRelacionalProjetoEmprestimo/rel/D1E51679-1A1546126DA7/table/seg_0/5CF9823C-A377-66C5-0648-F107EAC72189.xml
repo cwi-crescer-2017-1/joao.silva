@@ -11,6 +11,7 @@
 <Column name="IDLigacao" id="B7B8F485-657B-D91D-5EE6-49D0246B31AA">
 <createdBy>jpedr</createdBy>
 <createdTime>2017-05-04 00:48:04 UTC</createdTime>
+<commentInRDBMS>Adicionar outro campo com a referencia para a conta de telefone</commentInRDBMS>
 <generatorID>EA45F5BC-3A0E-3E41-6798-21BB4F63422C</generatorID>
 <ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -68,6 +69,17 @@
 <associations>
 <colAssociation fkAssociation="9CF6C9DE-EB41-DEC9-7E95-358DF64AA6B9" referredColumn="00A01436-B1D7-A0E8-0AD8-D0B6A5618214"/>
 </associations>
+</Column>
+<Column name="CodContaTelefonica" id="D14C7AA3-B025-5F6A-9D9F-7B2398D27E10">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 18:17:29 UTC</createdTime>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

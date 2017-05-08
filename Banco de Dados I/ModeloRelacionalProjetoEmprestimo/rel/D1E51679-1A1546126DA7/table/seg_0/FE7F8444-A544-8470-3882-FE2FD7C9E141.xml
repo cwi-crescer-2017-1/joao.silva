@@ -31,6 +31,19 @@
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Situacao" id="D207CC14-9495-EE54-E5A8-AD5D96242FDF">
+<createdBy>jpedr</createdBy>
+<createdTime>2017-05-04 18:15:00 UTC</createdTime>
+<commentInRDBMS>Ativo, Inativo</commentInRDBMS>
+<ownerDesignName>ModeloRelacionalProjetoEmprestimo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="79FD09BF-7BAC-FC9C-2C89-0A1D42506A12" name="PK_Colaborador">
