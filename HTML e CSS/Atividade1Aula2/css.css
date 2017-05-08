@@ -1,0 +1,103 @@
+*{
+	box-sizing: border-box;
+}
+body{
+	margin: 0;
+}
+.container{
+	font-size: 0;
+	width: 100%;
+	height: 25vh;
+}
+.col{
+	height: 100%;
+	font-size: initial;
+	display: inline-block;
+	border: 2px solid black;
+	animation-duration: 1s;
+	transition:transform 1s linear;
+	animation-name: trocaDeCorInicial;
+}
+.line1 {
+	width: 25%;
+}
+.line1:nth-child(2n){
+	background: red;
+}
+.line1:nth-child(2n+1){
+	background: #FF6347;
+}
+
+.line2 {
+	background: blue;
+	width: 50%;
+}
+.line2:nth-child(2n+1){
+	background: #0000CD;
+}
+
+.line3{
+	background: purple;
+	width: 100%;
+}
+
+.line4{
+	width: 10%;
+}
+.line4:nth-child(2n){
+	background: #FFD700;
+}
+.line4:nth-child(2n+1){
+	background: yellow;
+}
+
+.col:hover{
+	
+	transform:scale(1.4);
+}
+.line1:hover{
+	animation-name: trocaDeCorLinha1;
+}
+.line2:hover{
+	animation-name: trocaDeCorLinha2;
+}
+.line3:hover{
+	animation-name: trocaDeCorLinha3;
+}
+.line4:hover{
+	animation-name: trocaDeCorLinha4;
+}
+@keyframes trocaDeCorInicial { 	
+	0% {background: #DDA0DD; }
+	25% {background: #DA70D6; }
+	50% {background: #EE82EE; }
+	75% {background: #FF00FF; }
+} 
+@keyframes trocaDeCorLinha1 { 
+	0% {background:#FA8072;  }
+	25% {background: #E9967A; }
+	50% {background: #FFA07A; }
+	75% {background: #FF7F50; }
+	100%{background: #FF6347;}
+} 
+@keyframes trocaDeCorLinha2 { 
+	0% {background: #87CEFA	; }
+	25% {background: #00BFFF; }
+	50% {background: #1E90FF; }
+	75% {background: #4169E1; }
+	100%{background: #6495ED;}
+} 
+@keyframes trocaDeCorLinha3 { 
+	0% {background: #DDA0DD	; }
+	25% {background: #DA70D6; }
+	50% {background: #EE82EE; }
+	75% {background: #FF00FF; }
+	100%{background: #8B008B;}
+} 
+@keyframes trocaDeCorLinha4 { 
+	0% {background: #FF0000	; }
+	25% {background: #FF4500; }
+	50% {background: #FF8C00; }
+	75% {background: #FFA500; }
+	100%{background: #FFD700;}
+} 
