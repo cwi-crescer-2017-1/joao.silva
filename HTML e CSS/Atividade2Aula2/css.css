@@ -3,8 +3,8 @@
 }
 body{
 	font-family: 'Open Sans', sans-serif;
+	background: #fafafa;
 	margin: 0;
-	background: #fafafa;	
 }
 .float {
 	float: left;
