@@ -9,10 +9,10 @@ body{
 .float {
 	float: left;
 }
-.clearfix:after {
-	content: "";
-	display: block;
-	clear: both;
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
 }
 .nav{
 	position: fixed;
@@ -29,8 +29,8 @@ body{
 }
 .noticia{
 	width: 40%;
-	margin: 9% 5% 0 5%;
-	background: #fff; 
+	background: #fff;
+	margin: 9% 5% 0% 5%;	
 	padding: 1% 2.5% 1% 2.5%;
 	border: solid #DDDDDD 1px;
 	border-radius: 4px;
@@ -48,11 +48,11 @@ body{
 .noticia p{
 	font-size: 2.5vh;
 	color: #333;
-	font-weight: normal;
+	font-weight: 500;
 	line-height: 2;
 }
-.noticia p:first-letter{
-	font-size:400%;
+.noticia img+p:first-letter{
+	font-size:380%;
 	color: #c4170c;
 	float: left;
 	line-height: 1;
@@ -62,7 +62,7 @@ body{
 	float: right;
 	width: 150px;
 	height: 100px;
-	margin: 0px 10px 10px 0px;
+	margin: 0 0 0 1%;
 }
 .noticia span{
 	font-size: 2vh;
