@@ -9,11 +9,6 @@ body{
 .float {
 	float: left;
 }
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: block;
-}
 .nav{
 	position: fixed;
 	width: 100%;
@@ -28,12 +23,25 @@ body{
 	width: 100%;
 }
 .noticia{
-	width: 40%;
+	width: 42.5%;
 	background: #fff;
-	margin: 9% 5% 0% 5%;	
 	padding: 1% 2.5% 1% 2.5%;
 	border: solid #DDDDDD 1px;
 	border-radius: 4px;
+}
+
+.noticia:nth-child(odd){
+	margin: 10% 2.5% 2% 5%;
+	float: left;
+}
+.noticia:nth-child(odd)::after{
+	content: "";
+    clear: both;
+    display: table;
+}
+.noticia:nth-child(even){
+	margin: 10% 5% 2% 2.5%;
+	float: right;
 }
 .noticia h2{
 	font-size: 2.5vh;
@@ -51,7 +59,7 @@ body{
 	font-weight: 500;
 	line-height: 2;
 }
-.noticia img+p:first-letter{
+.noticia p:first-of-type:first-letter{
 	font-size:380%;
 	color: #c4170c;
 	float: left;
