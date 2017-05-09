@@ -1,0 +1,41 @@
+*{
+	box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.silvio{
+  position: absolute;
+  width: 600px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.silvio img{
+  width: 100%;
+  float: left;
+}
+.silvio .fala{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 191, 255, 0.5);
+  padding: 10px 15px 10px 15px;
+}
+.silvio .fala .escondida{
+  display: none;
+}
+.silvio .fala h1{
+  font-size: 28px;
+  color: white;
+  font-weight: 900;
+  top: 75%;
+}
+.silvio .fala p{
+  font-size: 18px;
+  color: white;
+}
+.silvio .fala:hover .escondida{
+  display:inline;
+}
