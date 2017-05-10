@@ -1,0 +1,60 @@
+.corpo{
+    width:60%;
+		margin-left: 20%;
+}
+.corpo .titulo{
+    background: #363636;
+		padding: 8px 0px 8px 20px;
+}
+.corpo .titulo .titulo-nome{
+		color: #CFCFCF;
+		text-decoration:none;
+		font-size: 26px;
+		font-weight: 600;
+}
+.corpo .conteudo{
+		background: #CFCFCF;
+		padding: 20px 20px 20px 20px;
+    display: inline-block;
+    width: 100%;
+}
+.corpo .conteudo .sumario{
+		text-decoration:none;
+		color: black;
+		font-size: 24px;
+		font-weight: 600;
+}
+.corpo .conteudo .conteudo-itens{
+    padding: 0px 0px 0px 35px;
+}
+.corpo .conteudo .conteudo-secao-um,.conteudo-secao-dois{
+    border-top: 1px solid #828282;
+}
+.corpo .conteudo .lutador-nome{
+    text-decoration:none;
+    color: black;
+    font-size: 32px;
+    font-weight: 600;
+}
+.corpo .conteudo .right{
+    float: right;
+    display: block;
+    width: 60%;
+    padding-top: 12%;
+    color: black;
+}
+.corpo .conteudo .left{
+    float: left;
+    width: 40%;
+    margin-left: -5px;
+}
+.corpo .conteudo .right .conteudo-ficha{
+    text-decoration:none;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.corpo .conteudo .right .conteudo-ficha .destaque{
+    text-decoration:none;
+    font-weight: 600;
+}
