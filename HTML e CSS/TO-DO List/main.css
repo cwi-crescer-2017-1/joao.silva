@@ -1,0 +1,100 @@
+*{
+	box-sizing: border-box;
+}
+body{
+	font-family: 'Gloria Hallelujah', cursive;
+	margin: 0;
+  height: 2000px;
+}
+.espaco-da-bolinhas{
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+}
+.espaco-da-bolinhas .bolinha1{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation-name: rodando1;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+.espaco-da-bolinhas .bolinha2{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation-name: rodando2;
+    animation-delay: 100ms;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+.espaco-da-bolinhas .bolinha3{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation-name: rodando3;
+    animation-delay: 200ms;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+.container-fluid {
+    height: 100%;
+    padding-left: 10vh;
+    padding-right: 10vh;
+}
+.row {
+    height: 10vh;
+}
+.row .titulo{
+    height: 20vh;
+    font-size: 58px;
+    padding-left: 2vh;
+    padding-top: 2vh;
+    text-align: center;
+}
+.row .aviso{
+    position: absolute;
+    font-size: 20px;
+    animation-name: vai-volta;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.smile{
+    position: relative;
+    background-color: yellow;
+    width: 50px;/* FIXME:  */
+    float: right;
+    right: 25%;
+    height: 50px;
+    border-radius: 50%;
+}
+@keyframes vai-volta {
+    0%   {opacity: 0;}
+    50%  {opacity: 1;}
+    100%  {opacity: 0;}
+}
+@keyframes rodando1 {
+    0%   {background-color:red; left:1%; top:1%;}
+    25%  {background-color:yellow; left:98%; top:1%;}
+    50%  {background-color:blue; left:98%; top:98%;}
+    75%  {background-color:green; left:1%; top:98%;}
+    100% {background-color:red; left:1%; top:1%;}
+}
+@keyframes rodando2 {
+    0%   {background-color:red; left:1%; top:1%;}
+    25%  {background-color:yellow; left:98%; top:1%;}
+    50%  {background-color:blue; left:98%; top:98%;}
+    75%  {background-color:green; left:1%; top:98%;}
+    100% {background-color:red; left:1%; top:1%;}
+}
+
+@keyframes rodando3 {
+    0%   {background-color:red; left:1%; top:1%;}
+    25%  {background-color:yellow; left:98%; top:1%;}
+    50%  {background-color:blue; left:98%; top:98%;}
+    75%  {background-color:green; left:1%; top:98%;}
+    100% {background-color:red; left:1%; top:1%;}
+}
