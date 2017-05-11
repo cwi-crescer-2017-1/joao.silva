@@ -46,6 +46,22 @@ body{
 .smile-space{
 		height: 200px;
 }
+.choro{
+		position: relative;
+		top: 50%;
+		display: none;
+		float: right;
+		width: 10px;
+		height: 67px;
+		background:linear-gradient(to bottom, #0000CD , #00BFFF);
+		opacity: 0.8;
+	}
+	.choro.direito{
+		right:59%;
+	}
+	.choro.esquerdo{
+		right:18%;
+	}
 .fala{
 		position: relative;
 	  right: 37%;
@@ -60,6 +76,16 @@ body{
 		padding-top: 22px;
 		opacity: 1;
 		text-align: center;
+}
+.rio-lagrimas{
+	position: relative;
+	display:none;
+	top: 50%;
+	right:0%;
+	width: 100px;
+	height: 30px;
+	border-radius: 50%;
+	background:linear-gradient(#0000CD , #00BFFF);
 }
 .fala.segunda{
 		display: none;
@@ -95,10 +121,37 @@ body{
 .smile-space:active .fala.segunda{
 	  display: block;
 }
+.smile-space:active .choro{
+	animation-name: chorar;
+	animation-duration: 2s;
+	animation-delay: 2s;
+	animation-timing-function:linear;
+	animation-iteration-count: infinite;
+}
+.smile-space:active .choro.direito{
+	display: block;
+}
+.smile-space:active .choro.esquerdo{
+	display: block;
+}
 .smile-space:active .olho.direito{
-	animation-play-state: paused;
+	animation-name: fecharOlhos;
+	animation-duration: 2s;
+	animation-delay: 0s;
+	animation-timing-function:linear;
+	animation-iteration-count: infinite;
 }
 .smile-space:active .olho.esquerdo{
+	animation-name: fecharOlhos;
+	animation-duration: 2s;
+	animation-delay: 0s;
+	animation-timing-function:linear;
+	animation-iteration-count: infinite;
+}
+.smile-space:active .rio-lagrimas{
+	display: block;
+}
+.smile-space:active .smile{
 	animation-play-state: paused;
 }
 .smile .boca{
@@ -170,26 +223,38 @@ body{
     animation-iteration-count: infinite;
 }
 @media screen and (max-width: 1280px) {
-  .fala {right: 25%;}
+  	.fala {right: 25%;}
 }
 @media screen and (max-width: 1080px) {
-  .fala {right: 15%;}
+  	.fala {right: 15%;}
 }
 @media screen and (max-width: 880px) {
-  .fala {right: -10%;}
+  	.fala {right: -10%;}
 }
 @media screen and (max-width: 720px) {
-  .smile-space {display: none;}
-	.box.titulo {width: 73.875%;}
+  	.smile-space {display: none;}
+		.box.titulo {width: 73.875%;}
 }
 @media screen and (max-width: 490px) {
-	.box.titulo {width: 100%;}
+		.box.titulo {width: 100%;}
 }
 @media screen and (max-width: 365px) {
-	.box.titulo {width: 100%;font-size: 20px;}
+		.box.titulo {width: 100%;font-size: 20px;}
 }
-@media screen and (max-width: 265px) {
-	.box .aviso {display: none;}
+@keyframes rio-lagrimas {
+	0%{height: 0px;width: 0px;}
+	30%{width: 100px;height: 30px;background:linear-gradient(to bottom,#0000CD,#00BFFF);}
+	100%{height: 30px;width: 100px;;background:linear-gradient(to bottom,#00BFFF,#0000CD);}
+}
+@keyframes chorar {
+		0%{height: 0px;}
+		30%{height: 67px;background:linear-gradient(to bottom,#0000CD,#00BFFF);}
+		100%{height: 67px;background:linear-gradient(to bottom,#00BFFF,#0000CD);}
+}
+@keyframes fecharOlhos {
+		0%{height: 30px; top:22%;}
+		50%{height: 0px; top: 50%;}
+		100%{height: 30px; top:22%;}
 }
 @keyframes entristecer {
 		0%{border-radius: 50%; top: 38%;}
