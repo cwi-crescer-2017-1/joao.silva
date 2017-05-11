@@ -30,7 +30,7 @@ body{
 		display: inline-block;
 		float:left;
 }
-.box .titulo{
+.box.titulo{
 		height: 200px;
     font-size: 32px;
     text-align: center;
@@ -94,6 +94,12 @@ body{
 }
 .smile-space:active .fala.segunda{
 	  display: block;
+}
+.smile-space:active .olho.direito{
+	animation-play-state: paused;
+}
+.smile-space:active .olho.esquerdo{
+	animation-play-state: paused;
 }
 .smile .boca{
 		position: relative;
@@ -163,6 +169,28 @@ body{
     animation-duration: 10s;
     animation-iteration-count: infinite;
 }
+@media screen and (max-width: 1280px) {
+  .fala {right: 25%;}
+}
+@media screen and (max-width: 1080px) {
+  .fala {right: 15%;}
+}
+@media screen and (max-width: 880px) {
+  .fala {right: -10%;}
+}
+@media screen and (max-width: 720px) {
+  .smile-space {display: none;}
+	.box.titulo {width: 73.875%;}
+}
+@media screen and (max-width: 490px) {
+	.box.titulo {width: 100%;}
+}
+@media screen and (max-width: 365px) {
+	.box.titulo {width: 100%;font-size: 20px;}
+}
+@media screen and (max-width: 265px) {
+	.box .aviso {display: none;}
+}
 @keyframes entristecer {
 		0%{border-radius: 50%; top: 38%;}
 		100%{border-radius: 0%; top: 32%;}
@@ -182,7 +210,7 @@ body{
 		3.9%{top:3.5%;}
 		5,3%{top:0%;}
 		7.3%{top:3.5%;}
-		9.3%{top:10.5%}
+		9.3%{top:10.5%;}
 		11.3%{top:24.5%;}
 		13.3%{top:50%;}
 		100%{top:50%;}
