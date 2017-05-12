@@ -46,22 +46,6 @@ body{
 .smile-space{
 		height: 200px;
 }
-.choro{
-		position: relative;
-		top: 50%;
-		display: none;
-		float: right;
-		width: 10px;
-		height: 67px;
-		background:linear-gradient(to bottom, #0000CD , #00BFFF);
-		opacity: 0.8;
-	}
-	.choro.direito{
-		right:59%;
-	}
-	.choro.esquerdo{
-		right:18%;
-	}
 .fala{
 		position: relative;
 	  right: 37%;
@@ -122,17 +106,11 @@ body{
 	  display: block;
 }
 .smile-space:active .choro{
+	display: block;
 	animation-name: chorar;
 	animation-duration: 2s;
-	animation-delay: 2s;
 	animation-timing-function:linear;
 	animation-iteration-count: infinite;
-}
-.smile-space:active .choro.direito{
-	display: block;
-}
-.smile-space:active .choro.esquerdo{
-	display: block;
 }
 .smile-space:active .olho.direito{
 	animation-name: fecharOlhos;
@@ -164,10 +142,9 @@ body{
 		border-radius: 50%;
 }
 .smile .olho{
-		position: relative;
-		float:left;
-		top: 22%;
-		left: 15%;
+		position: absolute;
+		float:right;
+		top: 20%;
 		margin-left: 10px;
 		background-color: black;
 		width: 20px;
@@ -175,6 +152,7 @@ body{
 		border-radius: 50%;
 }
 .smile .olho.esquerdo{
+	right: 23%;
 	animation-name: piscar;
 	animation-iteration-count: infinite;
 	animation-duration: 10s;
@@ -182,11 +160,29 @@ body{
 	animation-timing-function: linear;
 }
 .smile .olho.direito{
+  right: 55%;
 	animation-name: piscar;
 	animation-iteration-count: infinite;
 	animation-duration: 8s;
 	animation-delay: 8s;
 	animation-timing-function: linear;
+}
+.smile .choro{
+		position: absolute;
+		float:right;
+		top: 50%;
+		display: none;
+		margin-right: 20px;
+		width: 10px;
+		height: 67px;
+		background:linear-gradient(to bottom, #0000CD , #00BFFF);
+		opacity: 0.8;
+	}
+.smile .choro.direito{
+		right: 39%;
+}
+.smile .choro.esquerdo{
+	  right: 6.5%;
 }
 .espaco-da-bolinhas{
 	  position: fixed;
@@ -232,8 +228,9 @@ body{
   	.fala {right: -10%;}
 }
 @media screen and (max-width: 720px) {
-  	.smile-space {display: none;}
-		.box.titulo {width: 73.875%;}
+	.container.UmQuarto.smile-space{width: 25%;}
+	.smile-space {display: none}
+	.box.titulo {width: 73.875%;}
 }
 @media screen and (max-width: 490px) {
 		.box.titulo {width: 100%;}
@@ -248,12 +245,14 @@ body{
 }
 @keyframes chorar {
 		0%{height: 0px;}
-		30%{height: 67px;background:linear-gradient(to bottom,#0000CD,#00BFFF);}
+		30{height: 0px;}
+		70%{height: 67px;background:linear-gradient(to bottom,#0000CD,#00BFFF);}
 		100%{height: 67px;background:linear-gradient(to bottom,#00BFFF,#0000CD);}
 }
 @keyframes fecharOlhos {
 		0%{height: 30px; top:22%;}
-		50%{height: 0px; top: 50%;}
+		30%{height: 5px; top: 50%;}
+		90%{height: 5px; top: 50%;}
 		100%{height: 30px; top:22%;}
 }
 @keyframes entristecer {
