@@ -244,7 +244,7 @@ body{
 	100%{height: 30px;width: 100px;;background:linear-gradient(to bottom,#00BFFF,#0000CD);}
 }
 @keyframes chorar {
-		0%{height: 0px;}
+		0%{height: 0pxsesdrfdd;}
 		30{height: 0px;}
 		70%{height: 67px;background:linear-gradient(to bottom,#0000CD,#00BFFF);}
 		100%{height: 67px;background:linear-gradient(to bottom,#00BFFF,#0000CD);}
