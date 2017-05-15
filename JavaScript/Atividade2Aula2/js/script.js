@@ -31,55 +31,52 @@ var titulo = "titulo";
 //delete series[0].distribuidora; //Ativar para verificar a validação de series sem alguma propriedade necessária
 
 function seriesInvalidas(series){
-  return  isObject(series) && arrayToString(percorreSeries(series), " - ")
+  return  isObject(series) && arrayToString(percorreSeries(series), " - ");
   //Valida se a variavel series é um objeto e se for realiza a validação das series e em seguida converte os
   //titulos das séries inválidas para apenas uma string
-}
-function dataEstreiaValida(serie){
-  let anoAtual = new Date().getFullYear();
-  return serie.anoEstreia<=anoAtual && true;
-}
-function percorreSeries(series){
-  let seriesInvalidas = [];
-  let serieInvalida;
-  for(let x = 0; x<series.length; x++){
-    serieValida = validaSerie(series[x]);
-    if(serieInvalida){
-      seriesInvalidas.push(series[x]);
+  function percorreSeries(series){
+    let seriesInvalidas = [];
+    let serieInvalida;
+    for(let x = 0; x<series.length; x++){
+      serieInvalida = validaSerie(series[x]);
+      if(serieInvalida){
+        seriesInvalidas.push(series[x].titulo);
+      }
     }
+   return seriesInvalidas;
   }
- return seriesInvalidas;
-}
-function validaSerie(serie){
-  for (let i in serie) {
-   if(!PropNotUndefined(serie,i) || !PropNotNull(serie, i) || !dataEstreiaValida(serie)){
-     //Verifica se a serie possui todas as propriedades não undefined, se nenhuma delas é nula e depois se a data de Estreia é anterior ou igual ao ano atual
-     return true; //Envia True se a série é invalida
-   }
+  function validaSerie(serie){
+    let anoAtual = new Date().getFullYear();
+    if(Object.values(serie).some(c => c===null || typeof c === 'undefined') || serie.anoEstreia>anoAtual){
+      return true;
+    }
+    return false;
   }
-  return false;
 }
+
 console.log("Exercicios 1: ",seriesInvalidas(series));
+
+/*Alternativo - Bernardo*/
+function seriesInvalidasAlternativa(series){
+  let anoAtual = new Date().getFullYear();
+  let invalidas = series.filter(serie =>{
+    let algumCampoInvalido = Object.values(serie).some(c =>  c===null || typeof c === 'undefined');
+    let estreiaInvalida = serie.anoEstreia>anoAtual;
+    return algumCampoInvalido || estreiaInvalida;
+  });
+  return `Séries Inválidas: ${ invalidas.map(s => s.titulo).join(" - ") }`;
+  //map, seleciona dentro de um objeto apenas o valor que você precisa, no caso foi extraido apenas o titulo de cada objeto
+}
+console.log("Exercicios 1 Alternativo: ",seriesInvalidasAlternativa(series));
 
 /*Exercício 2*/
 
 function filtrarSeriesPorAno(series, ano){
     return isObject(series) && isNumber(ano) && filtroDeSeriesPorAno(series, ano);
 }
+
 function filtroDeSeriesPorAno(series, ano){
-  let seriesFiltradas = [];
-  for(let serie of series){
-     if(selecaoPorData(serie, ano) !== null) seriesFiltradas.push(selecaoPorData(serie, ano)); //seleciona somente os titulos de series validos
-  }
-  return seriesFiltradas;
-}
-function selecaoPorData(serie, ano){
-  let serieSelecionada = serie.anoEstreia>=ano;
-  if(serieSelecionada){
-    return serie.titulo;
-  }else{
-    return null; //retorna null quando a serie não esta na seleção
-  }
+  return series.filter(serie => serie.anoEstreia>ano).map(serie => serie.titulo);
 }
 console.log("Exercicios 2: ",filtrarSeriesPorAno(series, 2017));
 
@@ -88,39 +85,33 @@ function mediaDeEpisodios(series){
   return isObject(series) && calcularMediaDeEpisodios(series);
 }
 function calcularMediaDeEpisodios(series){
-  let media=0;
-  for(let serie of series){
-    //Soma os valores dos números de episódios, porém antes verifica se o número de episódios não é undefined
-    if(PropNotUndefined(serie,numeroEpisodios)) media+=serie.numeroEpisodios;
-  }
-  return media = media/series.length;
+  somaEpisodios = series.map(function(v){return v.numeroEpisodios}).reduce(function(a,b){return a+b});
+  //Map seleciona o campo numeroEpisodios de cada serie e o reduce cria um "SUM" desses valores
+  return somaEpisodios = somaEpisodios/series.length;
 }
 console.log("Exercicios 3: ",mediaDeEpisodios(series));
+
+/*Alternativo - Bernardo*/
+function mediaDeEpisodiosAlternativa(series){
+  return series.map(v => v.numeroEpisodios).reduce( (a,b) => a+b,0)/series.length;
+}
+console.log("Exercicios 3 Alternativo: ",mediaDeEpisodiosAlternativa(series));
 
 /*Exercicio 4*/
 function procurarPorNome(series, nome){
   return isObject(series) && isString(nome) && procuradorPorNome(series, nome);
 }
 function procuradorPorNome(series, nome){
-   for(let serie of series){
-    for(let atuante of serie[elenco]){
-      if(atuante === nome){return true;}; //retorna true caso encontrar o(a) ator/atriz
-    }
-   }
-   return false; //Se não encontrar ninguém durante o percorrer da lista retorna false
+  return series.map(serie => serie.elenco).some(elenco => elenco.includes(nome));
 }
 console.log("Exercicios 4 (true): ",procurarPorNome(series,"Gaten Matarazzo"));
 console.log("Exercicios 4 (false): ",procurarPorNome(series,"Pedro de Alcântara Francisco António João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim"))
 
 /*Exercicios 5*/
 function mascadaEmSerie(serie){
-  return isObject(serie) && mascadaElenco(serie)+mascadaDiretoria(serie);
-}
-function mascadaElenco(serie){
-  return serie[elenco].length*40000;
-}
-function mascadaDiretoria(serie){
-  return serie[diretor].length*100000;
+  let mascadaElenco = serie[elenco].length*40000;
+  let mascadaDiretoria = serie[diretor].length*100000;
+  return isObject(serie) && mascadaElenco+mascadaDiretoria;
 }
 console.log("Exercicios 5: ");
 for(let i=0; i<series.length; i++){
@@ -153,12 +144,13 @@ function queroTitulo(tituloSelecionado){
   return isString(tituloSelecionado) && selecaoPorTitulo(tituloSelecionado);
 }
 function selecaoPorTitulo(tituloSelecionado){
-  let selecionados = [];
+  return series.filter(serie => serie.titulo.toLowerCase === tituloSelecionado.toLowerCase);
+  /*elecionados = [];
   for(let serie of series){
     let temOTitulo = serie[titulo].toLowerCase().search(tituloSelecionado.toLowerCase())>=0; //Passa todos para toLowerCasa considerando "Filme === filme"
     if(temOTitulo) selecionados.push(serie.titulo);
   }
-  return selecionados;
+  return selecionados;*/
 }
 console.log("Exercicios 6.B: ",queroTitulo("The"));
 
@@ -190,18 +182,19 @@ function listaElenco(serie){
   return elenco.sort(sortUltimoNome);
 }
 function sortUltimoNome(a,b) {
-    let separadorA = a.split(" ");
-    let separadorB = b.split(" ");
+    let separadorA = a.trim().split(" ");
+    let separadorB = b.trim().split(" ");
     let comparadorA = separadorA[separadorA.length-1].toLowerCase();
     let comparadorB = separadorB[separadorB.length-1].toLowerCase();
     return comparadorA < comparadorB ? -1 : comparadorA > comparadorB ? 1 : 0;
 };
-console.log(creditosIlluminatis(series[0]));
+console.log(creditosIlluminatis(series[8]));
 console.log("-----------------------------------",);
 /*Exercicio 8*/
 
 function listaElencoNaoOrdenada(serie){
   let elenco=[];
+
   for(let ator of serie.elenco){
     elenco.push(ator);
   }
