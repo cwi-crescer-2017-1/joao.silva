@@ -4,6 +4,7 @@
 ### JavaScript -> Pasta voltada a armazenamento das atividades do módulo de JavaScript
 ### JavaScript / Atividade1Aula1V2 -> Pasta com a resolução da Lista 1 do módulo de JavaScript
 ### JavaScript / Atividade2Aula2 -> Pasta com a resolução da Lista 2 do módulo de JavaScript
+### JavaScript / Lista02Atualizada -> Pasta com a nova versão das resoluções da lista 2 do módulo de JavaScript
 
 ### HTML e CSS -> Pasta voltada a armazenamento dos exericícios de HTML e CSS
 
