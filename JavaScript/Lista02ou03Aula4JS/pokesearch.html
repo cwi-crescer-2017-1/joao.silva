@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pokémon</title>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+  <body>
+    <input type="text" id="txtPesquisar" name="numeroPkm" placeholder="Ex: 5 (Squirtle)" value="">
+    <button type="button" id="btnPesquisar">Pesquisar!</button>
+    <div class="container">
+        <div class=box>
+          <div class="dadosPrincipais"><h1>Nome (Número):</h1><h1 id="NomePoke"></h1></div>
+        </div>
+        <div class=box>
+          <div id="imgPoke" class="imgPoke"></div>
+        </div>
+        <div class=box>
+          <div id="descricao" class="descricao">
+            <h3 class="align">Tipos: </h3>
+            <ul id="tiposPoke" class="tiposPoke"></ul>
+            <h3>Habilidades: </h3>
+            <ul id="habilidadesPoke" class="habilidadesPoke"></ul>
+          </div>
+        </div>
+        <div class=box>
+          <div id="status" class="status">
+            <h2 class="align">Status: </h2>
+          </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/pokemon.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>

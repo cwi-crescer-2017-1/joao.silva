@@ -1,0 +1,36 @@
+*{
+	box-sizing: border-box;
+}
+body{
+	font-family: 'Gloria Hallelujah', cursive;
+  color: white;
+	margin: 0;
+  background-image: url("../img/backgroundPoke.png");
+  background-size: 100%;
+}
+.container{
+  position: relative;
+	width: 100vw;
+	padding: 2% 2% 2% 2%;
+}
+.container .box {
+		display: inline-block;
+    width: 45vw;
+}
+.container{
+
+}
+.container .status{
+  width: 80%;
+  border-radius: 5% 5% 5% 5%;
+  border: 2px solid white;
+  padding: 2% 2% 2% 2%;
+}
+.container .status .barraStatus{
+  width: 100%;
+  opacity: 1;
+  padding-left: 10px;
+}
+.container .center{
+	text-align: left;
+}
