@@ -11,5 +11,5 @@ Number.prototype.arredondar = function(casas=2,criterio=5) {
   }
   separadosPelaVirgula[1] =  numerosDepoisDaVirgula.join("");
   return Number(separadosPelaVirgula[0].concat(".",separadosPelaVirgula[1].substring(0, casas)));
-  //return Number(this.toFixed(casas));
+  //return Number(this.toFixed(casas)) -- não vai funcionar com os tester que tem critério de arredondamento;
 }
