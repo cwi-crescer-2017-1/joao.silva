@@ -1,0 +1,19 @@
+<html ng-app="pokemonAPP">
+<head>
+    <title>Aula1 Atividade1</title>
+    <script src="https://code.angularjs.org/1.6.4/angular.js"></script>
+    <script src="pokemon.js"></script>
+</head>
+<body>
+    <div ng-controller="PokemonName">
+        <input type="text" ng-model="info.nome" ng-keypress="count()">
+        <input type="text" ng-model="info.tipo" ng-keypress="count()">
+        <input type="text" ng-model="info.numero" ng-keypress="count()">
+        <h1>Pokemon<h1>
+        <h2>Nome: {{info.nome}}</h2>
+        <h2>Tipo: {{info.tipo}}</h2>
+        <h4>KeyPress: {{keypress}}</h4>
+        <img ng-src="{{imgDetector()}}">
+    </div> 
+</body>    
+</hmtl>   
