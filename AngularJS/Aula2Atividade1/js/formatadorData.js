@@ -1,8 +1,8 @@
 function formatarData(data){
     /*
-    let pattern = '/((\d{2})\/(\d{2})\/(\d{4}))|((\d{2})\.(\d{2}+1)\.(\d{4}))|((\d{2})\\(\d{2})\\(\d{4}))|((\d{2})\-(\d{2})\-(\d{4}))';
+    let pattern = /((\d{2})\/(\d{2})\/(\d{4}))|((\d{2})\.(\d{2}+1)\.(\d{4}))|((\d{2})\\(\d{2})\\(\d{4}))|((\d{2})\-(\d{2})\-(\d{4}))/;
     let replace = '$1.$2.$3';
-    let resultado = data.replace(replace,pattern);
+    let resultado = data.replace(/((\d{2})\/(\d{2})\/(\d{4}))|((\d{2})\.(\d{2}+1)\.(\d{4}))|((\d{2})\\(\d{2})\\(\d{4}))|((\d{2})\-(\d{2})\-(\d{4}))/,replace);
     console.log(resultado);
     return new Date(resultado);
     */
