@@ -10,7 +10,7 @@ body {
   background-size: 100%;
   color:white;
 } 
-.col-md-6.blocoNome{
+.blocoNome{
     animation-name: troca-de-cores;
     animation-delay: 100ms;
     animation-duration: 10s;

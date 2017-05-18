@@ -37,7 +37,7 @@ modulo.controller('mascada',['$scope',function(model){
 }]);
 modulo.filter('mascada',function(){
     return function(nome){
-        return nome.replace(/Nunes/i,'$ Nunes $');
+        return nome.replace(/(nunes)/i,'$ $1 $');
     }
 });
 

@@ -10,17 +10,21 @@
      <div class="container-fluid">
          <div class="row col-md-12" ng-controller="mascada">
              <div class="row col-md-12">
-                <h1 class="text-center" ><strong>Meu Filtro</strong></h1>
+                <h1 class="text-center" ><strong>Mascada</strong></h1>
             </div>
             <div class="row col-md-12">
-                <div class="row col-md-6 blocoNome" ng-repeat="instrutor in instrutores">
+                <div class="row col-md-6">
+                <div class="blocoNome" ng-repeat="instrutor in instrutores">
                     <h2 class="text-center">{{instrutor.nome | mascada}}</h2>
                     <br/>
                 </div>   
-                 <div class="row col-md-6 blocoNome" ng-repeat="instrutor in instrutores">
+                </div>
+                <div class="row col-md-6">
+                 <div class="blocoNome" ng-repeat="instrutor in instrutores">
                     <h2 class="text-center">{{instrutor.nome | mascada}}</h2>
                     <br/>
-                </div>       
+                </div>
+                </div>         
             </div> 
          </div>   
      </div>   
