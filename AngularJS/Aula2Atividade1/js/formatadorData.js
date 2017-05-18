@@ -1,10 +1,12 @@
 function formatarData(data){
     /*
-    let pattern = '((\d{2})\/(\d{2})\/(\d{4}))|((\d{2})\.(\d{2})\.(\d{4}))|((\d{2})\\(\d{2})\\(\d{4}))|((\d{2})\-(\d{2})\-(\d{4}))';
+    let pattern = '/((\d{2})\/(\d{2})\/(\d{4}))|((\d{2})\.(\d{2}+1)\.(\d{4}))|((\d{2})\\(\d{2})\\(\d{4}))|((\d{2})\-(\d{2})\-(\d{4}))';
     let replace = '$1.$2.$3';
-    data.replace(replace,pattern);
-    return new Date(data);
+    let resultado = data.replace(replace,pattern);
+    console.log(resultado);
+    return new Date(resultado);
     */
+    
     if(data.indexOf('/')>-1){
         var parts = data.split('/');
         return new Date(parts[0],parts[1]-1,parts[2]);
@@ -15,4 +17,5 @@ function formatarData(data){
     }else{
         return null;
     }    
+    
 }
