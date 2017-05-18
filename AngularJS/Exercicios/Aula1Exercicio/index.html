@@ -16,25 +16,28 @@
             </div>
 
             <div class="col-md-4">
-                <label for="nome">Nome do Pokémon</label>
+                <label for="nome">Nome do Pokémon
                 <div class="input-group">
                     <span class="input-group-addon"><img class="icone_nome" src="img/icone_pikachu.png"></span>
                     <input id="nome" type="text" ng-model="pesquisaNome" ng-change="selecao()" class="form-control" placeholder="Ex.: Charmander" autofocus>
                 </div>
+                </label>
             </div>    
             <div class="col-md-4">
-                <label for="tipo">Tipo do Pokémon</label>
+                <label for="tipo">Tipo do Pokémon
                 <div class="input-group">
                     <span class="input-group-addon"><img class="icone_nome" src="img/icone_tipos.png"></span>
                     <input id="tipo" type="text" ng-model="pesquisaTipo" ng-change="selecao()" class="form-control" placeholder="Ex.: Fire">
                 </div>
+                </label>
             </div>
             <div class="col-md-4">    
-                <label for="id">ID do Pokémon</label>
+                <label for="id">ID do Pokémon
                 <div class="input-group">
                     <span class="input-group-addon"><img class="icone_nome" src="img/icone_id.png"></span>
                     <input id="id" type="text" ng-model="pesquisaId" ng-change="selecao()" class="form-control" placeholder="Ex.: 10">
                 </div>
+                </label>
             </div>
             <div class="col-md-12">
                 <h4>Encontrados {{tamanholista}} resultados</h4>
