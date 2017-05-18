@@ -1,0 +1,17 @@
+*{
+	box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 2% 2% 2% 2%;
+} 
+.fontCrimson{
+    font-family: 'Crimson Text', serif;
+}
+.icone_nome{
+   width: 20px;
+}
+.col-md-4.borda{
+    border: solid 2px black;
+    height: 400px;
+}
