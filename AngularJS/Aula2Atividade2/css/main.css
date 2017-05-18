@@ -1,0 +1,53 @@
+*{
+	box-sizing: border-box;
+  font-family: 'Crimson Text', serif;
+}
+body {
+  margin: 0;
+  padding: 2% 2% 2% 2%;
+  background-image: url('../img/illuminati.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color:white;
+} 
+.col-md-6.blocoNome{
+    animation-name: troca-de-cores;
+    animation-delay: 100ms;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+@keyframes troca-de-cores{
+		0%     {color:#FF0000;}
+		3.125% {color:#FF4500;}
+		6.25%   {color:#FFFF00;}
+		9.375%   {color:#32CD32;}
+		12.5%  {color:#008000;}
+		15.625%  {color:#0000CD;}
+		18.75%  {color:#000080;}
+		21.875%  {color:#800080;}
+		25%  {color:#FF0000;}
+		28.125% {color:#FF4500;}
+		31.25%  {color:#FFFF00;}
+		34.375%   {color:#32CD32;}
+		37.5%   {color:#008000;}
+		40.625%  {color:#0000CD;}
+		43.75%  {color:#000080;}
+		46.875%  {color:#800080;}
+		50%  {color:#FF0000;}
+		53.125% {color:#FF4500;}
+		56.25%  {color:#FFFF00;}
+		59.375%   {color:#32CD32;}
+		62.5%   {color:#008000;}
+		65.625%  {color:#0000CD;}
+		68.75%  {color:#000080;}
+		71.875%  {color:#800080;}
+		75%  {color:#FF0000;}
+		78.125% {color:#FF4500;}
+		81.25%  {color:#FFFF00;}
+		84.375%   {color:#32CD32;}
+		87.5%   {color:#008000;}
+		90.625%  {color:#0000CD;}
+		93.75%  {color:#000080;}
+		96.875%  {color:#800080;}
+		100%  {color:#FF0000;}
+}
