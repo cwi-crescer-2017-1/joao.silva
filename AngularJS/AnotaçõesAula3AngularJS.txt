@@ -1,0 +1,36 @@
+﻿https://docs.angularjs.org/guide/forms - form básico
+https://docs.angularjs.org/api/ng/directive/input -- bom link para aprender o form para input do angular
+https://docs.angularjs.org/api/ng/directive/ngModel - tipos do formulário - estudar bastante esse ngModel - nomes são bem auto explicativos
+https://docs.angularjs.org/api/ng/directive/ngClick - ngClick para botão - ver também o ng-submit();
+
+<form novalidade> -> novalidate -> desativa as correções que o html poderia fazer no formulário
+| json -> filtro que converte o objeto para um json
+ng-trim - false e true - tira o espaço depois do valor digitado
+form name='formSla' controller ='sla'{
+    //o $scope guarda todos os dados do form no objeto formSla
+}
+myForm.nomedocampo.$valid = false;
+myForm.nomedocampo.$error = {"required":true}
+myForm.$valid = false;
+myForm.$error.required = true;
+quando a variavel tem $ antes do nome é do angular
+ng-show() - true ou false - exibe ou nao o campo ao qual pertencer
+Nao utilizar form dentro de form!
+você pode imprimir o myForm(-Formulário-) para verificar em console todas as suas propriedades
+console.log($scope.myForm);
+
+ng-pristine -> mostra se o componente não foi visitado e UTILIZADO
+ng-dirty -> mostra se o componente já foi visitado e UTILIZADO
+ng-touched/ng-untouched -> mostram se o componente já foi tocado/clicado/visitado pelo usuário ou não
+<span ng-show="form.nome.$error.requeired">Campo obrigatório</span>
+<span ng-show="!form.nome.$error.requeired">Campo obrigatório</span> -- ! funciona normalmente para inverter o valor
+<span ng-hide="form.nome.$error.requeired">Campo obrigatório</span> -- esconde o elemente
+<span ng-if="form.nome.$error.requeired">Texto</span> -- remove o elemento
+
+ng-repeat track by suaFuncaoParaDiferenciar() - quando há dois objetos iguais que devem ser tratados como diferentes
+
+no form você pode utilizar o ng-submit="..." que irá fazer o mesmo do ng-click no button.
+O button type="submit" fica igual porém a chamada para ele é localizada no form
+
+
+
