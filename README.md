@@ -1,10 +1,10 @@
 # joao.silva
 # Pasta voltada para compartilhamento de projetos criados dentro do Projeto Crescer 2017
 
+### AngularJS -> Pasta voltada ao armazenamento das atividades feitas em aula e dos exercícios feitos em casa do módulo de AngularJS
+### AngularJS/Exercicios -> Pasta dedicada aos exercícios feitos em casa referentes ao módulo de AngularJS
+
 ### JavaScript -> Pasta voltada a armazenamento das atividades do módulo de JavaScript
-### JavaScript / Atividade1Aula1V2 -> Pasta com a resolução da Lista 1 do módulo de JavaScript
-### JavaScript / Atividade2Aula2 -> Pasta com a resolução da Lista 2 do módulo de JavaScript
-### JavaScript / Lista02Atualizada -> Pasta com a nova versão das resoluções da lista 2 do módulo de JavaScript
 
 ### HTML e CSS -> Pasta voltada a armazenamento dos exericícios de HTML e CSS
 
