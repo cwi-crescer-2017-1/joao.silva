@@ -1,0 +1,66 @@
+*{
+	box-sizing: border-box;
+    font-family: 'Crimson Text', serif;
+}
+body {
+  margin: 0;
+  padding: 2% 2% 2% 2%;
+  background-image: url('../img/background.jpg');
+  color:white;
+  font-weight: 900;
+} 
+.container-fluid{
+    height: 100vh;
+    animation-name: troca-de-cores;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+.col-md-3.borda{
+    border: solid 2px black;
+    height: 300px;
+}
+.row.col-md-12.font-table{
+    font-size: 18px;
+}
+.table.table-inverse{
+    border: 2px solid black;
+}
+.table.table-inverse th{
+    background-color:rgba(50,99,99,1);
+}
+.table.table-inverse .conteudoTabela tr:nth-child(odd){
+    background-color:rgba(60,179,113,0.9);
+}
+.table.table-inverse .conteudoTabela tr:nth-child(even){
+    background-color:rgba(36,119,67,0.9);
+}
+.table.table-inverse .conteudoTabela tr:hover{
+    background-color: rgba(50,205,50,1);
+    transform:scale(1.05);
+}
+@keyframes troca-de-cores{
+		0%   {background-color: rgba(47,79,79,0.5);}
+		1%   {background-color: transparent;}
+        2%   {background-color: rgba(47,79,79,0.5);}
+        3%   {background-color: transparent;}
+		4%   {background-color: rgba(47,79,79,0.5);}
+        5%   {background-color: transparent;}
+        5.5% {background-color: rgba(47,79,79,0.5);}
+        6%   {background-color: transparent;}
+        6.5% {background-color: rgba(47,79,79,0.5);}
+        7%   {background-color: transparent;}
+        7.5% {background-color: rgba(47,79,79,0.5);}
+        8%   {background-color: rgba(47,79,79,0.5);}
+        8.5% {background-color: transparent;}
+        9%   {background-color: rgba(47,79,79,0.5);}
+        9.5% {background-color: transparent;}
+        10%  {background-color: rgba(47,79,79,0.5);}
+        10.5%{background-color: transparent;}
+        11%  {background-color: rgba(47,79,79,0.5);}
+		12%	 {background-color: transparent;}
+		13%  {background-color: rgba(47,79,79,0.5);}
+		15%  {background-color: transparent;}
+		20%  {background-color: rgba(47,79,79,0.5);}
+		80%  {background-color: rgba(47,79,79,0.5);}
+        100% {background-color: transparent;}
+}
