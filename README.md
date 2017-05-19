@@ -2,7 +2,7 @@
 # Pasta voltada para compartilhamento de projetos criados dentro do Projeto Crescer 2017
 
 ### AngularJS -> Pasta voltada ao armazenamento das atividades feitas em aula e dos exercícios feitos em casa do módulo de AngularJS
-### AngularJS/Exercicios -> Pasta dedicada aos exercícios feitos em casa referentes ao módulo de AngularJS
+### AngularJS/Exercicios -> Pasta dedicada aos temas referentes ao módulo de AngularJS
 
 ### JavaScript -> Pasta voltada a armazenamento das atividades do módulo de JavaScript
 
