@@ -11,48 +11,77 @@
     <body>
         <div class="container-fluid" ng-controller="AtividadeForm">
             <form novalidate name="cadastro" ng-submit="adicionarInstrutor()">
-                <label>
-                    Nome:
-                    <input type="text" name="nome" ng-model="instrutores.nome" ng-minlength="3" ng-maxlength="20" required/>
-                </label>    
-                    <span ng-show="cadastro.nome.$error.maxlength">
-                    Nome longo demais, máximo de 50 letras!</span>
-                    <span ng-show="cadastro.nome.$error.minlength">
-                    Nome curto demais, minimo de 3 letras!</span>
-                    <span ng-show="cadastro.nome.$error.required">
-                    *</span>     
-                <label>
-                    Sobrenome:
-                    <input type="text" name="sobrenome" ng-model="instrutores.sobrenome" ng-maxlength="20"/>
-                </label>    
-                    <span ng-show="cadastro.sobrenome.$error.maxlength">
-                    Nome curto demais, minimo de 3 letras!</span>
-                <label>
-                    Idade:
-                    <input type="text" name="idade" ng-model="instrutores.idade" required/>
-                </label>    
-                    <span ng-show="cadastro.idade.$error.required">
-                    *</span>
-                <label>
-                    Email:  
-                    <input type="email" name="email" ng-model="instrutores.email" required/>
-                </label>     
-                    <span ng-show="cadastro.email.$error.required">
-                    *</span>
-                <label>
-                    Já deu aula?
-                    <input type="checkbox" name="jaDeuAula" ng-model="instrutores.jaDeuAula"/> 
-                </label>  
-                <label>
-                    Qual aula ministra?
-                    <select name="aula" ng-model="instrutores.aula">
-                       <option disabled hidden selected value="">Selecione a aula</option>
-                       <option value="{{aula}}" ng-repeat="aula in aulas">{{aula}}</option>
-                     </select>
-                </label> 
-                <input type="reset" value="Resetar"/> 
-                <input type="submit" value="Adicionar"/>
-            </form>   
+                <div class="row col-md-12">
+                    <label>
+                        Nome*:
+                        <input type="text" name="nome" ng-model="instrutor.nome" ng-minlength="3" ng-maxlength="20" required/>
+                    </label> 
+                        <span ng-show="cadastro.nome.$error.maxlength">
+                        Nome longo demais, máximo de 50 letras!</span>
+                        <span ng-show="cadastro.nome.$error.minlength">
+                        Nome curto demais, minimo de 3 letras!</span>
+                        <span ng-show="cadastro.nome.$touched && cadastro.nome.$error.required">
+                        Item Obrigatório! </span>     
+                    <label>
+                        Sobrenome:
+                        <input type="text" name="sobrenome" ng-model="instrutor.sobrenome" ng-maxlength="20"/>
+                    </label>    
+                        <span ng-show="cadastro.sobrenome.$error.maxlength">
+                        Nome curto demais, minimo de 3 letras!</span>
+                    <label>
+                        Idade*:
+                        <input type="text" name="idade" ng-model="instrutor.idade" required/>
+                    </label>    
+                        <span ng-show="cadastro.idade.$touched && cadastro.idade.$error.required">
+                        Item Obrigatório! </span>
+                    <label>
+                        Email*:  
+                        <input type="email" name="email" ng-model="instrutor.email" required/>
+                    </label>     
+                        <span ng-show="cadastro.email.$touched && cadastro.email.$error.required">
+                        Item Obrigatório! </span>
+                    <label>
+                        Já deu aula?
+                        <input type="checkbox" name="jaDeuAula" ng-model="instrutor.jaDeuAula"/> 
+                    </label>  
+                    <label>
+                        Qual aula ministra?
+                        <select name="aula" ng-model="instrutor.aula">
+                        <option disabled hidden selected value="">Selecione a aula</option>
+                        <option value="{{aula}}" ng-repeat="aula in aulas">{{aula}}</option>
+                        </select>
+                    </label> 
+            </div>        
+            <div class="row col-md-12">
+                    <input type="reset" value="Resetar"/> 
+                    <span ng-show="{{erro}}">Preencha corretamente para liberar o botão de enviar</span>
+                    <input type="submit" value="Adicionar" ng-hide="{{erro}}"/>
+            </div>
+        </form> 
+            <div class="row col-md-12">
+            <table class="table table-inverse">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
+                            <th>Idade</th>
+                            <th>Email</th>
+                            <th>Já deu aula</th>
+                            <th>Aula</th>
+                        </tr>
+                    </thead>
+                    <tbody class="conteudoTabela">
+                        <tr ng-repeat="instrutor in instrutores | orderBy:'idade'">
+                            <td>{{instrutor.nome}}</td>
+                            <td>{{instrutor.sobrenome}}</td>
+                            <td>{{instrutor.idade}}</td>
+                            <td>{{instrutor.email}}</td>
+                            <td>{{instrutor.jaDeuAula}}</td>
+                            <td>{{instrutor.aula}}</td>
+                        </tr>
+                    </tbody>
+            </table>   
+            </div>
         </div>   
      <body>         
 </html>
