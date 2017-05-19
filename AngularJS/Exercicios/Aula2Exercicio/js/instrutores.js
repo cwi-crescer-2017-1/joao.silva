@@ -19,7 +19,7 @@ modulo.controller('instrutores',['$scope', function (model){
 /*Exercicio 02*/
 modulo.filter('mascada',function(){
     return function(nome){
-        return nome.replace(/(nunes)/i,'$ $1 $'); //retorna os caractesres $ $ ao lado do nome nunes caso ele possua esse nome, /i = ignore case
+        return nome.replace(/(nunes)/ig,'$ $1 $'); //retorna os caractesres $ $ ao lado do nome nunes caso ele possua esse nome, /i = ignore case
     }
 });
 /*Exercicio 03*/
