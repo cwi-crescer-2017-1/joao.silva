@@ -35,8 +35,14 @@ body {
     background-color:rgba(36,119,67,0.9);
 }
 .table.table-inverse .conteudoTabela tr:hover{
-    background-color: rgba(50,205,50,1);
-    transform:scale(1.05);
+	transform:scale(1.05,1.1);
+	animation-name: zoom;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+}
+@keyframes zoom{
+	0%{transform:scale(1,1);}
+	100%{transform:scale(1.05,1.1);}
 }
 @keyframes troca-de-cores{
 		0%   {background-color: rgba(47,79,79,0.5);}
