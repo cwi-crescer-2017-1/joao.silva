@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="Aula3Atividade1">
+    <head>
+        <title>Aula 3 Atividade 1</title>
+        <script src="https://code.angularjs.org/1.6.4/angular.js"></script>
+        <script src="js/main.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>    
+    <body>
+        <div class="container-fluid" ng-controller="AtividadeForm">
+            <form novalidate name="cadastro" ng-submit="adicionarInstrutor()">
+                <label>
+                    Nome:
+                    <input type="text" name="nome" ng-model="instrutores.nome" ng-minlength="3" ng-maxlength="20" required/>
+                </label>    
+                    <span ng-show="cadastro.nome.$error.maxlength">
+                    Nome longo demais, máximo de 50 letras!</span>
+                    <span ng-show="cadastro.nome.$error.minlength">
+                    Nome curto demais, minimo de 3 letras!</span>
+                    <span ng-show="cadastro.nome.$error.required">
+                    *</span>     
+                <label>
+                    Sobrenome:
+                    <input type="text" name="sobrenome" ng-model="instrutores.sobrenome" ng-maxlength="20"/>
+                </label>    
+                    <span ng-show="cadastro.sobrenome.$error.maxlength">
+                    Nome curto demais, minimo de 3 letras!</span>
+                <label>
+                    Idade:
+                    <input type="text" name="idade" ng-model="instrutores.idade" required/>
+                </label>    
+                    <span ng-show="cadastro.idade.$error.required">
+                    *</span>
+                <label>
+                    Email:  
+                    <input type="email" name="email" ng-model="instrutores.email" required/>
+                </label>     
+                    <span ng-show="cadastro.email.$error.required">
+                    *</span>
+                <label>
+                    Já deu aula?
+                    <input type="checkbox" name="jaDeuAula" ng-model="instrutores.jaDeuAula"/> 
+                </label>  
+                <label>
+                    Qual aula ministra?
+                    <select name="aula" ng-model="instrutores.aula">
+                       <option disabled hidden selected value="">Selecione a aula</option>
+                       <option value="{{aula}}" ng-repeat="aula in aulas">{{aula}}</option>
+                     </select>
+                </label> 
+                <input type="reset" value="Resetar"/> 
+                <input type="submit" value="Adicionar"/>
+            </form>   
+        </div>   
+     <body>         
+</html>
