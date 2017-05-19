@@ -16,16 +16,18 @@ modulo.controller('instrutores',['$scope', function (model){
             return arrayAulas; 
     }
 }])
+/*Exercicio 02*/
 modulo.filter('mascada',function(){
     return function(nome){
-        return nome.replace(/(nunes)/i,'$ $1 $');
+        return nome.replace(/(nunes)/i,'$ $1 $'); //retorna os caractesres $ $ ao lado do nome nunes caso ele possua esse nome, /i = ignore case
     }
 });
+/*Exercicio 03*/
 modulo.filter('numeroAula', function(){
     return function(aula){
-        let numero = aula.numero.toString();
-        while(numero.length<3) numero= `0${numero}`;
-        return `${numero} - ${aula.nome.toUpperCase()}`;
+        let numero = aula.numero.toString();//grava o número em uma String
+        while(numero.length<3) numero= `0${numero}`;//Para concatenar com zeros até o número possuir 3 digitos
+        return `${numero} - ${aula.nome.toUpperCase()}`; //Envia a concatenação do numero e da aula com nome em letras maiusculas
     }
 })
    
