@@ -7,5 +7,4 @@ modulo.controller('Crescer',['$scope', function (model){
                          {id:3,nome:'Severus',sobrenome:'Snape',idade:'38',email:'severus@discipline.uk',dandoAula:true,aula:[2,3],urlFoto:'../img/perfil_padrao.jpeg'}];
     console.log(model.aulas);
     console.log(model.instrutores);            
-
     }])

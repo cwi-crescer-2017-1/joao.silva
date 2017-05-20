@@ -6,4 +6,10 @@ body {
   margin: 0;
   padding: 2% 2% 2% 2%;
   font-weight: 900;
-} 
+}
+.row.col-md-12.bordar{
+    border:2px solid black;
+}
+.row.col-md-12.bordar .obg{
+    color:red;
+}
