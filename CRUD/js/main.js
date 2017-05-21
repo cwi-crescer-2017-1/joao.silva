@@ -49,6 +49,22 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
             }
         } 
     };
+    model.verificarExistenciaNomeInstrutor = function(nome){
+        for(instrutor of model.instrutores){
+            if(instrutor.nome.toLowerCase() === nome.toLowerCase()){
+                return true;
+            }
+        }
+        return false;
+    }
+    model.verificarExistenciaNomeAula = function(nome){
+        for(aula of model.aulas){
+            if(aula.nome.toLowerCase() === nome.toLowerCase()){
+                return true;
+            }
+        }
+        return false;
+    }
     //Módulo Alterar Nome
     model.encontrarIndexItemComAlteracaoAtivada = function (idAula){
       for(let i=0; i<model.itensComAlteracaoAtiva.length;i++){
@@ -69,8 +85,12 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
         model.itensComAlteracaoAtiva.splice(index,1);
     }
     model.salvarAlteracao = function(idAula,novoNome){
+        if(model.verificarExistenciaNomeAula(novoNome)){
+            alert("Nome já adicionado! Tente outro.");
+            return false;
+        }
         model.aulas[idAula].nome = novoNome;
         model.cancelarAlteracao(idAula);
-        alert("Alteração realizada com sucesso");
+        alert("Alteração realizada com sucesso!");
     }
 }]);
