@@ -10,7 +10,7 @@
     <body>
         <div class="container" ng-controller="Crescer">
             <div class="row">
-                <div class=" col-md-12">
+                <div class="col-md-12">
                 <h1>Lista de aulas</h1>
                 <table class="table">
                     <thead>
@@ -22,7 +22,10 @@
                     <tbody>
                         <tr ng-repeat="aula in aulas |  orderBy:'nome'">
                             <td>{{aula.id}}</td>
-                            <td>{{aula.nome}}</td>
+                            <td><p ng-hide="alterando(aula.id)">{{aula.nome}}</p><input ng-show="alterando(aula.id)" ng-model="novoNome" type="text" placeholder="Digite o novo nome"></td>
+                            <td ng-hide="alterando(aula.id)"><button type="button" ng-click="ativarAlteracao(aula.id)">Alterar</button></td>
+                            <td ng-show="alterando(aula.id)"><button type="button" ng-click="cancelarAlteracao(aula.id)">Cancelar alteração</button></td>
+                            <td ng-show="alterando(aula.id)" ><button type="button" ng-click="salvarAlteracao(aula.id,novoNome)">Salvar alterações</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -43,7 +46,7 @@
                    <input class="form-control" type="submit" value="Adicionar"/>
                 </div>
             </div> 
-            </form>
+            </form>   
             <div class="row">
                 <div class=" col-md-12">
                 <h1>Lista de instrutores</h1>
@@ -68,7 +71,7 @@
                          <td>{{instrutor.sobrenome}}</td>
                          <td>{{instrutor.idade}}</td>
                          <td>{{instrutor.email}}</td>
-                         <td>{{temAula(instrutor.dandoAula)}}</td>
+                         <td>{{dandoAulaToString(instrutor.dandoAula)}}</td>
                          <td><img src="{{instrutor.urlFoto}}" height="40px" width="40px"></td> 
                         </tr>  
                     </tbody>
@@ -104,19 +107,11 @@
                         <input class="form-control" type="text" name="urlFotoInstrutor" ng-model="instrutor.urlFoto">
                     </label>
                 </div>
-                <div class="col-md-12">   <!--Colunas com as aulas disponíveis para seleção e as aulas selecionadas-->
-                    Clique na aula para adicionar ou remover <br/>
-                    <!--<select ng-model="instrutor.aulas" title="Escolha as aulas do professor" multiple>
+                <div class="col-md-12">
+                    Clique na aula para selecionar<br/>
+                    <select ng-model="instrutor.aulas" title="Escolha as aulas do professor" multiple>
                             <option ng-repeat="aula in aulas" value="{{aula.id}}">{{aula.nome}}</option>
-                    </select> -->
-                    <div class="col-md-3 caixaSelecao">  
-                        Aulas disponíveis:<br/>    
-                        <button class="form-control" type="button" ng-repeat="aula in aulas" ng-click="selecaoAulas(aula.id)" ng-hide="aulaJaSelecionada(aula.id) || aulaValida(aula.id)">{{aula.nome}}</button>          
-                    </div>
-                    <div class="col-md-3 caixaSelecao">
-                        Aulas selecionadas:<br/>
-                        <button class="form-control" type="button" ng-repeat="aulaSelecionada in aulasSelecionadas" ng-click="remocaoAulasSelecionadas(aulaSelecionada.id)" ng-hide="aulaValida(aulaSelecionada.id)">{{aulaSelecionada.nome}}</button>
-                    </div>
+                    </select>
                 </div>  
                 <div class="col-md-12 quebra">
                     <input class="form-control" type="reset" value="Limpar"/> 
