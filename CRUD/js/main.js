@@ -13,6 +13,7 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
                          {id:3,nome:'Severus',sobrenome:'Snape',idade:38,email:'severus@discipline.uk',dandoAula:true,aula:[2,3],urlFoto:'img/perfil_padrao.jpg'}];
     model.itensComAlteracaoAtiva=[];
     model.aulasAntigas=[];
+    model.exnome='';
     model.alteracaoInstrutorIniciada = false;
     model.adicionarAula =function(nomeaula){
         if(model.validaNomeAula(nomeaula)){
@@ -84,7 +85,7 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
         }
         for(aula of model.aulas){
             if(aula.nome.toLowerCase() === nome.toLowerCase()){
-                alert("Nome já adicionado! Tente outro.");
+                alert("Aula já cadastrada! Tente outra.");
                 return false;
             }
         }
@@ -108,7 +109,7 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
         }
         for(instrutore of model.instrutores){
             if(instrutore.nome.toLowerCase() === nome.toLowerCase()){
-                alert("Nome já adicionado! Tente outro.");
+                alert("Instrutor já cadastrado! Tente outro.");
                 return false;
             }
         }
@@ -142,7 +143,14 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
         }
         return true;
     }
-    //Módulo Alterar Nome
+    //Módulo Alterar Nome Aula
+    model.pegarIndexAulaPorID = function(idAula){
+        for(let i=0;i<model.aulas.length;i++){
+            if(model.aulas[i].id===idAula){
+                return i; 
+            }
+        }
+    }
     model.encontrarIndexItemComAlteracaoAulaAtivada = function (idAula){
       for(let i=0; i<model.itensComAlteracaoAtiva.length;i++){
           if(model.itensComAlteracaoAtiva[i] === idAula){
@@ -182,19 +190,18 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
             if(instrutor.id===idInstrutor){
                 model.alteracaoInstrutorIniciada = true;
                 model.alteracaoInstrutor = angular.copy(instrutor);
+                model.exnome=instrutor.nome;
+                instrutor.nome="tp"; //Nome temporário para alteração
+                console.log(model.instrutores);
                 return;
             }
         }
         alert('ID inválido ou não encontrado! Tente outro');
     }
-    model.pegarNomeInstrutorPorId = function(idInstrutor){ //Não utilizada
-        let index = model.pegarIndexInstrutorPorID(idInstrutor);
-        if(typeof model.instrutores[index]!=='undefined'){
-            return model.instrutores[index].nome;
-        }
-    }
     model.cancelarAlteracaoInstrutor = function(idInstrutor){
+        let index = model.pegarIndexInstrutorPorID(idInstrutor);
         model.alteracaoInstrutorIniciada = false;
+        model.instrutores[index].nome = model.exnome;
         model.alteracaoInstrutor = {};
     }
     model.salvarAlteracaoInstrutor = function(alteracaoInstrutor){
@@ -214,5 +221,26 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
             console.log(model.instrutores[index]);
             alert('Alteração realizada com sucesso!');
         }
+    }
+    model.deletarAula = function(idAula){
+        let index = model.pegarIndexAulaPorID(idAula);
+        let nomeAula;
+        if(model.aulaNaoUtilizada(idAula)){
+            nomeAula = model.aulas[index].nome;
+            model.aulas.splice(index,1);
+            alert(`Aula ${nomeAula} deletada com sucesso`);
+        }
+    }
+    model.aulaNaoUtilizada = function(idAula){
+        let index = model.pegarIndexAulaPorID(idAula);
+        for(let i=0;i<model.instrutores.length;i++){ //Percorre todos os intrutores
+            for(let x=0;x<model.instrutores[i].aula.length;x++){//Percorre todas as aulas de cada instrutor
+                if(model.aulas[index].id===model.instrutores[i].aula[x]){
+                    alert('Aula atrelada a um instrutor, impossível deletar');
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }]);

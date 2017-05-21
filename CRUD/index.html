@@ -26,6 +26,7 @@
                             <td ng-hide="alterandoAula(aula.id)"><button type="button" ng-click="ativarAlteracaoAula(aula.id)">Alterar</button></td>
                             <td ng-show="alterandoAula(aula.id)"><button type="button" ng-click="cancelarAlteracaoAula(aula.id)">Cancelar alteração</button></td>
                             <td ng-show="alterandoAula(aula.id)" ><button type="button" ng-click="salvarAlteracaoAula(aula.id,novoNome)">Salvar alterações</button></td>
+                            <td ng-show="alterandoAula(aula.id)" ><button type="button" ng-click="deletarAula(aula.id)">Deletar aula</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -47,7 +48,7 @@
                    <input class="form-control" type="submit" value="Adicionar"/>
                 </div>
             </div> 
-            </form>   
+            </form>    
             <div class="row">
                 <div class=" col-md-12">
                 <h1>Lista de instrutores</h1>
@@ -79,7 +80,7 @@
                 </table>
                 </div>
             </div>    
-            <form novalidate name="cadastroInstrutor" ng-submit="adicionarInstrutor(instrutor)">
+            <form novalidate name="cadastroInstrutor" ng-submit="adicionarInstrutor(instrutor)">  
             <h2>Adicionar novo instrutor</h2>
             <div class="row bordar form-group">
                 <div class="col-md-12">  
@@ -172,7 +173,15 @@
                         </div>        
                     </form>  
                 </div>
-            </div>           
+            </div>
+            <h2>Deletar instrutor</h2>
+            <div class="row bordar form-group">
+                <div class="col-md-12"> 
+                    Digite o ID do instrutor a ser deletado:
+                    <input class="form-control" type="number" name="idInstrutorDeletado" ng-model="idInstrutorDeletado" required>
+                    <button type="button" ng-click="deletarInstrutor(idInstrutorDeletado)">Deletar</button>  
+                </div>
+            </div>            
         </div>        
     </body>
 </html>    
