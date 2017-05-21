@@ -10,7 +10,7 @@ body {
 .row.bordar{
     border:2px solid black;
 }
-.row.col-md-12.bordar .obg{
+.obg{
     color:red;
 }
 .col-md-3.caixaSelecao{

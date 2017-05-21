@@ -22,20 +22,21 @@
                     <tbody>
                         <tr ng-repeat="aula in aulas |  orderBy:'nome'">
                             <td>{{aula.id}}</td>
-                            <td><p ng-hide="alterando(aula.id)">{{aula.nome}}</p><input ng-show="alterando(aula.id)" ng-model="novoNome" type="text" placeholder="Digite o novo nome"></td>
-                            <td ng-hide="alterando(aula.id)"><button type="button" ng-click="ativarAlteracao(aula.id)">Alterar</button></td>
-                            <td ng-show="alterando(aula.id)"><button type="button" ng-click="cancelarAlteracao(aula.id)">Cancelar alteração</button></td>
-                            <td ng-show="alterando(aula.id)" ><button type="button" ng-click="salvarAlteracao(aula.id,novoNome)">Salvar alterações</button></td>
+                            <td><p ng-hide="alterandoAula(aula.id)">{{aula.nome}}</p><input ng-show="alterandoAula(aula.id)" ng-model="novoNome" type="text" placeholder="Digite o novo nome"></td>
+                            <td ng-hide="alterandoAula(aula.id)"><button type="button" ng-click="ativarAlteracaoAula(aula.id)">Alterar</button></td>
+                            <td ng-show="alterandoAula(aula.id)"><button type="button" ng-click="cancelarAlteracaoAula(aula.id)">Cancelar alteração</button></td>
+                            <td ng-show="alterandoAula(aula.id)" ><button type="button" ng-click="salvarAlteracaoAula(aula.id,novoNome)">Salvar alterações</button></td>
                         </tr>
                     </tbody>
                 </table>
                 </div>
             </div> 
             <form novalidate name="cadastroAula" ng-submit="adicionarAula(nomeaula)">    
+            <h2>Adicionar nova aula</h2>                
             <div class="row bordar form-group">  
                 <div class="col-md-3">
                 <label>
-                    Nome da nova aula:<alert class="obg">*</alert>
+                    Nome da nova aula: (De 3 a 20 letras)<alert class="obg">*</alert>
                     <input class="form-control" type="text" name="nomeAula" ng-model="nomeaula" ng-minlength="3" ng-maxlength="20" required>
                 </label>    
                 </div>
@@ -66,19 +67,20 @@
                     <tbody>
                         <tr ng-repeat="instrutor in instrutores | orderBy: 'nome'">
                          <td>{{instrutor.id}}</td>
-                         <td>{{instrutor.nome}}</td>
+                         <td>{{instrutor.nome}}<input ng-show="alterandoAula(aula.id)" ng-model="novoNome" type="text" placeholder="Digite o novo nome"></td>
                          <td>{{stringAulas(instrutor.aula)}}</td>
                          <td>{{instrutor.sobrenome}}</td>
                          <td>{{instrutor.idade}}</td>
                          <td>{{instrutor.email}}</td>
                          <td>{{dandoAulaToString(instrutor.dandoAula)}}</td>
-                         <td><img src="{{instrutor.urlFoto}}" height="40px" width="40px"></td> 
+                         <td><img src="{{instrutor.urlFoto}}" height="40px" width="40px"></td>
                         </tr>  
                     </tbody>
                 </table>
                 </div>
             </div>    
             <form novalidate name="cadastroInstrutor" ng-submit="adicionarInstrutor(instrutor)">
+            <h2>Adicionar novo instrutor</h2>
             <div class="row bordar form-group">
                 <div class="col-md-12">  
                     <label>
@@ -95,30 +97,82 @@
                     </label>
                     <label>
                         Email:<alert class="obg">*</alert>
-                        <input class="form-control" type="email" name="emailInstrutor" ng-model="instrutor.email" ng-maxlength="2">
+                        <input class="form-control" type="email" name="emailInstrutor" ng-model="instrutor.email">
                     </label>
                     <label>
                         Está dando aula?
-                        <input  type="radio" name="dandoAula" ng-model="instrutor.dandoAula" value="s">Sim
-                        <input  type="radio" name="dandoAula" ng-model="instrutor.dandoAula" value="n">Não
+                        <input  type="radio" name="dandoAula" ng-model="instrutor.dandoAula" ng-value="true">Sim
+                        <input  type="radio" name="dandoAula" ng-model="instrutor.dandoAula" ng-value="false">Não
                     </label>
                     <label>
                         Url da foto de perfil:
                         <input class="form-control" type="text" name="urlFotoInstrutor" ng-model="instrutor.urlFoto">
                     </label>
                 </div>
-                <div class="col-md-12">
-                    Clique na aula para selecionar<br/>
+                <div ng-show="instrutor.dandoAula" class="col-md-12">
+                    Clique nas aulas com o Ctrl pressionado para selecionar<br/>
                     <select ng-model="instrutor.aulas" title="Escolha as aulas do professor" multiple>
                             <option ng-repeat="aula in aulas" value="{{aula.id}}">{{aula.nome}}</option>
                     </select>
                 </div>  
-                <div class="col-md-12 quebra">
+                <div class="col-md-12">
                     <input class="form-control" type="reset" value="Limpar"/> 
                     <input class="form-control" type="submit" value="Adicionar"/>
                 </div>        
             </div>        
-            </form>           
+            </form>  
+            <h2>Alterar instrutor</h2>
+            <div class="row bordar form-group">
+                <div class="col-md-12" ng-hide="alteracaoInstrutorIniciada"> <!--Seleção instrutor para alteração-->
+                    Digite o ID do instrutor a ser alterado:
+                    <input class="form-control" type="number" name="idAlteracaoInstrutor" ng-model="alteracaoInstrutor.id" required>
+                    <button type="button" ng-click="iniciarAlteracaoInstrutor(alteracaoInstrutor.id)">Alterar</button>  
+                </div>   
+                <div class="col-md-12" ng-show="alteracaoInstrutorIniciada"> <!--Alteração iniciada-->
+                    Modifique os campos desejados, após isto clique em salvar alterações
+                    <form novalidate name="modificacaoInstrutor" ng-submit="modificarInstrutor(alteracaoInstrutor)">
+                        <div class="row form-group">
+                            <div class="col-md-12">  
+                                <label>
+                                    Nome:<alert class="obg">*</alert>
+                                    <input class="form-control" type="text" name="nomeInstrutor" ng-model="alteracaoInstrutor.nome" ng-minlength="3" ng-maxlength="20" required>
+                                </label>
+                                <label>
+                                    Sobrenome:
+                                    <input class="form-control" type="text" name="sobrenomeInstrutor" ng-model="alteracaoInstrutor.sobrenome" ng-maxlength="30">
+                                </label>
+                                <label>
+                                    Idade:<alert class="obg">*</alert>
+                                    <input class="form-control" type="number" name="idadeInstrutor" ng-model="alteracaoInstrutor.idade"  max="90">
+                                </label>
+                                <label>
+                                    Email:<alert class="obg">*</alert>
+                                    <input class="form-control" type="email" name="emailInstrutor" ng-model="alteracaoInstrutor.email" ng-maxlength="2">
+                                </label>
+                                <label>
+                                    Está dando aula?
+                                    <input  type="radio" name="dandoAula" ng-model="alteracaoInstrutor.dandoAula" ng-value="true">Sim
+                                    <input  type="radio" name="dandoAula" ng-model="alteracaoInstrutor.dandoAula" ng-value="false">Não
+                                </label>
+                                <label>
+                                    Url da foto de perfil:
+                                    <input class="form-control" type="text" name="urlFotoInstrutor" ng-model="alteracaoInstrutor.urlFoto">
+                                </label>
+                            </div>
+                            <div ng-show="alteracaoInstrutor.dandoAula" class="col-md-12">
+                                Clique nas aulas com o Ctrl pressionado para selecionar<br/>
+                                <select ng-model="alteracaoInstrutor.aulas" title="Escolha as aulas do professor" multiple>
+                                        <option ng-repeat="aula in aulas" value="{{aula.id}}">{{aula.nome}}</option>
+                                </select>
+                            </div>  
+                            <div class="col-md-12">
+                                <button type="button" ng-click="salvarAlteracaoInstrutor(alteracaoInstrutor)">Salvar alterações</button>
+                                <button type="button" ng-click="cancelarAlteracaoInstrutor(alteracaoInstrutor)">Cancelar alterações</button>
+                            </div>        
+                        </div>        
+                    </form>  
+                </div>
+            </div>           
         </div>        
     </body>
 </html>    
