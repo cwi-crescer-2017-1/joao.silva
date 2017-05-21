@@ -4,72 +4,126 @@
         <title>CRUD</title>
         <script src="https://code.angularjs.org/1.6.4/angular.js"></script>
         <script src="js/main.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">        <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
     <body>
-        <div class="container-fluid" ng-controller="Crescer">
-            <form novalidate name="cadastroAula" ng-submit="adicionarAula(aula)">    
-            <div class="row bordar">  
+        <div class="container" ng-controller="Crescer">
+            <div class="row">
+                <div class=" col-md-12">
+                <h1>Lista de aulas</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="aula in aulas |  orderBy:'nome'">
+                            <td>{{aula.id}}</td>
+                            <td>{{aula.nome}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div> 
+            <form novalidate name="cadastroAula" ng-submit="adicionarAula(nomeaula)">    
+            <div class="row bordar form-group">  
                 <div class="col-md-3">
                 <label>
                     Nome da nova aula:<alert class="obg">*</alert>
-                    <input type="text" name="nomeAula" ng-model="aula.nome" ng-minlength="3" ng-maxlength="20" required>
+                    <input class="form-control" type="text" name="nomeAula" ng-model="nomeaula" ng-minlength="3" ng-maxlength="20" required>
                 </label>    
                 </div>
                 <div class="col-md-3 floor">
-                    <input type="reset" value="Limpar"/> 
-                    <input type="submit" value="Adicionar"/>
-                </div>   
+                    <input class="form-control" type="reset" value="Limpar"/> 
+                </div>
+                <div class="col-md-3 floor">
+                   <input class="form-control" type="submit" value="Adicionar"/>
+                </div>
             </div> 
             </form>
+            <div class="row">
+                <div class=" col-md-12">
+                <h1>Lista de instrutores</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Aulas</th>
+                            <th>Sobrenome</th>
+                            <th>Idade</th>
+                            <th>Email</th>
+                            <th>Dando Aula</th>
+                            <th>Foto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="instrutor in instrutores | orderBy: 'nome'">
+                         <td>{{instrutor.id}}</td>
+                         <td>{{instrutor.nome}}</td>
+                         <td>{{stringAulas(instrutor.aula)}}</td>
+                         <td>{{instrutor.sobrenome}}</td>
+                         <td>{{instrutor.idade}}</td>
+                         <td>{{instrutor.email}}</td>
+                         <td>{{temAula(instrutor.dandoAula)}}</td>
+                         <td><img src="{{instrutor.urlFoto}}" height="40px" width="40px"></td> 
+                        </tr>  
+                    </tbody>
+                </table>
+                </div>
+            </div>    
             <form novalidate name="cadastroInstrutor" ng-submit="adicionarInstrutor(instrutor)">
-            <div class="row bordar">
+            <div class="row bordar form-group">
                 <div class="col-md-12">  
                     <label>
                         Nome:<alert class="obg">*</alert>
-                        <input type="text" name="nomeInstrutor" ng-model="instrutor.nome" ng-minlength="3" ng-maxlength="20" required>
+                        <input class="form-control" type="text" name="nomeInstrutor" ng-model="instrutor.nome" ng-minlength="3" ng-maxlength="20" required>
                     </label>
                     <label>
                         Sobrenome:
-                        <input type="text" name="sobrenomeInstrutor" ng-model="instrutor.sobrenome" ng-maxlength="30">
+                        <input class="form-control" type="text" name="sobrenomeInstrutor" ng-model="instrutor.sobrenome" ng-maxlength="30">
                     </label>
                     <label>
                         Idade:<alert class="obg">*</alert>
-                        <input type="number" name="idadeInstrutor" ng-model="instrutor.idade" ng-maxlength="2">
+                        <input class="form-control" type="number" name="idadeInstrutor" ng-model="instrutor.idade"  max="90">
                     </label>
                     <label>
                         Email:<alert class="obg">*</alert>
-                        <input type="email" name="emailInstrutor" ng-model="instrutor.email" ng-maxlength="2">
+                        <input class="form-control" type="email" name="emailInstrutor" ng-model="instrutor.email" ng-maxlength="2">
                     </label>
                     <label>
                         Está dando aula?
-                        <input type="radio" name="dandoAula" ng-model="instrutor.dandoAula" value="s">Sim
-                        <input type="radio" name="dandoAula" ng-model="instrutor.dandoAula" value="n">Não
+                        <input  type="radio" name="dandoAula" ng-model="instrutor.dandoAula" value="s">Sim
+                        <input  type="radio" name="dandoAula" ng-model="instrutor.dandoAula" value="n">Não
                     </label>
                     <label>
                         Url da foto de perfil:
-                        <input type="text" name="urlFotoInstrutor" ng-model="instrutor.urlFoto">
+                        <input class="form-control" type="text" name="urlFotoInstrutor" ng-model="instrutor.urlFoto">
                     </label>
-                </div>   
-                <label class="col-md-12">
-                    Clique na aula para adicionar ou remover<br/>
-                    <div class="col-md-3 caisaSelecao">
-                        Aulas disponíveis<br/>   
-                        <button type="button" ng-repeat="aula in aulas" ng-click="selecaoAulas(aula.id)" ng-hide="aulaJaSelecionada(aula.id) || aulaValida(aula.id)">{{aula.nome}}</button>          
+                </div>
+                <div class="col-md-12">   <!--Colunas com as aulas disponíveis para seleção e as aulas selecionadas-->
+                    Clique na aula para adicionar ou remover <br/>
+                    <!--<select ng-model="instrutor.aulas" title="Escolha as aulas do professor" multiple>
+                            <option ng-repeat="aula in aulas" value="{{aula.id}}">{{aula.nome}}</option>
+                    </select> -->
+                    <div class="col-md-3 caixaSelecao">  
+                        Aulas disponíveis:<br/>    
+                        <button class="form-control" type="button" ng-repeat="aula in aulas" ng-click="selecaoAulas(aula.id)" ng-hide="aulaJaSelecionada(aula.id) || aulaValida(aula.id)">{{aula.nome}}</button>          
                     </div>
-                    <div class="col-md-3 caisaSelecao">
-                        Aulas adicionadas<br/>
-                        <button type="button" ng-repeat="aulaSelecionada in aulasSelecionadas" ng-click="remocaoAulasSelecionadas(aulaSelecionada.id)" ng-hide="aulaValida(aulaSelecionada.id)">{{aulaSelecionada.nome}}</button>
+                    <div class="col-md-3 caixaSelecao">
+                        Aulas selecionadas:<br/>
+                        <button class="form-control" type="button" ng-repeat="aulaSelecionada in aulasSelecionadas" ng-click="remocaoAulasSelecionadas(aulaSelecionada.id)" ng-hide="aulaValida(aulaSelecionada.id)">{{aulaSelecionada.nome}}</button>
                     </div>
-                </label>   
-                <div class="col-md-12">
-                    <input type="reset" value="Limpar"/> 
-                    <input type="submit" value="Adicionar"/>
+                </div>  
+                <div class="col-md-12 quebra">
+                    <input class="form-control" type="reset" value="Limpar"/> 
+                    <input class="form-control" type="submit" value="Adicionar"/>
                 </div>        
             </div>        
-            </form>       
+            </form>           
         </div>        
     </body>
 </html>    

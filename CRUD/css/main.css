@@ -13,8 +13,14 @@ body {
 .row.col-md-12.bordar .obg{
     color:red;
 }
-.col-md-3.caisaSelecao{
+.col-md-3.caixaSelecao{
     padding: 1% 1% 1% 1%;
     border: 2px solid red;
     width: 250px;
+}
+.col-md-3.floor{
+    margin-top: 1.5%;
+}
+.col-md-12.quebra{
+    margin-top: 5%;
 }
