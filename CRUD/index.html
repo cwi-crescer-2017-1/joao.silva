@@ -10,52 +10,61 @@
     </head>
     <body>
         <div class="container-fluid" ng-controller="Crescer">
-            <form novalidate name="cadastroAula" ng-submit="adicionarAula()">
-            <div class="row col-md-12 bordar">
+            <form novalidate name="cadastroAula" ng-submit="adicionarAula(aula)">    
+            <div class="row bordar">  
+                <div class="col-md-3">
                 <label>
                     Nome da nova aula:<alert class="obg">*</alert>
                     <input type="text" name="nomeAula" ng-model="aula.nome" ng-minlength="3" ng-maxlength="20" required>
                 </label>    
-                <div class="row col-md-12">
+                </div>
+                <div class="col-md-3 floor">
                     <input type="reset" value="Limpar"/> 
                     <input type="submit" value="Adicionar"/>
                 </div>   
             </div> 
             </form>
-            <form novalidate name="cadastroInstrutor" ng-submit="adicionarInstrutor()">
-            <div class="row col-md-12 bordar">
-                <label>
-                    Nome:<alert class="obg">*</alert>
-                    <input type="text" name="nomeInstrutor" ng-model="instrutor.nome" ng-minlength="3" ng-maxlength="20" required>
-                </label>
-                <label>
-                    Sobrenome:
-                    <input type="text" name="sobrenomeInstrutor" ng-model="instrutor.sobrenome" ng-maxlength="30">
-                </label>
-                <label>
-                    Idade:<alert class="obg">*</alert>
-                    <input type="number" name="idadeInstrutor" ng-model="instrutor.idade" ng-maxlength="2">
-                </label>
-                <label>
-                    Email:<alert class="obg">*</alert>
-                    <input type="email" name="emailInstrutor" ng-model="instrutor.email" ng-maxlength="2">
-                </label>
-                <label>
-                    Está dando aula?
-                    <input type="radio" name="dandoAula" ng-model="instrutor.dandoAula" value="s">Sim
-                    <input type="radio" name="dandoAula" ng-model="instrutor.dandoAula" value="n">Não
-                </label>
-                <label>
-                    Selecione as aulas do novo instrutor:
-                    <div ng-repeat="aula in aulas">
-                        <input type="checkbox" name="aulas.{{aula.nome}}" value="{{aula.id}}">{{aula.nome}}
-                    </div>    
-                </label> 
-                <label>
-                    Url da foto de perfil:
-                    <input type="text" name="urlFotoInstrutor" ng-model="instrutor.urlFoto">
-                </label>
-                <div class="row col-md-12">
+            <form novalidate name="cadastroInstrutor" ng-submit="adicionarInstrutor(instrutor)">
+            <div class="row bordar">
+                <div class="col-md-12">  
+                    <label>
+                        Nome:<alert class="obg">*</alert>
+                        <input type="text" name="nomeInstrutor" ng-model="instrutor.nome" ng-minlength="3" ng-maxlength="20" required>
+                    </label>
+                    <label>
+                        Sobrenome:
+                        <input type="text" name="sobrenomeInstrutor" ng-model="instrutor.sobrenome" ng-maxlength="30">
+                    </label>
+                    <label>
+                        Idade:<alert class="obg">*</alert>
+                        <input type="number" name="idadeInstrutor" ng-model="instrutor.idade" ng-maxlength="2">
+                    </label>
+                    <label>
+                        Email:<alert class="obg">*</alert>
+                        <input type="email" name="emailInstrutor" ng-model="instrutor.email" ng-maxlength="2">
+                    </label>
+                    <label>
+                        Está dando aula?
+                        <input type="radio" name="dandoAula" ng-model="instrutor.dandoAula" value="s">Sim
+                        <input type="radio" name="dandoAula" ng-model="instrutor.dandoAula" value="n">Não
+                    </label>
+                    <label>
+                        Url da foto de perfil:
+                        <input type="text" name="urlFotoInstrutor" ng-model="instrutor.urlFoto">
+                    </label>
+                </div>   
+                <label class="col-md-12">
+                    Clique na aula para adicionar ou remover<br/>
+                    <div class="col-md-3 caisaSelecao">
+                        Aulas disponíveis<br/>   
+                        <button type="button" ng-repeat="aula in aulas" ng-click="selecaoAulas(aula.id)" ng-hide="aulaJaSelecionada(aula.id) || aulaValida(aula.id)">{{aula.nome}}</button>          
+                    </div>
+                    <div class="col-md-3 caisaSelecao">
+                        Aulas adicionadas<br/>
+                        <button type="button" ng-repeat="aulaSelecionada in aulasSelecionadas" ng-click="remocaoAulasSelecionadas(aulaSelecionada.id)" ng-hide="aulaValida(aulaSelecionada.id)">{{aulaSelecionada.nome}}</button>
+                    </div>
+                </label>   
+                <div class="col-md-12">
                     <input type="reset" value="Limpar"/> 
                     <input type="submit" value="Adicionar"/>
                 </div>        
