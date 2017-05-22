@@ -217,20 +217,30 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
                 model.alteracaoInstrutorIniciada = true;
                 model.alteracaoInstrutor = angular.copy(instrutor);
                 model.exnome=instrutor.nome;
-                instrutor.nome="tp"; //Nome temporário para alteração
-                console.log(model.instrutores);
+                model.exemail=instrutor.email;
+                instrutor.nome='tp'; //Nome temporário para alteração
+                instrutor.email='tp';//Email temporário para alteração
+                model.idInstrutorASerAlteradoErro='';
                 return;
             }
         }
+        model.idInstrutorASerAlteradoErro='erro';
         alert('ID inválido ou não encontrado! Tente outro');
     }
-    model.cancelarAlteracaoInstrutor = function(idInstrutor){
-        let index = model.pegarIndexInstrutorPorID(idInstrutor);
+    model.cancelarAlteracaoInstrutor = function(alteracaoInstrutor){
+        let index = model.pegarIndexInstrutorPorID(alteracaoInstrutor.id);
         model.alteracaoInstrutorIniciada = false;
         model.instrutores[index].nome = model.exnome;
+        model.instrutores[index].email = model.exemail;
         model.alteracaoInstrutor = {};
     }
     model.salvarAlteracaoInstrutor = function(alteracaoInstrutor){
+        //Limpa erros
+        model.nomeInstrutorErro='';
+        model.sobrenomeInstrutorErro='';
+        model.idadeInstrutorErro='';
+        model.emailInstrutorErro='';
+        model.urlFotoInstrutorErro='';
         let index = model.pegarIndexInstrutorPorID(alteracaoInstrutor.id);
         if(typeof alteracaoInstrutor.aulas !== 'undefined'){ //Converte o id das aulas para inteiros
             for(let i=0;i<alteracaoInstrutor.aulas.length;i++){
