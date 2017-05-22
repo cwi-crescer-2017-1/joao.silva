@@ -35,6 +35,7 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
             model.aulas.push(novaAula);
             model.nomeAulaErro='';
             alert('Aula criada com sucesso');
+            model.nomeaula = ''; //Zerar campo de texto após criação da nova aula
         }
     };
     model.stringAulas = function(aulasId){
@@ -71,6 +72,9 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
         if(model.validaInstrutor(instrutor)){
             if(typeof instrutor.urlFoto === 'undefined' || instrutor.urlFoto===''){
                 instrutor.urlFoto = 'img/perfil_padrao.jpg';
+            }
+            if(typeof instrutor.aulas === 'undefined' || instrutor.aulas.length<=0){
+                instrutor.dandoAula = false;
             }
             let novoInstrutor = {id:idNovoInstrutor,nome: instrutor.nome,sobrenome:instrutor.sobrenome,idade:instrutor.idade,email:instrutor.email,dandoAula:instrutor.dandoAula,aula:instrutor.aulas,urlFoto:instrutor.urlFoto};
             model.instrutores.push(novoInstrutor);
@@ -173,7 +177,7 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
         return true;
     }
     model.validaEmailInstrutor = function(email){
-        if(typeof email === 'undefined'){
+        if(typeof email === 'undefined' || email===''){
             model.emailInstrutorErro='erro';
             alert('Email inválido! Tente denovo.');
             return false;
@@ -271,6 +275,9 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
         if(model.validaInstrutor(alteracaoInstrutor)){
             if(typeof alteracaoInstrutor.urlFoto === 'undefined' || alteracaoInstrutor.urlFoto===''){
                 alteracaoInstrutor.urlFoto = 'img/perfil_padrao.jpg';
+            }
+            if(typeof alteracaoInstrutor.aulas === 'undefined' || alteracaoInstrutor.aulas.length<=0){
+                alteracaoInstrutor.dandoAula = false;
             }
             let novoInstrutor = {id:alteracaoInstrutor.id,nome:alteracaoInstrutor.nome,sobrenome:alteracaoInstrutor.sobrenome,idade:alteracaoInstrutor.idade,email:alteracaoInstrutor.email,dandoAula:alteracaoInstrutor.dandoAula,aula:alteracaoInstrutor.aulas,urlFoto:alteracaoInstrutor.urlFoto};
             model.instrutores[index] = novoInstrutor;
