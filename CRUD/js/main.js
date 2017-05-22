@@ -102,19 +102,23 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
     }
     model.validaNomeAula = function(nome){
         if(typeof nome === 'undefined'){
-            alert("Nome inválido! Tente outro.");
+            alert('Nome inválido! Tente outro.');
+            model.nomeAulaErro='erro';
             return false;
         }
         if(nome.length<3||nome.length>20){
-            alert("Nome inválido! Tente outro.");
+            alert('Nome inválido! Tente outro.');
+            model.nomeAulaErro='erro';
             return false;
         }
         for(aula of model.aulas){
             if(aula.nome.toLowerCase() === nome.toLowerCase()){
-                alert("Aula já cadastrada! Tente outra.");
+                alert('Aula já cadastrada! Tente outra.');
+                model.nomeAulaErro='erro';
                 return false;
             }
         }
+        model.nomeAulaErro='';
         return true;
     }
     model.validaInstrutor = function (instrutor){
@@ -185,22 +189,25 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
         }
     };
     model.ativarAlteracaoAula = function(idAula){
+        model.nomeAulaErro='';
         model.itensComAlteracaoAtiva.push(idAula);
     };
     model.alterandoAula = function(idAula){
         estaAlterando = typeof model.encontrarIndexItemComAlteracaoAulaAtivada(idAula) !== 'undefined';
         return estaAlterando;
     }
-    model.cancelarAlteracaoAula =  function(idAula){
+    model.cancelarAlteracaoAula = function(idAula){
+        model.nomeAulaErro='';
         index = model.encontrarIndexItemComAlteracaoAulaAtivada(idAula);
         model.itensComAlteracaoAtiva.splice(index,1);
     }
     model.salvarAlteracaoAula = function(idAula,novoNome){
+        model.nomeAulaErro='';
         let index = model.encontrarIndexItemComAlteracaoAulaAtivada(idAula);
         if(model.validaNomeAula(novoNome)){
             model.aulas[index].nome = novoNome;
             model.cancelarAlteracaoAula(idAula);
-            alert("Alteração realizada com sucesso!");
+            alert('Alteração realizada com sucesso!');
         }
     }
     //Modulo Alteração Instrutor
@@ -272,6 +279,7 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
         for(let i=0;i<model.instrutores.length;i++){ //Percorre todos os intrutores
             for(let x=0;x<model.instrutores[i].aula.length;x++){//Percorre todas as aulas de cada instrutor
                 if(model.aulas[index].id===model.instrutores[i].aula[x]){
+                    model.nomeAulaErro='erro';
                     alert('Aula atrelada a um instrutor, impossível deletar');
                     return false;
                 }
