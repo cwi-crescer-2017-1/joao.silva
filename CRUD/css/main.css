@@ -10,6 +10,9 @@ body {
 .row.bordar{
     border:2px solid black;
 }
+.vermelho{
+    background-color:red;
+}
 .obg{
     color:red;
 }
