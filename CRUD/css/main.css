@@ -27,3 +27,20 @@ body {
 .col-md-12.quebra{
     margin-top: 5%;
 }
+.controller{
+    background-color: white;
+    padding: 5% 5% 5% 5%;
+}
+.preto{
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    background-attachment: fixed;
+}
+.linha{
+    content:url('../img/linha.png');
+}
+.erro{
+    border-color: red;
+    background:rgba(255, 0, 0,0.2);
+}
