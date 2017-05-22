@@ -7,9 +7,40 @@ body {
   padding: 2% 2% 2% 2%;
   font-weight: 900;
 }
-.row.col-md-12.bordar{
+.row.bordar{
     border:2px solid black;
 }
-.row.col-md-12.bordar .obg{
+.vermelho{
+    background-color:red;
+}
+.obg{
     color:red;
+}
+.col-md-3.caixaSelecao{
+    padding: 1% 1% 1% 1%;
+    border: 2px solid red;
+    width: 250px;
+}
+.col-md-3.floor{
+    margin-top: 1.5%;
+}
+.col-md-12.quebra{
+    margin-top: 5%;
+}
+.controller{
+    background-color: white;
+    padding: 5% 5% 5% 5%;
+}
+.preto{
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    background-attachment: fixed;
+}
+.linha{
+    content:url('../img/linha.png');
+}
+.erro{
+    border-color: red;
+    background:rgba(255, 0, 0,0.2);
 }
