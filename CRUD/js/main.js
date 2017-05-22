@@ -269,13 +269,13 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
             }
         }
         if(model.validaInstrutor(alteracaoInstrutor)){
-            if(typeof alteracaoInstrutor.urlFoto === 'undefined' || alteracaoInstrutor.urlFoto===""){
-                alteracaoInstrutor.urlFoto = "img/perfil_padrao.jpg";
+            if(typeof alteracaoInstrutor.urlFoto === 'undefined' || alteracaoInstrutor.urlFoto===''){
+                alteracaoInstrutor.urlFoto = 'img/perfil_padrao.jpg';
             }
             let novoInstrutor = {id:alteracaoInstrutor.id,nome:alteracaoInstrutor.nome,sobrenome:alteracaoInstrutor.sobrenome,idade:alteracaoInstrutor.idade,email:alteracaoInstrutor.email,dandoAula:alteracaoInstrutor.dandoAula,aula:alteracaoInstrutor.aulas,urlFoto:alteracaoInstrutor.urlFoto};
             model.instrutores[index] = novoInstrutor;
             model.alteracaoInstrutorIniciada = false;
-            console.log(model.instrutores[index]);
+            model.alteracaoInstrutor = {};
             alert('Alteração realizada com sucesso!');
         }
     }
