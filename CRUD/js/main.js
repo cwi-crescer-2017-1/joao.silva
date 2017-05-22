@@ -13,14 +13,27 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
                          {id:3,nome:'Severus',sobrenome:'Snape',idade:38,email:'severus@discipline.uk',dandoAula:true,aula:[2,3],urlFoto:'img/perfil_padrao.jpg'}];
     model.itensComAlteracaoAtiva=[];
     model.aulasAntigas=[];
+    model.campoInválido;
+
+    //Classes de erro, class css 'erro' pré configurada para uso
+    model.nomeInstrutorErro='';
+    model.sobrenomeInstrutorErro='';
+    model.idadeInstrutorErro='';
+    model.emailInstrutorErro='';
+    model.urlFotoInstrutorErro='';
+    model.idInstrutorASerAlteradoErro='';
+    model.idNomeASerDeletadoErro='';
+
     model.exnome='';
+    model.exemail='';
     model.alteracaoInstrutorIniciada = false;
     model.adicionarAula =function(nomeaula){
+        model.nomeAulaErro='';
         if(model.validaNomeAula(nomeaula)){
             let novaAula={id:idNovaAula,nome:nomeaula};
             idNovaAula++;
             model.aulas.push(novaAula);
-            model.nomeaula='';
+            model.nomeAulaErro='';
             alert('Aula criada com sucesso');
         }
     };
