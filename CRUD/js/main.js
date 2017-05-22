@@ -56,6 +56,12 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
     };        
     model.adicionarInstrutor = function(instrutor){
         let instrutorDandoAula;
+        //Limpa erros
+        model.nomeInstrutorErro='';
+        model.sobrenomeInstrutorErro='';
+        model.idadeInstrutorErro='';
+        model.emailInstrutorErro='';
+        model.urlFotoInstrutorErro='';
         if(typeof instrutor.aulas !== 'undefined'){ //Converte o id das aulas para inteiros
             for(let i=0;i<instrutor.aulas.length;i++){
                 instrutor.aulas[i]=Number(instrutor.aulas[i]);
@@ -63,13 +69,20 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
         }
         if(instrutor.dandoAula===false){instrutor.aulas=[]};
         if(model.validaInstrutor(instrutor)){
-            if(typeof instrutor.urlFoto === 'undefined' || instrutor.urlFoto===""){
+            if(typeof instrutor.urlFoto === 'undefined' || instrutor.urlFoto===''){
                 instrutor.urlFoto = 'img/perfil_padrao.jpg';
             }
             let novoInstrutor = {id:idNovoInstrutor,nome: instrutor.nome,sobrenome:instrutor.sobrenome,idade:instrutor.idade,email:instrutor.email,dandoAula:instrutor.dandoAula,aula:instrutor.aulas,urlFoto:instrutor.urlFoto};
             model.instrutores.push(novoInstrutor);
             model.instrutor = {};
             idNovoInstrutor++;
+            //Limpa erros
+            model.nomeInstrutorErro='';
+            model.sobrenomeInstrutorErro='';
+            model.idadeInstrutorErro='';
+            model.emailInstrutorErro='';
+            model.urlFotoInstrutorErro='';
+            alert('Instrutor adicionado com sucesso');
         }
     };
      model.pegarNomeAulaPorId = function(idAula){
