@@ -130,16 +130,19 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
     }
     model.validaNomeInstrutor = function(nome){
         if(typeof nome === 'undefined'){
-            alert("Nome inválido! Tente outro.");
+            model.nomeInstrutorErro='erro';
+            alert('Nome inválido! Tente outro.');
             return false;
         }
         if(nome.length<3||nome.length>20){
-            alert("Nome inválido! Tente outro.");
+            model.nomeInstrutorErro='erro';
+            alert('Nome inválido! Tente outro.');
             return false;
         }
         for(instrutore of model.instrutores){
             if(instrutore.nome.toLowerCase() === nome.toLowerCase()){
-                alert("Instrutor já cadastrado! Tente outro.");
+                model.nomeInstrutorErro='erro';
+                alert('Instrutor já cadastrado! Tente outro.');
                 return false;
             }
         }
@@ -150,26 +153,37 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
             return true;
         }
         if(sobrenome.length>30){
-            alert("Sobrenome muito longo! Tente outro.");
+            model.sobrenomeInstrutorErro='erro';
+            alert('Sobrenome muito longo! Tente outro.');
             return false;
         }
         return true;
     }
     model.validaIdadeInstrutor = function(idade){
         if(typeof idade === 'undefined'){
-            alert("Idade inválida! Tente denovo.");
+            model.idadeInstrutorErro='erro';
+            alert('Idade inválida! Tente denovo.');
             return false;
         }
         if(idade>90){
-            alert("Idade inválido! Tente denovo.");
+            model.idadeInstrutorErro='erro';
+            alert('Idade inválido! Tente denovo.');
             return false;
         }
         return true;
     }
     model.validaEmailInstrutor = function(email){
         if(typeof email === 'undefined'){
-            alert("Email inválido! Tente denovo.");
+            model.emailInstrutorErro='erro';
+            alert('Email inválido! Tente denovo.');
             return false;
+        }
+        for(instrutore of model.instrutores){ //percorre todos os instrutores
+            if(instrutore.email.toLowerCase() === email.toLowerCase()){
+                model.emailInstrutorErro='erro';
+                alert('Email já cadastrado! Tente outro.');
+                return false;
+            }
         }
         return true;
     }
