@@ -1,0 +1,43 @@
+<div class="row">
+       <div class="col-md-12">
+       <h1>Lista de aulas</h1>
+      <table class="table">
+          <thead>
+              <tr>
+                <th>ID</th>
+                   <th>Nome</th>
+             </tr>
+        </thead>
+         <tbody>
+             <tr ng-repeat="aula in aulas |  orderBy:'nome'">
+                 <td>{{aula.id}}</td>
+                 <td><p ng-hide="alterandoAula(aula.id)">{{aula.nome}}</p><input ng-class="nomeAulaErro" ng-show="alterandoAula(aula.id)" ng-model="novoNome" type="text" placeholder="Digite o novo nome"></td>
+                 <td ng-hide="alterandoAula(aula.id)"><button type="button" ng-click="ativarAlteracaoAula(aula.id)">Alterar</button></td>
+                 <td ng-show="alterandoAula(aula.id)"><button type="button" ng-click="cancelarAlteracaoAula(aula.id)">Cancelar alteração</button></td>
+                 <td ng-show="alterandoAula(aula.id)" ><button type="button" ng-click="salvarAlteracaoAula(aula.id,novoNome)">Salvar alterações</button></td>
+                 <td ng-show="alterandoAula(aula.id)" ><button type="button" ng-click="deletarAula(aula.id)">Deletar aula</button></td>
+              </tr>
+         </tbody>
+      </table>
+    </div>
+ </div> 
+ <img class="linha"/>
+ <form novalidate name="cadastroAula" ng-submit="adicionarAula(nomeaula)">    
+    <h3>Adicionar nova aula</h3> 
+    <h4>Itens com '*' são obrigatórios</h4>               
+    <div class="row bordar form-group">  
+        <div class="col-md-3">
+            <label>
+                 Nome da nova aula: (De 3 a 20 letras)<alert class="obg">*</alert>
+                <input class="form-control" ng-class="nomeAulaErro" type="text" name="nomeAula" ng-model="nomeaula" required>
+            </label>    
+        </div>
+        <div class="col-md-3 floor">
+            <button class="form-control" type="button" ng-click="limparCampoAula()">Limpar</button>
+        </div>
+        <div class="col-md-3 floor">
+            <input class="form-control" type="submit" value="Adicionar"/>
+        </div>
+    </div> 
+</form>
+<img class="linha"/>
