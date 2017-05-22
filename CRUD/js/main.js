@@ -301,4 +301,33 @@ modulo.controller('Crescer',['$scope','$filter', function (model,filter){
         }
         return true;
     }
+    model.deletarInstrutor = function(idInstrutor){
+        let index = model.pegarIndexInstrutorPorID(idInstrutor);
+        if(typeof model.instrutores[index]==='undefined'){
+            model.idNomeASerDeletadoErro='erro';
+            alert('Instrutor inválido');
+            return;
+        }
+        if(model.instrutores[index].dandoAula){
+            model.idNomeASerDeletadoErro='erro';
+            alert('Não é possível excluir este instrutor. Está dando aula.');
+        }else{
+            model.instrutores.splice(index,1);
+            alert('Instrutor deletado com sucesso');
+            model.idNomeASerDeletadoErro='';
+            model.idInstrutorDeletado='';
+        }
+    }
+    model.limparCampoAula = function(){
+        model.nomeAulaErro='';
+        model.nomeaula='';
+    }
+    model.limparInscricaoInstrutor = function(){
+        //Limpa erros
+        model.nomeInstrutorErro='';
+        model.sobrenomeInstrutorErro='';
+        model.idadeInstrutorErro='';
+        model.emailInstrutorErro='';
+        model.urlFotoInstrutorErro='';
+    }
 }]);
