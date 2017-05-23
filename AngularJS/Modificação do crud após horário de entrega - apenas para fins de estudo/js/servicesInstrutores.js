@@ -1,12 +1,16 @@
-modulo.factory('instrutorService',function(){
+modulo.factory('instrutorService',function($http){
     let idNovoInstrutor=4; 
-    let instrutores = [{id:0,nome:'Teste',sobrenome:'Tester',idade:22,email:'teste@tester.com.br',dandoAula:true,aula:[0],urlFoto:'img/perfil_padrao.jpg'},
-                         {id:1,nome:'Saitama',sobrenome:'',idade:26,email:'opm@heroassociation.jp',dandoAula:false,aula:[],urlFoto:'img/perfil_padrao.jpg'},
-                         {id:2,nome:'Toshinori',sobrenome:'Yagi',idade:36,email:'yagi@gmail.jp',dandoAula:true,aula:[1],urlFoto:'img/perfil_padrao.jpg'},
-                         {id:3,nome:'Severus',sobrenome:'Snape',idade:38,email:'severus@discipline.uk',dandoAula:true,aula:[2,3],urlFoto:'img/perfil_padrao.jpg'}];
+
+    let urlBase = 'http://localhost:3000';
+
+    // let instrutores = [{id:0,nome:'Teste',sobrenome:'Tester',idade:22,email:'teste@tester.com.br',dandoAula:true,aula:[0],urlFoto:'img/perfil_padrao.jpg'},
+    //                      {id:1,nome:'Saitama',sobrenome:'',idade:26,email:'opm@heroassociation.jp',dandoAula:false,aula:[],urlFoto:'img/perfil_padrao.jpg'},
+    //                      {id:2,nome:'Toshinori',sobrenome:'Yagi',idade:36,email:'yagi@gmail.jp',dandoAula:true,aula:[1],urlFoto:'img/perfil_padrao.jpg'},
+    //                      {id:3,nome:'Severus',sobrenome:'Snape',idade:38,email:'severus@discipline.uk',dandoAula:true,aula:[2,3],urlFoto:'img/perfil_padrao.jpg'}];
     
     //Pega index do instrutor pelo id
     function pegarIndexInstrutorPorID(idInstrutor){
+        let instrutores = $http.get(urlBase + '/instrutor');
         for(let i=0;i<instrutores.length;i++){
             if(instrutores[i].id===idInstrutor){
                 return i; //Devolve o index do id
@@ -17,6 +21,7 @@ modulo.factory('instrutorService',function(){
     
     //Verifica se o nome instrutor ainda não existe
     function verificarExistenciaNomeInstrutor(nome){
+        let instrutores = $http.get(urlBase + '/instrutor');
         for(instrutor of instrutores){
             if(instrutor.nome.toLowerCase() === nome.toLowerCase()){
                 return true; //Existe :(
@@ -41,6 +46,7 @@ modulo.factory('instrutorService',function(){
         if(nome.length<3||nome.length>20){
             return false;
         }
+        let instrutores = $http.get(urlBase + '/instrutor');
         for(instrutor of instrutores){
             if(instrutor.nome.toLowerCase() === nome.toLowerCase()){
                 return false;
@@ -109,7 +115,7 @@ modulo.factory('instrutorService',function(){
         }
         return false;//Falha!
     };
-            
+        
     //Alterar Instrutor
     function alterarInstrutor(instrutorAlterado){
         let idOriginal = instrutorAlterado.id; //Salva o id do instrutor a ser modificado
@@ -117,7 +123,8 @@ modulo.factory('instrutorService',function(){
         if(instrutorValidado!==false){ //Se validade com sucesso
             instrutorValidado.id = idOriginal; //Devolve o id original
             let index = pegarIndexInstrutorPorID(instrutorValidado.id);//Busca o index original
-            instrutores[index] = instrutorValidado; //Sobre escreve o instrutor antigo com o novo já modificado 
+            $http.put(urlBase + '/instrutor' + '/' + index, instrutorValidado);
+            // instrutores[index] = instrutorValidado; //Sobre escreve o instrutor antigo com o novo já modificado 
             return true; //Sucesso
         }
         return false; //Falha
@@ -139,7 +146,7 @@ modulo.factory('instrutorService',function(){
 
     //Retorna todos os instrutores
     function getTodosOsInstrutores(){
-        return instrutores;
+        return $http.get(urlBase + '/instrutor');
     }
     //Retorna instrutor pelo id
     function getInstrutorPorId(idInstrutor){

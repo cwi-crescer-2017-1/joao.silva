@@ -1,14 +1,18 @@
-modulo.controller('PaginaAulas',['$scope','aulaService', function(model,aulaService){
+modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService', function(model,$routeParams,aulaService){
+    
+    model.id = $routeParams.idUrl;
+
     model.itensComAlteracaoAtiva=[];
     model.aulasAntigas=[];
     model.nomeAulaErro='';
     model.nomeaula='';
-   
-    // listar aulas 
-    model.aulas = listAulas();
 
+    // listar aulas 
+    listAulas();
     function listAulas() {
-        return aulaService.list();
+        aulaService.list().then(function(response){
+            model.aulas = response.data;
+        });
     }
     //Ações de click
     model.adicionarAula = adicionarAula;
@@ -30,29 +34,29 @@ modulo.controller('PaginaAulas',['$scope','aulaService', function(model,aulaServ
             alert('Aula adicionada com sucesso');
         }
     };
-    function salvarAlteracaoAula(idAula,novoNome){
-        let resposta = aulaService.update(idAula,novoNome);
+    // function salvarAlteracaoAula(idAula,novoNome){
+    //     let resposta = aulaService.update(idAula,novoNome);
+    //     if(resposta===false){
+    //         alert('A alteração falhou');
+    //     }else{
+    //         model.cancelarAlteracaoAula(idAula);
+    //         model.limparCampoAula();
+    //         alert('A alteração foi um sucesso');
+    //     }
+    // }
+    
+    function salvarAlteracaoAula(idAula,novoNome) {
+        resposta = aulaService.update(idAula,novoNome);
         if(resposta===false){
             alert('A alteração falhou');
         }else{
             model.cancelarAlteracaoAula(idAula);
             model.limparCampoAula();
             alert('A alteração foi um sucesso');
-        }
-    }
-    /*
-    function salvarAlteracaoAula(idAula,novoNome) {
-        aulaService.update(idAula,novoNome).then(function (response) {
-            if(response===false){
-                alert('A alteração falhou');
-            }else{
-                model.cancelarAlteracaoAula(idAula);
-                model.limparCampoAula();
-                alert('A alteração foi um sucesso');
-            }
-        });
+            listAulas();
+        }            
     };   
-    */
+
     function deletarAula(idAula){
         resposta = aulaService.delete(idAula);
         if(resposta===false){
