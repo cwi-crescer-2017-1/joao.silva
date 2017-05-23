@@ -1,101 +1,100 @@
-modulo.controller('PaginaAulas',['$scope','$filter', function (model,filter){
-    let idNovaAula=4;
+modulo.controller('PaginaAulas',['$scope','aulaService', function(model,aulaService){
     model.itensComAlteracaoAtiva=[];
     model.aulasAntigas=[];
-    model.adicionarAula =function(nomeaula){
-        model.nomeAulaErro='';
-        if(model.validaNomeAula(nomeaula)){
-            let novaAula={id:idNovaAula,nome:nomeaula};
-            idNovaAula++;
-            model.aulas.push(novaAula);
-            model.nomeAulaErro='';
-            alert('Aula criada com sucesso');
-            model.nomeaula = ''; //Zerar campo de texto após criação da nova aula
+    model.nomeAulaErro='';
+    model.nomeaula='';
+   
+    // listar aulas 
+    model.aulas = listAulas();
+
+    function listAulas() {
+        return aulaService.list();
+    }
+    //Ações de click
+    model.adicionarAula = adicionarAula;
+    model.salvarAlteracaoAula = salvarAlteracaoAula;
+    model.deletarAula = deletarAula;
+    
+    model.encontrarIndexItemComAlteracaoAulaAtivada = encontrarIndexItemComAlteracaoAulaAtivada;
+    model.ativarAlteracaoAula = ativarAlteracaoAula;
+    model.alterandoAula = alterandoAula;
+    model.cancelarAlteracaoAula = cancelarAlteracaoAula;
+    model.limparCampoAula = limparCampoAula;
+
+    function adicionarAula(nomeAula) {
+        let resposta = aulaService.create(nomeAula);
+        if(resposta===false){
+            alert('Falha ao adicionar aula');
+        }else{
+            model.limparCampoAula();
+            alert('Aula adicionada com sucesso');
         }
     };
-    model.validaNomeAula = function(nome){
-        if(typeof nome === 'undefined'){
-            alert('Nome inválido! Tente outro.');
-            model.nomeAulaErro='erro';
-            return false;
-        }
-        if(nome.length<3||nome.length>20){
-            alert('Nome inválido! Tente outro.');
-            model.nomeAulaErro='erro';
-            return false;
-        }
-        for(aula of model.aulas){
-            if(aula.nome.toLowerCase() === nome.toLowerCase()){
-                alert('Aula já cadastrada! Tente outra.');
-                model.nomeAulaErro='erro';
-                return false;
-            }
-        }
-        model.nomeAulaErro='';
-        return true;
-    }
-    model.pegarIndexAulaPorID = function(idAula){
-        for(let i=0;i<model.aulas.length;i++){
-            if(model.aulas[i].id===idAula){
-                return i; 
-            }
+    function salvarAlteracaoAula(idAula,novoNome){
+        let resposta = aulaService.update(idAula,novoNome);
+        if(resposta===false){
+            alert('A alteração falhou');
+        }else{
+            model.cancelarAlteracaoAula(idAula);
+            model.limparCampoAula();
+            alert('A alteração foi um sucesso');
         }
     }
-    model.encontrarIndexItemComAlteracaoAulaAtivada = function (idAula){
+    /*
+    function salvarAlteracaoAula(idAula,novoNome) {
+        aulaService.update(idAula,novoNome).then(function (response) {
+            if(response===false){
+                alert('A alteração falhou');
+            }else{
+                model.cancelarAlteracaoAula(idAula);
+                model.limparCampoAula();
+                alert('A alteração foi um sucesso');
+            }
+        });
+    };   
+    */
+    function deletarAula(idAula){
+        resposta = aulaService.delete(idAula);
+        if(resposta===false){
+            alert('Falha ao deletar aula');
+        }else{
+            alert('Aula deletada com sucesso');
+        }
+    }
+    /*
+    function deletarAula(idAula){
+        aulaService.delete(idAula).then(function (response){
+            if(response.data===false){
+                alert('Falha ao deletar aula');
+            }else{
+                alert('Aula deletada com sucesso');
+            }
+        });
+    }
+    */
+    function encontrarIndexItemComAlteracaoAulaAtivada(idAula){
       if(typeof model.itensComAlteracaoAtiva !== 'undefined'){
         for(let i=0; i<model.itensComAlteracaoAtiva.length;i++){
             if(model.itensComAlteracaoAtiva[i] === idAula){
                 return i;
             }
-            }
-       }
+        }
+      }
     };
-    model.ativarAlteracaoAula = function(idAula){
-        model.nomeAulaErro='';
+    function ativarAlteracaoAula(idAula){
+        model.limparCampoAula();
         model.itensComAlteracaoAtiva.push(idAula);
     };
-    model.alterandoAula = function(idAula){
+    function alterandoAula(idAula){
         estaAlterando = typeof model.encontrarIndexItemComAlteracaoAulaAtivada(idAula) !== 'undefined';
         return estaAlterando;
     }
-    model.cancelarAlteracaoAula = function(idAula){
-        model.nomeAulaErro='';
+    function cancelarAlteracaoAula(idAula){
+        model.limparCampoAula();
         index = model.encontrarIndexItemComAlteracaoAulaAtivada(idAula);
         model.itensComAlteracaoAtiva.splice(index,1);
     }
-    model.salvarAlteracaoAula = function(idAula,novoNome){
-        model.nomeAulaErro='';
-        let index = model.pegarIndexAulaPorID(idAula);
-        console.log(model.aulas[index]);
-        if(model.validaNomeAula(novoNome)){
-            model.aulas[index].nome = novoNome;
-            model.cancelarAlteracaoAula(idAula);
-            alert('Alteração realizada com sucesso!');
-        }
-    }
-    model.deletarAula = function(idAula){
-        let index = model.pegarIndexAulaPorID(idAula);
-        let nomeAula;
-        if(model.aulaNaoUtilizada(idAula)){
-            nomeAula = model.aulas[index].nome;
-            model.aulas.splice(index,1);
-            alert(`Aula ${nomeAula} deletada com sucesso`);
-        }
-    }
-    model.aulaNaoUtilizada = function(idAula){
-        let index = model.pegarIndexAulaPorID(idAula);
-        for(let i=0;i<model.instrutores.length;i++){ //Percorre todos os intrutores
-            for(let x=0;x<model.instrutores[i].aula.length;x++){//Percorre todas as aulas de cada instrutor
-                if(model.aulas[index].id===model.instrutores[i].aula[x]){
-                    model.nomeAulaErro='erro';
-                    alert('Aula atrelada a um instrutor, impossível deletar');
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    model.limparCampoAula = function(){
+    function limparCampoAula(){
         model.nomeAulaErro='';
         model.nomeaula='';
     }    
