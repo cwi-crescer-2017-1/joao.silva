@@ -15,7 +15,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="instrutor in instrutores | orderBy: 'nome'">
+                        <tr ng-repeat="instrutor in instrutores">
                          <td>{{instrutor.id}}</td>
                          <td>{{instrutor.nome}}<input ng-show="alterandoAula(aula.id)" ng-model="novoNome" type="text" placeholder="Digite o novo nome"></td>
                          <td>{{stringAulas(instrutor.aula)}}</td>

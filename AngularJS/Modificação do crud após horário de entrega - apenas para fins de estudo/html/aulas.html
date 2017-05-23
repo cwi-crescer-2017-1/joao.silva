@@ -9,7 +9,7 @@
              </tr>
         </thead>
          <tbody>
-             <tr ng-repeat="aula in aulas |  orderBy:'nome'">
+             <tr ng-repeat="aula in aulas">
                  <td>{{aula.id}}</td>
                  <td><p ng-hide="alterandoAula(aula.id)">{{aula.nome}}</p><input ng-class="nomeAulaErro" ng-show="alterandoAula(aula.id)" ng-model="novoNome" type="text" placeholder="Digite o novo nome"></td>
                  <td ng-hide="alterandoAula(aula.id)"><button type="button" ng-click="ativarAlteracaoAula(aula.id)">Alterar</button></td>
