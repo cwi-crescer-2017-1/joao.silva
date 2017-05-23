@@ -29,7 +29,7 @@
         <div class="col-md-3">
             <label>
                  Nome da nova aula: (De 3 a 20 letras)<alert class="obg">*</alert>
-                <input class="form-control" ng-class="nomeAulaErro" type="text" name="nomeAula" ng-model="nomeaula" required>
+                <input class="form-control" ng-class="nomeAulaErro" type="text" name="nomeAula" ng-model="nomeaula" ng-maxlength="maxlengthAula" ng-minlength="minlengthAula" required>
             </label>    
         </div>
         <div class="col-md-3 floor">

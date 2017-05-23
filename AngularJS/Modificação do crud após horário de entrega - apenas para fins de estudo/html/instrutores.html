@@ -17,8 +17,8 @@
                     <tbody>
                         <tr ng-repeat="instrutor in instrutores">
                          <td>{{instrutor.id}}</td>
-                         <td>{{instrutor.nome}}<input ng-show="alterandoAula(aula.id)" ng-model="novoNome" type="text" placeholder="Digite o novo nome"></td>
-                         <td>{{stringAulas(instrutor.aula)}}</td>
+                         <td>{{instrutor.nome}}</td>
+                         <td>{{(instrutor.aula)}}</td>
                          <td>{{instrutor.sobrenome}}</td>
                          <td>{{instrutor.idade}}</td>
                          <td>{{instrutor.email}}</td>

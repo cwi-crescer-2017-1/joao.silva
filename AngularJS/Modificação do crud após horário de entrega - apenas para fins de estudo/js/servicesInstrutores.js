@@ -1,88 +1,21 @@
 modulo.factory('instrutorService',function($http){
-    let idNovoInstrutor=4; 
 
     let urlBase = 'http://localhost:3000';
 
-    // let instrutores = [{id:0,nome:'Teste',sobrenome:'Tester',idade:22,email:'teste@tester.com.br',dandoAula:true,aula:[0],urlFoto:'img/perfil_padrao.jpg'},
-    //                      {id:1,nome:'Saitama',sobrenome:'',idade:26,email:'opm@heroassociation.jp',dandoAula:false,aula:[],urlFoto:'img/perfil_padrao.jpg'},
-    //                      {id:2,nome:'Toshinori',sobrenome:'Yagi',idade:36,email:'yagi@gmail.jp',dandoAula:true,aula:[1],urlFoto:'img/perfil_padrao.jpg'},
-    //                      {id:3,nome:'Severus',sobrenome:'Snape',idade:38,email:'severus@discipline.uk',dandoAula:true,aula:[2,3],urlFoto:'img/perfil_padrao.jpg'}];
-    
-    //Pega index do instrutor pelo id
-    function pegarIndexInstrutorPorID(idInstrutor){
-        let instrutores = $http.get(urlBase + '/instrutor');
-        for(let i=0;i<instrutores.length;i++){
-            if(instrutores[i].id===idInstrutor){
-                return i; //Devolve o index do id
+    //Gera novo id
+    function gerarId(){
+        list().then(function(response){
+            let instrutores = response.data;
+            let maior = -1;
+            for(let i=0;i<instrutores.length;i++){
+                if(instrutores[i].id>maior){
+                    maior=instrutores[i].id;
+                }
             }
-        }
-        return false; //ID não encontrado
-    };
-    
-    //Verifica se o nome instrutor ainda não existe
-    function verificarExistenciaNomeInstrutor(nome){
-        let instrutores = $http.get(urlBase + '/instrutor');
-        for(instrutor of instrutores){
-            if(instrutor.nome.toLowerCase() === nome.toLowerCase()){
-                return true; //Existe :(
-            }
-        }
-        return false; //Ainda não existe :)
-    };
+            return maior+1;//Aumenta 1 no ID do maior ID
+        });
+    };  
 
-    //Sistema de validação de instrutor
-    function validaInstrutor(instrutor){
-        let instrutorValido = validaNomeInstrutor(instrutor.nome) &&  validaSobreNomeInstrutor(instrutor.sobrenome) && validaIdadeInstrutor(instrutor.idade) && validaEmailInstrutor(instrutor.email);
-        if(instrutorValido){
-            return true; //Válido :)
-        };
-        return false; //Inválido :(
-    };
-    //Validações necessárias
-    function validaNomeInstrutor(nome){
-        if(typeof nome === 'undefined'){
-            return false;
-        }
-        if(nome.length<3||nome.length>20){
-            return false;
-        }
-        let instrutores = $http.get(urlBase + '/instrutor');
-        for(instrutor of instrutores){
-            if(instrutor.nome.toLowerCase() === nome.toLowerCase()){
-                return false;
-            }
-        }
-        return true;
-    };
-    function validaSobreNomeInstrutor(sobrenome){
-        if(typeof sobrenome === 'undefined'){
-            return true; //Sobrenome pode ser indefinido
-        }
-        if(sobrenome.length>30){
-            return false;
-        }
-        return true;
-    };
-    function validaIdadeInstrutor(idade){
-        if(typeof idade === 'undefined'){
-            return false;
-        }
-        if(idade>90){
-            return false;
-        }
-        return true;
-    };
-    function validaEmailInstrutor(email){
-        if(typeof email === 'undefined' || email===''){
-            return false;
-        }
-        for(instrutor of instrutores){
-            if(instrutor.email.toLowerCase() === email.toLowerCase()){
-                return false;
-            }
-        }
-        return true;
-    };
     //Configurações default instrutor
     function configurarInstrutor(instrutor){
         if(typeof instrutor.aulas !== 'undefined'){ //Converte o id das aulas para inteiros
@@ -91,73 +24,50 @@ modulo.factory('instrutorService',function($http){
             }
         }
         if(instrutor.dandoAula===false){instrutor.aulas=[]};
-        if(validaInstrutor(instrutor)){
-            if(typeof instrutor.urlFoto === 'undefined' || instrutor.urlFoto===''){ //Adiciona a foto default se necessário
-                instrutor.urlFoto = 'img/perfil_padrao.jpg';
-            }
-            if(typeof instrutor.aulas === 'undefined' || instrutor.aulas.length<=0){ //Dando aula fica false se não possui aulas
-                instrutor.dandoAula = false;
-            }
-            let instrutorValidado = {id:0,nome:instrutor.nome,sobrenome:instrutor.sobrenome,idade:instrutor.idade,email:instrutor.email,dandoAula:instrutor.dandoAula,aula:instrutor.aulas,urlFoto:instrutor.urlFoto};
-            return instrutorValidado;
+        if(typeof instrutor.urlFoto === 'undefined' || instrutor.urlFoto===''){ //Adiciona a foto default se necessário
+            instrutor.urlFoto = '../img/perfil_padrao.jpg';
         }
-        return false;
+        if(typeof instrutor.aulas === 'undefined' || instrutor.aulas.length<=0){ //Dando aula fica false se não possui aulas
+            instrutor.dandoAula = false;
+        }
+        let idNovoInstrutor = gerarId();
+        let instrutorValidado = {id:idNovoInstrutor,nome:instrutor.nome,sobrenome:instrutor.sobrenome,idade:instrutor.idade,email:instrutor.email,dandoAula:instrutor.dandoAula,aula:instrutor.aulas,urlFoto:instrutor.urlFoto};
+        return instrutorValidado;
     };
 
     //Adicionar Instrutor
-    function adicionarInstrutor(instrutorNovo){
-        instrutorValidado = configurarInstrutor(instrutorNovo);
-        if(instrutorValidado!==false){
-            instrutorValidado.id = idNovoInstrutor;
-            idNovoInstrutor++;
-            instrutores.push(instrutorValidado);
-            return true;//Sucesso!
-        }
-        return false;//Falha!
+    function create(instrutorNovo){
+        let instrutorValidado = configurarInstrutor(instrutorNovo);
+        return $http.post(urlBase + '/instrutor/', instrutorValidado);
     };
         
     //Alterar Instrutor
-    function alterarInstrutor(instrutorAlterado){
-        let idOriginal = instrutorAlterado.id; //Salva o id do instrutor a ser modificado
-        instrutorValidado = configurarInstrutor(instrutorAlterado); //Configura e valida o instrutor
-        if(instrutorValidado!==false){ //Se validade com sucesso
-            instrutorValidado.id = idOriginal; //Devolve o id original
-            let index = pegarIndexInstrutorPorID(instrutorValidado.id);//Busca o index original
-            $http.put(urlBase + '/instrutor' + '/' + index, instrutorValidado);
-            // instrutores[index] = instrutorValidado; //Sobre escreve o instrutor antigo com o novo já modificado 
-            return true; //Sucesso
-        }
-        return false; //Falha
+    function update(instrutorAlterado){
+        let idOriginal = instrutorAlterado.id;
+        let instrutorValidado = configurarInstrutor(instrutorAlterado); //Configura e valida o instrutor
+        instrutorValidado.id = idOriginal; //Devolve o id original
+        return $http.put(urlBase + '/instrutor/' + idOriginal, instrutorValidado);
     };
 
     //Deleta instrutor
-    function deletarInstrutor(idInstrutor){
-        let index = pegarIndexInstrutorPorID(idInstrutor);
-        if(index === false){ //Verifica se o instrutor existe
-            return false; //Falha, instrutor id não existe
-        }
-        if(instrutores[index].dandoAula){
-            return false; //Falha, instrutor dando aula
-        }else{
-            instrutores.splice(index,1);
-            return true; //Sucesso
-        }
+    function deleteI(idInstrutor){
+        return $http.delete(urlBase + '/instrutor/'+idInstrutor);
     }
 
     //Retorna todos os instrutores
-    function getTodosOsInstrutores(){
+    function list(){
         return $http.get(urlBase + '/instrutor');
     }
     //Retorna instrutor pelo id
-    function getInstrutorPorId(idInstrutor){
-        return instrutores.find((instrutore) => instrutore.id == idInstrutor); 
+    function findById(idInstrutor){
+        return $http.get(urlBase + '/instrutor/'+idInstrutor);
     }
 
     return { 
-        list:getTodosOsInstrutores, //Não recebe parâmetros ()
-        findById:getInstrutorPorId, //Recebe o id do instrutor (idInstrutor) e retorna o instrutor,tipo object, selecionado.
-        update:alterarInstrutor,    //Recebe o instrutor alterado (instrutorAlterado) e retorna true para sucesso e false para falha
-        create:adicionarInstrutor,  //Recebe o novo instrutor (instrutorNovo) e retorna true para sucesso e false para falha
-        delete:deletarInstrutor     //Receve o id do instrutor (isInstrutor) e retorna true para sucesso e false para falha
+        list:list, //Não recebe parâmetros (), retorna array de instrutores
+        findById:findById, //Recebe o id do instrutor (idInstrutor) e retorna o instrutor,tipo object, selecionado.
+        update:update,    //Recebe o instrutor alterado (instrutorAlterado) e o salva sobre o instrutor antigo
+        create:create,  //Recebe o novo instrutor (instrutorNovo) e o adiciona ao bd
+        delete:deleteI     //Recebe o id do instrutor (isInstrutor) e deleta o instrutor com este id
     }; 
 });
