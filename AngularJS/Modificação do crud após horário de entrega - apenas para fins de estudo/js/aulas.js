@@ -8,7 +8,9 @@ modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService', function
     model.itensComAlteracaoAtiva=[];
     model.aulasAntigas=[];
     model.nomeAulaErro='';
+    model.showNomeErro;
     model.nomeaula='';
+    model.sucesso="waitingForSucess";
 
     // listar aulas 
     listAulas();
@@ -28,15 +30,22 @@ modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService', function
     model.alterandoAula = alterandoAula;
     model.cancelarAlteracaoAula = cancelarAlteracaoAula;
     model.limparCampoAula = limparCampoAula;
-
+    model.alertaErrosNome = alertaErrosNome;
+    model.alertaErroNomeCancel = alertaErroNomeCancel;
     //Adiciona nova Aula
     function adicionarAula(nomeAula) {
-        console.log('cadastroAula:',model.cadastroAula.$error.minlength.length);
-        aulaService.create(nomeAula).then(function(response){
+        if(typeof model.cadastroAula.$error.minlength !=='undefined' || typeof model.cadastroAula.$error.maxlength !=='undefined'){
+            model.alertaErrosNome();
+        }else{
+            aulaService.create(nomeAula).then(function(response){
+            model.alertaErroNomeCancel();
+            model.sucesso = "success";
             let resposta = response.data;
             listAulas(); //Atualiza a lista
             alert('Aula adicionada com sucesso');
-        });
+            });
+        }
+
     };
 
     //Altera uma Aula
@@ -98,5 +107,16 @@ modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService', function
     function limparCampoAula(){
         model.nomeAulaErro='';
         model.nomeaula='';
+        model.alertaErroNomeCancel();
     };   
+    function alertaErrosNome(){
+        model.nomeAulaErro='erro';
+        model.showNomeErro=true;
+        model.sucesso="waitingForSucess";
+    }
+    function alertaErroNomeCancel(){
+        model.nomeAulaErro='';
+        model.showNomeErro=false;
+        model.sucesso="waitingForSucess";
+    }
 }]);

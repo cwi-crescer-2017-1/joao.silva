@@ -44,3 +44,18 @@ body {
     border-color: red;
     background:rgba(255, 0, 0,0.2);
 }
+.success{
+    display: none;
+    background: rgba(0, 255, 0,0.5);
+    animation-name: aviso;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+}
+.waitingForSucess{
+    display:none;
+    opacity: 1;
+}
+@keyframes aviso{
+    0%{display:block};
+    100%{display:none};
+}
