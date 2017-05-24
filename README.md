@@ -1,9 +1,11 @@
+
 # joao.silva
 # Pasta voltada para compartilhamento de projetos criados dentro do Projeto Crescer 2017
 
 ### CRUD -> trabalho de final de semana do módulo de AngulaJS
 ### AngularJS -> Pasta voltada ao armazenamento das atividades feitas em aula e dos exercícios feitos em casa do módulo de AngularJS
 ### AngularJS/Exercicios -> Pasta dedicada aos temas referentes ao módulo de AngularJS
+### AngularJS/Modificação do crud após horário de entrega - apenas para fins de estudo -> Trabalho dia 4 do módulo de AngularJS
 
 ### JavaScript -> Pasta voltada a armazenamento das atividades do módulo de JavaScript
 
