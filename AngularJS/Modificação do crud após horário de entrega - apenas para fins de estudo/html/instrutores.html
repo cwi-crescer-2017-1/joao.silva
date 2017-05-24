@@ -1,4 +1,4 @@
-            <div class="row">
+            <div class="row lista">
                 <div class=" col-md-12">
                 <h1>Lista de instrutores</h1>
                 <table class="table">
@@ -31,9 +31,9 @@
             </div>
             <img class="linha"/>    
             <form novalidate name="cadastroInstrutor" ng-submit="adicionarInstrutor(instrutor)">  
-            <h3>Adicionar novo instrutor</h3>
-            <h4>Itens com '*' são obrigatórios</h4>
             <div class="row bordar form-group">
+                <h2>Adicionar novo instrutor</h2>
+                <h4>Itens com '*' são obrigatórios</h4>
                 <div class="col-md-12">  
                     <label>
                         Nome:<alert class="obg">*</alert>
@@ -58,7 +58,7 @@
                     </label>
                     <label>
                         Url da foto de perfil:
-                        <input class="form-control" ng-class="urlFotoInstrutorErro" type="text" name="urlFotoInstrutor" ng-model="instrutor.urlFoto">
+                        <input class="form-control" type="text" name="urlFotoInstrutor" ng-model="instrutor.urlFoto">
                     </label>
                 </div>
                 <div ng-show="instrutor.dandoAula" class="col-md-12">

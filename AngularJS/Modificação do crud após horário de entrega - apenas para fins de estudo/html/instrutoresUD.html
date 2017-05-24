@@ -1,6 +1,6 @@
-        <h3>Alterar instrutor</h3>
             <h4 ng-show="alteracaoInstrutorIniciada">Itens com '*' são obrigatórios</h4>
             <div class="row bordar form-group">
+                <h2>Alterar instrutor</h2>
                 <div class="col-md-12" ng-hide="alteracaoInstrutorIniciada"> <!--Seleção instrutor para alteração-->
                     Digite o ID do instrutor a ser alterado:
                     <input class="form-control" ng-class="idInstrutorASerAlteradoErro" type="number" name="idAlteracaoInstrutor" ng-model="alteracaoInstrutor.id" required>
@@ -34,7 +34,7 @@
                                 </label>
                                 <label>
                                     Url da foto de perfil:
-                                    <input class="form-control" ng-class="urlFotoInstrutorErro" type="text" name="urlFotoInstrutor" ng-model="alteracaoInstrutor.urlFoto">
+                                    <input class="form-control" type="text" name="urlFotoInstrutor" ng-model="alteracaoInstrutor.urlFoto">
                                 </label>
                             </div>
                             <div ng-show="alteracaoInstrutor.dandoAula" class="col-md-12">
@@ -52,8 +52,8 @@
                 </div>
             </div>
             <img class="linha"/>
-            <h3>Deletar instrutor</h3>
             <div class="row bordar form-group">
+                <h2>Deletar instrutor</h2>
                 <div class="col-md-12"> 
                     Digite o ID do instrutor a ser deletado:
                     <input class="form-control" ng-class="idNomeASerDeletadoErro" type="number" name="idInstrutorDeletado" ng-model="idInstrutorDeletado" required>

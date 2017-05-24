@@ -9,29 +9,20 @@ body {
 }
 .row.bordar{
     border:2px solid black;
-}
-.vermelho{
-    background-color:red;
+    background-color: rgba(255,255,255,1);
+    padding: 2% 2% 2% 2%;
 }
 .obg{
     color:red;
 }
-.col-md-3.caixaSelecao{
-    padding: 1% 1% 1% 1%;
-    border: 2px solid red;
-    width: 250px;
-}
 .col-md-3.floor{
     margin-top: 1.5%;
 }
-.col-md-12.quebra{
-    margin-top: 5%;
-}
 .controller{
-    background-color: white;
+    background-color: rgba(128,128,128,1);
     padding: 5% 5% 5% 5%;
 }
-.preto{
+.fundo{
     background-image: url('../img/background.jpg');
     background-repeat: no-repeat;
     background-size: 100vw;
@@ -44,18 +35,13 @@ body {
     border-color: red;
     background:rgba(255, 0, 0,0.2);
 }
-.success{
-    display: none;
-    background: rgba(0, 255, 0,0.5);
-    animation-name: aviso;
-    animation-duration: 5s;
-    animation-iteration-count: 1;
+.row.menu a{
+    color: black;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 5%;
 }
-.waitingForSucess{
-    display:none;
-    opacity: 1;
-}
-@keyframes aviso{
-    0%{display:block};
-    100%{display:none};
+.row.lista{
+    background-color: rgba(255,255,255,1);
+    border:2px solid black;
 }
