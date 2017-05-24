@@ -9,14 +9,18 @@
         <div class="container controller">
             <a ng-href="#!/paginaAulas">Aulas</a>   
             <a ng-href="#!/paginaInstrutores">Instrutores</a> 
+            <a ng-href="#!/paginaInstrutoresUD">Instrutores Update and Delete</a>
             <ng-view></ng-view>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="angular-toast/angular-toastr.css" />
+        <script type="text/javascript" src="angular-toast/angular-toastr.tpls.js"></script>
         <script src="js/main.js"></script>
         <script src="js/servicesAulas.js"></script>  
         <script src="js/servicesInstrutores.js"></script>
         <script src="js/aulas.js"></script>
-        <script src="js/instrutor.js"></script>  
+        <script src="js/instrutor.js"></script>
+        <script src="js/instrutorUD.js"></script>  
     </body>
 </html>    
