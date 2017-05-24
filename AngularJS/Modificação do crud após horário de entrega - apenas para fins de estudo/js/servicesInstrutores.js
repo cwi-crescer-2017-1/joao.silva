@@ -38,7 +38,7 @@ modulo.factory('instrutorService',function($http){
     //Adicionar Instrutor
     function create(instrutorNovo){
         let instrutorValidado = configurarInstrutor(instrutorNovo);
-        return $http.post(urlBase + '/instrutor/', instrutorValidado);
+        return $http.post(urlBase +'/instrutor/', instrutorValidado);
     };
         
     //Alterar Instrutor
@@ -46,12 +46,12 @@ modulo.factory('instrutorService',function($http){
         let idOriginal = instrutorAlterado.id;
         let instrutorValidado = configurarInstrutor(instrutorAlterado); //Configura e valida o instrutor
         instrutorValidado.id = idOriginal; //Devolve o id original
-        return $http.put(urlBase + '/instrutor/' + idOriginal, instrutorValidado);
+        return $http.put(urlBase +'/instrutor/'+ idOriginal, instrutorValidado);
     };
 
     //Deleta instrutor
     function deleteI(idInstrutor){
-        return $http.delete(urlBase + '/instrutor/'+idInstrutor);
+        return $http.delete(urlBase +'/instrutor/'+idInstrutor);
     }
 
     //Retorna todos os instrutores
