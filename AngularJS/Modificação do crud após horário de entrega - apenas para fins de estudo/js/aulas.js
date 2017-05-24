@@ -1,5 +1,4 @@
-modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService', function(model,$routeParams,aulaService){
-    
+modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService','toastr', function(model,$routeParams,aulaService,toastr){
     model.id = $routeParams.idUrl;
 
     model.maxlengthAula = 20;
@@ -7,10 +6,15 @@ modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService', function
 
     model.itensComAlteracaoAtiva=[];
     model.aulasAntigas=[];
-    model.nomeAulaErro='';
-    model.showNomeErro;
     model.nomeaula='';
-    model.sucesso="waitingForSucess";
+    model.nomeAntigo;
+
+    //ng-show mensagem de erro
+    model.showNomeErro='';
+
+    //ng-class para estilos css
+    model.nomeAulaErro='';
+    model.nomeAlterado='';
 
     // listar aulas 
     listAulas();
@@ -30,19 +34,20 @@ modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService', function
     model.alterandoAula = alterandoAula;
     model.cancelarAlteracaoAula = cancelarAlteracaoAula;
     model.limparCampoAula = limparCampoAula;
-    model.alertaErrosNome = alertaErrosNome;
-    model.alertaErroNomeCancel = alertaErroNomeCancel;
     //Adiciona nova Aula
     function adicionarAula(nomeAula) {
         if(typeof model.cadastroAula.$error.minlength !=='undefined' || typeof model.cadastroAula.$error.maxlength !=='undefined'){
-            model.alertaErrosNome();
+            model.nomeAulaErro='erro';
+            model.showNomeErro=true;
+            toastr.error('Nome inválido!', 'Erro');
         }else{
             aulaService.create(nomeAula).then(function(response){
-            model.alertaErroNomeCancel();
-            model.sucesso = "success";
+            model.nomeAulaErro='';
+            model.showNomeErro=false;
             let resposta = response.data;
-            listAulas(); //Atualiza a lista
-            alert('Aula adicionada com sucesso');
+            listAulas(); //Atualiza a lista7
+            model.limparCampoAula(); //Limpa campo de texto
+            toastr.success('Aula adicionada com sucesso!', 'Sucesso!');
             });
         }
 
@@ -50,12 +55,18 @@ modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService', function
 
     //Altera uma Aula
     function salvarAlteracaoAula(idAula,novoNome) {
+        if(novoNome.length<3||novoNome.length>20){
+            model.nomeAlterado='erro';
+            toastr.error('Novo nome inválido!', 'Erro na alteração');
+            return;
+        }
         aulaService.update(idAula,novoNome).then(function(response){
             let resposta = response.data;
+            model.nomeAlterado='';
             model.cancelarAlteracaoAula(idAula);
             model.limparCampoAula();
             listAulas(); //Atualiza a lista
-            alert('A alteração foi um sucesso');
+            toastr.success('Aula alterada com sucesso!', 'Sucesso!');
         }); 
     };           
 
@@ -66,16 +77,19 @@ modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService', function
             model.cancelarAlteracaoAula(idAula);
             model.limparCampoAula();
             listAulas();//Atualiza a lista
-            alert('Aula deletada com sucesso :)');
+            toastr.success('Aula deletada com sucesso!', 'Sucesso!');
         });
     };
 
     //Inicia o processo de alteração/exclusão de uma Aula
     function ativarAlteracaoAula(idAula){
-        model.limparCampoAula();
+        listAulas();
         aulaService.findById(idAula).then(function(response){
             let aula = response.data;
             model.novoNome =  aula.nome;
+            model.nomeAntigo = aula.nome;
+            console.log(model.novoNome);
+            
         })
         model.itensComAlteracaoAtiva.push(idAula);
     };
@@ -102,21 +116,14 @@ modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService', function
         model.limparCampoAula();
         index = model.encontrarIndexItemComAlteracaoAulaAtivada(idAula);
         model.itensComAlteracaoAtiva.splice(index,1);
+        model.nomeAlterado='';
+        model.novoNome = model.nomeAntigo;
     };
     //Limpa campos de erro
     function limparCampoAula(){
-        model.nomeAulaErro='';
-        model.nomeaula='';
-        model.alertaErroNomeCancel();
-    };   
-    function alertaErrosNome(){
-        model.nomeAulaErro='erro';
-        model.showNomeErro=true;
-        model.sucesso="waitingForSucess";
-    }
-    function alertaErroNomeCancel(){
-        model.nomeAulaErro='';
         model.showNomeErro=false;
-        model.sucesso="waitingForSucess";
-    }
+        model.nomeAulaErro='';
+        model.nomeAlterado='';
+        model.nomeaula='';
+    };   
 }]);
