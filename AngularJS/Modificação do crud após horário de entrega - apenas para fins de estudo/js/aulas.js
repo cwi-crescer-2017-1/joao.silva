@@ -55,6 +55,11 @@ modulo.controller('PaginaAulas',['$scope','$routeParams','aulaService','toastr',
 
     //Altera uma Aula
     function salvarAlteracaoAula(idAula,novoNome) {
+        if(typeof novoNome === 'undefined'){
+            model.nomeAlterado='erro';
+            toastr.error('Novo nome inválido!', 'Erro na alteração');
+            return;
+        }
         if(novoNome.length<3||novoNome.length>20){
             model.nomeAlterado='erro';
             toastr.error('Novo nome inválido!', 'Erro na alteração');

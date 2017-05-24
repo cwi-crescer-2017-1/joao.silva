@@ -1,5 +1,16 @@
 modulo.controller('PaginaInstrutores',['$scope','$routeParams','instrutorService','aulaService','toastr', function (model,$routeParams,instrutorService,aulaService,toastr){
     model.id = $routeParams.idUrl;
+    model.possuiErro = false;
+
+    //ng-class de erros
+    model.nomeInstrutorErro = '';
+    model.sobrenomeInstrutorErro = '';
+    model.idadeInstrutorErro = '';
+    model.emailInstrutorErro = '';
+    //Funções configuração
+    model.limparErrosInstrutor = limparErrosInstrutor;
+    model.limparCamposInstrutor = limparCamposInstrutor;
+    model.dandoAulaToString = dandoAulaToString;
 
     //Lista os instrutores
     listInstrutores();
@@ -18,13 +29,37 @@ modulo.controller('PaginaInstrutores',['$scope','$routeParams','instrutorService
     //Funções de click
     model.adicionarInstrutor = adicionarInstrutor;
 
-    model.nomeInstrutorErro = '';
     //Create
     function adicionarInstrutor(instrutor){
-        let tamanhoNome = instrutor.nome.length;
-        if(tamanhoNome<3 || tamanhoNome>20){
+        model.limparErrosInstrutor();
+        console.log(model.cadastroInstrutor.$error.email);
+        if(typeof instrutor === 'undefined'){
+            toastr.error('Preencha todos os requisítos obrigatórios!', 'Erro');
+            return;
+        }
+        model.possuiErro = false;
+        if(typeof model.cadastroInstrutor.$error.email !=='undefined' || typeof instrutor.email === 'undefined'){
+            toastr.error('O e-mail do instrutor está incorreto! Não esqueça de utilizar o \'@\'', 'Erro');
+            model.emailInstrutorErro = 'erro';
+            model.possuiErro = true;
+        }
+        if(typeof instrutor.sobrenome !== 'undefined' && instrutor.sobrenome.length >30){
+            toastr.error('Sobrenome do instrutor grande demais!', 'Erro');
+            model.sobrenomeInstrutorErro = 'erro';
+            model.possuiErro = true;
+        }
+        if(typeof instrutor.nome === 'undefined' || instrutor.nome.length<3 || instrutor.nome.length>20){
             toastr.error('Nome do instrutor inválido!', 'Erro');
             model.nomeInstrutorErro = 'erro';
+            model.possuiErro = true;
+        }
+        if(typeof instrutor.idade === 'undefined' || Number(instrutor.idade)>90){
+            toastr.error('Idade do instrutor inválida!', 'Erro');
+            model.idadeInstrutorErro = 'erro';
+            model.possuiErro = true;
+        } 
+        if(model.possuiErro){
+            return;
         }
         instrutorService.create(instrutor).then(function(response){
             let resposta = response.data;
@@ -34,8 +69,7 @@ modulo.controller('PaginaInstrutores',['$scope','$routeParams','instrutorService
             toastr.success('Instrutor adicionado com sucesso!', 'Sucesso!');
         });
     };
-
-    model.dandoAulaToString = dandoAulaToString;
+    
     function dandoAulaToString(dandoAula){
         if(dandoAula===true){
             return 'Sim';
@@ -45,9 +79,15 @@ modulo.controller('PaginaInstrutores',['$scope','$routeParams','instrutorService
     };       
 
     //Limpar campos instrutor
-    model.limparCamposInstrutor = limparCamposInstrutor;
     function limparCamposInstrutor(){
-        model.nomeInstrutorErro = '';
         model.instrutor = {};
+        model.limparErrosInstrutor();
+    }
+    //Limpa erros da página
+    function limparErrosInstrutor(){
+        model.nomeInstrutorErro = '';
+        model.sobrenomeInstrutorErro = '';
+        model.idadeInstrutorErro = '';
+        model.emailInstrutorErro = '';
     }
 }]);

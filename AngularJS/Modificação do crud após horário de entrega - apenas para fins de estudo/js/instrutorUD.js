@@ -1,6 +1,8 @@
 modulo.controller('PaginaInstrutoresUD',['$scope','$routeParams','instrutorService','aulaService','toastr', function (model,$routeParams,instrutorService,aulaService,toastr){
     model.id = $routeParams.idUrl;
 
+    model.possuiErro = false;
+
     listAulas();
     function listAulas() {
         aulaService.list().then(function(response){
@@ -8,13 +10,55 @@ modulo.controller('PaginaInstrutoresUD',['$scope','$routeParams','instrutorServi
         });
     }
 
-    //update
+    //Erros
+    model.nomeInstrutorErro = '';
+    model.sobrenomeInstrutorErro = '';
+    model.idadeInstrutorErro = '';
+    model.emailInstrutorErro = '';
+
+    //Update (estado e valores)
     model.alteracaoInstrutor={};
     model.alteracaoInstrutorIniciada = false;
+
+    //Funções de configurações e internas
     model.cancelarAlteracaoInstrutor = cancelarAlteracaoInstrutor;
     model.iniciarAlteracaoInstrutor = iniciarAlteracaoInstrutor;
     model.salvarAlteracaoInstrutor = salvarAlteracaoInstrutor;
+    model.deletarInstrutor = deletarInstrutor;
+    model.limparCamposInstrutor = limparCamposInstrutor;
+    model.limparErrosInstrutor = limparErrosInstrutor;
+
+    //Update
     function salvarAlteracaoInstrutor(instrutorAlterado){ 
+        model.limparErrosInstrutor();
+        if(typeof instrutorAlterado === 'undefined'){
+            toastr.error('Preencha todos os requisítos obrigatórios!', 'Erro');
+            return;
+        }
+        model.possuiErro = false;
+        if(typeof model.modificacaoInstrutor.$error.email !=='undefined' || typeof instrutorAlterado.email === 'undefined'){
+            toastr.error('O e-mail do instrutor está incorreto! Não esqueça de utilizar o \'@\'', 'Erro');
+            model.emailInstrutorErro = 'erro';
+            model.possuiErro = true;
+        }
+        if(typeof instrutorAlterado.sobrenome !== 'undefined' && instrutorAlterado.sobrenome.length >30){
+            toastr.error('Sobrenome do instrutor grande demais!', 'Erro');
+            model.sobrenomeInstrutorErro = 'erro';
+            model.possuiErro = true;
+        }
+        if(typeof instrutorAlterado.nome === 'undefined' || instrutorAlterado.nome.length<3 || instrutorAlterado.nome.length>20){
+            toastr.error('Nome do instrutor inválido!', 'Erro');
+            model.nomeInstrutorErro = 'erro';
+            model.possuiErro = true;
+        }
+        if(typeof instrutorAlterado.idade === 'undefined' || Number(instrutorAlterado.idade)>90){
+            toastr.error('Idade do instrutor inválida!', 'Erro');
+            model.idadeInstrutorErro = 'erro';
+            model.possuiErro = true;
+        }
+        if(model.possuiErro){
+            return;
+        }
         instrutorService.update(instrutorAlterado).then(function(response){
             let resposta = response.data;
             model.limparCamposInstrutor();
@@ -23,6 +67,10 @@ modulo.controller('PaginaInstrutoresUD',['$scope','$routeParams','instrutorServi
     };
     function iniciarAlteracaoInstrutor(idInstrutor){
         listAulas();
+        if(typeof idInstrutor === 'undefined' || idInstrutor === null){
+            toastr.error('Formatação do ID inválida!', 'Erro');
+            return;
+        }
         instrutorService.findById(idInstrutor).then(function(response){
             let instrutor = response.data;
             model.alteracaoInstrutorIniciada = true;
@@ -36,8 +84,11 @@ modulo.controller('PaginaInstrutoresUD',['$scope','$routeParams','instrutorServi
 
     //delete
     model.idInstrutorDeletado = null;
-    model.deletarInstrutor = deletarInstrutor;
     function deletarInstrutor(idInstrutor){
+        if(typeof idInstrutor === 'undefined' || idInstrutor === null){
+            toastr.error('Formatação do ID inválida!', 'Erro');
+            return;
+        }
         instrutorService.delete(idInstrutor).then(function(response){
             let resposta = response.data;
             model.limparCamposInstrutor();
@@ -49,11 +100,18 @@ modulo.controller('PaginaInstrutoresUD',['$scope','$routeParams','instrutorServi
     }
     
     //limpar campos preenchidos
-    model.limparCamposInstrutor = limparCamposInstrutor;
     function limparCamposInstrutor(){
         model.alteracaoInstrutor = {};
         model.instrutor = {};
         model.idInstrutorDeletado = null;
         model.alteracaoInstrutorIniciada = false;
+        model.limparErrosInstrutor();
+    }
+    //Limpa erros da página
+    function limparErrosInstrutor(){
+        model.nomeInstrutorErro = '';
+        model.sobrenomeInstrutorErro = '';
+        model.idadeInstrutorErro = '';
+        model.emailInstrutorErro = '';
     }
 }]);

@@ -21,8 +21,8 @@
       "id": 15
     },
     {
-      "nome": "AAPrimeira",
-      "id": 16
+      "id": 16,
+      "nome": "APrimeira"
     }
   ],
   "instrutor": [
@@ -91,14 +91,17 @@
       "id": 8
     },
     {
+      "id": 9,
       "nome": "Bruno",
       "sobrenome": "Pessoa",
       "idade": 49,
       "email": "gmaiI@gmaiI",
-      "dandoAula": false,
-      "aula": [],
-      "urlFoto": "http://2.bp.blogspot.com/_cLiZ04U0Rzg/TT3KVS4rhJI/AAAAAAAAAwk/z7zk5lmjGZ4/s400/Copy%252Bof%252BLE%25C3%2583O%252BDE%252BJUD%25C3%2581%255B2%255D.JPG",
-      "id": 9
+      "dandoAula": true,
+      "aula": [
+        12,
+        13
+      ],
+      "urlFoto": "http://2.bp.blogspot.com/_cLiZ04U0Rzg/TT3KVS4rhJI/AAAAAAAAAwk/z7zk5lmjGZ4/s400/Copy%252Bof%252BLE%25C3%2583O%252BDE%252BJUD%25C3%2581%255B2%255D.JPG"
     },
     {
       "nome": "ZZZ",
@@ -156,12 +159,15 @@
     },
     {
       "id": 16,
-      "nome": "PreparadoParaDeletar",
-      "idade": 12,
-      "email": "waw@dasd",
-      "dandoAula": false,
-      "aula": [],
-      "urlFoto": "../img/perfil_padrao.jpg"
+      "nome": "Dog",
+      "sobrenome": "Doge",
+      "idade": 4,
+      "email": "dog@doge",
+      "dandoAula": true,
+      "aula": [
+        11
+      ],
+      "urlFoto": "http://i0.kym-cdn.com/entries/icons/facebook/000/013/564/aP2dv.jpg"
     }
   ]
 }
