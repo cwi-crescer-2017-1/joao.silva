@@ -1,13 +1,5 @@
-modulo.controller('PaginaInstrutores',['$scope','$routeParams','instrutorService','aulaService', function (model,$routeParams,instrutorService,aulaService){
+modulo.controller('PaginaInstrutores',['$scope','$routeParams','instrutorService','aulaService','toastr', function (model,$routeParams,instrutorService,aulaService,toastr){
     model.id = $routeParams.idUrl;
-    
-    model.alteracaoInstrutor={};
-    model.alteracaoInstrutorIniciada = false;
-    model.limpaErrosInstrutor = limpaErrosInstrutor;
-    model.cancelarAlteracaoInstrutor = cancelarAlteracaoInstrutor;
-    model.iniciarAlteracaoInstrutor = iniciarAlteracaoInstrutor;
-    model.dandoAulaToString = dandoAulaToString;
-    model.limparCamposInstrutor = limparCamposInstrutor;
 
     //Lista os instrutores
     listInstrutores();
@@ -22,76 +14,40 @@ modulo.controller('PaginaInstrutores',['$scope','$routeParams','instrutorService
             model.aulas = response.data;
         });
     }
+
     //Funções de click
     model.adicionarInstrutor = adicionarInstrutor;
-    model.salvarAlteracaoInstrutor = salvarAlteracaoInstrutor;
-    model.deletarInstrutor = deletarInstrutor;
 
+    model.nomeInstrutorErro = '';
     //Create
     function adicionarInstrutor(instrutor){
+        let tamanhoNome = instrutor.nome.length;
+        if(tamanhoNome<3 || tamanhoNome>20){
+            toastr.error('Nome do instrutor inválido!', 'Erro');
+            model.nomeInstrutorErro = 'erro';
+        }
         instrutorService.create(instrutor).then(function(response){
             let resposta = response.data;
+            model.nomeInstrutorErro = '';
             model.limparCamposInstrutor();
             listInstrutores();
-            alert('Instrutor adicionado com sucesso');
+            toastr.success('Instrutor adicionado com sucesso!', 'Sucesso!');
         });
     };
 
-    //update
-    function salvarAlteracaoInstrutor(instrutorAlterado){ 
-        instrutorService.update(instrutorAlterado).then(function(response){
-            let resposta = response.data;
-            model.limparCamposInstrutor();
-            listInstrutores();
-            alert('Instrutor alterado com sucesso');
-        });
-    };
-    
-    //delete
-    function deletarInstrutor(idInstrutor){
-        instrutorService.delete(idInstrutor).then(function(response){
-            let resposta = response.data;
-            model.limparCamposInstrutor();
-            listInstrutores();
-            alert('Instrutor deletado com sucesso');
-        });
-    };
-
-
+    model.dandoAulaToString = dandoAulaToString;
     function dandoAulaToString(dandoAula){
         if(dandoAula===true){
             return 'Sim';
         }else{
             return 'Não';
         }
-    };      
-   
-    function iniciarAlteracaoInstrutor(idInstrutor){
-        instrutorService.findById(idInstrutor).then(function(response){
-            let instrutor = response.data;
-            model.alteracaoInstrutorIniciada = true;
-            model.alteracaoInstrutor = angular.copy(instrutor);
-            model.idInstrutorASerAlteradoErro='';
-        })
-    }
-    
-    function cancelarAlteracaoInstrutor(alteracaoInstrutor){
-        model.alteracaoInstrutorIniciada = false;
-        model.alteracaoInstrutor = {};
-    }   
+    };       
 
-    function limpaErrosInstrutor(){
-        model.nomeInstrutorErro='';
-        model.sobrenomeInstrutorErro='';
-        model.idadeInstrutorErro='';
-        model.emailInstrutorErro='';
-        model.urlFotoInstrutorErro='';
-        model.idInstrutorASerAlteradoErro='';
-        model.idNomeASerDeletadoErro='';
-    }
+    //Limpar campos instrutor
+    model.limparCamposInstrutor = limparCamposInstrutor;
     function limparCamposInstrutor(){
-        model.alteracaoInstrutor = {};
+        model.nomeInstrutorErro = '';
         model.instrutor = {};
-        model.alteracaoInstrutorIniciada = false;
     }
 }]);
