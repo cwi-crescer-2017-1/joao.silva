@@ -1,0 +1,6 @@
+c:\users\joao.silva\desktop\MeuRepositorio\joao.silva\C#\Projeto1\Aula1\Demo1\bin\Debug\Demo1.exe.config
+c:\users\joao.silva\desktop\MeuRepositorio\joao.silva\C#\Projeto1\Aula1\Demo1\bin\Debug\Demo1.exe
+c:\users\joao.silva\desktop\MeuRepositorio\joao.silva\C#\Projeto1\Aula1\Demo1\bin\Debug\Demo1.pdb
+c:\users\joao.silva\desktop\MeuRepositorio\joao.silva\C#\Projeto1\Aula1\Demo1\obj\Debug\Demo1.csprojResolveAssemblyReference.cache
+c:\users\joao.silva\desktop\MeuRepositorio\joao.silva\C#\Projeto1\Aula1\Demo1\obj\Debug\Demo1.exe
+c:\users\joao.silva\desktop\MeuRepositorio\joao.silva\C#\Projeto1\Aula1\Demo1\obj\Debug\Demo1.pdb

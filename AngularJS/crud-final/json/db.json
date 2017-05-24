@@ -22,7 +22,7 @@
     },
     {
       "id": 16,
-      "nome": "APrimeira1"
+      "nome": "APrimeira"
     }
   ],
   "instrutor": [
@@ -127,12 +127,16 @@
       "id": 11
     },
     {
+      "id": 12,
       "nome": "Seiya",
       "idade": 26,
       "email": "cdz@athena",
-      "dandoAula": false,
-      "urlFoto": "http://vignette1.wikia.nocookie.net/saintseya/images/7/70/SEIYA_DE_P%C3%89GASO.png/revision/latest?cb=20160805213355&path-prefix=pt",
-      "id": 12
+      "dandoAula": true,
+      "aula": [
+        12,
+        15
+      ],
+      "urlFoto": "http://vignette1.wikia.nocookie.net/saintseya/images/7/70/SEIYA_DE_P%C3%89GASO.png/revision/latest?cb=20160805213355&path-prefix=pt"
     },
     {
       "id": 13,

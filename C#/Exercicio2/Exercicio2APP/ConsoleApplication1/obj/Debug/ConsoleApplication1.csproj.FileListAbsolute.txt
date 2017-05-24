@@ -1,0 +1,5 @@
+c:\users\joao.silva\desktop\MeuRepositorio\joao.silva\C#\Exercicio2\Exercicio2APP\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+c:\users\joao.silva\desktop\MeuRepositorio\joao.silva\C#\Exercicio2\Exercicio2APP\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+c:\users\joao.silva\desktop\MeuRepositorio\joao.silva\C#\Exercicio2\Exercicio2APP\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+c:\users\joao.silva\desktop\MeuRepositorio\joao.silva\C#\Exercicio2\Exercicio2APP\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+c:\users\joao.silva\desktop\MeuRepositorio\joao.silva\C#\Exercicio2\Exercicio2APP\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
