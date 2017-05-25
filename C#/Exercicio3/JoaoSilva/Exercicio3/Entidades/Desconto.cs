@@ -13,7 +13,6 @@ namespace Exercicio3.Entidades
             Aliquota = aliquota;
             Valor = valor;
         }
-
         public double Aliquota { get; private set; }
         public double Valor { get; private set; }
     }
