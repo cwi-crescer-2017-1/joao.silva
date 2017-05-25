@@ -1,1 +1,8 @@
 c:\users\joao.silva\desktop\Meu Repositório\joao.silva\C#\Exercicio3\JoaoSilva\Exercicio3\obj\Debug\Exercicio3.csprojResolveAssemblyReference.cache
+C:\Users\jpedr\Desktop\CWI\Repositórios GitHub\joao.silva\C#\Exercicio3\JoaoSilva\Exercicio3\obj\Debug\Exercicio3.csprojResolveAssemblyReference.cache
+C:\Users\jpedr\Desktop\CWI\Repositórios GitHub\joao.silva\C#\Exercicio3\JoaoSilva\Exercicio3\bin\Debug\Exercicio3.dll
+C:\Users\jpedr\Desktop\CWI\Repositórios GitHub\joao.silva\C#\Exercicio3\JoaoSilva\Exercicio3\bin\Debug\Exercicio3.pdb
+C:\Users\jpedr\Desktop\CWI\Repositórios GitHub\joao.silva\C#\Exercicio3\JoaoSilva\Exercicio3\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\jpedr\Desktop\CWI\Repositórios GitHub\joao.silva\C#\Exercicio3\JoaoSilva\Exercicio3\bin\Debug\pt-BR\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\jpedr\Desktop\CWI\Repositórios GitHub\joao.silva\C#\Exercicio3\JoaoSilva\Exercicio3\obj\Debug\Exercicio3.dll
+C:\Users\jpedr\Desktop\CWI\Repositórios GitHub\joao.silva\C#\Exercicio3\JoaoSilva\Exercicio3\obj\Debug\Exercicio3.pdb

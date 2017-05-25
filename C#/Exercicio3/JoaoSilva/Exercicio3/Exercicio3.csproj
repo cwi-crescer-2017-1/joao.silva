@@ -51,6 +51,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CalculoFolhaPagamento.cs" />
+    <Compile Include="calculoINSS.cs" />
+    <Compile Include="calculoIRRF.cs" />
     <Compile Include="Entidades\Demonstrativo.cs" />
     <Compile Include="Entidades\Desconto.cs" />
     <Compile Include="Entidades\IFolhaPagamento.cs" />
