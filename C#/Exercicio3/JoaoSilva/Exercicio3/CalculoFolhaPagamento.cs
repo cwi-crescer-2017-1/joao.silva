@@ -22,11 +22,11 @@ namespace Exercicio3.Entidades
             double totalINSS = arredondar(aliquotaINSS * totalProventos);
             Desconto inss = new Desconto(aliquotaINSS, totalINSS);
             double aliquotaIRRF = new aliquotaIRRF(totalProventos, totalINSS).Valor();
-            double totalIRRF = arredondar(aliquotaIRRF * totalProventos);
+            double totalIRRF = arredondar((totalProventos-totalINSS)*aliquotaIRRF);
             Desconto irrf = new Desconto(aliquotaIRRF, totalIRRF);
             double totalDescontos = irrf.Valor+inss.Valor;
             double totalLiquido = totalProventos - totalDescontos;
-            double totalFGTS = calcularFGTS(salarioBase);
+            double totalFGTS = calcularFGTS(totalProventos);
             Desconto fgts = new Desconto(0.11,totalFGTS); 
             return new Demonstrativo(salarioBase, horasCategoria, horasExtrasCalculadas, horasDescontadasCalculadas,totalProventos,inss,irrf,totalDescontos,totalLiquido,fgts);
         }

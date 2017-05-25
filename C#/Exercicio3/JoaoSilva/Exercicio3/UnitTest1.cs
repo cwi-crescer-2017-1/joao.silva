@@ -39,7 +39,7 @@ namespace Exercicio3.Entidades
             Assert.AreEqual(result.TotalLiquido, 1092, 0.1); //1200-96
             //Soma do Total de Proventos - Total de Descontos.
 
-            Assert.AreEqual(result.Fgts.Valor,110, 0.1); //1000*0.11
+            Assert.AreEqual(result.Fgts.Valor,132, 0.1); //1000*0.11
             //discriminado 11% fixo  
         }
         [TestMethod]
@@ -74,7 +74,7 @@ namespace Exercicio3.Entidades
             Assert.AreEqual(result.TotalLiquido, 1376.47, 0.1);
             //Soma do Total de Proventos - Total de Descontos.
 
-            Assert.AreEqual(result.Fgts.Valor, 220, 0.1);
+            Assert.AreEqual(result.Fgts.Valor, 168.23, 0.1);
             //discriminado 11% fixo  
         }
         [TestMethod]
@@ -100,17 +100,17 @@ namespace Exercicio3.Entidades
             //INSS: Até R$1000,00 utilize 8%, até R$1500,00 9% e acima disso 10% do Total de Provento
 
             Assert.AreEqual(result.Irrf.Aliquota,0.275, 0.1);
-            Assert.AreEqual(result.Irrf.Valor,3140.72, 0.1); //3140,72275
+            Assert.AreEqual(result.Irrf.Valor,2826.64, 0.1); //2826,648
             /*IRRF: Total de Proventos deduzido o INSS. Aliquota: até R$1710.78 isento, 
             * até R$2563.91 7,5%, até R$3418.59 15%, até R$4271.59 22,5% e acima disso 27,5%.*/
 
-            Assert.AreEqual(result.TotalDescontos,4282.8, 0.1);
+            Assert.AreEqual(result.TotalDescontos,3968.72, 0.1);
             //Soma do INSS e do IRRF
 
-            Assert.AreEqual(result.TotalLiquido,7138.01, 0.1);
+            Assert.AreEqual(result.TotalLiquido,7452.08, 0.1);
             //Soma do Total de Proventos - Total de Descontos.
 
-            Assert.AreEqual(result.Fgts.Valor,1066.77, 0.1); //1066,7789
+            Assert.AreEqual(result.Fgts.Valor,1256.28, 0.1);
             //discriminado 11% fixo  
         }
         //TESTE_INSTRUTOR
@@ -317,10 +317,10 @@ namespace Exercicio3.Entidades
             
             Assert.AreEqual(demonstrativo.Fgts.Aliquota, fgtsAliquotaEsperado);
             Assert.AreEqual(demonstrativo.Fgts.Valor, fgtsValorEsperado);
-
+            
             Assert.AreEqual(demonstrativo.Irrf.Valor, irrfValorEsperado);
             Assert.AreEqual(demonstrativo.TotalDescontos, totalDescontosEsperado);
-            Assert.AreEqual(demonstrativo.TotalLiquido, totalLiquidoEsperado);
+            Assert.AreEqual(demonstrativo.TotalLiquido, totalLiquidoEsperado,0.1);
         }
 
         [TestMethod]
