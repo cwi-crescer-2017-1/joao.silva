@@ -8,7 +8,6 @@ namespace Exercicio3.Entidades
 {
     public interface IFolhaPagamento
     {
-      Demonstrativo GerarDemonstrativo();
-        //
+      Demonstrativo GerarDemonstrativo(int horasCategoria, double salarioBase, double horasExtras, double horasDescontadas);
     }
 }
