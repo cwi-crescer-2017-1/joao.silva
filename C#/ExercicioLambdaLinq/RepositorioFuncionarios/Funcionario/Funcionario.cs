@@ -20,7 +20,7 @@ namespace Repositorio
             this.Nome = nome;
             this.DataNascimento = dataNascimento;
         }
-        private int Idade
+        public int Idade
         {
             get
             {
