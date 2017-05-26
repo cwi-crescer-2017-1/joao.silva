@@ -166,9 +166,36 @@ namespace Repositorio
                                            select new { Turno = grupo.Key, Quantidade = grupo.ToList().Count })).ToList();
         }
 
-        public dynamic FuncionarioMaisComplexo()
+        public dynamic FuncionarioMaisComplexo() //Needs Refactoring
         {
-            throw new NotImplementedException();
+            List<Funcionario> funcionariosComOsRequisitosMinimos = new List<Funcionario>();
+            funcionariosComOsRequisitosMinimos = Funcionarios.Where(funcionario => funcionario.Cargo.Titulo != "Desenvolvedor Júnior" && funcionario.TurnoTrabalho != TurnoTrabalho.Tarde).ToList();
+            String consoantes = "bcdfghjklmnpqrstvxwyz";
+            int maiorNumeroDeConsoantes = 0;
+            int total_consoantes = 0;
+            Funcionario vencedor = new Funcionario(0, "AAAAA", new DateTime(1980, 01, 01));
+            foreach (var funcionario in funcionariosComOsRequisitosMinimos)
+            {
+                total_consoantes = 0;
+                foreach (char letra in funcionario.Nome)
+                {
+                    if (consoantes.Contains(letra))
+                    {
+                        total_consoantes++;
+                    }
+                }
+                if (total_consoantes > maiorNumeroDeConsoantes)
+                {
+                    maiorNumeroDeConsoantes = total_consoantes;
+                    vencedor = funcionario;
+                }
+            }
+            CultureInfo usCulture = new CultureInfo("en-US");
+            CultureInfo brCulture = new CultureInfo("pt-BR");
+            var valorFormatadoPTBR = Decimal.Parse(vencedor.Cargo.Salario.ToString()).ToString("C2", brCulture);
+            var valorFormatadoUS = Decimal.Parse(vencedor.Cargo.Salario.ToString()).ToString("C2", usCulture);
+            int quantidadeMesmoCargo = Funcionarios.Where(funcionarios => funcionarios.Cargo.Titulo == vencedor.Cargo.Titulo).Count();
+            return new { Nome = vencedor.Nome, DataNascimento = vencedor.DataNascimento.ToShortDateString(), SalarioRS = valorFormatadoPTBR, SalarioUS = valorFormatadoUS, QuantidadeMesmoCargo = quantidadeMesmoCargo };
         }
     }
 }
