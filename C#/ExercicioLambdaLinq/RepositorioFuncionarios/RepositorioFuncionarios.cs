@@ -110,7 +110,15 @@ namespace Repositorio
                          ? Funcionarios
                          : Funcionarios
                                  .Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho)).ToList();
-        }        
+        }
+
+        public IList<Funcionario> BuscarPorTurno(TurnoTrabalho? turno)
+        {
+            return (turno != null)
+                        ? Funcionarios
+                            .Where(funcionario => funcionario.TurnoTrabalho == turno).ToList()
+                        : Funcionarios;
+        }
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
@@ -121,19 +129,21 @@ namespace Repositorio
                         IsBetween(funcionario.getIdade(), idadeMinima, idadeMaxima)).ToList();
         }
 
-        public bool IsBetween(int valorReal, int valorMinimo, int valorMaximo)
+        private bool IsBetween(int valorReal, int valorMinimo, int valorMaximo)
         {
             return (valorReal >= valorMinimo && valorReal <= valorMaximo);
         }
 
-        private int CalcularIdade(DateTime dataNascimento)
-        {
-            throw new NotImplementedException();
-        }
-
         public double SalarioMedio(TurnoTrabalho? turno = null)
         {
-            throw new NotImplementedException();
+            return (turno != null)
+                         ? SomaSalario(BuscarPorTurno(turno)) / BuscarPorTurno(turno).Count()
+                         : SomaSalario(Funcionarios) / Funcionarios.Count();
+        }
+
+        private double SomaSalario(IList<Funcionario> funcionarios)
+        {
+            return funcionarios.Sum(funcionario => funcionario.Cargo.Salario);
         }
 
         public IList<Funcionario> AniversariantesDoMes()
