@@ -154,7 +154,8 @@ namespace Repositorio
 
         public IList<dynamic> BuscaRapida()
         {
-            throw new NotImplementedException();
+            return ((IEnumerable<dynamic>)(from funcionario in Funcionarios
+                                           select new FuncionarioResumido(funcionario.Nome, funcionario.Cargo.Titulo))).ToList();
         }
 
         public IList<dynamic> QuantidadeFuncionariosPorTurno()
