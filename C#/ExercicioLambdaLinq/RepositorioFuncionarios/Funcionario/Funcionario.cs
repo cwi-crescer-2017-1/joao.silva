@@ -20,20 +20,5 @@ namespace Repositorio
             this.Nome = nome;
             this.DataNascimento = dataNascimento;
         }
-        
-        private int Idade
-        {
-            get
-            {
-                DateTime dataAtual = DateTime.Now;
-                TimeSpan idade = dataAtual - DataNascimento;
-                return idade.Days / 365;
-            }
-            set { }
-        }
-        public int getIdade()
-        {
-            return this.Idade;
-        }
     }
 }

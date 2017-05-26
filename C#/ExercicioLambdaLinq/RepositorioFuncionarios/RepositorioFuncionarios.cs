@@ -85,115 +85,57 @@ namespace Repositorio
 
         public IList<Funcionario> BuscarPorCargo(Cargo cargo)
         {
-            return Funcionarios
-                        .Where(funcionario => funcionario.Cargo.Titulo.Contains(cargo.Titulo))
-                        .ToList();
+            throw new NotImplementedException(); 
         }
 
         public IList<Funcionario> OrdenadosPorCargo()
         {
-            return Funcionarios
-                        .OrderBy(funcionario => funcionario.Cargo.Titulo)
-                        .ThenBy(funcionario => funcionario.Nome)
-                        .ToList();
+            throw new NotImplementedException();
         }
 
         public IList<Funcionario> BuscarPorNome(string nome)
         {
-            return Funcionarios
-                        .Where(funcionario => funcionario.Nome.IndexOf(nome, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            throw new NotImplementedException();
         }        
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
         {
-             return (turnos.Count() == 0) 
-                         ? Funcionarios 
-                         : Funcionarios
-                                 .Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho)).ToList();
-        }
-        public IList<Funcionario> BuscarPorTurno(TurnoTrabalho? turno)
-        {
-            return (turno != null)
-                        ? Funcionarios
-                            .Where(funcionario => funcionario.TurnoTrabalho == turno).ToList()
-                        : Funcionarios;
-        }
+            throw new NotImplementedException();
+        }        
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
-            var idadeMinima = idade - 5;
-            var idadeMaxima = idade + 5;
-            return Funcionarios
-                        .Where(funcionario => 
-                        IsBetween(funcionario.getIdade(), idadeMinima, idadeMaxima)).ToList();
+            throw new NotImplementedException();
         }
 
-        public bool IsBetween(int valorReal, int valorMinimo, int valorMaximo)
+        private int CalcularIdade(DateTime dataNascimento)
         {
-            return (valorReal>=valorMinimo && valorReal<=valorMaximo);
+            throw new NotImplementedException();
         }
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
         {
-            return (turno != null)
-                        ? SomaSalario(BuscarPorTurno(turno)) / BuscarPorTurno(turno).Count()           
-                        : SomaSalario(Funcionarios) / Funcionarios.Count();
+            throw new NotImplementedException();
         }
-        private double SomaSalario(IList<Funcionario> funcionarios)
-        {
-            return funcionarios.Sum(funcionario => funcionario.Cargo.Salario);
-        }
+
         public IList<Funcionario> AniversariantesDoMes()
         {
-            DateTime dataAtual = DateTime.Now;
-            return Funcionarios.Where(funcionario => funcionario.DataNascimento.Month == dataAtual.Month).ToList();
+            throw new NotImplementedException();
         }
 
         public IList<dynamic> BuscaRapida()
-        { 
-            return ((IEnumerable<dynamic>)(from funcionario in Funcionarios
-                   select new FuncionarioResumido(funcionario.Nome, funcionario.Cargo.Titulo))).ToList();
-
+        {
+            throw new NotImplementedException();
         }
 
         public IList<dynamic> QuantidadeFuncionariosPorTurno()
         {
-            return ((IEnumerable<dynamic>)(from funcionario in Funcionarios
-                    group funcionario.Id by funcionario.TurnoTrabalho
-                   into grupo
-                    select new {Turno = grupo.Key, Quantidade = grupo.ToList().Count})).ToList();
+            throw new NotImplementedException();
         }
 
-        public dynamic FuncionarioMaisComplexo() //Needs Refactoring
+        public dynamic FuncionarioMaisComplexo()
         {
-            List<Funcionario> funcionariosComOsRequisitosMinimos = new List<Funcionario>();
-            funcionariosComOsRequisitosMinimos = Funcionarios.Where(funcionario => funcionario.Cargo.Titulo != "Desenvolvedor Júnior" && funcionario.TurnoTrabalho != TurnoTrabalho.Tarde).ToList();
-            String consoantes = "bcdfghjklmnpqrstvxwyz";
-            int maiorNumeroDeConsoantes = 0;
-            int total_consoantes = 0;
-            Funcionario vencedor = new Funcionario(0,"AAAAA", new DateTime(1980, 01, 01));
-            foreach (var funcionario in funcionariosComOsRequisitosMinimos)
-            {
-                total_consoantes = 0;
-                foreach (char letra in funcionario.Nome)
-                {
-                    if (consoantes.Contains(letra))
-                    {
-                        total_consoantes++;
-                    }    
-                }
-                if(total_consoantes> maiorNumeroDeConsoantes)
-                {
-                    maiorNumeroDeConsoantes = total_consoantes;
-                    vencedor = funcionario;
-                }
-            }
-            CultureInfo usCulture = new CultureInfo("en-US");
-            CultureInfo brCulture = new CultureInfo("pt-BR");
-            var valorFormatadoPTBR = Decimal.Parse(vencedor.Cargo.Salario.ToString()).ToString("C2", brCulture);
-            var valorFormatadoUS = Decimal.Parse(vencedor.Cargo.Salario.ToString()).ToString("C2", usCulture);
-            int quantidadeMesmoCargo = Funcionarios.Where(funcionarios => funcionarios.Cargo.Titulo == vencedor.Cargo.Titulo).Count();
-            return new { Nome = vencedor.Nome, DataNascimento = vencedor.DataNascimento.ToShortDateString(), SalarioRS = valorFormatadoPTBR, SalarioUS = valorFormatadoUS, QuantidadeMesmoCargo = quantidadeMesmoCargo};
+            throw new NotImplementedException();
         }
     }
 }

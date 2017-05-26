@@ -10,7 +10,7 @@ namespace Testes
 {
     [TestClass]
     public class FuncionarioTest
-    {
+    {        
         private const string CARGO_DESENVOLVEDOR_JUNIOR = "Desenvolvedor Júnior";
 
         //BuscarPorCargo
@@ -66,7 +66,7 @@ namespace Testes
             IList<Funcionario> funcionariosManha = repositorioFuncionarios.BuscarPorTurno(TurnoTrabalho.Manha, TurnoTrabalho.Tarde);
 
             Assert.AreEqual(9, funcionariosManha.Count);
-        }
+        }        
 
         //FiltrarPorIdadeAproximada
         [TestMethod]
@@ -154,6 +154,5 @@ namespace Testes
             Assert.AreEqual("$550.50", funcionarioComplex.SalarioUS);
             Assert.AreEqual(1, funcionarioComplex.QuantidadeMesmoCargo);
         }
-
     }
 }
