@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FuncionarioResumido.cs" />
     <Compile Include="RepositorioFuncionarios.cs" />
     <Compile Include="Funcionario\Cargo.cs" />
     <Compile Include="Funcionario\Funcionario.cs" />
