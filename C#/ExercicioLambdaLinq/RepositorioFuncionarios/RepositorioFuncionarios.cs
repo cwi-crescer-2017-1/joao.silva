@@ -114,7 +114,11 @@ namespace Repositorio
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
-            throw new NotImplementedException();
+            var idadeMinima = idade - 5;
+            var idadeMaxima = idade + 5;
+            return Funcionarios
+                        .Where(funcionario =>
+                        IsBetween(funcionario.getIdade(), idadeMinima, idadeMaxima)).ToList();
         }
 
         public bool IsBetween(int valorReal, int valorMinimo, int valorMaximo)
