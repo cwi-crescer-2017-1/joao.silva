@@ -117,6 +117,11 @@ namespace Repositorio
             throw new NotImplementedException();
         }
 
+        public bool IsBetween(int valorReal, int valorMinimo, int valorMaximo)
+        {
+            return (valorReal >= valorMinimo && valorReal <= valorMaximo);
+        }
+
         private int CalcularIdade(DateTime dataNascimento)
         {
             throw new NotImplementedException();
