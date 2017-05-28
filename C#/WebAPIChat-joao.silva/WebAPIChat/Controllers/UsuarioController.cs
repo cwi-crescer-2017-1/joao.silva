@@ -13,41 +13,39 @@ namespace WebAPIChat.Controllers
         private static List<Usuario> usuarios = new List<Usuario>();
         private static object @lock = new object();
 
-        public string Get(string nome, string senha)
+        public Usuario Get(string nomeDeUsuario, string senha)
         {
-            Usuario usuario = encontrarUsuarioPorNome(nome);
-            if (usuario != null)
+            Usuario usuario = encontrarUsuarioPorNomeDeUsuario(nomeDeUsuario);
+            if (usuario!=null)
             {
                 if (senhaCorreta(usuario, senha))
                 {
-                    return usuario.Nome;
+                    return usuario;
                 }
             }
             return null;
         }
 
-        public IHttpActionResult Post(string nome, string senha)
+        public bool Post(string nomeDeUsuario,string nome, string senha, string imgUrl)
         {
-            Usuario usuario = encontrarUsuarioPorNome(nome);
-            if(usuario == null)
+            if(nomeDeUsuarioJaExiste(nomeDeUsuario))
             {
-                lock (@lock)
-                {
-                    Usuario novoUsuario = new Usuario(nome, senha);
-                    usuarios.Add(usuario);
-
-                }
-                return Ok();
+                return false;
             }
             else
             {
-                return BadRequest();
+                lock (@lock)
+                {
+                    Usuario novoUsuario = new Usuario(nomeDeUsuario, nome, senha, imgUrl);
+                    usuarios.Add(novoUsuario);
+                }
+                return true;
             }
         }
 
-        private IHttpActionResult Ok(object novoUsuario)
+        private IHttpActionResult Ok()
         {
-            throw new NotImplementedException();
+            throw new OkException();
         }
 
         private IHttpActionResult BadRequest()
@@ -66,11 +64,22 @@ namespace WebAPIChat.Controllers
                 return false;
             }
         }
-        public Usuario encontrarUsuarioPorNome(string nome)
+        public bool nomeDeUsuarioJaExiste(string nomeDeUsuario)
         {
             foreach (Usuario usuario in usuarios)
             {
-                if (usuario.Nome == nome)
+                if (usuario.NomeDeUsuario == nomeDeUsuario)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public Usuario encontrarUsuarioPorNomeDeUsuario(string nomeDeUsuario)
+        {
+            foreach (Usuario usuario in usuarios)
+            {
+                if (usuario.NomeDeUsuario == nomeDeUsuario)
                 {
                     return usuario;
                 }

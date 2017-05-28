@@ -95,10 +95,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Exceptions\OkException.cs" />
     <Compile Include="Exceptions\UsuarioJaExisteException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\InformacoesUsuario.cs" />
     <Compile Include="Models\Mensagem.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

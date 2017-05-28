@@ -11,11 +11,11 @@ namespace WebAPIChat.Models
         public string Texto { get; set; }
         public DateTime Horario { get; private set; }
         public int Id { get; private set; }
-        public Usuario Remetente { get; private set; }
+        public InformacoesUsuario Remetente { get; private set; }
 
         private static int id=0;
 
-        public Mensagem(string texto, Usuario remetente)
+        public Mensagem(string texto, InformacoesUsuario remetente)
         {
             this.Id = id++;
             this.Texto = texto;

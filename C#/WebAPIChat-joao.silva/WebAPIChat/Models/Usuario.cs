@@ -9,15 +9,19 @@ namespace WebAPIChat.Models
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }
+        public string NomeDeUsuario { get; private set; }
         private string Senha { get; set; }
+        public string ImgUrl { get; set; }
 
         private static int id = 0;
 
-        public Usuario(string nome, string senha)
+        public Usuario(string nomeDeUsuario,string nome, string senha, string imgUrl)
         {
-            this.Id = id++;
-            this.Nome = nome;
-            this.Senha = senha;
+            Id = id++;
+            NomeDeUsuario = nomeDeUsuario;
+            Nome = nome;
+            Senha = senha;
+            ImgUrl = imgUrl;
         }
 
         public bool VerificarSenha(string senha)
@@ -26,11 +30,23 @@ namespace WebAPIChat.Models
             return comparacao == 0 && true;
         }
 
-        public bool mudarNomeUsuario(string nome, string senha)
+        public bool mudarNome(string senha, string novoNome)
         {
             if (VerificarSenha(senha))
             {
-                this.Nome = nome;
+                this.Nome = novoNome;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool mudarImg(string senha, string url)
+        {
+            if (VerificarSenha(senha))
+            {
+                this.ImgUrl = url;
                 return true;
             }
             else
