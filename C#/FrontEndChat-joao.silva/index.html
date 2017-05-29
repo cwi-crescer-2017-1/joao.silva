@@ -1,27 +1,21 @@
 <!DOCTYPE html>
-<html ng-app="InstrutoresAPP">
+<html ng-app="ChatAPI">
 <head>
-    <title>Aula02 Exercicio</title>
-    <script src="https://code.angularjs.org/1.6.4/angular.js"></script>
-    <script src="js/instrutores.js"></script>
+    <title>Chat Crescer</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Keania+One" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
     <div class="container-fluid">
-        <div ng-controller="instrutores">
-            <div class="row chat">
-                <div class="col-md-12 menu text-center">
-                    <div class="col-md-2"><img src="img/chat.png"></div>
-                    <div class="col-md-8"><h1>Y.O.L.O</h1></div>
-                </div>
-                <div class="col-md-12 campoDigitacao">
-                    <div class="col-md-11 areaDigitacao">Digite: <input type="text" name="name"><br></div>
-                    <div class="col-md-1"><img src="img/sendButton.png"></div>
-                </div>
-            </div> 
-        </div>    
+       <ng-view></ng-view>
     </div>    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/loginService.js"></script>  
+    <script src="js/chatService.js"></script>  
+    <script src="js/login.js"></script>
+    <script src="js/chat.js"></script>
 </body>        
 </html>
