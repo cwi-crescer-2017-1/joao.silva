@@ -1,6 +1,8 @@
-﻿using Demo1.WebApi.Models;
+﻿using Demo1.Dominio.Entidades;
+using Demo1.Infraestrutura.Repositorios;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -10,36 +12,24 @@ namespace Demo1.WebApi.Controllers
 {
     public class ProdutosController : ApiController
     {
+        ProdutoRepositorio _produtoRepositorio = new ProdutoRepositorio();
         public IHttpActionResult Post(Produto produto)
         {
-            return Ok(string.Empty);
-        }
+            var mensagens = new List<string>();
+            if(!produto.Validar(out mensagens))
+            {
+                return BadRequest(string.Join(" - ", mensagens)); 
+            }
 
-        // GET api/<controller>
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+            _produtoRepositorio.Criar(produto);
 
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
+            return Ok(produto);
         }
-
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        public IHttpActionResult Get()
         {
-        }
+            var produtos = _produtoRepositorio.Listar();
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+            return Ok(produtos);
         }
     }
 }
