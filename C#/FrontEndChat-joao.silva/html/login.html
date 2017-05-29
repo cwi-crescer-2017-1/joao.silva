@@ -4,6 +4,7 @@
             <div class="col-md-2"><button class="alternarButton" type="button" ng-click="irParaRegistro()">Ainda não possui cadastro? Registrar</button></div>
         </div>
         <div class="row">
+          <form>  
             <div class="col-md-6 login">
                 <label>Usuário: <input class="digitacao" type="text" name="login" ng-model="usuario" placeholder="Digite seu usuário"></label><br>
                 <label>Senha: <input class="digitacao" type="password" name="login" ng-model="senha" placeholder="Digite sua senha"></label><br>
@@ -11,4 +12,5 @@
             <div class="col-md-6 botaoLogin">
                 <button type="button" ng-click="logar(usuario,senha)"><img src="img/sendButton.png"></button>
             </div> 
+        </form>
         </div> 

@@ -32,14 +32,21 @@ namespace WebAPIChat.Controllers
         {
             lock (@lock)
             {
-                if(imgRemetente == "")
+                if(texto == null || texto == "" || texto==" ")
                 {
-                    imgRemetente = "http://www.guiaconfia.com/img/usuario/sin_img.jpg";
+                    return false;
                 }
-                var textoAprimorado = ProcurarNunes(texto);
-                Mensagem mensagem = new Mensagem(textoAprimorado, new InformacoesUsuario(nomeRemetente, idRemetente, imgRemetente));
-                mensagens.Add(mensagem);
-                return true;
+                else
+                {
+                    if (imgRemetente == "" || imgRemetente == null)
+                    {
+                        imgRemetente = "http://www.guiaconfia.com/img/usuario/sin_img.jpg";
+                    }
+                    var textoAprimorado = ProcurarNunes(texto);
+                    Mensagem mensagem = new Mensagem(textoAprimorado, new InformacoesUsuario(nomeRemetente, idRemetente, imgRemetente));
+                    mensagens.Add(mensagem);
+                    return true;
+                }
             }
         }
         public string ProcurarNunes(string texto)

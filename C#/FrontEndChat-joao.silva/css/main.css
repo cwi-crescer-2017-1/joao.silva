@@ -9,7 +9,6 @@ body {
   font-weight: 900;
 } 
 .container-fluid{
-    height: 100vw;
     padding: 1% 3% 2% 3%;
     animation-name: troca-de-cores;
     animation-duration: 5s;
@@ -34,9 +33,7 @@ body {
     width: 75px;
 }
 .chat .campoDigitacao{
-    position: fixed;
-    bottom: 0;
-    width: 96%;
+    width: 100%;
     height: 10vh;
     border: 2px solid black;
     border-radius: 0% 0% 0% 0%;
@@ -73,6 +70,8 @@ body {
 }
 .row .mensagens{
     margin-top:2%;
+    height: 70vh;
+    overflow: scroll;
 }
 .repeticaoDados p{
     font-size: 20px;
@@ -82,6 +81,9 @@ body {
      font-size: 25px;
      border-radius: 2% 2% 2% 2%;
      background: linear-gradient(to bottom, rgba(125,185,232,1) 0%,rgba(41,137,216,1) 65%, rgba(30,87,153,1) 100%);
+}
+.imgUsuario{
+    border-radius: 50%;
 }
 @keyframes troca-de-cores{
 		0%   {background-color: rgba(47,79,79,0.5);}

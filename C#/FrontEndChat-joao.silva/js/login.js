@@ -14,7 +14,7 @@ modulo.controller('PaginaLogin',['$scope','$routeParams','loginService', functio
             loginService.create(nomeDeUsuario,nome,senha,imgUrl).then(function(response){
             alert('Usuário cadastrado com sucesso!', 'Sucesso!');
             console.log(response.data);
-            location.href="http://localhost:8080/#!/paginaChat";
+            location.href="http://localhost:8080/#!/paginaLogin";
             });
     };
     function logar(nomeDeUsuario,senha) {

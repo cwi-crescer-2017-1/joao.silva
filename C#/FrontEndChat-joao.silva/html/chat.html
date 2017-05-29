@@ -7,14 +7,14 @@
             </div>
             <div class="col-md-12">
                 <div class="row mensagens">
-                    <div class="repeticaoDados" ng-repeat="mensagem in ListaMensagens">
+                    <div class="repeticaoDados" ng-repeat="mensagem in ListaMensagens | orderBy : 'mensagem.Horario' : reverse">
                        <div class="mensagem"> 
-                        <div class="col-md-2"><img ng-src="{{mensagem.Remetente.ImgUrl}}" height="50px" width="50px"></div>
+                        <div class="col-md-2"><img class="imgUsuario" ng-src="{{mensagem.Remetente.ImgUrl}}" height="50px" width="50px"></div>
                         <div class="col-md-8"><h5>{{mensagem.Remetente.Nome}}</h5></div>
                         <div class="col-md-2"><h5>{{mensagem.Horario}}</h5></div>    
                         <div class="col-md-12"><p>{{mensagem.Texto}}</p></div>
                        </div> 
-                    </div> 
+                    </div>    
                  </div>   
             </div>    
             <div class="col-md-12 campoDigitacao">

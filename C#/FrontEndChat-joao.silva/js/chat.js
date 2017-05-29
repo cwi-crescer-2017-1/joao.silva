@@ -18,12 +18,11 @@ modulo.controller('PaginaChat',['$scope','$routeParams','chatService', function(
              model.ListaMensagens=[];
             if(response.data != null){
                 response.data.forEach(function(resposta) {
+					if(resposta.Nome === usuarioLogado.nome){
+						resposta.Nome = "Você";
+					}
                     model.ListaMensagens.push(resposta);
-                    console.log(resposta.Remetente.ImgUrl);
                 }, this);
-            }
-            if(typeof model.ListaMensagens != 'undefined'){
-                console.log(model.ListaMensagens);
             }
         });
     }

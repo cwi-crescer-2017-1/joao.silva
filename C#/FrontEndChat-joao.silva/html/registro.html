@@ -4,6 +4,7 @@
             <div class="col-md-2"><button class="alternarButton" type="button" ng-click="irParaLogin()">Já cadastrado? Login</button></div>
         </div>
         <div class="row">
+            <form> 
             <div class="col-md-6 login">
                 <label>Nome: <input class="digitacao" type="text" name="cadastro" ng-model="novoNome" placeholder="Digite seu nome"></label><br>
                 <label>Url da imagem: <input class="digitacao" type="text" name="cadastro" ng-model="novaImgUrl" placeholder="Passe o link da sua imagem"></label><br>
@@ -13,4 +14,5 @@
             <div class="col-md-6 botaoLogin">
                 <button type="button" ng-click="criarUsuario(novoUsuario,novoNome,novaSenha,novaImgUrl)"><img src="img/sendButton.png"></button>
             </div>  
+            </form> 
         </div> 
