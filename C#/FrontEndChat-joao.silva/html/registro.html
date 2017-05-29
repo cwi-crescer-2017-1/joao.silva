@@ -1,0 +1,16 @@
+        <div class="row col-md-12 menu text-center">
+            <div class="col-md-2"><img src="img/chat.png"></div>
+            <div class="col-md-8"><h1>Y.O.L.O</h1></div>
+            <div class="col-md-2"><button class="alternarButton" type="button" ng-click="irParaLogin()">Já cadastrado? Login</button></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 login">
+                <label>Nome: <input class="digitacao" type="text" name="cadastro" ng-model="novoNome" placeholder="Digite seu nome"></label><br>
+                <label>Url da imagem: <input class="digitacao" type="text" name="cadastro" ng-model="novaImgUrl" placeholder="Passe o link da sua imagem"></label><br>
+                <label>Usuário: <input class="digitacao" type="text" name="cadastro" ng-model="novoUsuario" placeholder="Digite seu usuário"></label><br>
+                <label>Senha: <input class="digitacao" type="password" name="cadastro" ng-model="novaSenha" placeholder="Digite sua senha"></label><br>
+            </div>
+            <div class="col-md-6 botaoLogin">
+                <button type="button" ng-click="criarUsuario(novoUsuario,novoNome,novaSenha,novaImgUrl)"><img src="img/sendButton.png"></button>
+            </div>  
+        </div> 
