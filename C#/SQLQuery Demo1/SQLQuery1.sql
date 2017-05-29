@@ -21,3 +21,10 @@ CREATE TABLE ItemPedido (
 	ProdutoId INT NOT NULL CONSTRAINT [FK_ItemPedio_Produto] FOREIGN KEY REFERENCES Produto(Id),
 	Quantidade INT NOT NULL
 );
+SELECT * FROM PEDIDO;
+
+SELECT * FROM PRODUTO;
+
+SELECT * FROM ITEMPEDIDO;
+
+INSERT INTO ItemPedido(PedidoId,ProdutoId,Quantidade) VALUES(1,1,10)
