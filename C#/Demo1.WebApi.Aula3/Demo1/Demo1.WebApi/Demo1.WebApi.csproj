@@ -85,6 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\PedidoController.cs" />
+    <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -101,8 +103,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo1.Dominio\Demo1.Dominio.csproj">
+      <Project>{96180019-77A1-430F-95AE-F776C7DC281B}</Project>
+      <Name>Demo1.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demo1.Infraestrutura\Demo1.Infraestrutura.csproj">
+      <Project>{5C8598F3-FEA4-4B79-84D2-9A39C565A782}</Project>
+      <Name>Demo1.Infraestrutura</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
