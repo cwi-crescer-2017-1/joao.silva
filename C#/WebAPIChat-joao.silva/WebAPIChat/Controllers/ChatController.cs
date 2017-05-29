@@ -17,9 +17,9 @@ namespace WebAPIChat.Controllers
         private static object @lock = new object();
         public List<Mensagem> Get()
         {
-            if (mensagens.Count() > 10) {
+            if (mensagens.Count() > 20) {
                 List<Mensagem> listaRetorno = new List<Mensagem>();
-                for (var i = mensagens.Count() - 1; i > mensagens.Count - 10; i--)
+                for (var i = mensagens.Count() - 1; i > mensagens.Count - 20; i--)
                 {
                     listaRetorno.Add(mensagens[i]);
                 }
@@ -32,6 +32,10 @@ namespace WebAPIChat.Controllers
         {
             lock (@lock)
             {
+                if(imgRemetente == "")
+                {
+                    imgRemetente = "http://www.guiaconfia.com/img/usuario/sin_img.jpg";
+                }
                 var textoAprimorado = ProcurarNunes(texto);
                 Mensagem mensagem = new Mensagem(textoAprimorado, new InformacoesUsuario(nomeRemetente, idRemetente, imgRemetente));
                 mensagens.Add(mensagem);
@@ -40,10 +44,14 @@ namespace WebAPIChat.Controllers
         }
         public string ProcurarNunes(string texto)
         {
-            string pattern = @"Nunes";
-            string replacement = "$$$$$$$$$ $$$$$$$$$";
-            string textoAprimorado = Regex.Replace(texto, pattern, replacement, RegexOptions.IgnoreCase);
-            return textoAprimorado;
+            if (texto != null)
+            {
+                string pattern = @"Nunes";
+                string replacement = "$$$$$$$$$ $$$$$$$$$";
+                string textoAprimorado = Regex.Replace(texto, pattern, replacement, RegexOptions.IgnoreCase);
+                return textoAprimorado;
+            }
+            return texto;
         }
     }
 }
