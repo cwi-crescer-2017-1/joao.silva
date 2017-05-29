@@ -1,0 +1,25 @@
+<div>
+        <div class="row chat">
+            <div class="col-md-12 menu text-center">
+                <div class="col-md-2"><img src="img/chat.png"></div>
+                <div class="col-md-8"><h1>Y.O.L.O</h1></div>
+                <div class="col-md-2"><button class="alternarButton" type="button" ng-click="Sair()">Sair</button></div>
+            </div>
+            <div class="col-md-12">
+                <div class="row mensagens">
+                    <div class="repeticaoDados" ng-repeat="mensagem in ListaMensagens">
+                       <div class="mensagem"> 
+                        <div class="col-md-2"><img ng-src="{{mensagem.Remetente.ImgUrl}}" height="50px" width="50px"></div>
+                        <div class="col-md-8"><h5>{{mensagem.Remetente.Nome}}</h5></div>
+                        <div class="col-md-2"><h5>{{mensagem.Horario}}</h5></div>    
+                        <div class="col-md-12"><p>{{mensagem.Texto}}</p></div>
+                       </div> 
+                    </div> 
+                 </div>   
+            </div>    
+            <div class="col-md-12 campoDigitacao">
+                <div class="col-md-11"><input class="digitacao" type="text" name="name" ng-model="novaMensagem" placeholder="Digite sua mensagem"><br></div>
+                <div class="col-md-1"><button class="enviar" type="button" ng-click="EnviarMensagem(novaMensagem)"><img src="img/sendButton.png"></button></div>
+            </div>
+        </div> 
+</div>    
