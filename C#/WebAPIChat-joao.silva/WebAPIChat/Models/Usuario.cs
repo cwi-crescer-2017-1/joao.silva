@@ -21,7 +21,14 @@ namespace WebAPIChat.Models
             NomeDeUsuario = nomeDeUsuario;
             Nome = nome;
             Senha = senha;
-            ImgUrl = imgUrl;
+            if (imgUrl == "" || imgUrl ==null)
+            {
+                ImgUrl = "http://www.guiaconfia.com/img/usuario/sin_img.jpg";
+            }
+            else
+            {
+                ImgUrl = imgUrl;
+            }
         }
 
         public bool VerificarSenha(string senha)
