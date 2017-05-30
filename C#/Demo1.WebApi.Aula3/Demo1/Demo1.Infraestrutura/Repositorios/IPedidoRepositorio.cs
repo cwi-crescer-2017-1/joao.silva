@@ -12,7 +12,7 @@ namespace Demo1.Infraestrutura.Repositorios
         void Alterar(Pedido pedido);
         void Criar(Pedido pedido);
         void Excluir(int id);
-        IEnumerable<Pedido> Listar();
+        List<Pedido> Listar();
         Pedido Obter(int id);
     }
 }
