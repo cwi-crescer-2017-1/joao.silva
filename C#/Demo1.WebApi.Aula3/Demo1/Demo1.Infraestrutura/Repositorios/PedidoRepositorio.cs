@@ -146,6 +146,7 @@ namespace Demo1.Infraestrutura.Repositorios
 
                         pedidos.Add(pedido);
                     }
+                    dataReader.Close();
                 }
                 foreach (Pedido pedido in pedidos)
                 {
@@ -167,6 +168,7 @@ namespace Demo1.Infraestrutura.Repositorios
                             itemPedido.Quantidade = (int)dataReader["Quantidade"];
                             pedido.Itens.Add(itemPedido);
                         }
+                        dataReader.Close();
                     }
 
                 }
@@ -195,6 +197,7 @@ namespace Demo1.Infraestrutura.Repositorios
                         pedido = new Pedido();
                         pedido.Id = (int)dataReader["Id"];
                         pedido.NomeCliente = (string)dataReader["NomeCliente"];
+                        dataReader.Close();
                     }
                     else
                     {
@@ -219,6 +222,7 @@ namespace Demo1.Infraestrutura.Repositorios
                         itemPedido.Quantidade = (int)dataReader["Quantidade"];
                         pedido.Itens.Add(itemPedido);
                     }
+                    dataReader.Close();
                 }
             }
             return pedido;
