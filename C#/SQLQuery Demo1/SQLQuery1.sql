@@ -1,9 +1,3 @@
-CREATE TABLE Produto (
-	Id INT IDENTITY(1,1) NOT NULL CONSTRAINT [PK_Produto] PRIMARY KEY,
-	Nome VARCHAR(50) NOT NULL,
-	Preco DECIMAL(12,2) NOT NULL,
-	Estoque INT NOT NULL
-);
 INSERT INTO Produto(Nome, Preco, Estoque) VALUES('Mouse', 19.20, 10);
 
 SELECT * FROM Produto;
@@ -26,5 +20,7 @@ SELECT * FROM PEDIDO;
 SELECT * FROM PRODUTO;
 
 SELECT * FROM ITEMPEDIDO;
+
+DELETE ItemPedido Where PedidoID = 11;
 
 INSERT INTO ItemPedido(PedidoId,ProdutoId,Quantidade) VALUES(1,1,10)
