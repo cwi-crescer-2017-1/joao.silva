@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\LivroRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
