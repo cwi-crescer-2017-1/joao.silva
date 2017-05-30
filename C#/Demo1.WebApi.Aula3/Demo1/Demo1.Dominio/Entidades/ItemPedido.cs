@@ -11,5 +11,15 @@ namespace Demo1.Dominio.Entidades
         public int Id { get; set; }
         public int ProdutoId { get; set; }
         public int Quantidade { get; set; }
+
+        public bool Validar(out string mensagem)
+        {
+            mensagem = "";
+            if (Quantidade <= 0)
+            {
+                mensagem = "Quantidade de produtos inválida no item de id "+ProdutoId;
+            }
+            return mensagem.Length == 0;
+        }
     }
 }
