@@ -24,8 +24,9 @@ namespace Demo1.Dominio.Entidades
               {
                   mensagens.Add("Nome do cliente deve ser informado.");
               }
-              if()
+
+               
               return mensagens.Count() == 0;
-        }
+          }
     }
 }
