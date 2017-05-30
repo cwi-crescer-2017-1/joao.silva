@@ -43,5 +43,32 @@ namespace Demo1.Infraestrutura.Repositorios
             }
             return itemPedido;
         }
+        public ItemPedido Criar(ItemPedido itemPedido, int pedidoId)
+        {
+            using (var conexao = new SqlConnection(stringConexao))
+            {
+                conexao.Open();
+                using (var comando = conexao.CreateCommand())
+                {
+
+                    comando.CommandText =
+                        @"INSERT INTO ItemPedido(PedidoId,ProdutoId,Quantidade) 
+                                  VALUES(@PedidoId,@ProdutoId,@Quantidade)";
+
+                    comando.Parameters.AddWithValue("@PedidoId", pedidoId);
+                    comando.Parameters.AddWithValue("@ProdutoId", itemPedido.ProdutoId);
+                    comando.Parameters.AddWithValue("@Quantidade", itemPedido.Quantidade);
+
+                    comando.ExecuteNonQuery();
+                    using (var comandoInterno = conexao.CreateCommand())
+                    {
+                        comandoInterno.CommandText = "SELECT @@IDENTITY";
+                        var result = (decimal)comandoInterno.ExecuteScalar();
+                        itemPedido.Id = (int)result;
+                    }
+                }
+            }
+            return itemPedido;
+        }
     }
 }

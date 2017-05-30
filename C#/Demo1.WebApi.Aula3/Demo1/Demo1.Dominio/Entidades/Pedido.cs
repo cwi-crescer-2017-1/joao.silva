@@ -12,6 +12,10 @@ namespace Demo1.Dominio.Entidades
           public string NomeCliente { get; set; }
           public List<ItemPedido> Itens { get; set; }
 
+          public Pedido()
+          {
+            Itens = new List<ItemPedido>();
+          }
           public bool Validar(out List<string> mensagens)
           {
               mensagens = new List<string>();

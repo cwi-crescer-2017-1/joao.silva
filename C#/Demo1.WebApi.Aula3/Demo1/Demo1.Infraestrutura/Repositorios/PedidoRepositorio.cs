@@ -27,7 +27,7 @@ namespace Demo1.Infraestrutura.Repositorios
                     comando.CommandText =
                         @"UPDATE Pedido SET NomeCliente = @NomeCliente WHERE Id = @id";
 
-                    comando.Parameters.AddWithValue("@nome", pedido.NomeCliente);
+                    comando.Parameters.AddWithValue("@NomeCliente", pedido.NomeCliente);
                     comando.Parameters.AddWithValue("@id", pedido.Id);
 
                     comando.ExecuteNonQuery();
@@ -127,7 +127,7 @@ namespace Demo1.Infraestrutura.Repositorios
 
         public List<Pedido> Listar()
         {
-            var pedidos = new List<Pedido>();
+            List<Pedido> pedidos = new List<Pedido>();
             using (var conexao = new SqlConnection(stringConexao))
             {
                 conexao.Open();
@@ -150,27 +150,27 @@ namespace Demo1.Infraestrutura.Repositorios
                 }
                 foreach (Pedido pedido in pedidos)
                 {
-                    using (var comando = conexao.CreateCommand())
-                    {
-                        comando.CommandText =
-                            @"SELECT Id, ProdutoId, Quantidade 
-                                   FROM ItemPedido WHERE PedidoId = @PedidoId";
-                        
-                        comando.Parameters.AddWithValue("@PedidoId", pedido.Id);
-
-                        var dataReader = comando.ExecuteReader();
-                        while (dataReader.Read())
+                        using (var comando = conexao.CreateCommand())
                         {
-                            var itemPedido = new ItemPedido();
+                            comando.CommandText =
+                                @"SELECT Id, ProdutoId, Quantidade 
+                                   FROM ItemPedido WHERE PedidoId = @PedidoId";
 
-                            itemPedido.Id = (int)dataReader["Id"];
-                            itemPedido.ProdutoId = (int)dataReader["ProdutoId"];
-                            itemPedido.Quantidade = (int)dataReader["Quantidade"];
-                            pedido.Itens.Add(itemPedido);
-                        }
-                        dataReader.Close();
+                            comando.Parameters.AddWithValue("@PedidoId", pedido.Id);
+
+                            var dataReader = comando.ExecuteReader();
+                            while (dataReader.Read())
+                            {
+                                var itemPedido = new ItemPedido();
+
+                                itemPedido.Id = (int)dataReader["Id"];
+                                itemPedido.ProdutoId = (int)dataReader["ProdutoId"];
+                                itemPedido.Quantidade = (int)dataReader["Quantidade"];
+
+                                pedido.Itens.Add(itemPedido);
+                            }
+                            dataReader.Close();
                     }
-
                 }
             }
             return pedidos;

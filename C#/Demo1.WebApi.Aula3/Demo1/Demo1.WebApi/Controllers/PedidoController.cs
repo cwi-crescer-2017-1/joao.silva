@@ -59,7 +59,7 @@ namespace Demo1.WebApi.Controllers
         }
         public IHttpActionResult Get()
         {
-            var pedidos = _pedidoRepositorio.Listar();
+            List<Pedido> pedidos = _pedidoRepositorio.Listar();
 
             return Ok(pedidos);
         }
@@ -86,19 +86,25 @@ namespace Demo1.WebApi.Controllers
                 {
                     ItemPedido itemPedidoAntigo = _itemPedidoRepositorio.Obter(item.Id);
 
-                    var novoEstoque = produto.Estoque + (itemPedidoAntigo.Quantidade - item.Quantidade);
-                    //Pega a quantidade do pedido antigo e subtrai da nova Quantidade, 
-                    //esta diferença, sendo positiva ou negativa é descontada/adicionada 
-                    // no estoque do produto
+                    if (itemPedidoAntigo != null)
+                    {
+                        var novoEstoque = produto.Estoque + (itemPedidoAntigo.Quantidade - item.Quantidade);
+                        //Pega a quantidade do pedido antigo e subtrai da nova Quantidade, 
+                        //esta diferença, sendo positiva ou negativa é descontada/adicionada 
+                        // no estoque do produto
 
-                    if (novoEstoque >= 0)
+                        if (novoEstoque >= 0)
+                        {
+                            Produto produtoAlterado = new Produto(produto.Id, produto.Nome, produto.Preco, novoEstoque);
+                            _produtoRepositorio.Alterar(produtoAlterado);
+                        }
+                        else
+                        {
+                            mensagens.Add("Estoque com quantidade insuficiente do produto de ID " + produto.Id);
+                        }
+                    }else
                     {
-                        Produto produtoAlterado = new Produto(produto.Id, produto.Nome, produto.Preco, novoEstoque);
-                        _produtoRepositorio.Alterar(produtoAlterado);
-                    }
-                    else
-                    {
-                        mensagens.Add("Estoque com quantidade insuficiente do produto de ID " + produto.Id);
+                        ItemPedido itemPedidoNovo = _itemPedidoRepositorio.Criar(item,pedido.Id);
                     }
                 }
                 else
