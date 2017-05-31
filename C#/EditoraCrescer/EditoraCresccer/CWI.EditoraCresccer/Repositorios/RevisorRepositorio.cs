@@ -9,12 +9,8 @@ namespace CWI.EditoraCresccer.Repositorios
 {
     public class RevisorRepositorio
     {
-        private Contexto contexto;
+        private Contexto contexto = new Contexto();
 
-        public RevisorRepositorio()
-        {
-            contexto = new Contexto();
-        }
         public List<Revisor> Obter()
         {
             return contexto.Revisores.ToList();

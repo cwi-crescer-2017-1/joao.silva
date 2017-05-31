@@ -14,6 +14,7 @@ namespace EditoraCrescer.Api.Controllers
         private RevisorRepositorio repositorio = new RevisorRepositorio();
 
         [HttpGet]
+        [Route()]
         public IHttpActionResult Get()
         {
             var revisores = repositorio.Obter();
@@ -21,10 +22,14 @@ namespace EditoraCrescer.Api.Controllers
             return Ok(new { dados = revisores });
         }
 
+        [HttpPost]
+        [Route()]
         public void Post(Revisor revisor)
         {
             repositorio.Criar(revisor);
         }
+
+        [HttpDelete]
         [Route("{idRevisor:int}")]
         public void Remove(int idRevisor)
         {
