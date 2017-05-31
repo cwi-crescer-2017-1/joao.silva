@@ -64,9 +64,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositorios\AutorRepositorio.cs" />
-    <Compile Include="Repositorios\LivroRepositorio.cs" />
-    <Compile Include="Repositorios\RevisorRepositorio.cs" />
+    <Compile Include="Migrations\Repositorios\AutorRepositorio.cs" />
+    <Compile Include="Migrations\Repositorios\LivroRepositorio.cs" />
+    <Compile Include="Migrations\Repositorios\RevisorRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

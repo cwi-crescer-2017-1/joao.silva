@@ -11,9 +11,8 @@ namespace CWI.EditoraCresccer.Repositorios
     {
         private Contexto contexto = new Contexto();
 
-        public LivroRepositorio()
-        {
-        }
+        public LivroRepositorio(){}
+
         public List<Livro> Obter()
         {
             return contexto.Livros.ToList();

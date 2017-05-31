@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CWI.EditoraCresccer.Repositorios
 {
-    class RevisorRepositorio
+    public class RevisorRepositorio
     {
         private Contexto contexto = new Contexto();
 
