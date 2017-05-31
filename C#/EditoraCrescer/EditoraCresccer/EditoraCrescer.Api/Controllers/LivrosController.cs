@@ -8,23 +8,32 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
+    [RoutePrefix("api/Livros")]
     public class LivrosController : ApiController
     {
-        private LivroRepositorio repositorio = new LivroRepositorio();
+        private readonly LivroRepositorio repositorio = new LivroRepositorio();
 
+        [HttpGet]
         public IHttpActionResult Get()
         {
             var livros = repositorio.Obter();
 
-            return Ok(livros);
+            return Ok(new { dados = livros });
         }
         public void Post(Livro livro)
         {
             repositorio.Criar(livro);
         }
+        [Route("{idLivro:int}")]
         public void Remove(int idLivro)
         {
             repositorio.Delete(idLivro);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            repositorio.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

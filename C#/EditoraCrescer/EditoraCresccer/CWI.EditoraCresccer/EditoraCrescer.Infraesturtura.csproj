@@ -62,11 +62,19 @@
     <Compile Include="Migrations\201705301956173_ModificacaoMaxLengthNomeAutor.Designer.cs">
       <DependentUpon>201705301956173_ModificacaoMaxLengthNomeAutor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705311645524_ImplementacaoDoRevisorEAutor.cs" />
+    <Compile Include="Migrations\201705311645524_ImplementacaoDoRevisorEAutor.Designer.cs">
+      <DependentUpon>201705311645524_ImplementacaoDoRevisorEAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705311653428_RenomearTabelasSingular.cs" />
+    <Compile Include="Migrations\201705311653428_RenomearTabelasSingular.Designer.cs">
+      <DependentUpon>201705311653428_RenomearTabelasSingular.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Migrations\Repositorios\AutorRepositorio.cs" />
-    <Compile Include="Migrations\Repositorios\LivroRepositorio.cs" />
-    <Compile Include="Migrations\Repositorios\RevisorRepositorio.cs" />
+    <Compile Include="Repositorios\AutorRepositorio.cs" />
+    <Compile Include="Repositorios\LivroRepositorio.cs" />
+    <Compile Include="Repositorios\RevisorRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -78,6 +86,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705301956173_ModificacaoMaxLengthNomeAutor.resx">
       <DependentUpon>201705301956173_ModificacaoMaxLengthNomeAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311645524_ImplementacaoDoRevisorEAutor.resx">
+      <DependentUpon>201705311645524_ImplementacaoDoRevisorEAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311653428_RenomearTabelasSingular.resx">
+      <DependentUpon>201705311653428_RenomearTabelasSingular.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

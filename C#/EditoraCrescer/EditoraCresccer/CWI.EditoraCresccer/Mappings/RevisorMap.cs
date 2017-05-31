@@ -12,7 +12,7 @@ namespace CWI.EditoraCresccer.Mappings
     {
         public RevisorMap()
         {
-            ToTable("Revisores");
+            ToTable("Revisor");
 
             Property(a => a.Nome)
                     .HasMaxLength(300);

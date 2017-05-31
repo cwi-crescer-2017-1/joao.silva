@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace CWI.EditoraCresccer.Repositorios
 {
-    public class LivroRepositorio
+    public class LivroRepositorio : IDisposable
     {
-        private Contexto contexto = new Contexto();
+        private Contexto contexto;
 
-        public LivroRepositorio(){}
+        public LivroRepositorio(){
+            contexto = new Contexto();
+        }
 
         public List<Livro> Obter()
         {
@@ -27,6 +29,11 @@ namespace CWI.EditoraCresccer.Repositorios
             Livro livro = contexto.Livros.FirstOrDefault(x => x.Isbn == isbn);
             contexto.Livros.Remove(livro);
             contexto.SaveChanges();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            contexto.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

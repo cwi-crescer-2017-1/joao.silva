@@ -9,10 +9,11 @@ namespace CWI.EditoraCresccer.Repositorios
 {
     public class RevisorRepositorio
     {
-        private Contexto contexto = new Contexto();
+        private Contexto contexto;
 
         public RevisorRepositorio()
         {
+            contexto = new Contexto();
         }
         public List<Revisor> Obter()
         {

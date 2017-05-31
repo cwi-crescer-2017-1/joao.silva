@@ -7,7 +7,7 @@ namespace CWI.EditoraCresccer
     {
         public AutorMap()
         {
-            ToTable("Autores");
+            ToTable("Autor");
             Property(a => a.Nome)
                     .HasMaxLength(300);
         }

@@ -7,7 +7,7 @@ namespace CWI.EditoraCresccer
     {
         public LivroMap()
         {
-            ToTable("Livros");
+            ToTable("Livro");
 
             HasKey(x => x.Isbn);
 

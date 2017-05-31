@@ -11,7 +11,7 @@ namespace CWI.EditoraCresccer
 {
     public class Contexto : DbContext
     {
-        public Contexto() : base("name=ExemploEFSP"){}
+        public Contexto() : base("name=ExemploEFSP") {}
 
         public DbSet<Autor> Autores { get; set; }
         public DbSet<Revisor> Revisores { get; set; }
