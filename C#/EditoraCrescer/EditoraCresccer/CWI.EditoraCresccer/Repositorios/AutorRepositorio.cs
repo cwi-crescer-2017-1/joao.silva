@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace CWI.EditoraCresccer.Repositorios
 {
-    public class LivroRepositorio
+    public class AutorRepositorio
     {
         private Contexto contexto = new Contexto();
 
-        public LivroRepositorio()
+        public AutorRepositorio()
         {
         }
-        public List<Livro> Obter()
+        public List<Autor> Obter()
         {
-            return contexto.Livros.ToList();
+            return contexto.Autores.ToList();
         }
         //POST   api/Livros (apenas cria, não altera)
-        public void Criar(Livro livro)
+        public void Criar(Autor autor)
         {
-            contexto.Livros.Add(livro);
+            contexto.Autores.Add(autor);
             contexto.SaveChanges();
         }
-        public void Delete(int livroIsbn)
+        public void Delete(int autorId)
         {
-            Livro livro = (contexto.Livros.Where(x => x.Isbn == livroIsbn)).FirstOrDefault();
-            contexto.Livros.Remove(livro);
+            Autor autor = (contexto.Autores.Where(x => x.Id == autorId)).FirstOrDefault();
+            contexto.Autores.Remove(autor);
             contexto.SaveChanges();
         }
     }
