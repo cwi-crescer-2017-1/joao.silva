@@ -26,7 +26,7 @@ namespace CWI.EditoraCresccer.Repositorios
         }
         public void Delete(int autorId)
         {
-            Autor autor = (contexto.Autores.Where(x => x.Id == autorId)).FirstOrDefault();
+            Autor autor = contexto.Autores.FirstOrDefault(x => x.Id == autorId);
             contexto.Autores.Remove(autor);
             contexto.SaveChanges();
         }
