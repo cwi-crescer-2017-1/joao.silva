@@ -18,7 +18,6 @@ namespace CWI.EditoraCresccer.Repositorios
         {
             return contexto.Revisores.ToList();
         }
-        //POST   api/Livros (apenas cria, não altera)
         public void Criar(Revisor revisor)
         {
             contexto.Revisores.Add(revisor);
@@ -26,7 +25,7 @@ namespace CWI.EditoraCresccer.Repositorios
         }
         public void Delete(int revisorId)
         {
-            Revisor revisor = (contexto.Revisores.Where(x => x.Id == revisorId)).FirstOrDefault();
+            Revisor revisor = contexto.Revisores.FirstOrDefault(x => x.Id == revisorId);
             contexto.Revisores.Remove(revisor);
             contexto.SaveChanges();
         }

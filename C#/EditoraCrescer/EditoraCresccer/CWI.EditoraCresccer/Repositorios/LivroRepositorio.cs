@@ -18,15 +18,14 @@ namespace CWI.EditoraCresccer.Repositorios
         {
             return contexto.Livros.ToList();
         }
-        //POST   api/Livros (apenas cria, não altera)
         public void Criar(Livro livro)
         {
             contexto.Livros.Add(livro);
             contexto.SaveChanges();
         }
-        public void Delete(int livroIsbn)
+        public void Delete(int isbn)
         {
-            Livro livro = (contexto.Livros.Where(x => x.Isbn == livroIsbn)).FirstOrDefault();
+            Livro livro = contexto.Livros.FirstOrDefault(x => x.Isbn == isbn);
             contexto.Livros.Remove(livro);
             contexto.SaveChanges();
         }

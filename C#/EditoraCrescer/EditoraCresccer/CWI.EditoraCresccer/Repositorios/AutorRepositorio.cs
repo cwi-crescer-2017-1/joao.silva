@@ -18,7 +18,6 @@ namespace CWI.EditoraCresccer.Repositorios
         {
             return contexto.Autores.ToList();
         }
-        //POST   api/Livros (apenas cria, não altera)
         public void Criar(Autor autor)
         {
             contexto.Autores.Add(autor);
