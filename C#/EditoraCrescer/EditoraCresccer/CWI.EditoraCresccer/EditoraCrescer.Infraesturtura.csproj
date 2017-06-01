@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201705312018274_201705311958311_InsercaoDosMetodosParaPUTeVariacoesParaOGet.Designer.cs">
       <DependentUpon>201705312018274_201705311958311_InsercaoDosMetodosParaPUTeVariacoesParaOGet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706011636047_RetornoResumidoDoLivroAutorERevisor.cs" />
+    <Compile Include="Migrations\201706011636047_RetornoResumidoDoLivroAutorERevisor.Designer.cs">
+      <DependentUpon>201706011636047_RetornoResumidoDoLivroAutorERevisor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AutorRepositorio.cs" />
@@ -106,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705312018274_201705311958311_InsercaoDosMetodosParaPUTeVariacoesParaOGet.resx">
       <DependentUpon>201705312018274_201705311958311_InsercaoDosMetodosParaPUTeVariacoesParaOGet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706011636047_RetornoResumidoDoLivroAutorERevisor.resx">
+      <DependentUpon>201706011636047_RetornoResumidoDoLivroAutorERevisor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
