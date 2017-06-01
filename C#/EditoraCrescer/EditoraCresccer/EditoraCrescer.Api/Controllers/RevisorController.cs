@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
-    [RoutePrefix("api/Revisor/")]
+    [RoutePrefix("api/Revisor")]
     public class RevisorController : ApiController
     {
         private RevisorRepositorio repositorio = new RevisorRepositorio();
@@ -57,6 +57,11 @@ namespace EditoraCrescer.Api.Controllers
         public void Remove(int idRevisor)
         {
             repositorio.Delete(idRevisor);
+        }
+        protected override void Dispose(bool disposing)
+        {
+            repositorio.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

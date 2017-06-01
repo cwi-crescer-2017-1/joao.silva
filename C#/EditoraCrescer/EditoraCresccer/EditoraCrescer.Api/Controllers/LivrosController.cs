@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
-    [RoutePrefix("api/Livros/")]
+    [RoutePrefix("api/Livros")]
     public class LivrosController : ApiController
     {
         private readonly LivroRepositorio repositorio = new LivroRepositorio();
@@ -37,7 +37,7 @@ namespace EditoraCrescer.Api.Controllers
             return Ok(new { dados = livros });
         }
         [HttpGet]
-        [Route("/Lancamentos")]
+        [Route("Lancamentos")]
         public IHttpActionResult GetLancamentos()
         {
             var livros = repositorio.ObterLancamentos();
@@ -72,12 +72,10 @@ namespace EditoraCrescer.Api.Controllers
                 return BadRequest("O isbn a ser modificado não corresponde ao isbn do objeto modificado");
             }
         }
-
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    repositorio.Dispose();
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            repositorio.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

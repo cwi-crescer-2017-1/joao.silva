@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
-    [RoutePrefix("api/Autores/")]
+    [RoutePrefix("api/Autores")]
     public class AutoresController : ApiController
     {
         private AutorRepositorio repositorio = new AutorRepositorio();
@@ -61,6 +61,12 @@ namespace EditoraCrescer.Api.Controllers
             {
                 return BadRequest("O id a ser modificado não corresponde ao id do objeto modificado");
             }
+        }
+        protected override void Dispose(bool disposing)
+        {
+            repositorio.Dispose();
+            repositorioLivro.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

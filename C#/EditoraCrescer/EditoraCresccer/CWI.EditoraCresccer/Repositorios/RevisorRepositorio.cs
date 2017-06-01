@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CWI.EditoraCresccer.Repositorios
 {
-    public class RevisorRepositorio
+    public class RevisorRepositorio : IDisposable
     {
         private Contexto contexto = new Contexto();
 
@@ -40,6 +40,10 @@ namespace CWI.EditoraCresccer.Repositorios
             contexto.Entry(revisorModificado).State = EntityState.Modified; //Se der erro trocar por Livro
             contexto.SaveChanges();
             return contexto.Revisores.FirstOrDefault(x => x.Id == id);
+        }
+        public void Dispose()
+        {
+            contexto.Dispose();
         }
     }
 }

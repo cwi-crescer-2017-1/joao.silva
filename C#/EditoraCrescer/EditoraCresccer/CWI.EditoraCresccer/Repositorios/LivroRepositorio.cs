@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CWI.EditoraCresccer.Repositorios
 {
-    public class LivroRepositorio
+    public class LivroRepositorio : IDisposable
     {
         private Contexto contexto = new Contexto();
 
@@ -20,7 +20,8 @@ namespace CWI.EditoraCresccer.Repositorios
                                 Isbn = livro.Isbn,
                                 Titulo = livro.Titulo,
                                 NomeAutor = livro.Autor.Nome,
-                                Genero = livro.Genero
+                                Genero = livro.Genero,
+                                Capa = livro.Capa
                             }).ToList();
         }
         public Livro ObterPorIsbn(int isbn)
@@ -39,7 +40,8 @@ namespace CWI.EditoraCresccer.Repositorios
                          Isbn = livro.Isbn,
                          Titulo = livro.Titulo,
                          NomeAutor = livro.Autor.Nome,
-                         Genero = livro.Genero
+                         Genero = livro.Genero,
+                         Capa = livro.Capa
                      }).ToList();
         }
         public object ObterLancamentos()
@@ -51,9 +53,10 @@ namespace CWI.EditoraCresccer.Repositorios
                                 Isbn = livro.Isbn,
                                 Titulo = livro.Titulo,
                                 NomeAutor = livro.Autor.Nome,
-                                Genero = livro.Genero
+                                Genero = livro.Genero,
+                                Capa = livro.Capa
                             }).ToList();
-            return null;
+            return livros;
         }
         public List<Livro> ObterPorAutor(int idAutor)
         {
@@ -80,10 +83,9 @@ namespace CWI.EditoraCresccer.Repositorios
             contexto.SaveChanges();
             return contexto.Livros.FirstOrDefault(x => x.Isbn == isbn);
         }
-        //protected override void Dispose(bool disposing)
-        //{
-        //    contexto.Dispose();
-        //    base.Dispose(disposing);
-        //}
+        public void Dispose()
+        {
+            contexto.Dispose();
+        }
     }
 }
