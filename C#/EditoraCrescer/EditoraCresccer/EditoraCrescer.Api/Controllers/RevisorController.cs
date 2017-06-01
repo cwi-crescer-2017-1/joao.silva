@@ -15,11 +15,19 @@ namespace EditoraCrescer.Api.Controllers
 
         [HttpGet]
         [Route()]
-        public IHttpActionResult Get()
+        public IHttpActionResult GetTodos()
         {
-            var revisores = repositorio.Obter();
+            var revisores = repositorio.ObterTodos();
 
             return Ok(new { dados = revisores });
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public IHttpActionResult GetAutorPorId(int id)
+        {
+            var revisor = repositorio.ObterPorId(id);
+            return Ok(new { dados = revisor });
         }
 
         [HttpPost]
@@ -27,6 +35,21 @@ namespace EditoraCrescer.Api.Controllers
         public void Post(Revisor revisor)
         {
             repositorio.Criar(revisor);
+        }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        public IHttpActionResult Put(int id, Revisor revisor)
+        {
+            if (revisor.Id == id)
+            {
+                Revisor revisorNovo = repositorio.Modificar(id, revisor);
+                return Ok(new { dados = revisorNovo });
+            }
+            else
+            {
+                return BadRequest("O id a ser modificado não corresponde ao id do objeto modificado");
+            }
         }
 
         [HttpDelete]
