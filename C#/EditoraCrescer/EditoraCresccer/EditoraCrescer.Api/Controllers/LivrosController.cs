@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
-    [RoutePrefix("api/Livros")]
+    [RoutePrefix("api/livros")]
     public class LivrosController : ApiController
     {
         private readonly LivroRepositorio repositorio = new LivroRepositorio();
@@ -42,6 +42,13 @@ namespace EditoraCrescer.Api.Controllers
         {
             var livros = repositorio.ObterLancamentos();
 
+            return Ok(new { dados = livros });
+        }
+        [HttpGet]
+        [Route("ListaLimitada/{quantidade}/{skip}")] //UltimoISBN = -1 retorna a quantidade apartir do inicio
+        public IHttpActionResult GetListaLimitada(int quantidade, int skip)
+        {
+            var livros = repositorio.ObterListaLimitada(quantidade, skip);
             return Ok(new { dados = livros });
         }
         [HttpPost]
