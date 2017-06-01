@@ -12,9 +12,16 @@ namespace CWI.EditoraCresccer.Repositorios
     {
         private Contexto contexto = new Contexto();
 
-        public List<Livro> ObterTodos()
+        public object ObterTodos()
         {
-            return contexto.Livros.ToList();
+            return contexto.Livros
+                            .Select(livro => new
+                            {
+                                Isbn = livro.Isbn,
+                                Titulo = livro.Titulo,
+                                NomeAutor = livro.Autor.Nome,
+                                Genero = livro.Genero
+                            }).ToList();
         }
         public Livro ObterPorIsbn(int isbn)
         {
@@ -23,10 +30,30 @@ namespace CWI.EditoraCresccer.Repositorios
             contexto.SaveChanges();
             return livro;
         }
-        public List<Livro> ObterPorGenero(string genero)
+        public object ObterPorGenero(string genero)
         {
             List<Livro> livros = contexto.Livros.Where(x => x.Genero == genero).ToList();
-            return livros;
+            return livros
+                     .Select(livro => new
+                     {
+                         Isbn = livro.Isbn,
+                         Titulo = livro.Titulo,
+                         NomeAutor = livro.Autor.Nome,
+                         Genero = livro.Genero
+                     }).ToList();
+        }
+        public object ObterLancamentos()
+        {
+            List<Livro> livros = contexto.Livros.Where(livro => DbFunctions.DiffDays(livro.DataPublicacao,DateTime.Now)<=7).ToList();
+            livros
+                            .Select(livro => new
+                            {
+                                Isbn = livro.Isbn,
+                                Titulo = livro.Titulo,
+                                NomeAutor = livro.Autor.Nome,
+                                Genero = livro.Genero
+                            }).ToList();
+            return null;
         }
         public List<Livro> ObterPorAutor(int idAutor)
         {
@@ -51,7 +78,7 @@ namespace CWI.EditoraCresccer.Repositorios
             Livro livro = contexto.Livros.FirstOrDefault(x => x.Isbn == isbn);
             contexto.Entry(livroModificado).State = EntityState.Modified; //Se der erro trocar por Livro
             contexto.SaveChanges();
-            return contexto.Livros.FirstOrDefault(x=>x.Isbn == isbn);
+            return contexto.Livros.FirstOrDefault(x => x.Isbn == isbn);
         }
         //protected override void Dispose(bool disposing)
         //{
