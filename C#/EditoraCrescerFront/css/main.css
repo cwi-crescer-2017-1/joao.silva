@@ -1,0 +1,66 @@
+*{
+	box-sizing: border-box;
+    font-family: 'Crimson Text', serif;
+}
+body {
+  margin: 0;
+  padding: 2% 2% 2% 2%;
+  font-weight: 900;
+  padding-top: 180px;
+}
+.loginEregistros{
+ 
+}
+.menu{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height: 150px;
+  padding: 20px 1px 20px 1px;
+  background: linear-gradient(to bottom, #2b2525 0%,#332b2b 12%,#3a3232 25%,#292323 39%,#191515 50%,#000000 51%,#0a0808 60%,#191515 76%,#100e0e 91%,#0b0909 100%); 
+}
+.logo{
+  width:300px; 
+  height:100px;
+}
+.formulario{
+  margin-top: 4%;
+}
+.botaoRedirecionaRegistrar{
+  margin-top: 4%;
+}
+.pesquisaLivro{
+  margin-top: 7%;
+}
+.inputMenu{
+  border-radius: 10%/25%;
+  font-size: 18px;
+  height: 50px;
+  width: 30%;
+  padding: 1% 1% 1% 1%;
+}
+.botaoMenu{
+  border-radius: 10%/25%;
+  background-color: blue;
+  font-size: 18px;
+  height: 50px;
+  width: 20%;
+  padding: 1% 1% 1% 1%;
+}
+.pesquisa{
+  
+}
+.livrosEmGeral{
+  border: 4px black solid;
+  height: 300px;
+}
+.lancamentos{
+  height: 300px;
+}
+.linhaDisplayLivro{
+  height: 150px;
+}
+.linhaDisplayLivro.displayLivro{
+  border: 2px orange solid;
+}
