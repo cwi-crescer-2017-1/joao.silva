@@ -14,6 +14,7 @@ namespace CWI.EditoraCresccer.Repositorios
 
         public List<Autor> ObterTodos()
         {
+
             return contexto.Autores.ToList();
         }
         public Autor ObterPorId(int id)

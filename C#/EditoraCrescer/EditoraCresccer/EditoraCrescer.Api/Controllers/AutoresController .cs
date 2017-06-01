@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
-    [RoutePrefix("api/Autores")]
+    [RoutePrefix("api/Autores/")]
     public class AutoresController : ApiController
     {
         private AutorRepositorio repositorio = new AutorRepositorio();
