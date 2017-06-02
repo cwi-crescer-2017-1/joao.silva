@@ -1,55 +1,8 @@
-<div class="row lancamentos">
-    <div class="col-md-12 displayLivro">
-        <div class="row linhaDisplayLivro">
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>     
-        </div>   
-        <div class="row linhaDisplayLivro">
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>    
-        </div>
-     </div>   
-</div>
-<div class="row livrosEmGeral">
-    <div class="col-md-12 displayLivro">
-        <div class="row linhaDisplayLivro">
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-        </div>   
-        <div class="row linhaDisplayLivro">
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-            <div class="col-md-3 displayLivro">
-            </div>   
-        </div>   
-     </div>   
-</div>
-
-
-{{livros}}
+ <h2 class="secaoTitulo">Lançamentos<h2>
+ <div class="lancamentos">
+    <div class="displayLivro" ng-repeat="lancamento in lancamentos">
+       <img class="capa" alt="{{lancamento.Titulo}}"  src="img/BookNotPictured.jpg">
+       <p class="informacaoLivro">{{lancamento.Titulo}}</p>
+       <p class="informacaoLivro">{{lancamento.Genero}}</p>
+    </div>   
+</div>   
