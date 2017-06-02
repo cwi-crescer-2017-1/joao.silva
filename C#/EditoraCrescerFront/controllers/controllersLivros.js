@@ -1,17 +1,17 @@
-modulo.controller('PaginaInicial',['$scope','$routeParams','servicesLivros','toastr', function(model,$routeParams,servicesLivros,toastr){ 
+modulo.controller('PaginaInicial',['$scope','$routeParams','servicesLivros','toastr','$location', function(model,$routeParams,servicesLivros,toastr,$location){ 
     model.nomeAntigo;
     
     //Variaveis de controle da página de livros
     var paginacao = {
         skip : 0,
-        quantidade: 5
+        quantidade: 12
     }
 
     //Funções compatilhadas
     model.proximaPaginaDeLivros = proximaPaginaDeLivros;
     model.paginaAnteriorDeLivros = paginaAnteriorDeLivros;
     model.irParaPaginaX = irParaPaginaX;
-
+    
     //Listar livros
     listXLivrosAPartirDoUltimoEnviado();
     function listXLivrosAPartirDoUltimoEnviado() {
@@ -27,17 +27,19 @@ modulo.controller('PaginaInicial',['$scope','$routeParams','servicesLivros','toa
     }
 
     function proximaPaginaDeLivros(){
-        paginacao.skip = paginacao.skip+5;
-        listXLivrosAPartirDoUltimoEnviado();
+        if(model.livros.length>=paginacao.quantidade){
+            paginacao.skip = paginacao.skip+paginacao.quantidade;
+            listXLivrosAPartirDoUltimoEnviado();
+        }        
     }
     function paginaAnteriorDeLivros(){
-        if(skip>5){
-            paginacao.skip = paginacao.skip-5;
+        if(paginacao.skip>=paginacao.quantidade){
+            paginacao.skip = paginacao.skip-paginacao.quantidade;
+            listXLivrosAPartirDoUltimoEnviado();
         }
-        listXLivrosAPartirDoUltimoEnviado();
     }
     function irParaPaginaX(){
         paginacao.skip = (paginaX-1)*paginacao.quantidade;
-        listXLivrosAPartirDoUltimoEnviado();
+        listXLivrosAPartirDoUltimoEnviado();     
     }
 }]);
