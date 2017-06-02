@@ -14,7 +14,15 @@ modulo.factory('servicesLivros',function($http){ //servicesInstrutores deve esta
         }
         return $http(propriedades);
     }
+    function listLancamentos(){
+        let propriedades = {
+             url: urlBase+'/Livros/Lancamentos',
+             method: 'GET'
+        }
+        return $http(propriedades);
+    }
     return { 
-        listLimitada:listLimitada,  //Retonar uma lista de dez aulas que começa na aula de posicao 10*posicao
+        listLimitada:listLimitada,
+        listLancamentos: listLancamentos
     }; 
 });
