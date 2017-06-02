@@ -1,8 +1,17 @@
- <h2 class="secaoTitulo">Lançamentos<h2>
- <div class="lancamentos">
+<h2 class="secaoTitulo">Lançamentos<h2>
+<div class="lancamentos">
     <div class="displayLivro" ng-repeat="lancamento in lancamentos">
-       <img class="capa" alt="{{lancamento.Titulo}}"  src="img/BookNotPictured.jpg">
-       <p class="informacaoLivro">{{lancamento.Titulo}}</p>
-       <p class="informacaoLivro">{{lancamento.Genero}}</p>
+        <img class="capa" alt="{{lancamento.Titulo}}"  src="img/BookNotPictured.jpg">
+        <p class="informacaoLivro">{{lancamento.Titulo}}</p>
+        <p class="informacaoLivro">{{lancamento.Genero}}</p>
+    </div>   
+</div>   
+
+<h2 class="secaoTitulo">Livros em geral<h2>
+<div class="livrosEmGeral">
+    <div class="displayLivro" ng-repeat="livro in livros">
+        <img class="capa" alt="{{livro.Titulo}}"  src="img/BookNotPictured.jpg">
+        <p class="informacaoLivro">{{livro.Titulo}}</p>
+        <p class="informacaoLivro">{{livro.Genero}}</p>
     </div>   
 </div>   
