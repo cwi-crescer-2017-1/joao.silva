@@ -1,17 +1,25 @@
 <h2 class="secaoTitulo">Lançamentos<h2>
 <div class="lancamentos">
     <div class="displayLivro" ng-repeat="lancamento in lancamentos">
-        <img class="capa" alt="{{lancamento.Titulo}}"  src="img/BookNotPictured.jpg">
+        <img class="capa" ng-src={{lancamento.Capa}}>
         <p class="informacaoLivro">{{lancamento.Titulo}}</p>
         <p class="informacaoLivro">{{lancamento.Genero}}</p>
+        <p class="informacaoLivro">{{lancamento.NomeAutor}}</p>
+        <button class="btn btn-red" type="button" ng-click="">Inscrever-se</button>
     </div>   
 </div>   
 
 <h2 class="secaoTitulo">Livros em geral<h2>
 <div class="livrosEmGeral">
     <div class="displayLivro" ng-repeat="livro in livros">
-        <img class="capa" alt="{{livro.Titulo}}"  src="img/BookNotPictured.jpg">
+        <img class="capa" ng-src={{livro.Capa}}>
         <p class="informacaoLivro">{{livro.Titulo}}</p>
         <p class="informacaoLivro">{{livro.Genero}}</p>
+        <p class="informacaoLivro">{{livro.NomeAutor}}</p>
+        <button class="btn btn-red" type="button" ng-click="">Inscrever-se</button>
     </div>   
 </div>   
+    <button class="btn btn-blue paginacao" type="button" ng-click="paginaAnteriorDeLivros()">Voltar</button>
+    <button class="btn btn-blue paginacao" type="button" ng-click="proximaPaginaDeLivros()">Avançar</button>
+    
+    
