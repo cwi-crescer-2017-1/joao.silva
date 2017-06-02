@@ -4,5 +4,5 @@ SELECT TOP 100 * FROM Revisor;
 
 SELECT TOP 100 * FROM [dbo].[__MigrationHistory];
 
-DELETE AUTORES;
-DELETE LIVROS;
+
+UPDATE Livro SET Capa = 'http://4.bp.blogspot.com/-_yWA68ZZUSs/Uc8GEm2bmaI/AAAAAAAACgI/arTfVSI_lH4/s960/1004044_10151499823121914_202603791_n.jpg';
