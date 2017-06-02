@@ -64,7 +64,7 @@ body {
 .livrosEmGeral{
   border: 1px black solid;
   height: 900px;
-  width: 96%;
+  width: 97%;
   overflow: auto;
   overflow-y: scroll;/*hidden*/
   overflow-x: hidden;
@@ -73,8 +73,8 @@ body {
 }
 .lancamentos{
   border: 1px black solid;
-  height: 300px;
-  width: 96%;
+  height: 430px;
+  width: 97%;
   overflow: auto;
   overflow-y: hidden;/*hidden*/
   overflow-x: scroll;
@@ -83,15 +83,15 @@ body {
 }
 .displayLivro{
   width: 200px;
-  height: 282px;
+  height: 412px;
   border: 2px black solid;
   display: inline-block;
   margin-bottom: 10px;
 }
 .displayLivro .capa{
   margin-top:0px;
-  width:186px;
-  height:200px;
+  width:196px;
+  height:250px;
 }
 .displayLivro .informacaoLivro{
   font-size: 18px;
@@ -126,6 +126,9 @@ body {
   background:#005ce6;
   box-shadow:0 5px 0 #0052cc;
 }
+.btn.btn-blue.paginacao{
+  width: 10%;
+}
 .btn-orange{
   background: #e68a00;
   color:black;
@@ -140,7 +143,21 @@ body {
   height: 40px;
   margin-bottom: 5px;
 }
-.btn-orange:active, .btn-blue:active{
+.btn-red{
+  background: #FF0000;
+  color:black;
+  box-shadow:0 5px 0 #CC0000 ;
+}
+.btn-red:hover{
+  background:#CC0000;
+  box-shadow:0 5px 0 #990033 ;
+}
+.displayLivro .btn-red{
+  width:186px;
+  height: 30px;
+  margin-left: 2%;
+}
+.btn-orange:active, .btn-blue:active, .btn-red:active{
   position:relative;
   top:5px;
   box-shadow:none;
