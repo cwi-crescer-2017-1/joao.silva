@@ -12,7 +12,7 @@ namespace CWI.EditoraCresccer.Repositorios
     {
         private Contexto contexto = new Contexto();
 
-        
+
         public object ObterTodos()
         {
             return contexto.Livros
@@ -63,18 +63,16 @@ namespace CWI.EditoraCresccer.Repositorios
             List<Livro> livros = contexto.Livros.Where(x => x.Autor.Id == idAutor).ToList();
             return livros;
         }
-        public List<Livro> ObterListaLimitada(int quantidade, int skip)
+        public dynamic ObterListaLimitada(int quantidade, int skip)
         {
-            List<Livro> livros;
-            livros = contexto.Livros.
+            var livros = contexto.Livros.
                 OrderBy(x => x.Isbn)
                 .Skip(skip)
                 .Take(quantidade)
                 .Include(l => l.Autor)
-                .Include(r => r.Revisor)
-                .ToList();
+                .Include(r => r.Revisor);
 
-            return livros;
+            return new { livros = livros.ToList(), quantidade = contexto.Livros.Count() };
         }
         public Livro Criar(Livro livro)
         {
