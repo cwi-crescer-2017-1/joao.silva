@@ -1,66 +1,141 @@
 *{
 	box-sizing: border-box;
-    font-family: 'Crimson Text', serif;
+  font-family: 'Crimson Text', serif;
 }
 body {
   margin: 0;
   padding: 2% 2% 2% 2%;
   font-weight: 900;
   padding-top: 180px;
-}
-.loginEregistros{
- 
+  background: #DAA520;
 }
 .menu{
   position:fixed;
   top:0;
   left:0;
   right:0;
-  height: 150px;
+  height: 120px;
   padding: 20px 1px 20px 1px;
-  background: linear-gradient(to bottom, #2b2525 0%,#332b2b 12%,#3a3232 25%,#292323 39%,#191515 50%,#000000 51%,#0a0808 60%,#191515 76%,#100e0e 91%,#0b0909 100%); 
+  background: #696969; 
 }
 .logo{
-  width:300px; 
+  width:150px; 
   height:100px;
+  margin-left: 5px;
 }
-.formulario{
-  margin-top: 4%;
+.login{
+  padding-right: 10%; 
 }
-.botaoRedirecionaRegistrar{
-  margin-top: 4%;
+.login .formulario{
+   width: 100%;
+   margin-left: 70%;
+}
+.login .formulario .inputMenu{
+  margin-top: 25px;
 }
 .pesquisaLivro{
-  margin-top: 7%;
+  margin-top: 25px;
+  margin-left: 25px;
 }
 .inputMenu{
   border-radius: 10%/25%;
   font-size: 18px;
-  height: 50px;
-  width: 30%;
+  height: 40px;
+  width: 40%;
   padding: 1% 1% 1% 1%;
+  border-color: orange;
 }
-.botaoMenu{
-  border-radius: 10%/25%;
-  background-color: blue;
-  font-size: 18px;
-  height: 50px;
-  width: 20%;
-  padding: 1% 1% 1% 1%;
+.login .formulario .inputMenu{
+  width: 35%;
 }
-.pesquisa{
-  
+.inputMenu.inputPesquisa{
+  width: 100%;
+}
+.irParaRegistro{
+  margin-top:24px;
+  margin-left: 15%;
+}
+.secaoTitulo{
+  font-size: 30px;
+  font-weight: 900;
+  color: red;
+  text-transform: uppercase;
 }
 .livrosEmGeral{
   border: 4px black solid;
   height: 300px;
 }
 .lancamentos{
+  border: 1px black solid;
+  width: fit-content;
+  max-block-size: 100%;
   height: 300px;
+  overflow: auto;
+  overflow-y: hidden;/*hidden*/
+  overflow-x: scroll;
+  white-space: nowrap;
+  background: #0489B1;
 }
-.linhaDisplayLivro{
-  height: 150px;
+.displayLivro{
+  width: 172.97px;
+  height: 282px;
+  border: 2px black solid;
+  display: inline-block;
 }
-.linhaDisplayLivro.displayLivro{
-  border: 2px orange solid;
+.displayLivro .capa{
+  margin-top:0px;
+  width:168.97px;
+  height:200px;
+}
+.displayLivro .informacaoLivro{
+  font-size: 18px;
+  font-weight: 900; 
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/*Botão todoespacoonline*/
+.btn:focus, .btn::-moz-focus-inner{
+  outline:none;
+  border:none;
+}
+.btn{
+  font-family: arial;
+  font-size:14px;
+  text-transform: uppercase;
+  font-weight:700;
+  border:none;
+  padding:10px;
+  width: 150%;
+  cursor: pointer;
+  display:inline-block;
+  text-decoration: none;
+}
+.btn-blue{
+  background:#0066ff;
+  color:black;
+  box-shadow:0 5px 0 #005ce6;
+}
+.btn-blue:hover{
+  background:#005ce6;
+  box-shadow:0 5px 0 #0052cc;
+}
+.btn-orange{
+  background: #e68a00;
+  color:black;
+  box-shadow:0 5px 0 #cc7a00;
+}
+.btn-orange:hover{
+  background:#cc7a00;
+  box-shadow:0 5px 0 #b36b00;
+}
+.formulario .btn-orange{
+  width: 25%;
+  height: 40px;
+  margin-bottom: 5px;
+}
+.btn-orange:active, .btn-blue:active{
+  position:relative;
+  top:5px;
+  box-shadow:none;
 }
