@@ -96,8 +96,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BasicAuthentication.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AutoresController .cs" />
+    <Compile Include="Controllers\BasicAuthController.cs" />
     <Compile Include="Controllers\LivrosController.cs" />
     <Compile Include="Controllers\RevisorController.cs" />
     <Compile Include="Global.asax.cs">
