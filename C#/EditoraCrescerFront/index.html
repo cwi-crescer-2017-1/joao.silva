@@ -12,25 +12,22 @@
                 <div class="col-md-4 logo">
                     <img class="logo" border="0" alt="EditoraCrescer" src="/img/logo.png">
                 </div>    
-                <div class="col-md-3 pesquisa">
-                    <div class="row"> 
-                    <form class="col-md-12 form-inline formulario pesquisaLivro">
-                        <input class="inputMenu" ng-model="Pesquisa" type="text" placeholder="Pesquisar">
+                <div class="col-md-2 pesquisa">
+                    <form class="form-inline formulario pesquisaLivro">
+                        <input class="inputMenu inputPesquisa" ng-model="Pesquisa" type="text" placeholder="Pesquisar">
                     </form>
-                   </div> 
                 </div>
-                <div class="col-md-5 loginEregistros">
-                   <div class="row"> 
-                    <form class="col-md-9 form-inline formulario">
+                <div class="col-md-5 login">
+                    <form class="form-inline formulario">
                         <input class="inputMenu" ng-model="Usuario" type="text" placeholder="Usuario">
-                        <input class="inputMenu" ng-model="Usuario" type="text" placeholder="Senha">
-                        <button class="botaoMenu Logar" type="button" ng-click="">Logar</button>
+                        <input class="inputMenu" ng-model="Senha" type="password" placeholder="Senha">
+                        <button class="btn btn-orange" type="button" ng-click="">Logar</button>
                     </form>
-                    <button class="col-md-4 botaoMenu botaoRedirecionaRegistrar" type="button" ng-click="">Registrar</button>
-                   </div> 
                 </div> 
-            </div>
-
+                <div class="col-md-1 irParaRegistro">
+                    <button class="btn btn-blue" type="button" ng-click="">Registrar</button>
+                </div>    
+            </div> 
             <ng-view></ng-view>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
