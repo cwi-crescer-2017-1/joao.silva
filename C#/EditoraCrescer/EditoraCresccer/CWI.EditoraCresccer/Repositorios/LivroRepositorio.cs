@@ -34,8 +34,8 @@ namespace CWI.EditoraCresccer.Repositorios
         }
         public object ObterPorGenero(string genero)
         {
-            List<Livro> livros = contexto.Livros.Where(x => x.Genero == genero).ToList();
-            return livros
+            return contexto.Livros
+                     .Where(x => x.Genero == genero)
                      .Select(livro => new
                      {
                          Isbn = livro.Isbn,
@@ -47,17 +47,16 @@ namespace CWI.EditoraCresccer.Repositorios
         }
         public object ObterLancamentos()
         {
-            List<Livro> livros = contexto.Livros.Where(livro => DbFunctions.DiffDays(livro.DataPublicacao, DateTime.Now) <= 7).ToList();
-            livros
-                            .Select(livro => new
-                            {
-                                Isbn = livro.Isbn,
-                                Titulo = livro.Titulo,
-                                NomeAutor = livro.Autor.Nome,
-                                Genero = livro.Genero,
-                                Capa = livro.Capa
-                            }).ToList();
-            return livros;
+            return contexto.Livros
+                    .Where(livro => DbFunctions.DiffDays(livro.DataPublicacao, DateTime.Now) <= 7)
+                    .Select(livro => new
+                    {
+                        Isbn = livro.Isbn,
+                        Titulo = livro.Titulo,
+                        NomeAutor = livro.Autor.Nome,
+                        Genero = livro.Genero,
+                        Capa = livro.Capa
+                    }).ToList();
         }
         public List<Livro> ObterPorAutor(int idAutor)
         {
