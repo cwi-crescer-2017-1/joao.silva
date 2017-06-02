@@ -1,6 +1,4 @@
 modulo.controller('PaginaInicial',['$scope','$routeParams','servicesLivros','toastr', function(model,$routeParams,servicesLivros,toastr){ 
-    model.livrosLancamentos=[];
-    model.dezLivros=[];
     model.nomeAntigo;
     
     //Variaveis de controle da página de livros
@@ -18,7 +16,13 @@ modulo.controller('PaginaInicial',['$scope','$routeParams','servicesLivros','toa
     listXLivrosAPartirDoUltimoEnviado();
     function listXLivrosAPartirDoUltimoEnviado() {
         servicesLivros.listLimitada(paginacao.quantidade,paginacao.skip).then(function(response){
-            model.livros = response.data;
+            model.livros = response.data.dados;
+        });
+    }
+    listLancamentos();
+    function listLancamentos(){
+        servicesLivros.listLancamentos().then(function(response){
+            model.lancamentos = response.data.dados;
         });
     }
 
