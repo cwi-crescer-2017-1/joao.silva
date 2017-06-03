@@ -1,6 +1,9 @@
 SELECT TOP 100 * FROM Livro;
 SELECT TOP 100 * FROM Autor;
 SELECT TOP 100 * FROM Revisor;
+SELECT TOP 100 * FROM Usuarios;
+SELECT TOP 10 * FROM Permissao;
+SELECT TOP 100 * FROM UsuarioPermissao;
 
 SELECT TOP 100 * FROM [dbo].[__MigrationHistory];
 
