@@ -52,7 +52,7 @@ namespace EditoraCrescer.Api.Controllers
         [Route("{id:int}")]
         public IHttpActionResult Put(int id, Autor autor)
         {
-            if (autor.Id == id)
+            if (autor != null && autor.Id == id)
             {
                 Autor autorNovo = repositorio.Modificar(id, autor);
                 return Ok(new { dados = autor });
