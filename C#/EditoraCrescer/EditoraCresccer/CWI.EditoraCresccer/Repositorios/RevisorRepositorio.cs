@@ -31,13 +31,16 @@ namespace CWI.EditoraCresccer.Repositorios
         public void Delete(int revisorId)
         {
             Revisor revisor = contexto.Revisores.FirstOrDefault(x => x.Id == revisorId);
-            contexto.Revisores.Remove(revisor);
-            contexto.SaveChanges();
+            if (revisor != null)
+            {
+                contexto.Revisores.Remove(revisor);
+                contexto.SaveChanges();
+            }
+            
         }
-        public Revisor Modificar(int id, Revisor revisorModificado)
+        public Revisor Modificar(int id, Revisor revisor)
         {
-            Revisor revisor = contexto.Revisores.FirstOrDefault(x => x.Id == id);
-            contexto.Entry(revisorModificado).State = EntityState.Modified; //Se der erro trocar por Livro
+            contexto.Entry(revisor).State = EntityState.Modified;
             contexto.SaveChanges();
             return contexto.Revisores.FirstOrDefault(x => x.Id == id);
         }

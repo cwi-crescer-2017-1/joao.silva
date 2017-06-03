@@ -32,13 +32,15 @@ namespace CWI.EditoraCresccer.Repositorios
         public void Remover(int autorId)
         {
             Autor autor = contexto.Autores.FirstOrDefault(x => x.Id == autorId);
-            contexto.Autores.Remove(autor);
-            contexto.SaveChanges();
+            if (autor != null)
+            {
+                contexto.Autores.Remove(autor);
+                contexto.SaveChanges();
+            }
         }
-        public Autor Modificar(int id, Autor autorModificado)
+        public Autor Modificar(int id, Autor autor)
         {
-            Autor autor = contexto.Autores.FirstOrDefault(x => x.Id == id);
-            contexto.Entry(autorModificado).State = EntityState.Modified; //Se der erro trocar por Livro
+            contexto.Entry(autor).State = EntityState.Modified;
             contexto.SaveChanges();
             return contexto.Autores.FirstOrDefault(x => x.Id == id);
         }
