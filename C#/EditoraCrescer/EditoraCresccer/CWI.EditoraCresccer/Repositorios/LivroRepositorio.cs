@@ -85,13 +85,16 @@ namespace CWI.EditoraCresccer.Repositorios
         public Livro Delete(int isbn)
         {
             Livro livro = contexto.Livros.FirstOrDefault(x => x.Isbn == isbn);
-            contexto.Livros.Remove(livro);
-            contexto.SaveChanges();
-            return livro;
+            if (livro != null)
+            {
+                contexto.Livros.Remove(livro);
+                contexto.SaveChanges();
+                return livro;
+            }
+            return null;
         }
         public Livro Modificar(int isbn, Livro livro)
         {
-            //Livro livro = contexto.Livros.FirstOrDefault(x => x.Isbn == isbn);
             contexto.Entry(livro).State = EntityState.Modified;
             contexto.SaveChanges();
             return contexto.Livros.FirstOrDefault(x => x.Isbn == isbn);
