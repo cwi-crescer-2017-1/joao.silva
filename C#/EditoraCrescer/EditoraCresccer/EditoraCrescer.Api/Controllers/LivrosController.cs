@@ -69,7 +69,7 @@ namespace EditoraCrescer.Api.Controllers
         [Route("{isbn:int}")]
         public IHttpActionResult Put(int isbn,Livro livro)
         {
-            if(livro.Isbn == isbn)
+            if(livro!=null && livro.Isbn == isbn)
             {
                 Livro retorno = repositorio.Modificar(isbn, livro);
                 return Ok(new { dados = retorno });
