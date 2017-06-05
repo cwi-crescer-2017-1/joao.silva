@@ -1,12 +1,10 @@
-modulo.controller('PaginaInicial',['$scope','$routeParams','servicesLivros','toastr','$location', function(model,$routeParams,servicesLivros,toastr,$location){ 
-    model.nomeAntigo;
+modulo.controller('PaginaInicial',['$scope','$routeParams','servicesLivros','toastr','$location','authService', function(model,$routeParams,servicesLivros,toastr,$location,authService){ 
     
     //Variaveis de controle da página de livros
     var paginacao = {
         skip : 0,
         quantidade: 12
     }
-
     //Funções compatilhadas
     model.proximaPaginaDeLivros = proximaPaginaDeLivros;
     model.paginaAnteriorDeLivros = paginaAnteriorDeLivros;
@@ -16,7 +14,7 @@ modulo.controller('PaginaInicial',['$scope','$routeParams','servicesLivros','toa
     listXLivrosAPartirDoUltimoEnviado();
     function listXLivrosAPartirDoUltimoEnviado() {
         servicesLivros.listLimitada(paginacao.quantidade,paginacao.skip).then(function(response){
-            model.livros = response.data.dados;
+            model.livros = response.data.dados.livros;
         });
     }
     listLancamentos();
