@@ -13,6 +13,13 @@ namespace CWI.EditoraCresccer.Mappings
                 x.MapRightKey("IdPermissao");
                 x.ToTable("UsuarioPermissao");
             });
+            HasMany(x => x.LivroAssinados).WithMany().Map(x =>
+            {
+                x.MapLeftKey("IdUsuario");
+                x.MapRightKey("IsbnLivro");
+                x.ToTable("LivroUsuarioAssinante");
+            });
+
         }
     }
 }
