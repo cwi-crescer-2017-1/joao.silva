@@ -8,16 +8,17 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
+    [AllowAnonymous]
     [RoutePrefix("api/livros")]
     public class LivrosController : ApiController
     {
         private readonly LivroRepositorio repositorio = new LivroRepositorio();
 
         [HttpGet]
-        [Route()]
-        public IHttpActionResult GetTodos()
+        [Route("publicados")]
+        public IHttpActionResult GetTodosPublicados()
         {
-            var livros = repositorio.ObterTodos();
+            var livros = repositorio.ObterTodosPublicados();
             return Ok(new { dados = livros });
         }
         [HttpGet]
@@ -45,12 +46,13 @@ namespace EditoraCrescer.Api.Controllers
             return Ok(new { dados = livros });
         }
         [HttpGet]
-        [Route("ListaLimitada/{quantidade}/{skip}")] //UltimoISBN = -1 retorna a quantidade apartir do inicio
+        [Route("ListaLimitada/{quantidade}/{skip}")]
         public IHttpActionResult GetListaLimitada(int quantidade, int skip)
         {
             var livros = repositorio.ObterListaLimitada(quantidade, skip);
             return Ok(new { dados = livros });
         }
+        [BasicAuthorization]
         [HttpPost]
         [Route()]
         public IHttpActionResult Post(Livro livro)
@@ -58,14 +60,51 @@ namespace EditoraCrescer.Api.Controllers
             Livro retorno = repositorio.Criar(livro);
             return Ok(new { dados = retorno });
         }
-        [HttpDelete]
+        [BasicAuthorization]
+        [HttpGet]
+        [Route()]
+        public IHttpActionResult GetTodos()
+        {
+            var livros = repositorio.ObterTodos();
+            return Ok(new { dados = livros });
+        }
+        [BasicAuthorization]
+        [HttpGet]
+        [Route("ListaLimitadaCompleta/{quantidade}/{skip}")]
+        public IHttpActionResult GetListaLimitadaCompleta(int quantidade, int skip)
+        {
+            var livros = repositorio.ObterListaLimitadaCompleta(quantidade, skip);
+            return Ok(new { dados = livros });
+        }
+        [HttpDelete, BasicAuthorization(Roles = "Administrador")]
         [Route("{isbn:int}")]
         public IHttpActionResult Delete(int isbn)
         {
             Livro retorno = repositorio.Delete(isbn);
             return Ok(new {dados = retorno});
         }
-        [HttpPut]
+        [HttpPut, BasicAuthorization(Roles = "Administrador,Revisor")]
+        [Route("revisar/{idRevisor:int}/{isbn:int}")]
+        public IHttpActionResult RevisarLivro(int idRevisor, int isbn)
+        {
+             Livro retorno = repositorio.RevisarLivro(idRevisor, isbn);
+             return Ok(new { dados = retorno });
+        }
+        [HttpPut, BasicAuthorization(Roles = "Administrador,Publicador")]
+        [Route("publicar/{isbn:int}")]
+        public IHttpActionResult PublicarLivro(int isbn)
+        {
+            Livro retorno = repositorio.PublicarLivro(isbn);
+            return Ok(new { dados = retorno });
+        }
+        [HttpPut, BasicAuthorization(Roles = "Administrador,Publicador")]
+        [Route("novaRevisao/{isbn:int}")]
+        public IHttpActionResult PedirNovaRevisao(int isbn)
+        {
+            Livro retorno = repositorio.PedirNovaRevisao(isbn);
+            return Ok(new { dados = retorno });
+        }
+        [HttpPut, BasicAuthorization(Roles = "Administrador,Revisor,Publicador")]
         [Route("{isbn:int}")]
         public IHttpActionResult Put(int isbn,Livro livro)
         {
