@@ -1,0 +1,18 @@
+<h2 class="secaoTitulo">Livros<h2>
+<div class="livrosEmGeral CRUD">
+    <div class="displayLivro" ng-repeat="livro in livros">
+        <img class="capa" ng-src={{livro.Capa}}>
+        <p class="informacaoLivro">{{livro.Titulo}}</p>
+        <p class="informacaoLivro">{{livro.Genero}}</p>
+        <p class="informacaoLivro">{{livro.NomeAutor}}</p>
+        <button class="btn btn-red" type="button" ng-click="">Inscrever-se</button>
+        <button class="btn btn-orange" type="button" ng-click="revisar(livro)" ng-show="usuarioRevisor" ng-if="naoRevisado(livro.DataRevisao)">Revisar</button>
+        <div class="divOperacaoJaRealizada" ng-show="usuarioRevisor" ng-if="!naoRevisado(livro.DataRevisao)">Revisão completa</div>
+        <button class="btn btn-orange" type="button" ng-click="publicar(livro)" ng-show="usuarioPublicador && !finalDeSemana()" ng-if="naoPublicadoERevisado(livro.DataPublicacao,livro.DataRevisao)">Publicar</button>
+        <div class="divOperacaoJaRealizada" ng-show="usuarioPublicador" ng-if="!naoPublicado(livro.DataPublicacao)">Publicado</div>
+        <div class="divOperacaoJaRealizada" ng-show="usuarioPublicador" ng-if="naoRevisado(livro.DataRevisao)">Ainda não revisado</div>
+        <div class="divOperacaoJaRealizada red" ng-show="usuarioPublicador && finalDeSemana() && !naoRevisado(livro.DataRevisao) && naoPublicado(livro.DataPublicacao)">Indisponível hoje</div>
+    </div>   
+</div>   
+    <button class="btn btn-blue paginacao" type="button" ng-click="paginaAnteriorDeLivros()">Voltar</button>
+    <button class="btn btn-blue paginacao" type="button" ng-click="proximaPaginaDeLivros()">Avançar</button>
