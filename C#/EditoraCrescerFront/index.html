@@ -3,40 +3,55 @@
     <head>
         <title>EditoraCWI</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!--<link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">-->
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
-    <body>
+    <body> 
         <div class="container-fluid">      
-            <div class="row menu">
+            <div class="row menu" ng-controller="Menu">
                 <div class="col-md-4 logo">
                     <img class="logo" border="0" alt="EditoraCrescer" src="/img/logo.png">
                 </div>    
                 <div class="col-md-2 pesquisa">
-                    <form class="form-inline formulario pesquisaLivro">
+                    <h2><a ng-href="#!/paginaInicial">Página Inicial</a></h2>
+                    <!--<form class="form-inline formulario pesquisaLivro">
                         <input class="inputMenu inputPesquisa" ng-model="Pesquisa" type="text" placeholder="Pesquisar">
-                    </form>
+                    </form>-->
                 </div>
                 <div class="col-md-5 login">
-                    <form class="form-inline formulario">
-                        <input class="inputMenu" ng-model="Usuario" type="text" placeholder="Usuario">
-                        <input class="inputMenu" ng-model="Senha" type="password" placeholder="Senha">
-                        <button class="btn btn-orange" type="button" ng-click="">Logar</button>
+                    <form class="form-inline formulario" ng-hide="logado">
+                        <input class="inputMenu" ng-show="registrando" ng-model="usuario.nome" type="text" placeholder="Nome">
+                        <input class="inputMenu" ng-model="usuario.email" type="text" placeholder="Email">
+                        <input class="inputMenu" ng-model="usuario.senha" type="password" placeholder="Senha">
+                        <button class="btn btn-orange" type="button" ng-show="!registrando" ng-click="login(usuario)">Logar</button>
+                        <button class="btn btn-orange" type="button" ng-show="registrando" ng-click="registrar(usuario.nome,usuario.email,usuario.senha)">Cadastrar</button>
                     </form>
+                    <div ng-show="logado">
+                        <h2><a ng-href="#!/adminstrativo">Área Administrativa</a></h2>
+                    </div>    
                 </div> 
-                <div class="col-md-1 irParaRegistro">
-                    <button class="btn btn-blue" type="button" ng-click="">Registrar</button>
+                <div class="col-md-1 deslogar">
+                    <button class="btn btn-blue" type="button" ng-show="logado" ng-click="logout()">Logout</button>
+                    <button class="btn btn-blue" type="button" ng-show="!logado && !registrando" ng-click="iniciarRegistro()">Cadastre-se</button>
+                    <button class="btn btn-blue" type="button" ng-show="!logado && registrando" ng-click="cancelarRegistro()">Cancelar</button>
                 </div>    
             </div> 
             <ng-view></ng-view> <!--Usar ng-href em vez de href-->
         </div>
-        <!--Adicionar o link script do ngStorage e do auth do zanatta-->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
         <link rel="stylesheet" type="text/css" href="angular-toast/angular-toastr.css"/>
         <script type="text/javascript" src="angular-toast/angular-toastr.tpls.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js" type="text/javascript"></script>
+        <script src="js/auth.module.js" type="text/javascript"></script>
         <script src="js/main.js"></script>
         <script src="services/servicesLivros.js"></script>  
+        <script src="services/serviceRegistro.js"></script>
         <script src="controllers/controllersLivros.js"></script>
+        <script src="controllers/controllerMenu.js"></script>
+        <script src="controllers/controllerUsuario.js"></script>
+        <script src="controllers/controllerRevisao.js"></script>
+        <script src="controllers/controllerPublicacao.js"></script>
+
     </body>
 </html>    
