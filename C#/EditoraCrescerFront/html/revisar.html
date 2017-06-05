@@ -1,0 +1,30 @@
+<div class="revisao">
+    <div class="row menuRevisao">
+        <h1>Menu revisão</h1>
+        <div class="col-md-6">
+            <img class="capaRevisao" ng-src={{livroSendoRevisado.Capa}}>
+        </div>
+        <div class="col-md-6">    
+            <h1>{{livroSendoRevisado.Titulo}}</h1>
+            <h2>{{livroSendoRevisado.Genero}}</h2>
+            <p>{{livroSendoRevisado.Descricao}}</p>
+            <p>{{livroSendoRevisado.Autor.Nome}}</p>
+        </div>
+    </div>
+    <div class="botoesRevisao">
+        <button class="btn btn-blue revisao" type="button" ng-click="editarDescricao()">Editar descrição</button>  
+        <button class="btn btn-blue revisao" type="button" ng-click="editarTitulo()">Editar título</button>  
+        <button class="btn btn-blue revisao" type="button" ng-click="editarGenero()">Editar gênero</button>
+        <button class="btn btn-blue revisao" type="button" ng-click="alterarCapa()">Mudar capa</button>
+    </div>
+    <div class="edicao">
+        <input class="inputEdicao" ng-show="editandoTitulo" ng-model="livroEditado.Titulo" type="text" maxlength="50">
+        <input class="inputEdicao" ng-show="editandoDescricao" ng-model="livroEditado.Descricao" type="text" maxlength="500">
+        <input class="inputEdicao" ng-show="editandoGenero" ng-model="livroEditado.Genero" type="text" maxlength="50">
+        <input class="inputEdicao" ng-show="alterandoCapa" ng-model="livroEditado.Capa" type="text" maxlength="500">
+        <button class="btn btn-blue revisao" type="button" ng-show="editando" ng-click="salvarEdicao()">Salvar alterações</button>
+        <button class="btn btn-blue revisao" type="button" ng-show="editando" ng-click="cancelarEdicao()">Cancelar alterações</button>
+    </div>  
+    <br/> 
+    <button class="btn btn-blue revisao" type="button" ng-click="revisaoCompleta()">Salva revisão final</button> 
+</div>
