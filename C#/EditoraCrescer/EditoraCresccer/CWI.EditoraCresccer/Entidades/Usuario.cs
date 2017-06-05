@@ -16,11 +16,10 @@ namespace CWI.EditoraCresccer.Entidades
         public string Email { get; set; }
         public string Senha { get; set; }
         public List<Permissao> Permissoes { get; set; }
+        public List<Livro> LivroAssinados { get; set; } 
 
         // Construtor padrão para o Entity Framework
-        protected Usuario()
-        {
-        }
+        protected Usuario(){}
 
         public Usuario(string nome, string email, string senha)
         {
@@ -31,6 +30,7 @@ namespace CWI.EditoraCresccer.Entidades
                 Senha = CriptografarSenha(senha);
             Permissoes = new List<Permissao>();
             AtribuirPermissoes("Colaborador");
+            LivroAssinados = new List<Livro>();
         }
 
         public string ResetarSenha()
