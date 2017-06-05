@@ -109,6 +109,18 @@
     <Compile Include="Migrations\201706031901578_AdicaoPermissaoEUsuario.Designer.cs">
       <DependentUpon>201706031901578_AdicaoPermissaoEUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706041914584_ModificacoesNoLivroQuantoAPublicacaoERevisao.cs" />
+    <Compile Include="Migrations\201706041914584_ModificacoesNoLivroQuantoAPublicacaoERevisao.Designer.cs">
+      <DependentUpon>201706041914584_ModificacoesNoLivroQuantoAPublicacaoERevisao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706041930145_AjusteNoLivroRevisor.cs" />
+    <Compile Include="Migrations\201706041930145_AjusteNoLivroRevisor.Designer.cs">
+      <DependentUpon>201706041930145_AjusteNoLivroRevisor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706041934290_AjusteNoLivroRevisorOpcional.cs" />
+    <Compile Include="Migrations\201706041934290_AjusteNoLivroRevisorOpcional.Designer.cs">
+      <DependentUpon>201706041934290_AjusteNoLivroRevisorOpcional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AutorRepositorio.cs" />
@@ -150,6 +162,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706031901578_AdicaoPermissaoEUsuario.resx">
       <DependentUpon>201706031901578_AdicaoPermissaoEUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706041914584_ModificacoesNoLivroQuantoAPublicacaoERevisao.resx">
+      <DependentUpon>201706041914584_ModificacoesNoLivroQuantoAPublicacaoERevisao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706041930145_AjusteNoLivroRevisor.resx">
+      <DependentUpon>201706041930145_AjusteNoLivroRevisor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706041934290_AjusteNoLivroRevisorOpcional.resx">
+      <DependentUpon>201706041934290_AjusteNoLivroRevisorOpcional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
