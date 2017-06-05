@@ -1,4 +1,4 @@
-﻿using CWI.EditoraCresccer.Repositorios;
+﻿/*using CWI.EditoraCresccer.Repositorios;
 using CWI.EditoraCresccer.Entidades;
 using System;
 using System.Collections.Generic;
@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
+    [AllowAnonymous]
     [RoutePrefix("api/revisor")]
     public class RevisorController : ApiController
     {
@@ -64,4 +65,4 @@ namespace EditoraCrescer.Api.Controllers
             base.Dispose(disposing);
         }
     }
-}
+}*/
