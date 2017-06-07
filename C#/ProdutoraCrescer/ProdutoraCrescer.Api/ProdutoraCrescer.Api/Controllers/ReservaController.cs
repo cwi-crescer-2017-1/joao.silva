@@ -1,6 +1,7 @@
 ﻿using ProdutoraCrescer.Api.App_Start;
 using ProdutoraCrescer.Dominio.Entidades;
 using ProdutoraCrescer.Infraestrutura.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
@@ -65,6 +66,15 @@ namespace ProdutoraCrescer.Api.Controllers
             return ResponderOK(new { reservas });
         }
 
+        [HttpGet, BasicAuthorization(Roles = "Gerente")]
+        [Route("relatorioLocacaoMensal/{dataFinal:DateTime}")]
+        public HttpResponseMessage ObterRelatorioLocacaoMensal(DateTime dataFinal)
+        {
+            object resposta = repositorio.ObterRelatorioLocacaoMensal(dataFinal);
+
+            return ResponderOK(new { resposta });
+        }
+
         [HttpGet, BasicAuthorization]
         [Route("{id:int}")]
         public HttpResponseMessage ObterPorId(int id)
@@ -88,6 +98,14 @@ namespace ProdutoraCrescer.Api.Controllers
             {
                 return ResponderErro("Usuário não encontrado.");
             }
+            return ResponderOK(reservas);
+        }
+
+        [HttpGet, BasicAuthorization]
+        [Route("relatorioAtrasos")]
+        public HttpResponseMessage ObterRelatorioAtrasos()
+        {
+            List<Reserva> reservas = repositorio.ObterRelatorioAtrasos();
             return ResponderOK(reservas);
         }
 

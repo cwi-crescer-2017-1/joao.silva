@@ -18,7 +18,7 @@ namespace ProdutoraCrescer.Api.Controllers
             repositorio = new UsuarioRepositorio();
         }
 
-        [HttpPost]
+        [HttpPost, BasicAuthorization(Roles = "Gerente")]
         [Route("registrar")]
         public HttpResponseMessage Post(dynamic usuario) //Nome,Senha,Email,Cargo
         {
