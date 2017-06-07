@@ -16,7 +16,7 @@ namespace ProdutoraCrescer.Dominio.Entidades
         public string Permissao { get; private set; }
         public List<string> Mensagens { get; private set; }
 
-        protected Usuario() { }
+        protected Usuario() { Mensagens = new List<string>(); }
 
         public Usuario(string nome, string senha, string email, string cargo)
         {
@@ -26,42 +26,46 @@ namespace ProdutoraCrescer.Dominio.Entidades
             Permissao = cargo;
             if (!string.IsNullOrWhiteSpace(senha))
                 Senha = CriptografarSenha(senha);
+
+            Mensagens = new List<string>();
         }
 
         public bool Validar()
         {
             Mensagens.Clear();
 
-            if (string.IsNullOrWhiteSpace(Nome))
+            if (string.IsNullOrWhiteSpace(Nome) || Nome.Length > 100)
+            {
                 Mensagens.Add("Nome é inválido.");
+            }
 
             if (string.IsNullOrWhiteSpace(Senha))
+            {
                 Mensagens.Add("Senha inválida.");
+            }
 
-            if (string.IsNullOrWhiteSpace(Email) && emailValido() && Email.Length > 100)
+            if (string.IsNullOrWhiteSpace(Email) || EmailInvalido() || Email.Length > 100)
+            {
                 Mensagens.Add("Email é inválido.");
+            }
 
-            if (Nome.Length > 100)
-                Mensagens.Add("Nome é inválido.");
-
-            if (Permissao.Length > 100)
-                Mensagens.Add("Cargo é inválido.");
+            if (string.IsNullOrWhiteSpace(Permissao) || Permissao.Length > 100)
+            {
+                Mensagens.Add("Permissao é inválida.");
+            }
 
             return Mensagens.Count == 0;
         }
 
-        private bool emailValido()
+        private bool EmailInvalido()
         {
             Regex rg = new Regex(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
 
             if (rg.IsMatch(Email))
             {
-                return true;
-            }
-            else
-            {
                 return false;
             }
+            return true;
         }
 
         private string CriptografarSenha(string senha)
