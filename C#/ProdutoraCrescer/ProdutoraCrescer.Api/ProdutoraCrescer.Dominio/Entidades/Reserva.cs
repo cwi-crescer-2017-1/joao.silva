@@ -18,21 +18,27 @@ namespace ProdutoraCrescer.Dominio.Entidades
 
         public bool Devolvido { get { return DataDevolucao_Real != null; }}
 
-        private List<string> Mensagens { get; set; }
+        public List<string> Mensagens { get; set; }
 
-        protected Reserva() { }
+        protected Reserva() { Mensagens = new List<string>();  }
 
-        public Reserva(decimal valor,DateTime dataLocacao, DateTime dataDevolucaoPrevista, Pacote pacote, Festa festa, Usuario usuario, Cliente cliente, Opcional opcional)
+        public Reserva(decimal valor, int duracaoReservaEmDias, Pacote pacote, Festa festa, Usuario usuario, Cliente cliente, Opcional opcional)
         {
+            DateTime hoje = DateTime.UtcNow;
+
             Id = 0;
             Valor = valor;
-            DataLocacao = dataLocacao;
-            DataDevolucao_Prevista = dataDevolucaoPrevista;
+            DataLocacao = hoje;
+            DataDevolucao_Prevista = hoje.AddDays(duracaoReservaEmDias);
             Pacote = pacote;
             Festa = festa;
             Usuario = usuario;
             Cliente = cliente;
-            Opcional = opcional;
+
+            bool reservado = opcional.ReservarOpcional();
+            if (reservado) Opcional = opcional;
+
+            Mensagens = new List<string>();
         }
         
         public bool Devolver()
@@ -45,6 +51,26 @@ namespace ProdutoraCrescer.Dominio.Entidades
             return false;
         }
 
+        public decimal CalcularDevolucao()
+        {
+            if (DataDevolucao_Prevista < DataDevolucao_Real)
+            {
+                decimal valorMulta = CalcularMulta();
+                return valorMulta + Valor;
+            }
+            return Valor;
+        }
+
+        private decimal CalcularMulta()
+        {
+            DateTime hoje = DateTime.UtcNow;
+            TimeSpan atraso = (hoje - DataDevolucao_Prevista);
+            int diasAtraso = atraso.Days;
+            decimal valorMulta = (Opcional.CustoMulta + Pacote.CustoMulta + Festa.CustoMulta) * diasAtraso;
+
+            return valorMulta;
+        }
+
         public void SalvarValor(int valor)
         {
             Valor = valor;
@@ -54,23 +80,44 @@ namespace ProdutoraCrescer.Dominio.Entidades
         {
             Mensagens.Clear();
 
-            if (Valor<0)
+            if (Valor < 0)
+            {
                 Mensagens.Add("Valor inválido.");
+            } 
 
             if (DataLocacao == null)
+            {
                 Mensagens.Add("Data locação inválida.");
-
+            }
+            
             if (DataDevolucao_Prevista == null)
+            {
                 Mensagens.Add("Data devolução prevista é inválida.");
+            } 
 
             if (Festa == null)
+            {
                 Mensagens.Add("Festa inválida");
+            }
+
             if (Usuario == null)
+            {
                 Mensagens.Add("Usuario inválido");
+            }
             if (Cliente == null)
+            {
                 Mensagens.Add("Cliente inválido");
-            if (Opcional == null)
-                Mensagens.Add("Opcional inválido");
+            }
+
+            if (DataLocacao == null || DataLocacao == DataDevolucao_Prevista)
+            {
+                Mensagens.Add("Data devolução prevista inválida");
+            }
+
+            if (Opcional == null || Opcional.Quantidade < 1)
+            {
+                Mensagens.Add("Quantidade de "+Opcional.Nome+" indísponível");
+            }
 
             return Mensagens.Count == 0;
         }
