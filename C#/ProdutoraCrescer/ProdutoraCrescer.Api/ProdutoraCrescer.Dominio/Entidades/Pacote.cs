@@ -13,7 +13,7 @@ namespace ProdutoraCrescer.Dominio.Entidades
         public decimal CustoMulta { get; private set; }
         private List<string> Mensagens { get; set; }
 
-        protected Pacote() { }
+        protected Pacote() { Mensagens = new List<string>(); }
         
         public Pacote(string nome, bool decoracao, bool instalacao, bool equipe, decimal custoDiaria, decimal custoMulta)
         {
@@ -24,22 +24,26 @@ namespace ProdutoraCrescer.Dominio.Entidades
             Equipe = equipe;
             CustoDiaria = custoDiaria;
             CustoMulta = custoMulta;
+            Mensagens = new List<string>();
         }
         public bool Validar()
         {
             Mensagens.Clear();
 
-            if (string.IsNullOrWhiteSpace(Nome))
+            if (string.IsNullOrWhiteSpace(Nome) || Nome.Length > 100)
+            {
                 Mensagens.Add("Nome é inválido.");
-
-            if (Nome.Length > 100)
-                Mensagens.Add("Nome é inválido.");
+            }
 
             if (CustoDiaria < 0)
+            {
                 Mensagens.Add("Custo diário é inválido.");
+            }
 
             if (CustoMulta < 0)
+            {
                 Mensagens.Add("Custo da multa é inválido.");
+            }
 
             return Mensagens.Count == 0;
         }
