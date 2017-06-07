@@ -63,6 +63,11 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\ClienteRepositorio.cs" />
+    <Compile Include="Repositorio\FestaRepositorio.cs" />
+    <Compile Include="Repositorio\OpcionalRepositorio.cs" />
+    <Compile Include="Repositorio\PacoteRepositorio.cs" />
+    <Compile Include="Repositorio\ReservaRepositorio.cs" />
     <Compile Include="Repositorio\UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>

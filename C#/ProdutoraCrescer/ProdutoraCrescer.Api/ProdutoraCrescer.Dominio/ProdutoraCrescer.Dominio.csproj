@@ -52,8 +52,8 @@
   <ItemGroup>
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Festa.cs" />
+    <Compile Include="Entidades\Itens.cs" />
     <Compile Include="Entidades\Opcional.cs" />
-    <Compile Include="Entidades\OpcionalReserva.cs" />
     <Compile Include="Entidades\Pacote.cs" />
     <Compile Include="Entidades\ProdutoBasico.cs" />
     <Compile Include="Entidades\Reserva.cs" />
