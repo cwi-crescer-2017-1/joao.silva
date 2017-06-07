@@ -3,17 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProdutoraCrescer.Infraestrutura.Repositorio
 {
     public class UsuarioRepositorio : IDisposable
     {
-        private Contexto contexto = new Contexto();
-        private Contexto contextoTeste = new Contexto();
+        private Contexto contexto;
 
-        public UsuarioRepositorio() { }
+        public UsuarioRepositorio()
+        {
+            contexto = new Contexto();
+        }
 
         public Usuario Obter(string email)
         {
@@ -22,7 +22,11 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
 
         public List<string> Criar(dynamic u)
         {
-            Usuario usuario = new Usuario(u.Nome, u.Senha, u.Email, u.Cargo);
+            string nome = u.Nome;
+            string senha = u.Senha;
+            string email = u.Email;
+            string permissao = u.Permissao;
+            Usuario usuario = new Usuario(nome, senha, email, permissao);
             if (usuario.Validar())
             {
                 contexto.Usuarios.Add(usuario);
