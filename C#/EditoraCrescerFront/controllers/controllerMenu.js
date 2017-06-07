@@ -1,4 +1,4 @@
-modulo.controller('Menu',['$scope','toastr','$location','authService','authConfig','serviceRegistro', function(model,toastr,$location,authService,authConfig,serviceRegistro){
+modulo.controller('controllerMenu',['$scope','toastr','$location','authService','authConfig','serviceRegistro', function(model,toastr,$location,authService,authConfig,serviceRegistro){
     model.logado = false;
     model.registrando = false;
     model.usuario = {};
@@ -32,6 +32,7 @@ modulo.controller('Menu',['$scope','toastr','$location','authService','authConfi
             }           
         })
     }
+
     model.iniciarRegistro = iniciarRegistro;
     function iniciarRegistro(){
         model.registrando = true;
