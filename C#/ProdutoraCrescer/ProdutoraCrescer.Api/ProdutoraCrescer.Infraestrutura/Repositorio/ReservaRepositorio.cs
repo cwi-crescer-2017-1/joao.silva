@@ -44,7 +44,7 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
         public List<Reserva> ObterListaNaoDevolvidos()
         {
             return contexto.Reservas
-                                .Where(reserva=>reserva.Devolvido == false)
+                                .Where(reserva=>reserva.DataDevolucao_Real == null)
                                 .Include(x => x.Pacote)
                                 .Include(x => x.Opcional)
                                 .Include(x => x.Usuario)
@@ -110,26 +110,31 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
 
         public bool Devolver(int idReserva)
         {
-            Reserva reserva = contexto.Reservas.FirstOrDefault(x => x.Id == idReserva);
-
+            Reserva reserva = contexto.Reservas
+                                .Include(x => x.Pacote)
+                                .Include(x => x.Opcional)
+                                .Include(x => x.Usuario)
+                                .Include(x => x.Festa)
+                                .Include(x => x.Cliente)
+                                .FirstOrDefault(x => x.Id == idReserva);
             if(reserva != null)
             {
                 bool resultado = reserva.Devolver();
-                if (resultado == true)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                contexto.SaveChanges();
+                return resultado;
             }
             return false;
         }
 
         public decimal PegarValorDevolucao(int idReserva)
         {
-            Reserva reserva = contexto.Reservas.FirstOrDefault(x => x.Id == idReserva);
+            Reserva reserva = contexto.Reservas
+                                .Include(x => x.Pacote)
+                                .Include(x => x.Opcional)
+                                .Include(x => x.Usuario)
+                                .Include(x => x.Festa)
+                                .Include(x => x.Cliente)
+                                .FirstOrDefault(x => x.Id == idReserva);
             if (reserva != null)
             {
                 decimal valorDevolucao = reserva.CalcularDevolucao();
@@ -138,6 +143,36 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
             return -1;
         }
 
+        public object ObterRelatorioLocacaoMensal(DateTime dataFinal)
+        {
+            DateTime dataInicial = dataFinal.AddDays(-30);
+            List<Reserva> reservas = contexto.Reservas
+                                .Include(x => x.Pacote)
+                                .Include(x => x.Opcional)
+                                .Include(x => x.Usuario)
+                                .Include(x => x.Festa)
+                                .Include(x => x.Cliente)
+                                .Where(x => x.DataDevolucao_Real >= dataInicial && x.DataDevolucao_Real <= dataFinal)
+                                .ToList();
+            decimal valorTotal = reservas.Sum(reserva => reserva.Valor);
+
+            return new { Reservas = reservas, Valor = valorTotal };
+        }
+
+        public List<Reserva> ObterRelatorioAtrasos()
+        {
+            DateTime hoje = DateTime.UtcNow;
+            List<Reserva> reservas = contexto.Reservas
+                                .Include(x => x.Pacote)
+                                .Include(x => x.Opcional)
+                                .Include(x => x.Usuario)
+                                .Include(x => x.Festa)
+                                .Include(x => x.Cliente)
+                                .Where(x => x.DataDevolucao_Prevista < hoje)
+                                .OrderBy(x=> x.DataDevolucao_Prevista)
+                                .ToList();
+            return reservas;
+        }
         private decimal GerarOrcamento(Pacote pacote, Festa festa, Opcional opcinal, int tempoReservaEmDias)
         {
             decimal valor = (opcinal.CustoDiaria + pacote.CustoDiaria + festa.CustoDiaria) * tempoReservaEmDias;
