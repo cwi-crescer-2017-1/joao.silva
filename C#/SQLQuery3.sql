@@ -27,3 +27,9 @@ INSERT INTO Usuario (Nome, Senha, Email, Permissao) VALUES('Gerente','a354e39944
 
 INSERT INTO Usuario (Nome, Senha, Email, Permissao) VALUES('Arthur','e5c24b4856408731fde96bd3e1c6493a','funcionario@gmail.com','Gerente');
 
+UPDATE Reserva SET DataDevolucao_Real = '2017-06-06' WHERE Id = 1;
+
+UPDATE USUARIO SET PERMISSAO = 'Funcionario' WHERE ID = 3;
+UPDATE Reserva SET DataDevolucao_Real = NULL WHERE Id = 1;
+
+UPDATE Reserva SET DataDevolucao_Prevista = '2017-06-06' WHERE Id = 11;
