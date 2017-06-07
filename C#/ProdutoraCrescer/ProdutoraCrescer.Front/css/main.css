@@ -18,6 +18,27 @@ body {
   padding: 20px 1px 20px 1px;
   background: #696969; 
 }
+.loginTitulo h1{
+  font-size: 40px;
+  font-weight: 900;
+  margin-left: 30%;
+}
+.administrativo .MenuTitulo h1{
+  font-size: 40px;
+  font-weight: 900;
+  margin-left: 30%;
+}
+.atrasos{
+  background: white;
+  border-radius: 2.5%/5%;
+  padding: 1% 1% 1% 1%;
+}
+.TituloTabela{
+  font-size: 30px;
+  font-weight: 900;
+  margin-left: 42%;
+  margin-bottom: 20px;
+}
 .logo{
   width:180px; 
   height:80px;
@@ -126,6 +147,16 @@ body {
   bottom:5px;
   background:#CC0000;
   box-shadow:0 5px 0 #990033;
+}
+.btn.btn-orange.login, .btn.btn-blue.login{
+  width: 30%;
+  margin-top: 50px;
+  margin-left: 35%;
+}
+.inputMenu.login{
+  margin-left: 30%;
+  margin-top: 20px;
+  width: 40%;
 }
 .btn-orange:active, .btn-blue:active, .btn-red:active{
   position:relative;
