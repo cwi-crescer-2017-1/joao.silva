@@ -46,6 +46,12 @@ namespace ProdutoraCrescer.Dominio.Entidades
             if(DataDevolucao_Real == null)
             {
                 DataDevolucao_Real = DateTime.UtcNow;
+                if (DataDevolucao_Real > DataDevolucao_Prevista)
+                {
+                    decimal multa = CalcularMulta();
+                    Valor = Valor + multa;
+                }
+                Opcional.DevolverOpcional();
                 return true;
             }
             return false;
@@ -66,9 +72,12 @@ namespace ProdutoraCrescer.Dominio.Entidades
             DateTime hoje = DateTime.UtcNow;
             TimeSpan atraso = (hoje - DataDevolucao_Prevista);
             int diasAtraso = atraso.Days;
-            decimal valorMulta = (Opcional.CustoMulta + Pacote.CustoMulta + Festa.CustoMulta) * diasAtraso;
-
-            return valorMulta;
+            if (diasAtraso > 0)
+            {
+                decimal valorMulta = (Opcional.CustoMulta + Pacote.CustoMulta + Festa.CustoMulta) * diasAtraso;
+                return valorMulta;
+            }
+            return 0;
         }
 
         public void SalvarValor(int valor)
@@ -114,9 +123,9 @@ namespace ProdutoraCrescer.Dominio.Entidades
                 Mensagens.Add("Data devolução prevista inválida");
             }
 
-            if (Opcional == null || Opcional.Quantidade < 1)
+            if (Opcional == null || Opcional.Quantidade < 0)
             {
-                Mensagens.Add("Quantidade de "+Opcional.Nome+" indísponível");
+                Mensagens.Add("Quantidade de indísponível");
             }
 
             return Mensagens.Count == 0;
