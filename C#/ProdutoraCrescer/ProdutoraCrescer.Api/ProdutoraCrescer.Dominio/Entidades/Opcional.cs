@@ -20,12 +20,16 @@ namespace ProdutoraCrescer.Dominio.Entidades
 
         public bool ReservarOpcional()
         {
-            if (Quantidade > 1)
+            if (Quantidade >= 1)
             {
                 Quantidade = Quantidade - 1;
                 return true;
             }
             return false;
+        }
+        public void DevolverOpcional()
+        {
+            Quantidade = Quantidade +1;
         }
         public override bool Validar()
         {
