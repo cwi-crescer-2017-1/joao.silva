@@ -96,7 +96,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BasicAuthorization.cs" />
+    <Compile Include="App_Start\ErrosGlobaisFilterAttribute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ControllerBasica.cs" />
+    <Compile Include="Controllers\FestaController.cs" />
+    <Compile Include="Controllers\OpcionalController.cs" />
+    <Compile Include="Controllers\PacoteController.cs" />
+    <Compile Include="Controllers\ReservaController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -113,8 +122,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProdutoraCrescer.Dominio\ProdutoraCrescer.Dominio.csproj">
+      <Project>{383101C7-441E-4FDB-A67A-9D416FCD8FE2}</Project>
+      <Name>ProdutoraCrescer.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProdutoraCrescer.Infraestrutura\ProdutoraCrescer.Infraestrutura.csproj">
+      <Project>{B566C198-41AC-48D3-B877-6913124A6C0F}</Project>
+      <Name>ProdutoraCrescer.Infraestrutura</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
