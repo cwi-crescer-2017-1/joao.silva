@@ -1,0 +1,13 @@
+<div class="row menu">
+     <div class="col-md-4 logo">
+           <img class="logo" border="0" alt="EditoraCrescer" src="/img/logo.png">
+      </div>    
+      <div class="col-md-5 administrativo"> <!--login-->
+           <div ng-show="logado">
+                <h2><a ng-href="#!/adminstrativo">Área Administrativa</a></h2>
+           </div>    
+      </div> 
+      <div class="col-md-1 deslogar">
+             <button class="btn btn-blue" type="button" ng-show="logado" ng-click="logout()">Logout</button>
+    </div>    
+</div> 
