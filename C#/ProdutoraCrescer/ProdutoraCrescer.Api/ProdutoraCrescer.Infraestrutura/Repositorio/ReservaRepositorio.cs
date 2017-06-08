@@ -168,7 +168,7 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
                                 .Include(x => x.Usuario)
                                 .Include(x => x.Festa)
                                 .Include(x => x.Cliente)
-                                .Where(x => x.DataDevolucao_Prevista < hoje)
+                                .Where(x => x.DataDevolucao_Prevista < hoje && x.DataDevolucao_Real == null)
                                 .OrderBy(x=> x.DataDevolucao_Prevista)
                                 .ToList();
             return reservas;
