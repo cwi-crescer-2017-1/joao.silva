@@ -1,10 +1,11 @@
+<div ng-class="classeDevolvendo">
 <div class="row menu">
       <div class="col-md-4 logo">
            <img class="logo" border="0" alt="EditoraCrescer" src="/img/logo.png">
       </div>    
       <div class="col-md-2 administrativo">
            <div class="MenuTitulo">
-                <h1>Administrativo</h1>
+                <h1>Devolução</h1>
            </div>    
       </div> 
       <div class="col-md-1 deslogar">
@@ -17,7 +18,6 @@
              <button class="btn btn-blue" type="button" ng-click="logout()">Logout</button>
       </div>    
 </div> 
-
 <div class="tabelaDeDevolucao">
   <h3 class="TituloTabela">Itens aguardando devolução</h3>
   <div class="scroll">  
@@ -38,10 +38,6 @@
       </tr>
     </thead>
     <tfoot>
-      <tr>
-          <td>Valor Total do Relatório</td>
-          <td>{{ValorRelatorio}}</td>
-      </tr>
     </tfoot>  
     <tbody>
       <tr ng-repeat="reserva in reservas">
@@ -55,9 +51,23 @@
           <td>{{reserva.Festa.Nome}}</td>
           <td>{{reserva.Opcional.Nome}}</td>
           <td>{{reserva.Valor}}</td>
-          <td><button class="btn btn-blue" type="button" ng-click="irParaDevolverItem(reserva.Id)">Devolver</button></td>
+          <td><button class="btn btn-blue devolucao" type="button" ng-click="irParaDevolverItem(reserva)">Devolver</button></td>
       </tr>  
     </tbody>
   </table>
   </div>
+</div>
+</div>
+<div class="displayDevolucao" ng-if="devolvendo">
+    <h3>Tela devolução</h3>
+    <p>Id: {{reservaDevolucao.Id}}</p>
+    <p>Nome Cliente: {{reservaDevolucao.Cliente.Nome}}</p>
+    <p>Data de Locação: {{FormataData(reservaDevolucao.DataLocacao)}}</p>
+    <p>Prazo final devolução: {{FormataData(reservaDevolucao.DataDevolucao_Prevista)}}</p>
+    <p>Pacote: {{reservaDevolucao.Pacote.Nome}} - Preço diária: {{reservaDevolucao.Pacote.CustoDiaria}} - Preço multa: {{reservaDevolucao.Pacote.CustoMulta}}</p>
+    <p>Festa: {{reservaDevolucao.Festa.Nome}} - Preço diária: {{reservaDevolucao.Festa.CustoDiaria}} - Preço multa: {{reservaDevolucao.Festa.CustoMulta}}</p>
+    <p>Opcional: {{reservaDevolucao.Opcional.Nome}} - Preço diária: {{reservaDevolucao.Opcional.CustoDiaria}} - Preço multa: {{reservaDevolucao.Opcional.CustoMulta}}</p>
+    <p class="valorFinalInfo">Valor Final: {{valorDevolucao}}</p> 
+    <button class="btn btn-blue telaDevolucao" type="button" ng-click="devolver(reservaDevolucao.Id)">Confirmar devolução</button>
+    <button class="btn btn-orange telaDevolucao" type="button" ng-click="cancelarDevolucao()">Cancelar</button>
 </div>
