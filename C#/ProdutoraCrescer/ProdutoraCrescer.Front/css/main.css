@@ -18,6 +18,10 @@ body {
   padding: 20px 1px 20px 1px;
   background: #696969; 
 }
+.telaFundoEscura{
+  background-color: black;
+  opacity: 0.2;
+}
 .loginTitulo h1{
   font-size: 40px;
   font-weight: 900;
@@ -28,6 +32,20 @@ body {
   font-weight: 900;
   margin-left: 30%;
 }
+.irParaNovaReserva{
+  position: static;
+  margin-bottom: 10px;
+}
+.irParaNovaReserva .botao{
+  margin-left: 0%;
+  width: 100%;
+}
+.irParaNovaReserva .frasePropaganda,.horario{
+  font-weight: 900;
+  font-size: 20px;
+  font-family: Apple Chancery;
+  margin-left: 0%;
+}
 .atrasos{
   background: white;
   border-radius: 2.5%/5%;
@@ -37,6 +55,18 @@ body {
   background: white;
   border-radius: 2.5%/5%;
   padding: 1% 1% 1% 1%;   
+}
+.displayDevolucao{
+  background: white;
+  border-radius: 2.5%/5%;
+  padding: 1% 1% 1% 1%;
+  border: 2px solid black;
+  position: absolute;
+	left: 30%;
+	top: 25%;
+  width: 40%;
+  height: 70%;
+  overflow: auto;
 }
 .scroll{
   height: 400px;
@@ -83,24 +113,12 @@ body {
   margin-left: 10%;
   width: 10%;
 }
-.divOperacaoJaRealizada{
-  background: green;
-  color:black;
-  height: 25px;
-  border-radius: 3%/20%;
-  width: 94%;
-  margin-top: 15px;
-  text-align: center;
-  margin-left: 2%;
-  font-family: arial;
-  font-size:14px;
-  text-transform: uppercase;
-  font-weight:700;
-  border:none;
-  padding-top: 5px;
-}
 .red{
   background: red;
+}
+.valorFinalInfo{
+ font-weight: 900;
+ font-size: 18px;
 }
 /*Botão todoespacoonline mod*/
 .btn:focus, .btn::-moz-focus-inner{
@@ -136,11 +154,16 @@ body {
 .btn.btn-blue.revisao{
   width: 20%;
 }
-
 .btn.btn-blue.dataFinal{
   width: 10%;
   margin-left: 5%;
   margin-bottom: 1%;
+}
+.btn.btn-blue.devolucao{
+  width: 90%;
+}
+.btn.btn-blue.formulario{
+  width: 20%;
 }
 .btn-orange{
   background: #e68a00;
@@ -152,6 +175,14 @@ body {
   bottom:5px;
   background:#cc7a00;
   box-shadow:0px 5px 0px #b36b00;
+}
+.btn.btn-blue.telaDevolucao{
+  margin-top: 20px;
+  width: 50%;
+}
+.btn.btn-orange.telaDevolucao{
+  margin-top: 20px;
+  width: 25%;
 }
 .btn-red{
   background: #FF0000;
