@@ -2,6 +2,8 @@ modulo.controller('controllerDevolucao',['$scope','toastr','$location','authServ
     model.reservas = [];
     model.logout = logout;
     model.gerente = false;
+    model.devolvendo = false;
+    model.classeDevolvendo = "";
 
     if(authService.isntAutenticado()){
         $location.path('/home');   
@@ -33,10 +35,45 @@ modulo.controller('controllerDevolucao',['$scope','toastr','$location','authServ
         $location.path('/gerencia');
     }
 
-    model.irParaDevolverItem = irParaDevolverItem;
-    function irParaDevolverItem(idReserva){
-        console.log(idReserva)
+    model.irParaDevolverItem = devolverItem;
+    function devolverItem(reserva){
+        model.valorDevolucao = 0;
+        model.reservaDevolucao = {};
+        serviceReserva.obterValorDevolucao(reserva.Id).then(function(response){
+            model.devolvendo = true;
+            model.valorDevolucao = response.data.dados.valor;
+            model.reservaDevolucao = reserva; 
+            model.classeDevolvendo = "telaFundoEscura";
+        });
     }
+
+    model.devolver = devolver;
+    function devolver(reservaId){
+        serviceReserva.Devolver(reservaId).then(function(response){
+            let resposta = response.data.dados;
+            if(typeof resposta === "object"){
+                toastr.success('Item devolvido com sucesso!');
+                obterListaNaoDevolvidos();
+                fecharTelaDevolucao();
+            }else if(typeof resposta === "string"){
+                toastr.error(resposta);
+                fecharTelaDevolucao();
+            }else{
+                toastr.error("Erro desconhecido no servidor");
+                fecharTelaDevolucao();
+            }
+            
+        });
+    }
+
+    model.cancelarDevolucao = fecharTelaDevolucao;
+    function fecharTelaDevolucao(){
+        model.devolvendo = false;
+        model.valorDevolucao = 0;
+        model.reservaDevolucao = {};
+        model.classeDevolvendo = "";
+    }
+
     obterListaNaoDevolvidos();
     function obterListaNaoDevolvidos() {
         serviceReserva.ObterRelatorioAtrasos().then(function(response){
