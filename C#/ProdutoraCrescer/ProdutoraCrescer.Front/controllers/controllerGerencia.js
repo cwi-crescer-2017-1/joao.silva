@@ -6,7 +6,6 @@ modulo.controller('controllerGerencia',['$scope','toastr','$location','authServi
     if(authService.naoPossuiPermissao('Gerente')){
         $location.path('/adminstrativo'); 
     }
-
     model.menuAdministrativo = menuAdministrativo;
     function menuAdministrativo(){
         $location.path('/adminstrativo');  
@@ -17,6 +16,11 @@ modulo.controller('controllerGerencia',['$scope','toastr','$location','authServi
         authService.logout();
         toastr.info('Deslogado');
         $location.path('/home'); 
+    }
+
+    model.irParaDevolucao = irParaDevolucao;
+    function irParaDevolucao(){
+        $location.path('/devolucao');
     }
 
     model.relatorioMensal = relatorioMensal;

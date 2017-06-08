@@ -16,6 +16,11 @@ modulo.controller('controllerMenu',['$scope','toastr','$location','authService',
         $location.path('/gerencia');
     }
 
+    model.irParaDevolucao = irParaDevolucao;
+    function irParaDevolucao(){
+        $location.path('/devolucao');
+    }
+
     model.logout = logout;
     function logout(){
         authService.logout();
