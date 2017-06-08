@@ -33,6 +33,15 @@ body {
   border-radius: 2.5%/5%;
   padding: 1% 1% 1% 1%;
 }
+.relatorioMensal{
+  background: white;
+  border-radius: 2.5%/5%;
+  padding: 1% 1% 1% 1%;   
+}
+.scroll{
+  height: 400px;
+  overflow: auto;
+}
 .TituloTabela{
   font-size: 30px;
   font-weight: 900;
@@ -72,6 +81,7 @@ body {
 .deslogar{
   margin-top:24px;
   margin-left: 15%;
+  width: 10%;
 }
 .divOperacaoJaRealizada{
   background: green;
@@ -125,6 +135,12 @@ body {
 }
 .btn.btn-blue.revisao{
   width: 20%;
+}
+
+.btn.btn-blue.dataFinal{
+  width: 10%;
+  margin-left: 5%;
+  margin-bottom: 1%;
 }
 .btn-orange{
   background: #e68a00;
