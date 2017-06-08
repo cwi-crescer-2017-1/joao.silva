@@ -83,11 +83,17 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
     return !!getUsuario();
   };
 
-  function possuiPermissao(permissao) {
-    return isAutenticado() &&
-      getUsuario().Permissoes.find((p) => p.Nome === permissao);
+  function isntAutenticado() {
+    return !getUsuario();
   };
 
+  function possuiPermissao(permissao) {
+    return isAutenticado() && getUsuario().Permissao === permissao;
+  };
+
+  function naoPossuiPermissao(permissao){
+    return isAutenticado() && getUsuario().Permissao !== permissao;
+  }
 
   // PROMISE
 
@@ -134,6 +140,8 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
     possuiPermissao: possuiPermissao,
     isAutenticado: isAutenticado,
     isAutenticadoPromise: isAutenticadoPromise,
-    possuiPermissaoPromise: possuiPermissaoPromise
+    possuiPermissaoPromise: possuiPermissaoPromise,
+    naoPossuiPermissao: naoPossuiPermissao,
+    isntAutenticado: isntAutenticado
   };
 });
