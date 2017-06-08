@@ -15,8 +15,19 @@
       </div>
       <div class="col-md-1 deslogar">
              <button class="btn btn-blue" type="button" ng-click="logout()">Logout</button>
-      </div>    
+      </div>         
 </div>   
+<div class="row irParaNovaReserva">
+    <div class="col-md-2">
+        <button class="btn btn-red botao" type="button" ng-click="irParaReserva()">+Reserva</button>
+    </div>
+    <div class="col-md-4">
+        <p class="horario">Horário: {{horario}}</p>
+    </div>
+    <div class="col-md-6">
+        <p class="frasePropaganda">Produtora Crescer, produzindo as melhores festas desde essa semana</p>
+    </div>  
+</div>  
 <div class="atrasos">
   <h3 class="TituloTabela">Atrasos</h3>
   <div class="scroll">   
@@ -41,8 +52,8 @@
           <td>{{atraso.Id}}</td>
           <td>{{atraso.Cliente.Nome}}</td>
           <td>{{atraso.Cliente.Email}}</td> 
-          <td>{{atraso.DataLocacao}}</td> 
-          <td>{{atraso.DataDevolucao_Prevista}}</td>
+          <td>{{FormataDataUsuario(atraso.DataLocacao)}}</td> 
+          <td>{{FormataDataUsuario(atraso.DataDevolucao_Prevista)}}</td>
           <td>{{atraso.Pacote.Nome}}</td>
           <td>{{atraso.Festa.Nome}}</td>
           <td>{{atraso.Opcional.Nome}}</td>
