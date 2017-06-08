@@ -25,11 +25,11 @@ namespace ProdutoraCrescer.Api.Controllers
             List<string> resposta = repositorio.Criar(usuario);
             if (resposta == null)
             {
-                return ResponderOK(usuario);
+                return ResponderOK(resposta);
             }
             else
             {
-                return ResponderErro(resposta.ToArray());
+                return ResponderErro(null);
             }
         }
 
