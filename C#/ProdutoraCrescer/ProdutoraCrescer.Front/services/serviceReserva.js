@@ -12,9 +12,6 @@ modulo.factory('serviceReserva',function($http){
         reserva.IdFesta = idFesta;
         return $http.post(urlBase+'reserva/registrar',reserva);
     }
-    function PegarValorDevolucao(idReserva){
-        return $http.get(urlBase+'valordevolucao/'+idReserva);  
-    }
     function obterLista(){ //Permissão 'Gerente'
         return $http.get(urlBase+'reserva/');
     }
@@ -36,13 +33,11 @@ modulo.factory('serviceReserva',function($http){
     function ObterRelatorioAtrasos(){ 
         return $http.get(urlBase+'reserva/relatorioAtrasos/');
     }
-
     function Devolver(idReserva){
         return $http.put(urlBase+'reserva/'+idReserva);
     }
     return { 
         registrar:registrar,
-        PegarValorDevolucao:PegarValorDevolucao,
         obterLista:obterLista,
         obterListaNaoDevolvidos:obterListaNaoDevolvidos,
         obterValorDevolucao:obterValorDevolucao,
