@@ -53,7 +53,7 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
                                 .ToList();
         }
 
-        public List<string> Criar(dynamic c)
+        public object Criar(dynamic c)
         {
             int idCliente = c.IdCliente;
             int idUsuario = c.IdUsuario;
@@ -69,7 +69,7 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
             {
                 contexto.Reservas.Add(reserva);
                 contexto.SaveChanges();
-                return null;
+                return reserva;
             }
             return reserva.Mensagens;
         }
