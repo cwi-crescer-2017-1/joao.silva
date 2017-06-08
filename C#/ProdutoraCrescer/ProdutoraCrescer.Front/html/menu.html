@@ -2,37 +2,50 @@
      <div class="col-md-4 logo">
            <img class="logo" border="0" alt="EditoraCrescer" src="/img/logo.png">
       </div>    
-      <div class="col-md-5 administrativo">
+      <div class="col-md-2 administrativo">
            <div class="MenuTitulo">
-                <h1>Menu Administrativo</h1>
+                <h1>Administrativo</h1>
            </div>    
+      </div> 
+      <div class="col-md-1 deslogar">
+             <button class="btn btn-blue" type="button" ng-show="gerente" ng-click="gerencia()">Gerencia</button>
       </div> 
       <div class="col-md-1 deslogar">
              <button class="btn btn-blue" type="button" ng-click="logout()">Logout</button>
       </div>    
 </div> 
 <div class="atrasos">
-  <h3 class="TituloTabela">Atrasos</h3>  
+  <h3 class="TituloTabela">Atrasos</h3>
+  <div class="scroll">   
   <table class="table table-bordered">
-    <tr>
-        <th>Nome Cliente</th>
-        <th>Email</th> 
-        <th>Data de Locação</th>
-        <th>Data para devolução</th>
-        <th>Pacote</th>
-        <th>Festa</th>
-        <th>Opcional</th>
-        <th>Valor</th>
-    </tr>
-    <tr ng-repeat="atraso in atrasos">
-        <td>{{atraso.Cliente.Nome}}</td>
-        <td>{{atraso.Cliente.Email}}</td> 
-        <td>{{atraso.DataLocacao}}</td> 
-        <td>{{atraso.DataDevolucao_Prevista}}</td>
-        <td>{{atraso.Pacote.Nome}}</td>
-        <td>{{atraso.Festa.Nome}}</td>
-        <td>{{atraso.Opcional.Nome}}</td>
-        <td>{{atraso.Valor}}</td>
-    </tr>
+    <thead>
+      <tr>
+          <th>ID</th>
+          <th>Nome Cliente</th>
+          <th>Email</th> 
+          <th>Data de Locação</th>
+          <th>Data para devolução</th>
+          <th>Pacote</th>
+          <th>Festa</th>
+          <th>Opcional</th>
+          <th>Valor</th>    
+      </tr>
+    </thead>
+    <tfoot>
+    </tfoot>  
+    <tbody>
+      <tr ng-repeat="atraso in atrasos">
+          <td>{{atraso.Id}}</td>
+          <td>{{atraso.Cliente.Nome}}</td>
+          <td>{{atraso.Cliente.Email}}</td> 
+          <td>{{atraso.DataLocacao}}</td> 
+          <td>{{atraso.DataDevolucao_Prevista}}</td>
+          <td>{{atraso.Pacote.Nome}}</td>
+          <td>{{atraso.Festa.Nome}}</td>
+          <td>{{atraso.Opcional.Nome}}</td>
+          <td>{{atraso.Valor}}</td>
+      </tr>  
+    </tbody>
   </table>
+  </div>
 </div>   
