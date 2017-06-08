@@ -18,9 +18,13 @@ modulo.factory('serviceCliente',function($http){
     function obterPorId(id){
         return $http.get(urlBase+'cliente/'+id);
     }
+    function obterClientePorNome(nome){
+        return $http.get(urlBase+'cliente/nome'+nome);
+    }
     return { 
         registrar:registrar,
         obterLista:obterLista,
-        obterPorId:obterPorId
+        obterPorId:obterPorId,
+        obterClientePorNome:obterClientePorNome
     }; 
 });
