@@ -127,7 +127,8 @@ modulo.controller('controllerReserva',['$scope','toastr','$location','authServic
         }else if(typeof tempoReservaEmDias === "undefined" || tempoReservaEmDias===null || tempoReservaEmDias<=0){
             toastr.error("Tempo de reserva inválido");
         }else{
-            serviceReserva.registrar(tempoReservaEmDias,model.cliente.Id,model.idUsuario,model.IdOpcionalSelecionado,model.IdPacoteSelecionado,model.IdFestaSelecionada).then(function(response){
+            console.log(model.IdOpcionalSelecionado);
+                 serviceReserva.registrar(tempoReservaEmDias,model.cliente.Id,model.idUsuario,model.IdOpcionalSelecionado,model.IdPacoteSelecionado,model.IdFestaSelecionada).then(function(response){
                  model.resposta = response.data.dados;
                  if(model.resposta!=null){
                     toastr.success('Reserva registrada com sucesso!');
