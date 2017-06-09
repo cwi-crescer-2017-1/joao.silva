@@ -61,7 +61,10 @@ namespace ProdutoraCrescer.Dominio.Entidades
                     decimal multa = CalcularMulta();
                     Valor = Valor + multa;
                 }
-                Opcional.DevolverOpcional();
+                if(Opcional != null)
+                {
+                    Opcional.DevolverOpcional();
+                }
                 return true;
             }
             return false;
@@ -84,7 +87,16 @@ namespace ProdutoraCrescer.Dominio.Entidades
             int diasAtraso = atraso.Days;
             if (diasAtraso > 0)
             {
-                decimal valorMulta = (Opcional.CustoMulta + Pacote.CustoMulta + Festa.CustoMulta) * diasAtraso;
+                decimal valorMulta;
+                if (Opcional != null)
+                {
+                    valorMulta  = (Opcional.CustoMulta + Pacote.CustoMulta + Festa.CustoMulta) * diasAtraso;
+                }
+                else
+                {
+                    valorMulta = (Pacote.CustoMulta + Festa.CustoMulta) * diasAtraso;
+                }
+               
                 return valorMulta;
             }
             return 0;
@@ -137,7 +149,7 @@ namespace ProdutoraCrescer.Dominio.Entidades
                 Mensagens.Add("Data devolução prevista inválida");
             }
 
-            if (Opcional == null || Opcional.Quantidade <= 0)
+            if (Opcional != null && Opcional.Quantidade <= 0)
             {
                 Mensagens.Add("Quantidade de indísponível");
             }
