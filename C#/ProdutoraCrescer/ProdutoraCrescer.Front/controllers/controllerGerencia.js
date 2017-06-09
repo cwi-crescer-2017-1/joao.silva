@@ -58,7 +58,8 @@ modulo.controller('controllerGerencia',['$scope','toastr','$location','authServi
     }
 
     function today(){
-        return new Date();
+        let today = new Date();
+        return today;
     }
 
     function FormataDataBD(data){

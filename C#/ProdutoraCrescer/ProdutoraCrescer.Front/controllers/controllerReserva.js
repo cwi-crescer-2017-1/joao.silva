@@ -6,10 +6,11 @@ modulo.controller('controllerReserva',['$scope','toastr','$location','authServic
     model.segundaFaseCadastrado = false;
     model.terceiraFase = false;
 
-    model.tempoReservaEmDias = 1;
+    model.tempoReservaEmDias;
     model.IdFestaSelecionada = null;
     model.IdPacoteSelecionado = null;
     model.IdOpcionalSelecionado = null;
+    model.cliente = null;
 
     if(authService.isntAutenticado()){
         $location.path('/home');   
@@ -22,10 +23,22 @@ modulo.controller('controllerReserva',['$scope','toastr','$location','authServic
 
     model.clienteCadastrado = clienteCadastrado;
     function clienteCadastrado(bool){
-        model.segundaFaseCadastro = true;
-        model.primeiraFase = false;
+        if(bool){
+            model.segundaFaseCadastrado = true;
+            model.primeiraFase = false;
+        }else{
+            model.segundaFaseCadastro = true;
+            model.primeiraFase = false;
+        }
     }
 
+    model.mostrarBotao = mostrarBotao;
+    function mostrarBotao(cliente){
+        if(typeof cliente === "undefined" || cliente === null){
+            return false;
+        }
+        return true;
+    }
     model.cancelarCadastroCliente = cancelarCadastroCliente;
     function cancelarCadastroCliente(){
         model.segundaFaseCadastro = false;
@@ -34,7 +47,7 @@ modulo.controller('controllerReserva',['$scope','toastr','$location','authServic
 
     model.selecionarCliente = selecionarCliente;
     function selecionarCliente(cliente){
-        model.IdclienteSelecionado = cliente.Id;
+        model.cliente = cliente;
         model.segundaFaseCadastrado = false;
         model.terceiraFase = true;
     }
@@ -45,32 +58,51 @@ modulo.controller('controllerReserva',['$scope','toastr','$location','authServic
         model.primeiraFase = true;
     }
 
-    model.cancelarTodoCadastro = cancelarTodoCadastro;
-    function cancelarTodoCadastro(){
+    model.cancelarTodoCadastro = finalizarTodoCadastro;
+    function finalizarTodoCadastro(){
         model.terceiraFase = false;
         model.primeiraFase = true;
     }
 
     model.registrarCliente = registrarCliente;
     function registrarCliente(cliente) {
-        if(cliente.cpf.length != 11){
-            toastr.error('Campo CPF inválido');
-        }else{
-            cliente.dataNascimento = FormataDataBD(cliente.dataNascimento);
-            serviceCliente.registrar(cliente).then(function(response){
-            let resposta =  response.data.dados;
-            if(resposta !== null){
-                toastr.success('Registrado com sucesso!');
-                model.segundaFaseCadastro = false;
-                model.terceiraFase = true;
-                model.cliente = resposta;
-            }else{
-                toastr.error(resposta);
+        if(typeof cliente.cpfNumber !== "undefined" && cliente.cpfNumber !== null){
+            cliente.cpf = cliente.cpfNumber.toString();
+            if(cliente.cpf.length !== 11){
+                toastr.error('Campo CPF inválido');
+            }else if(cliente.dataNascimentoJS === null){
+                toastr.error('Data de Nascimento inválida');
+            }else if(typeof cliente.nome === "undefined" || cliente.Nome === null){
+                toastr.error('Nome inválido');
+            }else if(typeof cliente.endereco === "undefined"|| cliente.endereco === null){
+                toastr.error('Endereço inválido');
+            }else if(typeof cliente.email === "undefined" || cliente.email === null){
+                toastr.error('Email inválido');
+            }else if(typeof model.genero === "undefined" || model.genero === null){
+                toastr.error('Gênero inválido');
+            }else{                
+                let dataNascimento = FormataDataBD(cliente.dataNascimentoJS);
+                serviceCliente.registrar(cliente.nome,cliente.endereco,cliente.cpf,model.genero,dataNascimento,cliente.email).then(function(response){
+                    let resposta =  response.data.dados;
+                    if(resposta !== null){
+                        toastr.success('Registrado com sucesso!');
+                        model.segundaFaseCadastro = false;
+                        model.terceiraFase = true;
+                        model.cliente = resposta;
+                    }else{
+                        toastr.error(resposta);
+                    }
+            });
             }
-        });
+        }else{
+            toastr.error('Campo CPF inválido');
         }
     }
 
+    model.definirSexo = definirSexo;
+    function definirSexo(sexo){
+        model.genero = sexo;
+    }
     model.festaSelecionada = festaSelecionada;
     function festaSelecionada(festaId){
         model.IdFestaSelecionada = festaId;
@@ -87,14 +119,19 @@ modulo.controller('controllerReserva',['$scope','toastr','$location','authServic
     }
 
     model.cadastrarReserva = cadastrarReserva;
-    function cadastrarReserva() {
-        if(model.IdFestaSelecionada===null){
+    function cadastrarReserva(tempoReservaEmDias) {
+        if(typeof model.IdFestaSelecionada ==="undefined" || model.IdFestaSelecionada===null){
             toastr.error("Festa ainda não selecionada, tente novamente");
+        }else if(typeof model.IdPacoteSelecionado ==="undefined" || model.IdPacoteSelecionado===null){
+            toastr.error("Pacote ainda não selecionado, tente novamente");
+        }else if(typeof tempoReservaEmDias === "undefined" || tempoReservaEmDias===null || tempoReservaEmDias<=0){
+            toastr.error("Tempo de reserva inválido");
         }else{
-            serviceReserva.registrar(model.tempoReservaEmDias,model.IdClienteSelecionado,model.idUsuario,model.IdOpcionalSelecionado,model.IdPacoteSelecionado,model.IdFestaSelecionada).then(function(response){
+            serviceReserva.registrar(tempoReservaEmDias,model.cliente.Id,model.idUsuario,model.IdOpcionalSelecionado,model.IdPacoteSelecionado,model.IdFestaSelecionada).then(function(response){
                  model.resposta = response.data.dados;
                  if(model.resposta!=null){
                     toastr.success('Reserva registrada com sucesso!');
+                    finalizarTodoCadastro();
                  }else{
                      toastr.error("Erro na criação da reserva");
                  }
@@ -132,21 +169,21 @@ modulo.controller('controllerReserva',['$scope','toastr','$location','authServic
     model.obterListaPacote = obterListaPacote;
     function obterListaPacote(){
         servicePacote.obterLista().then(function(response){
-            model.pacotes = response.data.dados;
+            model.pacotes = response.data.dados.pacotes;
         });
     }
 
     model.obterListaFesta = obterListaPacote;
     function obterListaFesta(){
         serviceFesta.obterLista().then(function(response){
-            model.festas = response.data.dados;
+            model.festas = response.data.dados.festas;
         });
     }   
 
     model.obterListaOpcional = obterListaOpcional;
     function obterListaOpcional(){
         serviceOpcional.obterLista().then(function(response){
-            model.opcionais = response.data.dados;
+            model.opcionais = response.data.dados.opcionais;
         });
     }
 
@@ -159,7 +196,11 @@ modulo.controller('controllerReserva',['$scope','toastr','$location','authServic
     function irParaAdministrativo(){
         $location.path('/administrativo');
     }
-    
+
+    model.irParaGerencia = irParaGerencia;
+    function irParaGerencia(){
+        $location.path('/gerencia');
+    }
     model.logout = logout;
     function logout(){
         authService.logout();
