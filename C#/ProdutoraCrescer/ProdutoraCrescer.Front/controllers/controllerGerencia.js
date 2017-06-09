@@ -78,5 +78,13 @@ modulo.controller('controllerGerencia',['$scope','toastr','$location','authServi
         data = yyyy+'-'+mm+'-'+dd;
         return data;
     }
+    model.MostrarOpcional = MostrarOpcional;
+    function MostrarOpcional(OpcionalNome){
+        if(typeof OpcionalNome === "undefined" || OpcionalNome === null || OpcionalNome===""|| OpcionalNome===" "){
+            return "-";
+        }else{
+            return OpcionalNome;
+        }
+    }
 
 }]);

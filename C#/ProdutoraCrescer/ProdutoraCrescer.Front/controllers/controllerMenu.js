@@ -58,4 +58,12 @@ modulo.controller('controllerMenu',['$scope','toastr','$location','authService',
             model.atrasos = response.data.dados;
         });
     }
+    model.MostrarOpcional = MostrarOpcional;
+    function MostrarOpcional(OpcionalNome){
+        if(typeof OpcionalNome === "undefined" || OpcionalNome === null || OpcionalNome===""|| OpcionalNome===" "){
+            return "-";
+        }else{
+            return OpcionalNome;
+        }
+    }
 }]);

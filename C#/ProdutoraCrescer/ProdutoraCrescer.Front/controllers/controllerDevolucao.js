@@ -76,11 +76,19 @@ modulo.controller('controllerDevolucao',['$scope','toastr','$location','authServ
 
     obterListaNaoDevolvidos();
     function obterListaNaoDevolvidos() {
-        serviceReserva.ObterRelatorioAtrasos().then(function(response){
-            model.reservas = response.data.dados;
+        serviceReserva.obterListaNaoDevolvidos().then(function(response){
+            model.reservas = response.data.dados.reservas;
         });
     }
 
+    model.MostrarOpcional = MostrarOpcional;
+    function MostrarOpcional(OpcionalNome){
+        if(typeof OpcionalNome === "undefined" || OpcionalNome === null || OpcionalNome===""|| OpcionalNome===" "){
+            return "-";
+        }else{
+            return OpcionalNome;
+        }
+    }
     model.FormataData = FormataDataUsuario;
     function FormataDataUsuario(dataString){
         if(typeof dataString === "string"){
