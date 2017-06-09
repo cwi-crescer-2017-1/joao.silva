@@ -19,7 +19,7 @@ modulo.factory('serviceCliente',function($http){
         return $http.get(urlBase+'cliente/'+id);
     }
     function obterClientePorNome(nome){
-        return $http.get(urlBase+'cliente/nome'+nome);
+        return $http.get(urlBase+'cliente/nome/'+nome);
     }
     return { 
         registrar:registrar,
