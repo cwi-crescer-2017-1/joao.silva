@@ -8,10 +8,10 @@
            </div>    
       </div> 
       <div class="col-md-1 deslogar">
-             <button class="btn btn-blue" type="button" ng-show="gerente" ng-click="irParaAdministrativo()">Administrativo</button>
+             <button class="btn btn-blue" type="button" ng-click="irParaAdministrativo()">Administrativo</button>
       </div> 
       <div class="col-md-1 deslogar">
-             <button class="btn btn-blue" type="button" ng-click="irParaGerencia()">Gerencia</button>
+             <button class="btn btn-blue" type="button" ng-show="gerente" ng-click="irParaGerencia()">Gerencia</button>
       </div>
       <div class="col-md-1 deslogar">
              <button class="btn btn-blue" type="button" ng-click="logout()">Logout</button>
@@ -20,60 +20,72 @@
 <div>
       <div class="clienteReserva" ng-if="primeiraFase">
             <h2>O cliente é cadastrado?</h2>
-            <button class="btn btn-blue" type="button" ng-click="clienteCadastrado(true)">Sim</button>
-            <button class="btn btn-blue" type="button" ng-click="clienteCadastrado(false)">Não</button>
+            <button class="btn btn-blue reserva" type="button" ng-click="clienteCadastrado(true)">Sim</button>
+            <button class="btn btn-orange reserva" type="button" ng-click="clienteCadastrado(false)">Não</button>
       </div>
       <div class="cadastrarClienteReserva" ng-if="segundaFaseCadastro">
-            <label>Nome: <input type="text" ng-model="clienteCadastro.nome"/></label>
-            <label>Endereço: <input type="text" ng-model="clienteCadastro.endereco"/></label>
-            <label>CPF: <input type="number" maxlength="11" ng-model="clienteCadastro.cpf"/></label>
-            <label>Gênero: <input type="text" ng-model="clienteCadastro.genero" required="required"/></label>
-            <label>Data Nascimento: <input type="date" class="inputMenu" ng-model="clienteCadastro.dataNascimento"></label>
-            <label>Email: <input type="text" ng-model="clienteCadastro.email" required="required"/></label>
-            <button class="btn btn-blue" type="button" ng-click="registrarCliente(clienteCadastro)">Cadastrar</button>
-            <button class="btn btn-orange" type="button" ng-click="cancelarCadastroCliente()">Cancelar</button>
+            <label>Nome: <input class="inputMenu reservaInput" type="text" ng-model="clienteCadastro.nome" required/></label>
+            <label>Endereço: <input class="inputMenu reservaInput" type="text" ng-model="clienteCadastro.endereco" required/></label>
+            <label>CPF: <input class="inputMenu reservaInput" type="number" maxlength="11" ng-model="clienteCadastro.cpfNumber" required/></label>
+            <label>Data Nascimento: <input class="inputMenu reservaInput" type="date" class="inputMenu" ng-model="clienteCadastro.dataNascimentoJS" required/></label>
+            <label>Email: <input class="inputMenu reservaInput" type="text" ng-model="clienteCadastro.email" required/></label>
+            <label>Gênero: 
+                  <input type="radio" name="genero" ng-click="definirSexo('Masculino')"> Masculino
+                  <input type="radio" name="genero" ng-click="definirSexo('Feminino')"> Feminino 
+                  <input type="radio" name="genero" ng-click="definirSexo('Outro')"> Outro 
+            </label><br/>
+            <button class="btn btn-blue reserva" type="button" ng-click="registrarCliente(clienteCadastro)">Cadastrar</button>
+            <button class="btn btn-orange reserva" type="button" ng-click="cancelarCadastroCliente()">Cancelar</button>
       </div>          
       <div class="pegarClienteExistente" ng-if="segundaFaseCadastrado">  
-            <label>Digite o nome do cliente: <input type="text" ng-model="nomePesquisa"/></label>
-            <button class="btn btn-blue" type="button" ng-click="pesquisaClientePorNome(nomePesquisa)">Pesquisar</button>
-            <table class="table table-bordered">
-                  <thead>
-                        <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Selecionar</th>
-                        </tr>
-                  </thead> 
-                  <tbody>
-                        <tr ng-repeat="clienteNome in clientesNome">
-                        <td>{{clienteNome.Id}}</td>    
-                        <td>{{clienteNome.Nome}}</td>
-                        <td>{{clienteNome.CPF.Nome}}</td>
-                        <button class="btn btn-blue" type="button" ng-click="selecionarCliente(clienteNome)">Selecionar</button>
-                        </tr>  
-                  </tbody>
-             </table>
-             <button class="btn btn-orange" type="button" ng-click="cancelarSelecaoCliente()">Cancelar</button>
+            <h3>Digite o nome do cliente: <input class="inputMenu" type="text" ng-model="nomePesquisa"/></h3>
+            <button class="btn btn-blue botaoPesquisaCliente" type="button" ng-click="obterClientePorNome(nomePesquisa)">Pesquisar</button>
+            <button class="btn btn-orange botaoCancelar" type="button" ng-click="cancelarSelecaoCliente()">Cancelar</button>
+            <div class="fundoTabela">
+                  <table class="table table-striped tabelaClientes">
+                        <thead>
+                              <tr>
+                              <th>ID</th>
+                              <th>Nome</th>
+                              <th>CPF</th>
+                              <th>Email</th>
+                              <th>Endereço</th>
+                              <th>Selecionar</th>
+                              </tr>
+                        </thead> 
+                        <tbody>
+                              <tr ng-repeat="clienteNome in clientesNome">
+                              <td>{{clienteNome.Id}}</td>    
+                              <td>{{clienteNome.Nome}}</td>
+                              <td>{{clienteNome.CPF}}</td>
+                              <td>{{clienteNome.Email}}</td>
+                              <td>{{clienteNome.Endereco}}</td>
+                              <td><button class="btn btn-blue botaoSelecaoCliente" ng-if="mostrarBotao(clienteNome)" type="button" ng-click="selecionarCliente(clienteNome)">Selecionar</button></td>
+                              </tr>  
+                        </tbody>
+                  </table>
+             </div>     
       </div>
       <div class="cadastrarReserva" ng-if="terceiraFase">      
       <form>
+        <h3>Cliente: {{cliente.Nome}}</h3><br/>    
         <h2>Cadastro nova Reserva</h2>
 
         <label for="nome">Duração da reservas (Dias)</label>
-        <input type="number" ng-model="tempoReservaEmDias" required="required"/>
-            <div ng-repeat="festa in festas">
-            <input type="checkbox" name="festa" ng-checked="festaSelecionada(festa.Id)"> Festa: {{festa.Nome}} - Custo diária: {{festa.CustoDiaria}} - Preço multa: {{festa.CustoMulta}} <br>
+        <input type="number" ng-model="tempoReservaEmDias" required/>
+            <div class="festas"><div ng-repeat="festa in festas">
+                  <input type="radio" name="festa" ng-click="festaSelecionada(festa.Id)"/> Festa: {{festa.Nome}} - Custo diária: {{festa.CustoDiaria}} - Preço multa: {{festa.CustoMulta}} <br>
+            </div></div>
+            <div class="pacotes"><div ng-repeat="pacote in pacotes">
+                  <input type="radio" name="pacote" ng-click="pacoteSelecionado(pacote.Id)"/> Pacote: {{pacote.Nome}} - Custo diária: {{pacote.CustoDiaria}} - Preço multa: {{pacote.CustoMulta}} <br>
+            </div></div>
+            <div class="opcionais">
+                  <div ng-repeat="opcional in opcionais">
+                  <input type="radio" name="opcional" ng-click="opcionalSelecionada(opcional.Id)"/> Opcional: {{opcional.Nome}} - Custo diária: {{opcional.CustoDiaria}} - Preço multa: {{opcional.CustoMulta}} <br>
+                  </div>
+                  <input type="radio" name="opcional" ng-click="opcionalSelecionada(null)"/> Nenhuma Opcional <br>
             </div>
-            <div ng-repeat="pacote in pacotes">
-            <input type="checkbox" name="pacote" ng-checked="pacoteSelecionado(pacote.Id)"> Pacote: {{pacote.Nome}} - Custo diária: {{pacote.CustoDiaria}} - Preço multa: {{pacote.CustoMulta}} <br>
-            </div>
-            <input type="checkbox" name="pacote" ng-checked="pacoteSelecionado(null)"> Nenhum Pacote <br>
-            <div ng-repeat="opcional in opcionais">
-            <input type="checkbox" name="opcional" ng-checked="opcionalSelecionada(opcional.Id)"> Opcional: {{opcional.Nome}} - Custo diária: {{opcional.CustoDiaria}} - Preço multa: {{opcional.CustoMulta}} <br>
-            </div>
-            <input type="checkbox" name="opcional" ng-checked="opcionalSelecionada(null)"> Nenhuma Opcional <br>
-        <button class="btn btn-blue formulario" type="button" ng-click="cadastrarReserva()">Cadastrar</button>
+        <button class="btn btn-blue formulario" type="button" ng-click="cadastrarReserva(tempoReservaEmDias)">Cadastrar</button>
         <button class="btn btn-blue formulario" type="button" ng-click="cancelarTodoCadastro()">Cancelar</button>    
       </form>
       </div>
