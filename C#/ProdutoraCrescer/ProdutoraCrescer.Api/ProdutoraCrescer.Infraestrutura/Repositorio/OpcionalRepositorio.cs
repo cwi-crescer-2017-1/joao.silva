@@ -21,7 +21,7 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
 
         public List<Opcional> ObterLista()
         {
-            return contexto.Opcionais.ToList();
+            return contexto.Opcionais.Where(opcional=>opcional.Quantidade>0).ToList();
         }
 
         public void Dispose()
