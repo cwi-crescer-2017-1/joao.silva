@@ -70,13 +70,22 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="ClienteUnitTest.cs" />
+    <Compile Include="FestaUnitTest.cs" />
+    <Compile Include="OpcionalUnitTest.cs" />
+    <Compile Include="PacoteUnitTest.cs" />
+    <Compile Include="ReservaUnitTest.cs" />
+    <Compile Include="UsuarioUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProdutoraCrescer.Api\ProdutoraCrescer.Api.csproj">
       <Project>{B95A0C36-62B3-477D-9F17-14CE0CFE8001}</Project>
       <Name>ProdutoraCrescer.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProdutoraCrescer.Dominio\ProdutoraCrescer.Dominio.csproj">
+      <Project>{383101C7-441E-4FDB-A67A-9D416FCD8FE2}</Project>
+      <Name>ProdutoraCrescer.Dominio</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
