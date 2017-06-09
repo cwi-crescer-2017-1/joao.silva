@@ -23,7 +23,7 @@ namespace ProdutoraCrescer.Api.Controllers
         [Route("registrar")]
         public HttpResponseMessage Post(dynamic cliente) //Nome, Endereco, CPF, Genero, DataNascimento, Email
         {
-            List<string> resposta = repositorio.Criar(cliente);
+            object resposta = repositorio.Criar(cliente);
             if (resposta != null)
             {
                 return ResponderOK(resposta);
