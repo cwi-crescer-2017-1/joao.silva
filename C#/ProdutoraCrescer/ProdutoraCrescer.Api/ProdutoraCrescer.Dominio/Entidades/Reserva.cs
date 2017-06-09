@@ -35,8 +35,11 @@ namespace ProdutoraCrescer.Dominio.Entidades
             Usuario = usuario;
             Cliente = cliente;
 
-            bool reservado = opcional.ReservarOpcional();
-            if (reservado) Opcional = opcional;
+            if(opcional != null)
+            {
+                bool reservado = opcional.ReservarOpcional();
+                if (reservado) Opcional = opcional;
+            }
 
             Mensagens = new List<string>();
         }
@@ -123,7 +126,7 @@ namespace ProdutoraCrescer.Dominio.Entidades
                 Mensagens.Add("Data devolução prevista inválida");
             }
 
-            if (Opcional == null || Opcional.Quantidade < 0)
+            if (Opcional != null && Opcional.Quantidade < 0)
             {
                 Mensagens.Add("Quantidade de indísponível");
             }
