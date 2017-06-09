@@ -102,19 +102,33 @@ body {
   padding: 1% 1% 1% 1%;
   border-color: orange;
 }
+.inputMenu.reservaInput{
+  width: 100%;
+}
 .login .formulario .inputMenu{
   width: 25%;
 }
 .inputMenu.inputPesquisa{
   width: 100%;
 }
+.table.table-bordered.tabelaClientes{
+  background-color: white;
+  font: 18px;
+  font-weight: 700;
+}
+.fundoTabela{
+  background-color: #D3D3D3;
+}
 .deslogar{
   margin-top:24px;
   margin-left: 10%;
   width: 10%;
 }
-.red{
-  background: red;
+.opcionais,.pacotes,.festas{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 1% 1% 1% 1%;
+  border: 2px solid black;
 }
 .valorFinalInfo{
  font-weight: 900;
@@ -183,6 +197,21 @@ body {
 .btn.btn-orange.telaDevolucao{
   margin-top: 20px;
   width: 25%;
+}
+.btn.btn-orange.reserva,.btn.btn-blue.reserva{
+  width: 30%;
+}
+.btn.btn-orange.botaoCancelar{
+  margin-bottom: 20px;
+  width: 10%;
+}
+.btn.btn-blue.botaoPesquisaCliente{
+  margin-left: 0px;
+  width: 10%;
+  margin-bottom: 20px;
+}
+.btn.btn-blue.botaoSelecaoCliente{
+  width: 50%;
 }
 .btn-red{
   background: #FF0000;
