@@ -1,4 +1,4 @@
-SELECT TOP 100 * FROM Cliente;
+	
 SELECT TOP 100 * FROM Festa;
 SELECT TOP 100 * FROM Opcional;
 SELECT TOP 100 * FROM Pacote;
