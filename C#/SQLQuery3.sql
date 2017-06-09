@@ -3,8 +3,13 @@ SELECT TOP 100 * FROM Festa;
 SELECT TOP 100 * FROM Opcional;
 SELECT TOP 100 * FROM Pacote;
 SELECT TOP 100 * FROM Reserva;
-SELECT TOP 100 * FROM Usuario;
+	
+SELECT TOP 100 * FROM Cliente;
 
+UPDATE Reserva SET DataDevolucao_Prevista = '2016-06-20' WHERE ID = 27;
+UPDATE Reserva SET DataDevolucao_Real = '2016-06-20' WHERE ID = 27;
+
+UPDATE Reserva SET DataDevolucao_Prevista = '2016-06-20' WHERE ID = 16;
 SELECT TOP 100 * FROM [dbo].[__MigrationHistory];
 
 INSERT INTO Festa (Nome, CustoDiaria, CustoMulta) VALUES ('Infantil',3250.00,300.00);
