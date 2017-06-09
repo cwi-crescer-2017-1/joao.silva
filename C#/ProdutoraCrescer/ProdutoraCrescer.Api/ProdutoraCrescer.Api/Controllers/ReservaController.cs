@@ -57,7 +57,7 @@ namespace ProdutoraCrescer.Api.Controllers
             return ResponderOK(new { reservas });
         }
 
-        [HttpGet, BasicAuthorization(Roles = "Gerente")]
+        [HttpGet, BasicAuthorization]
         [Route("limitada")]
         public HttpResponseMessage ObterListaNaoDevolvidos()
         {
