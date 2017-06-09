@@ -29,7 +29,7 @@
     </div>  
 </div>  
 <div class="atrasos">
-  <h3 class="TituloTabela">Atrasos</h3>
+  <h3 class="TituloTabela Atrasos">Atrasos</h3>
   <div class="scroll">   
   <table class="table table-bordered">
     <thead>
@@ -56,7 +56,7 @@
           <td>{{FormataDataUsuario(atraso.DataDevolucao_Prevista)}}</td>
           <td>{{atraso.Pacote.Nome}}</td>
           <td>{{atraso.Festa.Nome}}</td>
-          <td>{{atraso.Opcional.Nome}}</td>
+          <td>{{MostrarOpcional(atraso.Opcional.Nome)}}</td>
           <td>{{atraso.Valor}}</td>
       </tr>  
     </tbody>

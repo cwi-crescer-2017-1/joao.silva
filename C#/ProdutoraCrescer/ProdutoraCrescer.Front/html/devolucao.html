@@ -49,7 +49,7 @@
           <td>{{FormataData(reserva.DataDevolucao_Prevista)}}</td>
           <td>{{reserva.Pacote.Nome}}</td>
           <td>{{reserva.Festa.Nome}}</td>
-          <td>{{reserva.Opcional.Nome}}</td>
+          <td>{{MostrarOpcional(reserva.Opcional.Nome)}}</td>
           <td>{{reserva.Valor}}</td>
           <td><button class="btn btn-blue devolucao" type="button" ng-click="irParaDevolverItem(reserva)">Devolver</button></td>
       </tr>  

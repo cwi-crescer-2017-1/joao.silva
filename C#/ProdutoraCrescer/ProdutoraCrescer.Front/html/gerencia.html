@@ -23,7 +23,7 @@
   <button class="btn btn-blue dataFinal" type="button" ng-click="relatorioMensal(dataFinal)">Atualizar</button>
 </form>
 <div class="relatorioMensal">
-  <h3 class="TituloTabela">Relatório Mensal</h3>
+  <h3 class="TituloTabela RelatorioMensal">Relatório Mensal</h3>
   <div class="scroll">  
   <table class="table table-bordered">
     <thead>
@@ -58,7 +58,7 @@
           <td>{{FormataData(reserva.DataDevolucao_Real)}}</td>
           <td>{{reserva.Pacote.Nome}}</td>
           <td>{{reserva.Festa.Nome}}</td>
-          <td>{{reserva.Opcional.Nome}}</td>
+          <td>{{MostrarOpcional(reserva.Opcional.Nome)}}</td>
           <td>{{reserva.Valor}}</td>
       </tr>  
     </tbody>
