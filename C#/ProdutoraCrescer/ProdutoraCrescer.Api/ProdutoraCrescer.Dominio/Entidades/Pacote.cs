@@ -11,7 +11,7 @@ namespace ProdutoraCrescer.Dominio.Entidades
         public bool Equipe { get; private set; }
         public decimal CustoDiaria { get; private set; }
         public decimal CustoMulta { get; private set; }
-        private List<string> Mensagens { get; set; }
+        public List<string> Mensagens { get; set; }
 
         protected Pacote() { Mensagens = new List<string>(); }
         
@@ -35,12 +35,12 @@ namespace ProdutoraCrescer.Dominio.Entidades
                 Mensagens.Add("Nome é inválido.");
             }
 
-            if (CustoDiaria < 0)
+            if (CustoDiaria <= 0)
             {
                 Mensagens.Add("Custo diário é inválido.");
             }
 
-            if (CustoMulta < 0)
+            if (CustoMulta <= 0)
             {
                 Mensagens.Add("Custo da multa é inválido.");
             }
