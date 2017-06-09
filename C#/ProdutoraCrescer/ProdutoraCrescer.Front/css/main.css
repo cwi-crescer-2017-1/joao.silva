@@ -75,8 +75,14 @@ body {
 .TituloTabela{
   font-size: 30px;
   font-weight: 900;
-  margin-left: 42%;
+  margin-left: 36%;
   margin-bottom: 20px;
+}
+.TituloTabela.Atrasos{
+  margin-left: 42%;
+}
+.TituloTabela.RelatorioMensal{
+  margin-left: 42%;
 }
 .logo{
   width:180px; 
