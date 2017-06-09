@@ -29,7 +29,14 @@ namespace ProdutoraCrescer.Dominio.Entidades
             Id = 0;
             Valor = valor;
             DataLocacao = hoje;
-            DataDevolucao_Prevista = hoje.AddDays(duracaoReservaEmDias);
+            if (duracaoReservaEmDias > 0)
+            {
+                DataDevolucao_Prevista = hoje.AddDays(duracaoReservaEmDias);
+            }
+            else
+            {
+                DataDevolucao_Prevista = new DateTime(1000,01,01);
+            }
             Pacote = pacote;
             Festa = festa;
             Usuario = usuario;
@@ -92,6 +99,10 @@ namespace ProdutoraCrescer.Dominio.Entidades
         {
             Mensagens.Clear();
 
+            if(DataDevolucao_Prevista == new DateTime(1000, 01, 01))
+            {
+                Mensagens.Add("Data devolução prevista inválida.");
+            }
             if (Valor < 0)
             {
                 Mensagens.Add("Valor inválido.");
@@ -126,7 +137,7 @@ namespace ProdutoraCrescer.Dominio.Entidades
                 Mensagens.Add("Data devolução prevista inválida");
             }
 
-            if (Opcional != null && Opcional.Quantidade < 0)
+            if (Opcional == null || Opcional.Quantidade <= 0)
             {
                 Mensagens.Add("Quantidade de indísponível");
             }
