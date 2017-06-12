@@ -8,7 +8,7 @@ namespace ProdutoraCrescer.Dominio.Entidades
         public string Nome { get; protected set; }
         public decimal CustoDiaria { get; protected set; }
         public decimal CustoMulta { get; protected set; }
-        protected List<string> Mensagens { get; set; }
+        public List<string> Mensagens { get; set; }
 
         public ProdutoBasico()
         {

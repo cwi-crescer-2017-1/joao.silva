@@ -1,13 +1,92 @@
 <div class="row menu">
-     <div class="col-md-4 logo">
+      <div class="col-md-4 logo">
            <img class="logo" border="0" alt="EditoraCrescer" src="/img/logo.png">
       </div>    
-      <div class="col-md-5 administrativo"> <!--login-->
-           <div ng-show="logado">
-                <h2><a ng-href="#!/adminstrativo">Área Administrativa</a></h2>
+      <div class="col-md-2 administrativo">
+           <div class="MenuTitulo">
+                <h1>Reserva</h1>
            </div>    
       </div> 
       <div class="col-md-1 deslogar">
-             <button class="btn btn-blue" type="button" ng-show="logado" ng-click="logout()">Logout</button>
-    </div>    
+             <button class="btn btn-blue" type="button" ng-click="irParaAdministrativo()">Administrativo</button>
+      </div> 
+      <div class="col-md-1 deslogar">
+             <button class="btn btn-blue" type="button" ng-show="gerente" ng-click="irParaGerencia()">Gerencia</button>
+      </div>
+      <div class="col-md-1 deslogar">
+             <button class="btn btn-blue" type="button" ng-click="logout()">Logout</button>
+      </div>    
 </div> 
+<div>
+      <div class="clienteReserva" ng-if="primeiraFase">
+            <h2>O cliente é cadastrado?</h2>
+            <button class="btn btn-blue reserva" type="button" ng-click="clienteCadastrado(true)">Sim</button>
+            <button class="btn btn-orange reserva" type="button" ng-click="clienteCadastrado(false)">Não</button>
+      </div>
+      <div class="cadastrarClienteReserva" ng-if="segundaFaseCadastro">
+            <label>Nome: <input class="inputMenu reservaInput" type="text" ng-model="clienteCadastro.nome" required/></label>
+            <label>Endereço: <input class="inputMenu reservaInput" type="text" ng-model="clienteCadastro.endereco" required/></label>
+            <label>CPF: <input class="inputMenu reservaInput" type="number" maxlength="11" ng-model="clienteCadastro.cpfNumber" required/></label>
+            <label>Data Nascimento: <input class="inputMenu reservaInput" type="date" class="inputMenu" ng-model="clienteCadastro.dataNascimentoJS" required/></label>
+            <label>Email: <input class="inputMenu reservaInput" type="text" ng-model="clienteCadastro.email" required/></label>
+            <label>Gênero: 
+                  <input type="radio" name="genero" ng-click="definirSexo('Masculino')"> Masculino
+                  <input type="radio" name="genero" ng-click="definirSexo('Feminino')"> Feminino 
+                  <input type="radio" name="genero" ng-click="definirSexo('Outro')"> Outro 
+            </label><br/>
+            <button class="btn btn-blue reserva" type="button" ng-click="registrarCliente(clienteCadastro)">Cadastrar</button>
+            <button class="btn btn-orange reserva" type="button" ng-click="cancelarCadastroCliente()">Cancelar</button>
+      </div>          
+      <div class="pegarClienteExistente" ng-if="segundaFaseCadastrado">  
+            <h3>Digite o nome do cliente: <input class="inputMenu" type="text" ng-model="nomePesquisa"/></h3>
+            <button class="btn btn-blue botaoPesquisaCliente" type="button" ng-click="obterClientePorNome(nomePesquisa)">Pesquisar</button>
+            <button class="btn btn-orange botaoCancelar" type="button" ng-click="cancelarSelecaoCliente()">Cancelar</button>
+            <div class="fundoTabela">
+                  <table class="table table-striped tabelaClientes">
+                        <thead>
+                              <tr>
+                              <th>ID</th>
+                              <th>Nome</th>
+                              <th>CPF</th>
+                              <th>Email</th>
+                              <th>Endereço</th>
+                              <th>Selecionar</th>
+                              </tr>
+                        </thead> 
+                        <tbody>
+                              <tr ng-repeat="clienteNome in clientesNome">
+                              <td>{{clienteNome.Id}}</td>    
+                              <td>{{clienteNome.Nome}}</td>
+                              <td>{{clienteNome.CPF}}</td>
+                              <td>{{clienteNome.Email}}</td>
+                              <td>{{clienteNome.Endereco}}</td>
+                              <td><button class="btn btn-blue botaoSelecaoCliente" ng-if="mostrarBotao(clienteNome)" type="button" ng-click="selecionarCliente(clienteNome)">Selecionar</button></td>
+                              </tr>  
+                        </tbody>
+                  </table>
+             </div>     
+      </div>
+      <div class="cadastrarReserva" ng-if="terceiraFase">      
+      <form>
+        <h3>Cliente: {{cliente.Nome}} - ID: {{cliente.Id}}</h3><br/>    
+        <h2>Cadastro nova Reserva</h2>
+
+        <label for="nome">Duração da reservas (Dias)</label>
+        <input type="number" ng-model="tempoReservaEmDias" required/>
+            <div class="festas"><div ng-repeat="festa in festas">
+                  <input type="radio" name="festa" ng-click="festaSelecionada(festa.Id)"/> Festa: {{festa.Nome}} - Custo diária: {{festa.CustoDiaria}} - Preço multa: {{festa.CustoMulta}} <br>
+            </div></div>
+            <div class="pacotes"><div ng-repeat="pacote in pacotes">
+                  <input type="radio" name="pacote" ng-click="pacoteSelecionado(pacote.Id)"/> Pacote: {{pacote.Nome}} - Custo diária: {{pacote.CustoDiaria}} - Preço multa: {{pacote.CustoMulta}} <br>
+            </div></div>
+            <div class="opcionais">
+                  <div ng-repeat="opcional in opcionais">
+                  <input type="radio" name="opcional" ng-click="opcionalSelecionada(opcional.Id)"/> Opcional: {{opcional.Nome}} - Custo diária: {{opcional.CustoDiaria}} - Preço multa: {{opcional.CustoMulta}} <br>
+                  </div>
+                  <input type="radio" name="opcional" ng-click="opcionalSelecionada(null)"/> Nenhuma Opcional <br>
+            </div>
+        <button class="btn btn-blue formulario" type="button" ng-click="cadastrarReserva(tempoReservaEmDias)">Cadastrar</button>
+        <button class="btn btn-blue formulario" type="button" ng-click="cancelarTodoCadastro()">Cancelar</button>    
+      </form>
+      </div>
+</div>      

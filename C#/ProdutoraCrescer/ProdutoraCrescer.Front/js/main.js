@@ -33,6 +33,15 @@ modulo.config(function ($routeProvider) {
         }
       }
     })
+    .when('/devolucao',{
+      controller: 'controllerDevolucao',
+      templateUrl: '../html/devolucao.html',
+      resolve:{
+        autenticado: function (authService) {
+          return authService.isAutenticadoPromise();
+        }
+      }
+    })
     .otherwise({redirectTo: '/home'}); 
 }); 
 

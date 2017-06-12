@@ -2,12 +2,66 @@
      <div class="col-md-4 logo">
            <img class="logo" border="0" alt="EditoraCrescer" src="/img/logo.png">
       </div>    
-      <div class="col-md-5 administrativo"> <!--login-->
-           <div ng-show="logado">
-                <h2><a ng-href="#!/adminstrativo">Área Administrativa</a></h2>
+      <div class="col-md-2 administrativo"> <!--login-->
+           <div class="MenuTitulo">
+                <h1>Gerencia</h1>
            </div>    
       </div> 
       <div class="col-md-1 deslogar">
-             <button class="btn btn-blue" type="button" ng-show="logado" ng-click="logout()">Logout</button>
-    </div>    
+             <button class="btn btn-blue" type="button" ng-click="menuAdministrativo()">Administrativo</button>
+      </div>   
+      <div class="col-md-1 deslogar">
+             <button class="btn btn-blue" type="button" ng-click="irParaDevolucao()">Devolução</button>
+      </div>
+      <div class="col-md-1 deslogar">
+             <button class="btn btn-blue" type="button" ng-click="logout()">Logout</button>
+      </div>    
+</div> 
+<form action=>
+  Data final para o relátorio:
+  <input type="date" class="inputMenu" ng-model="dataFinal">
+  <button class="btn btn-blue dataFinal" type="button" ng-click="relatorioMensal(dataFinal)">Atualizar</button>
+</form>
+<div class="relatorioMensal">
+  <h3 class="TituloTabela RelatorioMensal">Relatório Mensal</h3>
+  <div class="scroll">  
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+          <th>ID</th>
+          <th>Nome Cliente</th>
+          <th>Email</th> 
+          <th>Data de Locação</th>
+          <th>Devolvido</th>
+          <th>Prazo Final para devolução</th>
+          <th>Data que foi devolvido</th>
+          <th>Pacote</th>
+          <th>Festa</th>
+          <th>Opcional</th>
+          <th>Valor</th>    
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+          <td>Valor Total do Relatório</td>
+          <td>{{ValorRelatorio}}</td>
+      </tr>
+    </tfoot>  
+    <tbody>
+      <tr ng-repeat="reserva in reservas">
+          <td>{{reserva.Id}}</td>
+          <td>{{reserva.Cliente.Nome}}</td>
+          <td>{{reserva.Cliente.Email}}</td> 
+          <td>{{FormataData(reserva.DataLocacao)}}</td> 
+          <td>{{Devolvido(reserva.Devolvido)}}</td>
+          <td>{{FormataData(reserva.DataDevolucao_Prevista)}}</td>
+          <td>{{FormataData(reserva.DataDevolucao_Real)}}</td>
+          <td>{{reserva.Pacote.Nome}}</td>
+          <td>{{reserva.Festa.Nome}}</td>
+          <td>{{MostrarOpcional(reserva.Opcional.Nome)}}</td>
+          <td>{{reserva.Valor}}</td>
+      </tr>  
+    </tbody>
+  </table>
+  </div>
 </div> 

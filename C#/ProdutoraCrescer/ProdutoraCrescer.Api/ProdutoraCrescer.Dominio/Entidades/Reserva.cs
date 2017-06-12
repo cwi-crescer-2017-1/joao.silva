@@ -29,14 +29,24 @@ namespace ProdutoraCrescer.Dominio.Entidades
             Id = 0;
             Valor = valor;
             DataLocacao = hoje;
-            DataDevolucao_Prevista = hoje.AddDays(duracaoReservaEmDias);
+            if (duracaoReservaEmDias > 0)
+            {
+                DataDevolucao_Prevista = hoje.AddDays(duracaoReservaEmDias);
+            }
+            else
+            {
+                DataDevolucao_Prevista = new DateTime(1000,01,01);
+            }
             Pacote = pacote;
             Festa = festa;
             Usuario = usuario;
             Cliente = cliente;
 
-            bool reservado = opcional.ReservarOpcional();
-            if (reservado) Opcional = opcional;
+            if(opcional != null)
+            {
+                bool reservado = opcional.ReservarOpcional();
+                if (reservado) Opcional = opcional;
+            }
 
             Mensagens = new List<string>();
         }
@@ -51,7 +61,10 @@ namespace ProdutoraCrescer.Dominio.Entidades
                     decimal multa = CalcularMulta();
                     Valor = Valor + multa;
                 }
-                Opcional.DevolverOpcional();
+                if(Opcional != null)
+                {
+                    Opcional.DevolverOpcional();
+                }
                 return true;
             }
             return false;
@@ -74,7 +87,16 @@ namespace ProdutoraCrescer.Dominio.Entidades
             int diasAtraso = atraso.Days;
             if (diasAtraso > 0)
             {
-                decimal valorMulta = (Opcional.CustoMulta + Pacote.CustoMulta + Festa.CustoMulta) * diasAtraso;
+                decimal valorMulta;
+                if (Opcional != null)
+                {
+                    valorMulta  = (Opcional.CustoMulta + Pacote.CustoMulta + Festa.CustoMulta) * diasAtraso;
+                }
+                else
+                {
+                    valorMulta = (Pacote.CustoMulta + Festa.CustoMulta) * diasAtraso;
+                }
+               
                 return valorMulta;
             }
             return 0;
@@ -89,6 +111,10 @@ namespace ProdutoraCrescer.Dominio.Entidades
         {
             Mensagens.Clear();
 
+            if(DataDevolucao_Prevista == new DateTime(1000, 01, 01))
+            {
+                Mensagens.Add("Data devolução prevista inválida.");
+            }
             if (Valor < 0)
             {
                 Mensagens.Add("Valor inválido.");
@@ -123,7 +149,7 @@ namespace ProdutoraCrescer.Dominio.Entidades
                 Mensagens.Add("Data devolução prevista inválida");
             }
 
-            if (Opcional == null || Opcional.Quantidade < 0)
+            if (Opcional != null && Opcional.Quantidade <= 0)
             {
                 Mensagens.Add("Quantidade de indísponível");
             }

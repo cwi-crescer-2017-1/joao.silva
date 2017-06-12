@@ -53,14 +53,22 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
                                 .ToList();
         }
 
-        public List<string> Criar(dynamic c)
+        public object Criar(dynamic c)
         {
+            if (c.IdOpcional == null)
+            {
+                c.IdOpcional = -1;
+            }
+            if(c.IdCliente==null||c.IdUsuario==null||c.IdFesta==null||c.TempoReservaEmDias==null||c.IdPacote == null)
+            {
+                return null;
+            }
             int idCliente = c.IdCliente;
             int idUsuario = c.IdUsuario;
-            int idOpcional = c.IdOpcional;
-            int idPacote = c.IdPacote;
             int idFesta = c.IdFesta;
             int tempoReservaEmDias = c.TempoReservaEmDias;
+            int idOpcional = c.IdOpcional;
+            int idPacote = c.IdPacote;
             Itens itens = ObterItensReserva(idCliente,idUsuario,idOpcional,idPacote, idFesta);
             decimal valor = GerarOrcamento(itens.Pacote, itens.Festa, itens.Opcional, tempoReservaEmDias);
             Reserva reserva = new Reserva(valor, tempoReservaEmDias, itens.Pacote, itens.Festa, itens.Usuario, itens.Cliente, itens.Opcional);
@@ -69,9 +77,9 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
             {
                 contexto.Reservas.Add(reserva);
                 contexto.SaveChanges();
-                return null;
+                return reserva;
             }
-            return reserva.Mensagens;
+            return null;
         }
 
         public List<string> Alterar(dynamic c)
@@ -146,6 +154,7 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
         public object ObterRelatorioLocacaoMensal(DateTime dataFinal)
         {
             DateTime dataInicial = dataFinal.AddDays(-30);
+            dataFinal = dataFinal.AddDays(1);
             List<Reserva> reservas = contexto.Reservas
                                 .Include(x => x.Pacote)
                                 .Include(x => x.Opcional)
@@ -168,14 +177,23 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
                                 .Include(x => x.Usuario)
                                 .Include(x => x.Festa)
                                 .Include(x => x.Cliente)
-                                .Where(x => x.DataDevolucao_Prevista < hoje)
+                                .Where(x => x.DataDevolucao_Prevista < hoje && x.DataDevolucao_Real == null)
                                 .OrderBy(x=> x.DataDevolucao_Prevista)
                                 .ToList();
             return reservas;
         }
-        private decimal GerarOrcamento(Pacote pacote, Festa festa, Opcional opcinal, int tempoReservaEmDias)
+        private decimal GerarOrcamento(Pacote pacote, Festa festa, Opcional opcional, int tempoReservaEmDias)
         {
-            decimal valor = (opcinal.CustoDiaria + pacote.CustoDiaria + festa.CustoDiaria) * tempoReservaEmDias;
+            decimal custoDiariaOpcional;
+            if (opcional == null)
+            {
+               custoDiariaOpcional = 0;
+            }
+            else
+            {
+                custoDiariaOpcional = opcional.CustoDiaria;
+            }
+            decimal valor = (custoDiariaOpcional + pacote.CustoDiaria + festa.CustoDiaria) * tempoReservaEmDias;
             return valor;
         }
 

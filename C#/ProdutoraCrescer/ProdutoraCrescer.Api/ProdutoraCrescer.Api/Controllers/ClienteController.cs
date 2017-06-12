@@ -23,14 +23,14 @@ namespace ProdutoraCrescer.Api.Controllers
         [Route("registrar")]
         public HttpResponseMessage Post(dynamic cliente) //Nome, Endereco, CPF, Genero, DataNascimento, Email
         {
-            List<string> resposta = repositorio.Criar(cliente);
-            if (resposta == null)
+            object resposta = repositorio.Criar(cliente);
+            if (resposta != null)
             {
-                return ResponderOK(cliente);
+                return ResponderOK(resposta);
             }
             else
             {
-                return ResponderErro(resposta.ToArray());
+                return ResponderErro(null);
             }
         }
 
@@ -55,5 +55,20 @@ namespace ProdutoraCrescer.Api.Controllers
             }
             return ResponderOK(cliente);
         }
+
+        [HttpGet, BasicAuthorization]
+        [Route("nome/{nome}")]
+        public HttpResponseMessage ObterPorNome(string nome)
+        {
+            List<Cliente> clientes = repositorio.ObterPorNome(nome);
+
+            if (clientes == null)
+            {
+                return ResponderErro("Usuário não encontrado.");
+            }
+            return ResponderOK(clientes);
+        }
+
+
     }
 }

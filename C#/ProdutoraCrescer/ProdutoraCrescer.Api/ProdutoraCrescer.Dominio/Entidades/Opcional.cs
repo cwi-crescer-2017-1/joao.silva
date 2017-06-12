@@ -40,12 +40,12 @@ namespace ProdutoraCrescer.Dominio.Entidades
                 Mensagens.Add("Nome é inválido.");
             }
 
-            if (CustoDiaria < 0)
+            if (CustoDiaria <= 0)
             {
                 Mensagens.Add("Custo diário inválido.");
             }
 
-            if (CustoMulta < 0)
+            if (CustoMulta <= 0)
             {
                 Mensagens.Add("Custo da multa inválido.");
             }

@@ -24,12 +24,17 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
             return contexto.Clientes.FirstOrDefault(cliente => cliente.CPF == cpf);
         }
 
+        public List<Cliente> ObterPorNome(string nome)
+        {
+            return contexto.Clientes.Where(cliente => cliente.Nome.Contains(nome)).ToList();
+        }
+
         public List<Cliente> ObterLista()
         {
             return contexto.Clientes.ToList();
         }
 
-        public List<string> Criar(dynamic c)
+        public object Criar(dynamic c)
         {
             try
             {
@@ -45,9 +50,9 @@ namespace ProdutoraCrescer.Infraestrutura.Repositorio
             {
                 contexto.Clientes.Add(cliente);
                 contexto.SaveChanges();
-                return null;
+                return cliente;
             }
-            return cliente.Mensagens;
+            return null;
             }
             catch (FormatException)
             {

@@ -24,14 +24,14 @@ namespace ProdutoraCrescer.Api.Controllers
         [Route("registrar")]
         public HttpResponseMessage Post(dynamic reserva) //TempoReservaEmDias, IdCliente, IdUsuario, IdOpcional, IdPacote, IdFesta
         {
-            List<string> resposta = repositorio.Criar(reserva);
-            if (resposta == null)
+            dynamic resposta = repositorio.Criar(reserva);
+            if (resposta != null)
             {
                 return ResponderOK(reserva);
             }
             else
             {
-                return ResponderErro(resposta.ToArray());
+                return ResponderErro("Erro na criação da reserva");
             }
         }
 
@@ -57,7 +57,7 @@ namespace ProdutoraCrescer.Api.Controllers
             return ResponderOK(new { reservas });
         }
 
-        [HttpGet, BasicAuthorization(Roles = "Gerente")]
+        [HttpGet, BasicAuthorization]
         [Route("limitada")]
         public HttpResponseMessage ObterListaNaoDevolvidos()
         {
