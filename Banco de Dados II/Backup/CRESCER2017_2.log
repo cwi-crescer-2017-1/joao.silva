@@ -1,0 +1,69 @@
+;;; 
+Export: Release 11.2.0.2.0 - Production on Qua Jun 14 18:25:41 2017
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+;;; 
+Conectado a: Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+Iniciando "SYSTEM"."SYS_EXPORT_SCHEMA_01":  system/********@xe dumpfile=CRESCER2017_2 logfile=CRESCER2017_2 schemas=CRESCER2017 directory=ORACLE_DUMP 
+Estimativa em andamento com o método BLOCKS...
+Processando o tipo de objeto SCHEMA_EXPORT/TABLE/TABLE_DATA
+Estimativa total usando o método de BLOCKS: 26.87 MB
+Processando o tipo de objeto SCHEMA_EXPORT/USER
+Processando o tipo de objeto SCHEMA_EXPORT/SYSTEM_GRANT
+Processando o tipo de objeto SCHEMA_EXPORT/ROLE_GRANT
+Processando o tipo de objeto SCHEMA_EXPORT/DEFAULT_ROLE
+Processando o tipo de objeto SCHEMA_EXPORT/PRE_SCHEMA/PROCACT_SCHEMA
+Processando o tipo de objeto SCHEMA_EXPORT/SEQUENCE/SEQUENCE
+Processando o tipo de objeto SCHEMA_EXPORT/TABLE/TABLE
+Processando o tipo de objeto SCHEMA_EXPORT/TABLE/INDEX/INDEX
+Processando o tipo de objeto SCHEMA_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Processando o tipo de objeto SCHEMA_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+Processando o tipo de objeto SCHEMA_EXPORT/PACKAGE/PACKAGE_SPEC
+Processando o tipo de objeto SCHEMA_EXPORT/FUNCTION/FUNCTION
+Processando o tipo de objeto SCHEMA_EXPORT/PROCEDURE/PROCEDURE
+Processando o tipo de objeto SCHEMA_EXPORT/PACKAGE/COMPILE_PACKAGE/PACKAGE_SPEC/ALTER_PACKAGE_SPEC
+Processando o tipo de objeto SCHEMA_EXPORT/FUNCTION/ALTER_FUNCTION
+Processando o tipo de objeto SCHEMA_EXPORT/PROCEDURE/ALTER_PROCEDURE
+Processando o tipo de objeto SCHEMA_EXPORT/VIEW/VIEW
+Processando o tipo de objeto SCHEMA_EXPORT/VIEW/COMMENT
+Processando o tipo de objeto SCHEMA_EXPORT/PACKAGE/PACKAGE_BODY
+Processando o tipo de objeto SCHEMA_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+Processando o tipo de objeto SCHEMA_EXPORT/TABLE/TRIGGER
+Processando o tipo de objeto SCHEMA_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+. . exportou "CRESCER2017"."PEDIDOITEM"                  14.24 MB  537993 linhas
+. . exportou "CRESCER2017"."CLIENTE"                     1.198 MB   12501 linhas
+. . exportou "CRESCER2017"."MATERIAL"                    927.0 KB   25000 linhas
+. . exportou "CRESCER2017"."PEDIDO"                      1.376 MB   40000 linhas
+. . exportou "CRESCER2017"."PRODUTOMATERIAL"             1.348 MB   67617 linhas
+. . exportou "CRESCER2017"."PRODUTO"                     353.1 KB    8000 linhas
+. . exportou "CRESCER2017"."CIDADE"                      113.3 KB    4668 linhas
+. . exportou "CRESCER2017"."PESSOA"                      5.437 KB       1 linhas
+. . exportou "CRESCER2017"."UT_LOOKUP_CATEGORIES"        7.132 KB       1 linhas
+. . exportou "CRESCER2017"."UT_METADATA"                 5.429 KB       1 linhas
+. . exportou "CRESCER2017"."UT_LIB_DYN_QUERIES"              0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_LIB_STARTUPS"                 0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_LIB_TEARDOWNS"                0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_LIB_VALIDATIONS"              0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_LOOKUP_DATATYPES"             0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_LOOKUP_VALUES"                0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_STARTUPS"                     0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_SUITE"                        0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_SUITE_ITEM_RESULTS"           0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_SUITE_ITEMS"                  0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_SUITE_RESULTS"                0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_TEARDOWNS"                    0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_TEST"                         0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_TEST_ARGUMENTS"               0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_TEST_COVERAGE_STATS"          0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_TEST_IMPL"                    0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_TEST_IMPL_ARG_RESULTS"        0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_TEST_IMPL_ARGUMENTS"          0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_TEST_IMPL_RESULTS"            0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_TEST_IMPL_VAL_RESULTS"        0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_TEST_RESULTS"                 0 KB       0 linhas
+. . exportou "CRESCER2017"."UT_VALIDATIONS"                  0 KB       0 linhas
+Tabela-mestre "SYSTEM"."SYS_EXPORT_SCHEMA_01" carregada/descarregada com sucesso
+******************************************************************************
+Conjunto de arquivos de dump para SYSTEM.SYS_EXPORT_SCHEMA_01 é:
+  C:\ORACLE\DATAPUMP\CRESCER2017_2.DMP
+O job "SYSTEM"."SYS_EXPORT_SCHEMA_01" foi concluído com sucesso em 18:26:48
