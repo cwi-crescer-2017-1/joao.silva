@@ -11,7 +11,7 @@ namespace ProdutoraCrescer.Dominio.Entidades
         public DateTime DataDevolucao_Prevista { get; private set; }
         public DateTime? DataDevolucao_Real { get; private set; }
         public Pacote Pacote { get; private set; }
-        public Festa Festa { get; private set; }
+        public Festa Festa { get; private set; } // se definir public virtual Festa... o ef pode realizar um "include" automático
         public Usuario Usuario { get; private set; }
         public Cliente Cliente { get; private set; }
         public Opcional Opcional { get; set; }

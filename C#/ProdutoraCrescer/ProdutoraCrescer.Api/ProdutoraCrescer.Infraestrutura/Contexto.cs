@@ -6,7 +6,14 @@ namespace ProdutoraCrescer.Infraestrutura
 {
     public class Contexto : DbContext
     {
-        public Contexto() : base("name=BancoSP") { }
+        public Contexto() : base("name=BancoSP") {
+            //Configuration.ProxyCreationEnabled = true; //Necessário para o LazyLoading
+            //Configuration.LazyLoadingEnabled = true; //default -- busca só o básico, para pegar outros valores é necessário o include
+            // se definir public virtual Festa('classe(tabela(chave)) estrangeira') na classe a ser chamada o ef pode realizar um "include" automático
+            //Ex: lá na Reserva a Festa é setada como public virtual
+            //Lembrar que o EF só realiza as consultas a banco quando o ToList é realizado
+            //AsNoTracking() -- Utilize quando a consulta for apenas para exibição de dados e não para modificação 
+        }
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Festa> Festas { get; set; }
