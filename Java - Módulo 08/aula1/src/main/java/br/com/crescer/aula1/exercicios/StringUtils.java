@@ -18,13 +18,7 @@ public class StringUtils implements IStringUtils{
     public StringUtils(){}
     @Override
     public boolean isEmpty(String string) {
-        if(string != null){
-           boolean stringNaoVazia = string.trim().length()>0;
-           if(stringNaoVazia){
-               return false;
-           }
-        }
-        return true;      
+        return string == null || string.trim().isEmpty();      
     }
 
     @Override
