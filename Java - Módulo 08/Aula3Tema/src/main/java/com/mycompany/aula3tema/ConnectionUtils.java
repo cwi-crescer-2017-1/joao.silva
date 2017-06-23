@@ -8,6 +8,7 @@ package com.mycompany.aula3tema;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -30,5 +31,8 @@ public class ConnectionUtils {
      */
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASS);
+    }
+    public static Statement getStatement() throws SQLException {
+        return getConnection().createStatement();
     }
 }
