@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" >
+    <persistence-unit name="localPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>br.com.crescer.aula4.jpa.Cliente</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" 
+                      value="jdbc:oracle:thin:@localhost:1521:XE"/>
+            <property name="javax.persistence.jdbc.user" 
+                      value="Modulo8"/>
+            <property name="javax.persistence.jdbc.driver" 
+                      value="oracle.jdbc.OracleDriver"/>
+            <property name="javax.persistence.jdbc.password" 
+                      value="Modulo8"/>
+        </properties>
+    </persistence-unit>
+</persistence>
