@@ -5,64 +5,130 @@
  */
 package com.mycompany.aula3tema;
 
-
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static java.util.stream.Collectors.toList;
 
 /**
  *
  * @author jpedr
  */
-public class SQLUtilsImpl implements SQLUtils{
+public class SQLUtilsImpl implements SQLUtils {
 
-    final static String quebraLinha = System.getProperty("line.separator");
+    final String quebraLinha = System.getProperty("line.separator");
+    final String tipoArquivoLido = ".sql";
+
     @Override
     public void runFile(String filename) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try (final Statement statement = ConnectionUtils.getStatement()) {
+            if (filename.endsWith(tipoArquivoLido)) {
+                String arquivo = read(filename);
+                String[] querys = arquivo.split(";");
+                for (String query : querys) {
+                    if (!query.contains("--") || query != null || query.replaceAll(" ", "").isEmpty()) {
+                        statement.executeQuery(query);
+                    }
+                }
+            } else {
+                throw new RuntimeException("Tipo de arquivo inválido");
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Arquivo inválido");
+        }
     }
 
     @Override
-    public String executeQuery(String query) {        
-        StringBuilder dados = new StringBuilder(); 
-        String separadorDados = ",";
-        try (final Statement statement = ConnectionUtils.getConnection().createStatement();
-                final ResultSet resultSet = statement.executeQuery(query);){
-                ResultSetMetaData resultado = resultSet.getMetaData();
-                ArrayList<String> coluna = new ArrayList<>();
-                int colunas = resultado.getColumnCount();
-                for(int i=1;i<=colunas;i++){
-                    dados.append(resultado.getColumnName(i)).append(separadorDados);
-                    coluna.add(resultado.getColumnName(i));
-                }
-                dados.deleteCharAt(dados.lastIndexOf(separadorDados)).append(quebraLinha);
-                while(resultSet.next()){
-                    for(int i=0;i<colunas;i++){
-                        dados.append(resultSet.getString(coluna.get(i))).append(separadorDados);
-                    }
-                    dados.deleteCharAt(dados.lastIndexOf(separadorDados)).append(quebraLinha);
-                }
+    public String executeQuery(String query) {
+        try (final Statement statement = ConnectionUtils.getStatement();
+                final ResultSet resultSet = statement.executeQuery(query);) {
+            return gerarCSVResultSet(resultSet);
         } catch (final SQLException e) {
-            System.err.format("SQLException: %s", e);
+            throw new RuntimeException("Query inválida");
         }
-        return dados.toString();
     }
 
     @Override
     public void importCSV(File file) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        StringBuilder resultado = new StringBuilder();
+        String[] colunas;
+        String nomeColunas;
+        String delimitador = ";";
+        String valores;
+        if (file.exists() && file.isFile()) {
+            String nomeFile = file.getName();
+            if (nomeFile.endsWith(".csv")) {
+                String tabela = nomeFile.replace(".csv", "");
+                try (final Reader reader = new FileReader(file);
+                        final BufferedReader bufferedReader = new BufferedReader(reader);) {
+                    String readLine = bufferedReader.readLine();
+                    colunas = readLine.split(delimitador);
+                    nomeColunas = readLine.replaceAll(delimitador, ",").replace("ï»¿", "");
+                    while (true) {
+                        try (final Statement statement = ConnectionUtils.getStatement()) {
+                            readLine = bufferedReader.readLine();
+                            if (readLine == null) {
+                                break;
+                            }
+                            valores = "'"+readLine.replaceAll(",", ".").replaceAll(delimitador, "','")+"'";
+
+                            String query = "INSERT INTO " + tabela + " (" + nomeColunas + ") VALUES (" + valores + ")";
+
+                            statement.executeQuery(query);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(SQLUtilsImpl.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException("Arquivo não encontrado");
+                } catch (IOException ex) {
+                    throw new RuntimeException("Arquivo inválido");
+                }
+            }
+        }
     }
 
     @Override
-    public File importCSV(String query) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public File exportCSV(String query) {
+        return null;
     }
-    
-    private String gerarCSVResultSet(ResultSet resultSet){
-        
+
+    private String gerarCSVResultSet(ResultSet resultSet) throws SQLException {
+        StringBuilder dados = new StringBuilder();
+        String separadorDados = ";";
+        ResultSetMetaData resultado = resultSet.getMetaData();
+        ArrayList<String> coluna = new ArrayList<>();
+        int colunas = resultado.getColumnCount();
+        for (int i = 1; i <= colunas; i++) {
+            dados.append(resultado.getColumnName(i)).append(separadorDados);
+            coluna.add(resultado.getColumnName(i));
+        }
+        dados.deleteCharAt(dados.lastIndexOf(separadorDados)).append(quebraLinha);
+        while (resultSet.next()) {
+            for (int i = 0; i < colunas; i++) {
+                dados.append(resultSet.getString(coluna.get(i))).append(separadorDados);
+            }
+            dados.deleteCharAt(dados.lastIndexOf(separadorDados)).append(quebraLinha);
+        }
+        return dados.toString();
     }
-    
+
+    public String read(String file) {
+        try (final BufferedReader b = new BufferedReader(new FileReader(file))) {
+            return String.join(" ", b.lines().collect(toList()));
+        } catch (Exception e) {
+            throw new RuntimeException("Arquivo inválido");
+        }
+    }
+
 }
