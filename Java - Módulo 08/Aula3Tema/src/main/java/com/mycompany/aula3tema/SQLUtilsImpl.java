@@ -6,9 +6,11 @@
 package com.mycompany.aula3tema;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.ResultSet;
@@ -36,7 +38,7 @@ public class SQLUtilsImpl implements SQLUtils {
                 String arquivo = read(filename);
                 String[] querys = arquivo.split(";");
                 for (String query : querys) {
-                    if (!query.contains("--") || query != null || query.replaceAll(" ", "").isEmpty()) {
+                    if (!query.contains("--") && !query.replaceAll(" ", "").isEmpty()) {
                         statement.executeQuery(query);
                     }
                 }
@@ -63,7 +65,7 @@ public class SQLUtilsImpl implements SQLUtils {
         StringBuilder resultado = new StringBuilder();
         String[] colunas;
         String nomeColunas;
-        String delimitador = ";";
+        String delimitador = ";"; /*Arquivo CSV utilizado e gerado pelo Excel utilizava ; para separar os valores, troca se necessário*/
         String valores;
         if (file.exists() && file.isFile()) {
             String nomeFile = file.getName();
@@ -80,7 +82,7 @@ public class SQLUtilsImpl implements SQLUtils {
                             if (readLine == null) {
                                 break;
                             }
-                            valores = "'"+readLine.replaceAll(",", ".").replaceAll(delimitador, "','")+"'";
+                            valores = "'" + readLine.replaceAll(delimitador, "','") + "'";
 
                             String query = "INSERT INTO " + tabela + " (" + nomeColunas + ") VALUES (" + valores + ")";
 
@@ -100,7 +102,24 @@ public class SQLUtilsImpl implements SQLUtils {
 
     @Override
     public File exportCSV(String query) {
-        return null;
+        final File file = new File("C:\\Users\\joao.silva\\Desktop\\Teste\\csv.csv");
+        try (final Statement statement = ConnectionUtils.getStatement();
+                final ResultSet resultSet = statement.executeQuery(query);) {
+            String csv = gerarCSVResultSet(resultSet);
+            try ( final FileWriter fileWriter = new FileWriter(file, true);
+                BufferedWriter bufferWriter = new BufferedWriter(fileWriter);) {
+                bufferWriter.append(csv);
+                bufferWriter.newLine();
+                bufferWriter.flush();
+            } catch (NullPointerException n) {
+                throw new NullPointerException("Diretório nulo");
+            } catch (IOException ex) {
+                //
+            }
+        } catch (final SQLException e) {
+            throw new RuntimeException("Query inválida");
+        }
+        return file;
     }
 
     private String gerarCSVResultSet(ResultSet resultSet) throws SQLException {
