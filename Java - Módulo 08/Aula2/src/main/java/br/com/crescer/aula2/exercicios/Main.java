@@ -28,6 +28,6 @@ public class Main {
         WriterUtils writerUtils = new WriterUtilsImpl();
         writerUtils.write(link2, textao);
         ReaderUtils readerUtils = new ReaderUtilsImpl();
-        System.out.println(readerUtils.read(link2));;
+        System.out.println(readerUtils.read(link2));
     }
 }
