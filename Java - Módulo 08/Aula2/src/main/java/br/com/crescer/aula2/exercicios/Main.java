@@ -12,23 +12,22 @@ package br.com.crescer.aula2.exercicios;
 public class Main {
     public static void main(String[] args){
         FileUtilsImpl fileUtils = new FileUtilsImpl();
-        String link = "C:\\Users\\jpedr\\Desktop\\oi.txt";
-        String link2 = "C:\\Users\\jpedr\\Desktop\\tchau.txt";
-        String link3Diretorio = "C:\\Users\\jpedr\\Desktop";
-        String link4 = "C:\\Users\\jpedr\\Desktop\\tchauSeFoiEOiTbm.txt";
-        String moverPraCa = "C:\\Users\\jpedr\\Documents";
+        String link = "C:\\Users\\joao.silva\\Desktop\\Normal\\oi.txt";
+        String link2 = "C:\\Users\\joao.silva\\Desktop\\Normal\\tchau.txt";
+        String link3Diretorio = "C:\\Users\\joao.silva\\Desktop";
+        String link4 = "C:\\Users\\joao.silva\\Normal\\tchauSeFoiEOiTbm.txt";
+        String moverPraCa = "C:\\Users\\joao.silva\\Desktop\\Teste\\";
         fileUtils.mk(link);
         fileUtils.rm(link);
         fileUtils.mk(link2);
         fileUtils.mk(link4);
         System.out.println("Arquivo: "+fileUtils.ls(link2));
         System.out.println("Diretório: "+fileUtils.ls(link3Diretorio));
-        fileUtils.mv(link2, moverPraCa);
+        System.out.println("Arquivo movido: "+fileUtils.mv(link4, moverPraCa));
         String textao = "eahihuhdiusadjiasn lhfkjijasdbhlsadjasd fhilsajndoansdas ndoaisndoansduias";
         WriterUtils writerUtils = new WriterUtilsImpl();
-        writerUtils.write(link4, textao);
+        writerUtils.write(link2, textao);
         ReaderUtils readerUtils = new ReaderUtilsImpl();
-        System.out.println(readerUtils.read(link4));
-        
+        System.out.println(readerUtils.read(link2));;
     }
 }

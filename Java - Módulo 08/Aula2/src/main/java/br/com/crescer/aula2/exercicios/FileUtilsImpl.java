@@ -5,16 +5,8 @@
  */
 package br.com.crescer.aula2.exercicios;
 
-import br.com.crescer.aula1.exercicios.StringUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
 
 /**
  *
@@ -78,29 +70,18 @@ public class FileUtilsImpl implements FileUtis{
     @Override
     public boolean mv(String in, String out) {
         try{
-            final Reader reader = new FileReader(in);
-            final File file = new File(in);
-            final BufferedReader bufferReader = new BufferedReader(reader);
-            mk(out);
-            final Writer writer = new FileWriter(out+"\\"+file.getName());
-            final BufferedWriter bufferWriter = new BufferedWriter(writer);
-            String readLine;
-            do{
-                readLine = bufferReader.readLine();
-                if(readLine!=null) {
-                    bufferWriter.append(readLine);
-                    bufferWriter.newLine();
+            File file = new File(in);
+            File diretorio = new File(out);
+            if(file.isFile()&&diretorio.isDirectory()){
+                boolean arquivoMovido = file.renameTo(new File(out+file.getName()));
+                if(arquivoMovido){
+                    rm(in);
+                    return true;
                 }
-            }while(readLine!=null);
-            bufferWriter.flush();
-            bufferReader.close();
-            rm(in);
-        }catch(IOException e){
-            //
-        }catch(NullPointerException n){
-            throw new NullPointerException("Diretório nulo");
+            }
+        }catch(Exception e){
+            throw new RuntimeException("Arquivo ou diretório inválido");
         }
-        //
         return false;
     }
 }
