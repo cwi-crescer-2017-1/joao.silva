@@ -16,8 +16,8 @@ import java.sql.Statement;
  */
 public class ConnectionUtils {
     private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-    private static final String USER = "JAVA";
-    private static final String PASS = "JAVA";
+    private static final String USER = "Modulo8";
+    private static final String PASS = "Modulo8";
 
     private ConnectionUtils() {
 
