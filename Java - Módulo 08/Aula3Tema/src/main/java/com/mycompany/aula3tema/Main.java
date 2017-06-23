@@ -5,6 +5,8 @@
  */
 package com.mycompany.aula3tema;
 
+import java.io.File;
+
 /**
  *
  * @author jpedr
@@ -13,6 +15,11 @@ public class Main {
     public static void main(String[] args){
         String query = "Select * From Estado";
         SQLUtils sqlUtil= new SQLUtilsImpl();
-        System.out.println(sqlUtil.executeQuery(query));
+//        System.out.println(sqlUtil.executeQuery(query));
+//        String arquivoSQL = "C:\\Users\\jpedr\\Desktop\\Teste.sql";
+//        sqlUtil.runFile(arquivoSQL);
+        String arquivoCSV = "C:\\Users\\jpedr\\Documents\\Pais.csv";
+        File file = new File(arquivoCSV);
+        sqlUtil.importCSV(file);
     }
 }
