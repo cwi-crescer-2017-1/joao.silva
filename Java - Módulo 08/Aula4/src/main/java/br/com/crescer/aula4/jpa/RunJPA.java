@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+
 /**
  *
  * @author joao.silva
@@ -22,12 +23,12 @@ public class RunJPA {
         em = emf.createEntityManager();
         
         final Cliente cliente = new Cliente(); 
-//        cliente.setId(5L);
-//        cliente.setNome("Pedro");
-        final Cliente clienteBD = em.find(Cliente.class, 1L);
-        clienteBD.setNome("Ala");
+        cliente.setId(5L);
+        cliente.setNome("Pedro");
+       // final Cliente clienteBD = em.find(Cliente.class, 1L);
+//        clienteBD.setNome("Ala");
         em.getTransaction().begin();
-        //em.persist(cliente);       
+        em.persist(cliente);       
         
         
         //em.remove(cliente2);
