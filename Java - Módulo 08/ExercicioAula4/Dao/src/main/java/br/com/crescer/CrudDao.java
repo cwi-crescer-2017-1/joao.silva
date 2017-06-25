@@ -17,8 +17,6 @@ import java.util.List;
 public interface CrudDao<Entity, ID> {
     
     Entity save(Entity e);
-
-    Entity update(Entity e);
     
     void remove(Entity e);
 
