@@ -5,113 +5,84 @@
  */
 package br.com.crescer;
 
+import static br.com.crescer.ConnectionUtils.getEntityManager;
+import static br.com.crescer.ConnectionUtils.getSession;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 /**
  *
  * @author jpedr
+ * @param <Entity>
+ * @param <ID>
+ * 
  */
-public class CrudDaoImpl implements CrudDao<Object, Long, Class> {
-
-    private static EntityManagerFactory emf;
-    private static EntityManager em;
-    private static Session session;
-    private static final String PERSISTENCE_UNIT_NAME = "CRESCER";
-
-    public CrudDaoImpl() {
+public class CrudDaoImpl<Entity, ID> implements CrudDao<Entity, ID> {
+ 
+    private final Class<Entity> classe;
+    
+    public CrudDaoImpl(Class<Entity> classe) {
+        this.classe = classe;
     }
 
     @Override
-    public Object save(Object object) {
-        openConnections();
+    public Entity save(Entity object) {
+        EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(object);
             em.getTransaction().commit();
-            em.detach(object);
             return object;
         } catch (Exception e) {
-            System.err.print(e);
+            //System.err.print(e);
+            throw new RuntimeException(e);
         }
-        return null;
-    }
-
-    public Object merge(Object object) {
-        openConnections();
-        try {
-            em.getTransaction().begin();
-            em.merge(object);
-            em.getTransaction().commit();
-            return object;
-        } catch (Exception e) {
-            System.err.print(e);
-        }
-        return null;
+        //return null;
     }
 
     @Override
-    public boolean remove(Object object) {
-        openConnections();
+    public void remove(Entity object) {
+        EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
             em.remove(object);
             em.getTransaction().commit();
-            return true;
         } catch (Exception e) {
-            System.err.print(e);
+            //System.err.print(e);
+            throw new RuntimeException(e);
         }
-        return false;
     }
 
     @Override
-    public Object loadById(Long id, Class classe) {
-        openConnections();
+    public Entity loadById(ID id) {
+        EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            Object object = em.find(classe, id);
+            Entity object = em.find(classe, id);
             em.getTransaction().commit();
             return object;
         } catch (Exception e) {
-            System.err.print(e);
+            //System.err.print(e);
+            throw new RuntimeException(e);
         }
-        return null;
+      //  return null;
     }
 
     @Override
-    public List<Object> findAll(Class classe) {
-        openConnections();
+    public List<Entity> findAll() {
+        EntityManager em = getEntityManager();
+        Session session = getSession();
         try {
             em.getTransaction().begin();
-            session = em.unwrap(Session.class);
-            List<Object> listObject = session.createCriteria(classe).list();
+            List<Entity> listObject = session.createCriteria(classe).list();
             em.getTransaction().commit();
             return listObject;
         } catch (HibernateException e) {
-            System.err.print(e);
+            //System.err.print(e);
+            throw new RuntimeException(e);
         }
-        return null;
-    }
-
-    public void openConnections() {
-        if (emf == null || !emf.isOpen()) {
-            emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-        }
-        if (em == null || !em.isOpen()) {
-            em = emf.createEntityManager();
-        }
-    }
-
-    public void closeConnections() {
-        if (emf.isOpen()) {
-            if (em.isOpen()) {
-                em.close();
-            }
-            emf.close();
-        }
+     //   return null;
     }
 }
