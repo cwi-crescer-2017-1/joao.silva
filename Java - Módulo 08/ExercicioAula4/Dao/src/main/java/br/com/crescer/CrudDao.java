@@ -8,19 +8,22 @@ package br.com.crescer;
 import java.util.List;
 
 /**
+ * 
  * @author carloshenrique
  * @param <Entity>
  * @param <ID>
- * @param <T>
+ * 
  */
-public interface CrudDao<Entity, ID, T> {
+public interface CrudDao<Entity, ID> {
     
     Entity save(Entity e);
 
-    boolean remove(Entity e);
+    Entity update(Entity e);
+    
+    void remove(Entity e);
 
-    Entity loadById(ID id,Class T);
+    Entity loadById(ID id);
 
-    List<Entity> findAll(Class T);
+    List<Entity> findAll();
     
 }
