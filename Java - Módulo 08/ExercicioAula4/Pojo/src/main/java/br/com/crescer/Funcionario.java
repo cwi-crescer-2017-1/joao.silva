@@ -6,6 +6,7 @@
 package br.com.crescer;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -21,66 +24,67 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "FUNCIONARIO")
-public class Funcionario implements Serializable, Cloneable {
-    @Id // Identifica a PK
+public class Funcionario implements Serializable {
+
+    protected Funcionario() {
+    }
+
+    public Funcionario(String nome, String rg) {
+        this.nome = nome;
+        this.rg = rg;
+    }
+    
+    @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_FUNCIONARIO")
     @SequenceGenerator(name = "SEQ_FUNCIONARIO", sequenceName = "SEQ_FUNCIONARIO")
     @Basic(optional = false)
     @Column(name = "ID")
     private Long id;
-    
+
     @Basic(optional = false)
     @Column(name = "NOME")
     private String nome;
-    
-    @Column(name = "BAIRRO")
-    private String bairro;
-    
-    @Column(name = "CIDADE")
-    private String cidade;
-    
-    @Column(name = "NUMERO_CASA")
-    private String numeroCasa;
-    
-    @Column(name = "RUA")
-    private String rua;
-    
+
     @Basic(optional = false)
     @Column(name = "RG")
     private String rg;
-    
+
+    @Column(name = "BAIRRO")
+    private String bairro;
+
+    @Column(name = "CIDADE")
+    private String cidade;
+
+    @Column(name = "NUMERO_CASA")
+    private String numeroCasa;
+
+    @Column(name = "RUA")
+    private String rua;
+
     @Column(name = "EMAIL")
     private String email;
-    
+
     @Column(name = "TELEFONE")
     private String telefone;
-    
+
     @Column(name = "CELULAR")
     private String celular;
-    
+
     @Column(name = "SALARIO")
-    private String salario;
-    
+    private Float salario;
+
     @Column(name = "FUNCAO")
     private String funcao;
-    
+
     @Column(name = "CPF")
     private String cpf;
-    
-    @Column(name = "NASCIMENTO")
-    private String nascimento;
 
-    public Funcionario(){};
-    public Funcionario(String nome, String rg){
-        this.nome = nome;
-        this.rg = rg;
-    };
+    @Temporal(TemporalType.DATE)
+    @Column(name = "NASCIMENTO")
+    private Date nascimento;
+
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -155,11 +159,11 @@ public class Funcionario implements Serializable, Cloneable {
         this.celular = celular;
     }
 
-    public String getSalario() {
+    public Float getSalario() {
         return salario;
     }
 
-    public void setSalario(String salario) {
+    public void setSalario(Float salario) {
         this.salario = salario;
     }
 
@@ -179,17 +183,12 @@ public class Funcionario implements Serializable, Cloneable {
         this.cpf = cpf;
     }
 
-    public String getNascimento() {
+    public Date getNascimento() {
         return nascimento;
     }
 
-    public void setNascimento(String nascimento) {
+    public void setNascimento(Date nascimento) {
         this.nascimento = nascimento;
-    }
-    
-    @Override
-    public Funcionario clone() throws CloneNotSupportedException {
-        return (Funcionario) super.clone();
     }
 
 }
