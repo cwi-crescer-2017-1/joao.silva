@@ -23,10 +23,9 @@ public class CrudDaoImpl<Entity, ID> implements CrudDao<Entity, ID> {
  
     private final Class<Entity> classe;
     
-    public CrudDaoImpl(Class<Entity> classe) {
+    public CrudDaoImpl(Class classe){
         this.classe = classe;
     }
-
     @Override
     public Entity save(Entity object) {
         EntityManager em = getEntityManager();
