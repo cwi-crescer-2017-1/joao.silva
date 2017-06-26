@@ -10,6 +10,7 @@ import br.com.crescer.ConnectionUtils;
 import br.com.crescer.CrudDao;
 import br.com.crescer.CrudDaoImpl;
 import br.com.crescer.Funcionario;
+import br.com.crescer.FuncionarioDao;
 import br.com.crescer.Genero;
 import br.com.crescer.Locacao;
 import br.com.crescer.Video;
@@ -24,7 +25,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException{
         ConnectionUtils.openConnections();
-        CrudDao<Funcionario,Long> funcionarioDao = new CrudDaoImpl<>(Funcionario.class);
+//        CrudDao<Funcionario,Long> funcionarioDao = new CrudDaoImpl<>(Funcionario.class);
+        FuncionarioDao funcionarioDao = new FuncionarioDao();
         CrudDao<Cliente,Long> clienteDao = new CrudDaoImpl<>(Cliente.class);
         CrudDao<Genero,Long> generoDao = new CrudDaoImpl<>(Genero.class);
         CrudDao<Locacao,Long> locacaoDao = new CrudDaoImpl<>(Locacao.class);
@@ -62,9 +64,11 @@ public class Main {
         locacao.setFuncionario(funcionario);
         locacao.setDevolucaoPrevista(new Date());
         locacaoDao.save(locacao);
-        Locacao oi = locacaoDao.loadById(500L);
+        Long idLocacao = locacao.getId();
+        Locacao oi = locacaoDao.loadById(idLocacao);
         System.out.println(oi.getCliente().getId());
         System.out.println((funcionarios.stream().anyMatch(f->f.getId()==99999999999L)));
+        locacaoDao.remove(oi);
         ConnectionUtils.closeConnections();
     }
 }
