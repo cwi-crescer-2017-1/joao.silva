@@ -25,8 +25,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException{
         ConnectionUtils.openConnections();
-//        CrudDao<Funcionario,Long> funcionarioDao = new CrudDaoImpl<>(Funcionario.class);
-        FuncionarioDao funcionarioDao = new FuncionarioDao();
+        CrudDao<Funcionario,Long> funcionarioDao = new CrudDaoImpl<>(Funcionario.class);
         CrudDao<Cliente,Long> clienteDao = new CrudDaoImpl<>(Cliente.class);
         CrudDao<Genero,Long> generoDao = new CrudDaoImpl<>(Genero.class);
         CrudDao<Locacao,Long> locacaoDao = new CrudDaoImpl<>(Locacao.class);
