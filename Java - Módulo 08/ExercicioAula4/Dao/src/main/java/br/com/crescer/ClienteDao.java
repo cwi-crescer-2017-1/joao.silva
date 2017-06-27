@@ -5,14 +5,22 @@
  */
 package br.com.crescer;
 
+import javax.persistence.EntityManager;
+
 /**
  *
  * @author joao.silva
  */
 public class ClienteDao extends CrudDaoImpl<Cliente,Long>{
     
-    public ClienteDao() {
+    private final EntityManager entityManager;
+
+    public ClienteDao(EntityManager em) {
         super(Cliente.class);
+        this.entityManager = em;
+    }
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
     
 }

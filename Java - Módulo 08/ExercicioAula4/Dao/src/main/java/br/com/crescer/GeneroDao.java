@@ -5,14 +5,22 @@
  */
 package br.com.crescer;
 
+import javax.persistence.EntityManager;
+
 /**
  *
  * @author joao.silva
  */
 public class GeneroDao extends CrudDaoImpl<Genero,Long>{
     
-    public GeneroDao() {
+    private final EntityManager entityManager;
+    
+    public GeneroDao(EntityManager em) {
         super(Genero.class);
+        this.entityManager = em;
+    }
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
     
 }

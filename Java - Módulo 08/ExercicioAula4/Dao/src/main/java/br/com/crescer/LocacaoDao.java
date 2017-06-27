@@ -5,14 +5,21 @@
  */
 package br.com.crescer;
 
+import javax.persistence.EntityManager;
+
 /**
  *
  * @author joao.silva
  */
 public class LocacaoDao extends CrudDaoImpl<Locacao,Long>{
     
-    public LocacaoDao() {
-        super(Locacao.class);
-    }
+    private final EntityManager entityManager;
     
+    public LocacaoDao(EntityManager em) {
+        super(Locacao.class);
+        this.entityManager = em;
+    }
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
 }

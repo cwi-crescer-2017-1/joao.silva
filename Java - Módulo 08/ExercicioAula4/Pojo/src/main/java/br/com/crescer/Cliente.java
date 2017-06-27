@@ -26,14 +26,15 @@ import javax.persistence.TemporalType;
 @Table(name = "CLIENTE")
 public class Cliente implements Serializable {
 
-    protected Cliente() {}
-   
-    public Cliente(String nome,String cpf,String celular){
+    protected Cliente() {
+    }
+
+    public Cliente(String nome, String cpf, String celular) {
         this.nome = nome;
         this.cpf = cpf;
         this.celular = celular;
     }
-    
+
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CLIENTE")
     @SequenceGenerator(name = "SEQ_CLIENTE", sequenceName = "SEQ_CLIENTE")
@@ -44,11 +45,11 @@ public class Cliente implements Serializable {
     @Basic(optional = false)
     @Column(name = "NOME")
     private String nome;
-    
+
     @Basic(optional = false)
     @Column(name = "CPF")
     private String cpf;
-    
+
     @Basic(optional = false)
     @Column(name = "CELULAR")
     private String celular;
@@ -73,7 +74,7 @@ public class Cliente implements Serializable {
 
     @Column(name = "TELEFONE")
     private String telefone;
-    
+
     @Temporal(TemporalType.DATE)
     @Column(name = "NASCIMENTO")
     private Date nascimento;
@@ -169,6 +170,5 @@ public class Cliente implements Serializable {
     public void setNascimento(Date nascimento) {
         this.nascimento = nascimento;
     }
-    
-    
+
 }

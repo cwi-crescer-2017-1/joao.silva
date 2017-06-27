@@ -5,14 +5,21 @@
  */
 package br.com.crescer;
 
+import javax.persistence.EntityManager;
+
 /**
  *
  * @author joao.silva
  */
 public class VideoDao extends CrudDaoImpl<Video,Long>{
     
-    public VideoDao() {
+    private final EntityManager entityManager;
+    public VideoDao(EntityManager em) {
         super(Video.class);
+        this.entityManager = em;
+    }
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
     
 }
