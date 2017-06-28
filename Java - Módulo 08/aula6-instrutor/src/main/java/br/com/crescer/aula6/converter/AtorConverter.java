@@ -1,6 +1,6 @@
 package br.com.crescer.aula6.converter;
 
-import br.com.crescer.aula6.entity.Ator;
+import br.com.crescer.entity.Ator;
 import java.util.HashMap;
 import java.util.Map;
 import javax.faces.component.UIComponent;

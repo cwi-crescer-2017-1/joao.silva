@@ -1,5 +1,6 @@
 package br.com.crescer.aula6.entity;
 
+import br.com.crescer.entity.Ator;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.GenerationType.SEQUENCE;
 

@@ -1,6 +1,6 @@
 package br.com.crescer.aula6.dao;
 
-import br.com.crescer.aula6.entity.Ator;
+import br.com.crescer.entity.Ator;
 import javax.persistence.EntityManager;
 
 /**

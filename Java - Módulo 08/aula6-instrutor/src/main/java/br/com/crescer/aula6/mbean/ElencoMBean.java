@@ -3,7 +3,7 @@ package br.com.crescer.aula6.mbean;
 import br.com.crescer.aula6.ejb.AtorBean;
 import br.com.crescer.aula6.ejb.ElencoBean;
 import br.com.crescer.aula6.dao.ElencoDao;
-import br.com.crescer.aula6.entity.Ator;
+import br.com.crescer.entity.Ator;
 import br.com.crescer.aula6.entity.Elenco;
 import java.util.List;
 import javax.annotation.PostConstruct;

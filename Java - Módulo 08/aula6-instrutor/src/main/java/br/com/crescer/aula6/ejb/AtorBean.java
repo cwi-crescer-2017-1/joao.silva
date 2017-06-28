@@ -1,7 +1,7 @@
 package br.com.crescer.aula6.ejb;
 
 import br.com.crescer.aula6.dao.AtorDao;
-import br.com.crescer.aula6.entity.Ator;
+import br.com.crescer.entity.Ator;
 import javax.ejb.Stateless;
 
 /**

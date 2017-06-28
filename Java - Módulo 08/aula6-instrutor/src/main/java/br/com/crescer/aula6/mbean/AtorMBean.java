@@ -2,7 +2,7 @@ package br.com.crescer.aula6.mbean;
 
 import br.com.crescer.aula6.ejb.AtorBean;
 import br.com.crescer.aula6.dao.AtorDao;
-import br.com.crescer.aula6.entity.Ator;
+import br.com.crescer.entity.Ator;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
