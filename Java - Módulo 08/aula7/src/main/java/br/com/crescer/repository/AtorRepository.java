@@ -6,12 +6,12 @@
 package br.com.crescer.repository;
 
 import br.com.crescer.entity.Ator;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  *
  * @author joao.silva
  */
-public interface AtorRepository extends CrudRepository<Ator, Long>{
+public interface AtorRepository extends PagingAndSortingRepository<Ator, Long>{
     
 }
