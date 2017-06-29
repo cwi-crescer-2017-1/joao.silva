@@ -8,8 +8,6 @@ package br.com.crescer.service;
 import br.com.crescer.entity.Ator;
 import br.com.crescer.repository.AtorRepository;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +20,16 @@ public class AtorService {
     @Autowired
     AtorRepository atorRepository;
     
-    public Ator getByID(Long id){
-        Ator ator = new Ator();
+    public Ator findOne(Long id){
         return atorRepository.findOne(id);          
     }
-    public List<Ator> getAll(){
+    public List<Ator> findAll(){
         return (List<Ator>) atorRepository.findAll();
+    }
+    public void delete(Ator ator){
+        atorRepository.delete(ator);
+    }
+    public Ator save(Ator ator){
+        return atorRepository.save(ator);
     }
 }
