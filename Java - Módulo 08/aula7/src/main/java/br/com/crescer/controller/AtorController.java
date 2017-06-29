@@ -8,33 +8,56 @@ package br.com.crescer.controller;
 import br.com.crescer.entity.Ator;
 import br.com.crescer.service.AtorService;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author joao.silva
  */
-
 @RestController
+@RequestMapping("/ator")
+public class AtorController implements BasicController<Ator,Long>{
 
-public class AtorController {
-    
     @Autowired
     AtorService service;
+    Ator ator;
 
-    @RequestMapping(value = "/ator/{id}", method = RequestMethod.GET)
-    Ator getAtor(@PathVariable Long id) {
-        return service.getByID(id);
+    @Override
+    @PostMapping(value = "/save")
+    public Ator save(@RequestBody Ator ator) {
+        return service.save(ator);
     }
-    @RequestMapping(value = "/atores", method = RequestMethod.GET)
-    List<Ator> getAll() {
-        return service.getAll();
+
+    @Override
+    @PutMapping(value = "/delete")
+    public void delete(@RequestBody Ator ator) {
+        service.delete(ator);
+    }
+
+    @Override
+    @GetMapping(value = "/findOne/{id}")
+    public Ator findOne(@PathVariable Long id) {
+        return service.findOne(id);
+    }
+
+    @Override
+    @GetMapping(value = "/findAll")
+    public List<Ator> findAll() {
+        return service.findAll();
+    }
+
+    @Override
+    public Page<Ator> findPage(int page, int size) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
