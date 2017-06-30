@@ -1,13 +1,14 @@
-/*create tablespace SeedShare
-   datafile 'C:\oraclexe\app\oracle\oradata\XE\SEEDSHARE.DBF'
+/*
+create tablespace SeedShare
+   datafile 'C:\Oracle\oraclexe\app\oracle\oradata\XE\SEEDSHARE.DBF'
    size 100m
    autoextend on
    next 100m
    maxsize 2048m;
 
 Create user Seed identified by Seed default tablespace SeedShare;
-grant connect, resource, create view to Seed;*/
-   
+grant connect, resource, create view to Seed;
+*/   
 CREATE TABLE Usuario (
 	ID INTEGER NOT NULL,
 	Email Varchar2(50) NOT NULL,
@@ -17,16 +18,6 @@ CREATE TABLE Usuario (
     constraint UK_Usuario_Email unique (Email),
     constraint UK_Usuario_Perfil unique (ID_Perfil)
 );
-
-CREATE SEQUENCE SEQ_USUARIO
-    MINVALUE 1 
-    MAXVALUE 999999999999999999999999999 
-    INCREMENT BY 1 
-    START WITH 1 
-    CACHE 10 
-    NOORDER  
-    NOCYCLE;
-
 
 CREATE TABLE Perfil (
 	ID INTEGER NOT NULL,
@@ -40,16 +31,7 @@ CREATE TABLE Perfil (
 	constraint PERFIL_PK PRIMARY KEY (ID)
 );
 
-CREATE SEQUENCE SEQ_PERFIL
-    MINVALUE 1 
-    MAXVALUE 999999999999999999999999999 
-    INCREMENT BY 1 
-    START WITH 1 
-    CACHE 10 
-    NOORDER  
-    NOCYCLE;
-
-
+    
 CREATE TABLE Estado (
 	ID INTEGER NOT NULL,
 	Nome varchar2(50) NOT NULL,
@@ -57,15 +39,6 @@ CREATE TABLE Estado (
 	constraint ESTADO_PK PRIMARY KEY (ID),
     constraint UK_Estado_Pais unique (Nome,Pais)
 );
-CREATE SEQUENCE SEQ_ESTADO
-    MINVALUE 1 
-    MAXVALUE 999999999999999999999999999 
-    INCREMENT BY 1 
-    START WITH 1 
-    CACHE 10 
-    NOORDER  
-    NOCYCLE;
-
 
 CREATE TABLE Alteracao_Senha (
 	ID INTEGER NOT NULL,
@@ -75,14 +48,6 @@ CREATE TABLE Alteracao_Senha (
 	constraint ALTERACAO_SENHA_PK PRIMARY KEY (ID),
     constraint UK_Alteracao_Email unique (Email)
 );
-CREATE SEQUENCE SEQ_ALTERACAO_SENHA
-    MINVALUE 1 
-    MAXVALUE 999999999999999999999999999 
-    INCREMENT BY 1 
-    START WITH 1 
-    CACHE 10 
-    NOORDER  
-    NOCYCLE;
 
 
 CREATE TABLE Relacionamento (
@@ -97,40 +62,25 @@ CREATE TABLE Relacionamento (
     constraint UK_Solicitante_Solicitado unique (ID_Perfil_Solicitante,ID_Perfil_Solicitado)
 );
 
-CREATE SEQUENCE SEQ_RELACIONAMENTO
-    MINVALUE 1 
-    MAXVALUE 999999999999999999999999999 
-    INCREMENT BY 1 
-    START WITH 1 
-    CACHE 25 
-    NOORDER  
-    NOCYCLE;
-
+    
 CREATE TABLE Postagem (
 	ID INTEGER NOT NULL,
     ID_Perfil INTEGER NOT NULL,
 	Url_Img Varchar2(2000),
 	Descricao Varchar2(500),
-	Data Date NOT NULL,
+	DataPostagem Date NOT NULL,
 	constraint POSTAGEM_PK PRIMARY KEY (ID)
 );
-CREATE SEQUENCE SEQ_POSTAGEM
-    MINVALUE 1 
-    MAXVALUE 999999999999999999999999999 
-    INCREMENT BY 1 
-    START WITH 1 
-    CACHE 50 
-    NOORDER  
-    NOCYCLE;
 
 CREATE TABLE Curtida (
 	ID INTEGER NOT NULL,
-	Data Date NOT NULL,
+	DataCurtida Date NOT NULL,
 	ID_Postagem INTEGER NOT NULL,
 	ID_Perfil INTEGER NOT NULL,
     constraint UK_Curtida_Postagem_Perfil Unique(ID_Postagem,ID_Perfil),
 	constraint CURTIDA_PK PRIMARY KEY (ID)
 );
+
 
 CREATE SEQUENCE SEQ_CURTIDA
     MINVALUE 1 
@@ -146,7 +96,7 @@ CREATE TABLE Comentario(
 	Texto Varchar2(300) NOT NULL,
 	ID_Postagem INTEGER NOT NULL,
 	ID_Perfil INTEGER NOT NULL,
-    Data Date NOT NULL,
+  DataComentario Date NOT NULL,
 	constraint COMENTARIO_PK PRIMARY KEY ("ID")
 );
 
@@ -159,35 +109,89 @@ CREATE SEQUENCE SEQ_COMENTARIO
     NOORDER  
     NOCYCLE;
 
+CREATE SEQUENCE SEQ_POSTAGEM
+    MINVALUE 1 
+    MAXVALUE 999999999999999999999999999 
+    INCREMENT BY 1 
+    START WITH 1 
+    CACHE 50 
+    NOORDER  
+    NOCYCLE;
 
+CREATE SEQUENCE SEQ_RELACIONAMENTO
+    MINVALUE 1 
+    MAXVALUE 999999999999999999999999999 
+    INCREMENT BY 1 
+    START WITH 1 
+    CACHE 25 
+    NOORDER  
+    NOCYCLE;
+
+CREATE SEQUENCE SEQ_ALTERACAO_SENHA
+    MINVALUE 1 
+    MAXVALUE 999999999999999999999999999 
+    INCREMENT BY 1 
+    START WITH 1 
+    CACHE 10 
+    NOORDER  
+    NOCYCLE;
+
+CREATE SEQUENCE SEQ_ESTADO
+    MINVALUE 1 
+    MAXVALUE 999999999999999999999999999 
+    INCREMENT BY 1 
+    START WITH 1 
+    CACHE 10 
+    NOORDER  
+    NOCYCLE;
+
+CREATE SEQUENCE SEQ_PERFIL
+    MINVALUE 1 
+    MAXVALUE 999999999999999999999999999 
+    INCREMENT BY 1 
+    START WITH 1 
+    CACHE 10 
+    NOORDER  
+    NOCYCLE;
+
+CREATE SEQUENCE SEQ_USUARIO
+    MINVALUE 1 
+    MAXVALUE 999999999999999999999999999 
+    INCREMENT BY 1 
+    START WITH 1 
+    CACHE 10 
+    NOORDER  
+    NOCYCLE;
+    
 ALTER TABLE Usuario ADD CONSTRAINT FK_Usuario FOREIGN KEY (ID_Perfil) REFERENCES Perfil(ID);
 
 ALTER TABLE Perfil ADD CONSTRAINT FK_Perfil FOREIGN KEY (ID_Estado) REFERENCES Estado(ID);
-CREATE INDEX IX_Pefil_Estado ON Perfil(ID_Estado);
+
 
 ALTER TABLE Alteracao_Senha ADD CONSTRAINT FK_Alteracao_Senha FOREIGN KEY (Email) REFERENCES Usuario(Email);
 
 ALTER TABLE Relacionamento ADD CONSTRAINT FK_Relacionamento_Solicitante FOREIGN KEY (ID_Perfil_Solicitante) REFERENCES Perfil(ID);
-CREATE INDEX IX_Relacionamento_Solicitante ON Relacionamento(ID_Perfil_Solicitante);
+
 
 ALTER TABLE Relacionamento ADD CONSTRAINT FK_Relacionamento_Solicitado FOREIGN KEY (ID_Perfil_Solicitado) REFERENCES Perfil(ID);
-CREATE INDEX IX_Relacionamento_Solicitado ON Relacionamento(ID_Perfil_Solicitado);
 
 ALTER TABLE Postagem ADD CONSTRAINT FK_Postagem_Perfil FOREIGN KEY (ID_Perfil) REFERENCES Perfil(ID);
-CREATE INDEX IX_Postagem_ID_Perfil ON Postagem(ID_Perfil);
 
 ALTER TABLE Curtida ADD CONSTRAINT FK_Curtida_Postagem FOREIGN KEY (ID_Postagem) REFERENCES Postagem(ID);
-CREATE INDEX IX_Curtida_ID_Postagem ON Curtida(ID_Postagem);
 
 ALTER TABLE Curtida ADD CONSTRAINT FK_Curtida_Perfil FOREIGN KEY (ID_Perfil) REFERENCES Perfil(ID);
-CREATE INDEX IX_Curtida_ID_Perfil ON Curtida(ID_Perfil);
 
 ALTER TABLE Comentario ADD CONSTRAINT FK_Comentario_Postagem FOREIGN KEY (ID_Postagem) REFERENCES Postagem(ID);
-CREATE INDEX IX_Comentario_ID_Postagem ON Comentario(ID_Postagem);
 
 ALTER TABLE Comentario ADD CONSTRAINT FK_Comentario_Perfil FOREIGN KEY (ID_Perfil) REFERENCES Perfil(ID);
-CREATE INDEX IX_Comentario_ID_Perfil ON Comentario(ID_Perfil);
 
+CREATE INDEX IX_Comentario_ID_Perfil ON Comentario(ID_PeCREATE INDEX IX_Comentario_ID_Postagem ON Comentario(ID_Postagem);
+CREATE INDEX IX_Curtida_ID_Perfil ON Curtida(ID_Perfil);
+CREATE INDEX IX_Curtida_ID_Postagem ON Curtida(ID_Postagem);
+CREATE INDEX IX_Postagem_ID_Perfil ON Postagem(ID_Perfil);
+CREATE INDEX IX_Relacionamento_Solicitado ON Relacionamento(ID_Perfil_Solicitado);
+CREATE INDEX IX_Pefil_Estado ON Perfil(ID_Estado);
+CREATE INDEX IX_Relacionamento_Solicitante ON Relacionamento(ID_Perfil_Solicitante);
 
 /*
 CREATE trigger BI_COMENTARIO
