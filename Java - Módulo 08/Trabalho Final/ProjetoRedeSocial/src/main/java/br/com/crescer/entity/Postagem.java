@@ -5,6 +5,7 @@
  */
 package br.com.crescer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;

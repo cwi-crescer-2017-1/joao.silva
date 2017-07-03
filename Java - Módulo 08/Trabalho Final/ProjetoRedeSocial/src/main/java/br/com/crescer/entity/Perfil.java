@@ -5,6 +5,7 @@
  */
 package br.com.crescer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -86,12 +87,15 @@ public class Perfil implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataNascimento;
     
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
     private Set<Postagem> postagemSet;
     
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
     private Set<Comentario> comentarioSet;
     
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
     private Set<Curtida> curtidaSet;
     
@@ -99,12 +103,15 @@ public class Perfil implements Serializable {
     @ManyToOne(optional = false)
     private Estado estado;
     
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfilSolicitante")
     private Set<Relacionamento> relacionamentoSet;
     
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfilSolicitado")
     private Set<Relacionamento> relacionamentoSet1;
     
+    @JsonIgnore
     @OneToOne(mappedBy = "perfil")
     private Usuario usuario;
 
@@ -164,6 +171,7 @@ public class Perfil implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
+    @JsonIgnore
     public Set<Postagem> getPostagemSet() {
         return postagemSet;
     }
@@ -172,6 +180,7 @@ public class Perfil implements Serializable {
         this.postagemSet = postagemSet;
     }
 
+    @JsonIgnore
     public Set<Comentario> getComentarioSet() {
         return comentarioSet;
     }
@@ -179,7 +188,8 @@ public class Perfil implements Serializable {
     public void setComentarioSet(Set<Comentario> comentarioSet) {
         this.comentarioSet = comentarioSet;
     }
-
+    
+    @JsonIgnore
     public Set<Curtida> getCurtidaSet() {
         return curtidaSet;
     }
@@ -196,6 +206,7 @@ public class Perfil implements Serializable {
         this.estado = idEstado;
     }
 
+    @JsonIgnore
     public Set<Relacionamento> getRelacionamentoSet() {
         return relacionamentoSet;
     }
@@ -204,14 +215,17 @@ public class Perfil implements Serializable {
         this.relacionamentoSet = relacionamentoSet;
     }
 
+    @JsonIgnore
     public Set<Relacionamento> getRelacionamentoSet1() {
         return relacionamentoSet1;
     }
 
+    @JsonIgnore
     public void setRelacionamentoSet1(Set<Relacionamento> relacionamentoSet1) {
         this.relacionamentoSet1 = relacionamentoSet1;
     }
 
+    @JsonIgnore
     public Usuario getUsuario() {
         return usuario;
     }

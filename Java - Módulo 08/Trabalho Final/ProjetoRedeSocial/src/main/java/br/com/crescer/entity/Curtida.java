@@ -5,6 +5,7 @@
  */
 package br.com.crescer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -56,6 +57,7 @@ public class Curtida implements Serializable {
     @ManyToOne(optional = false)
     private Perfil perfil;
     
+    @JsonIgnore
     @JoinColumn(name = "ID_POSTAGEM", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Postagem postagem;
@@ -83,7 +85,8 @@ public class Curtida implements Serializable {
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
     }
-
+    
+    @JsonIgnore
     public Postagem getPostagem() {
         return postagem;
     }

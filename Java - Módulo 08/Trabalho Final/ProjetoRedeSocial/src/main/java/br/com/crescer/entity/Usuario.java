@@ -5,6 +5,7 @@
  */
 package br.com.crescer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -47,7 +48,7 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL", unique = true)
     private String email;
     
     @Basic(optional = false)
@@ -56,7 +57,7 @@ public class Usuario implements Serializable {
     @Column(name = "SENHA")
     private String senha;
     
-    @JoinColumn(name = "ID_PERFIL", referencedColumnName = "ID")
+    @JoinColumn(name = "ID_PERFIL", referencedColumnName = "ID", unique = true, nullable = true)
     @OneToOne
     private Perfil perfil;
 
@@ -77,7 +78,7 @@ public class Usuario implements Serializable {
     }
 
     public String getSenha() {
-        return senha;
+        return this.senha;
     }
 
     public void setSenha(String senha) {

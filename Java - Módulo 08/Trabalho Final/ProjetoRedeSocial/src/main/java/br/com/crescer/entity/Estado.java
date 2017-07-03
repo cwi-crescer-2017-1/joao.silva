@@ -5,6 +5,7 @@
  */
 package br.com.crescer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -56,6 +57,7 @@ public class Estado implements Serializable {
     @Column(name = "PAIS")
     private String pais;
     
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estado")
     private Set<Perfil> perfilSet;
 
