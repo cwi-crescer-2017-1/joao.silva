@@ -1,0 +1,29 @@
+<div class="menu">
+    <img class="logoPrincipal" src="../img/logo.png" alt="SeedShare">
+    <h1 class="marca">SeedShare</h1>
+    <input class="inputSearch" ng-model="pesquisa" type="text" placeholder="Pesquisar perfil">
+    <button class="buttonSearch" type="button" ng-click="pesquisar()">Pesquisar</button>
+</div>    
+<div class="opcoes">
+    <div class="perfil">
+        <div class="foto"><img ng-src={{perfilCorrente.fotoUrl}} alt="Meu perfil"></div>
+        <p class="titulo">{{nomeCorrente}}</p>
+    </div>
+    <div class="amigos">
+        <img class="foto" src="../img/amigo_icone.png" alt="Meus amigos">
+        <p class="titulo">Meus amigos</p>
+    </div>
+    <div class="solicitacoes">
+        <img class="foto" src="../img/friends_icone.png" alt="Solicitações">
+        <p class="titulo">Solicitações</p>
+    </div>
+    <a class="ad" href="https://www.sosma.org.br/" target="_blank"></a>
+    <a class="ad_2" href="https://play.google.com/store/apps/details?id=br.com.appmeujardim&hl=pt_BR" target="_blank"></a>
+</div>
+<div class="ListaPosts">
+    <div class="post">
+        <div class="foto" ng-hide="isEmpty()"></div>
+        <div class="descricao">{{}}</div>
+    </div>    
+</div>    
+<div class="logo"></div>
