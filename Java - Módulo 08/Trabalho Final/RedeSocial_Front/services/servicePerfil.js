@@ -10,7 +10,11 @@ modulo.factory('servicePerfil',function($http){
         perfil.estado = estado;
         return $http.post(urlBase+'save',perfil);
     }
+    function getFilterByName(nome){
+        return $http.get(urlBase+'findByName/'+nome);
+    }
     return { 
         registrar:registrar,
+        getFilterByName:getFilterByName,
     }; 
 });
