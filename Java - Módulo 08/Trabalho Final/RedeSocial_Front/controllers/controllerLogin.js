@@ -30,17 +30,17 @@ modulo.controller('controllerLogin',['$scope','toastr','$location','authService'
         authService.login(usuarioLogin)
         .then(
             function (response) {
-            toastr.success('Logado com sucesso!');
-            model.usuario = {};
-            $location.path('/home');
+                toastr.success('Logado com sucesso!');
+                model.usuario = {};
+                $location.path('/home');
             },
             function (response) {
-            toastr.error('Erro no Login. Verifique seu usuário e senha');
+                 toastr.error('Erro no Login. Verifique seu usuário e senha');
         });
     };
     function registrar(){
         if(registroValido()){
-            serviceUsuario.registrar(model.usuario.email,model.usuario.senha).then(
+            serviceUsuario.registrar(model.usuario.username,model.usuario.password).then(
                 function (response) {
                     model.usuarioCorrente = response.data;  
                     if(typeof model.usuarioCorrente !== "undefined" && model.usuarioCorrente !== null){
@@ -49,14 +49,14 @@ modulo.controller('controllerLogin',['$scope','toastr','$location','authService'
                             function (response) {
                                 model.perfilCorrente = response.data;
                                 if(typeof model.perfilCorrente !=="undefined" && model.perfilCorrente !== null){
-                                    serviceUsuario.addPerfil(model.usuarioCorrente.id,model.usuarioCorrente.email,model.usuarioCorrente.senha,model.perfilCorrente.id,model.perfilCorrente.nome,model.perfilCorrente.sexo,model.perfilCorrente.fotoUrl,model.perfilCorrente.dataNascimento,model.perfilCorrente.estado)
+                                    serviceUsuario.addPerfil(model.usuarioCorrente.id,model.usuario.username,model.usuario.password,model.perfilCorrente)
                                     .then(
                                         function (response) {
                                             model.usuarioCorrente = response.data;
                                             toastr.success('Cadastrado com sucesso!');
-                                            let tempEmail = model.usuarioCorrente.email;
-                                            //inicializarCampos();
-                                            model.usuarioLogin.email = tempEmail;
+                                            let tempEmail = model.usuarioCorrente.username;
+                                            inicializarCampos();
+                                            model.usuarioLogin.username = tempEmail;
                                             model.registrando = false;
                                         },
                                         function (response) {
@@ -77,12 +77,12 @@ modulo.controller('controllerLogin',['$scope','toastr','$location','authService'
     function registroValido(){
         inicializaErros();
         let valido = true;
-        if(isEmpty(model.usuario.email)){
+        if(isEmpty(model.usuario.username)){
             toastr.error('Email inválido.'); 
             model.erroEmail = true;
             valido = false;
         }
-        if(isEmpty(model.usuario.senha)){
+        if(isEmpty(model.usuario.password)){
             toastr.error('Senha inválida.'); 
             model.erroSenha = true;
             valido=false;
@@ -90,9 +90,9 @@ modulo.controller('controllerLogin',['$scope','toastr','$location','authService'
             toastr.error('Confirmação de senha necessária.'); 
             model.erroConfirmacao = true;
             valido=false;
-        }else if(model.confirmacaoSenha!==model.usuario.senha){
+        }else if(model.confirmacaoSenha!==model.usuario.password){
             toastr.error('Senha e confirmação de senha não correspondem.');
-            model.erroSenhaEConfirmacao = true;
+            model.erroEConfirmacao = true;
             valido=false;
         }
         if(isEmpty(model.perfil.nome)){
@@ -128,10 +128,10 @@ modulo.controller('controllerLogin',['$scope','toastr','$location','authService'
         model.usuario = {};
         model.perfil = {};
         model.usuarioLogin = {};
-        model.usuarioLogin.email = '';
-        model.usuarioLogin.senha = '';
-        model.usuario.email = '';
-        model.usuario.senha = '';
+        model.usuarioLogin.username = '';
+        model.usuarioLogin.password = '';
+        model.usuario.username = '';
+        model.usuario.password = '';
         model.confirmacaoSenha = '';
         model.perfil.nome = '';
         model.perfil.genero = null;
