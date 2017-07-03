@@ -1,26 +1,18 @@
 modulo.factory('serviceUsuario',function($http){
     let urlBase = 'http://localhost:8080/usuarioCon/';
-    function registrar(email,senha){
+    function registrar(username,password){
         let usuario = {};
-        usuario.email = email;
-        usuario.senha = senha;
+        usuario.email = username;
+        usuario.senha = password;
         return $http.post(urlBase+'save',usuario);
     }
-    function addPerfil(id,email,senha,idPerfil,nome,genero,fotoUrl,dataNascimento,estado){
+    function addPerfil(id,username,password,perfil){
         let usuario = {};
-        let perfil = {};
         usuario.id = id;
-        usuario.email = email;
-        usuario.senha = senha;
-        perfil.id = idPerfil;
-        perfil.nome = nome;
-        perfil.genero = genero;
-        perfil.fotoUrl = fotoUrl;
-        perfil.sexo = genero;
-        perfil.dataNascimento = dataNascimento;
-        perfil.estado = estado;
+        usuario.email = username;
+        usuario.senha = password;
         usuario.perfil = perfil; 
-        return $http.post(urlBase+'save',usuario);
+        return $http.post(urlBase+'update',usuario);
     }
     return { 
         registrar:registrar,
