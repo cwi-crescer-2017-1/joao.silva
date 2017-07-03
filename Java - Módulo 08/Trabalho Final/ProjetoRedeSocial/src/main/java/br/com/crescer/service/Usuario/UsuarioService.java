@@ -5,6 +5,7 @@
  */
 package br.com.crescer.service.Usuario;
 
+import br.com.crescer.entity.Perfil;
 import br.com.crescer.entity.Usuario;
 import br.com.crescer.service.BasicService;
 

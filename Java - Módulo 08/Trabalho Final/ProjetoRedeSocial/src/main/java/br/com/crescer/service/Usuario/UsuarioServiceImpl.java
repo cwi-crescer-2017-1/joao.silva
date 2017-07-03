@@ -41,4 +41,5 @@ public class UsuarioServiceImpl implements UsuarioService{
     public Usuario findOneByEmail(String email) {
         return usuarioRepository.findOneByEmail(email);
     }
+
 }
