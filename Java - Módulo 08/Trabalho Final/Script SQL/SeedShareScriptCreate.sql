@@ -185,7 +185,8 @@ ALTER TABLE Comentario ADD CONSTRAINT FK_Comentario_Postagem FOREIGN KEY (ID_Pos
 
 ALTER TABLE Comentario ADD CONSTRAINT FK_Comentario_Perfil FOREIGN KEY (ID_Perfil) REFERENCES Perfil(ID);
 
-CREATE INDEX IX_Comentario_ID_Perfil ON Comentario(ID_PeCREATE INDEX IX_Comentario_ID_Postagem ON Comentario(ID_Postagem);
+CREATE INDEX IX_Comentario_ID_Perfil ON Comentario(ID_Perfil);
+CREATE INDEX IX_Comentario_ID_Postagem ON Comentario(ID_Postagem);
 CREATE INDEX IX_Curtida_ID_Perfil ON Curtida(ID_Perfil);
 CREATE INDEX IX_Curtida_ID_Postagem ON Curtida(ID_Postagem);
 CREATE INDEX IX_Postagem_ID_Perfil ON Postagem(ID_Perfil);
