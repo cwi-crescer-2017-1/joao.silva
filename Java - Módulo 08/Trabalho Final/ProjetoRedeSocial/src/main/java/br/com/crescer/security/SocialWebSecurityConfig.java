@@ -27,7 +27,10 @@ public class SocialWebSecurityConfig extends WebSecurityConfigurerAdapter {
     private String[] securityPublicUser;
     
     @Value("${social.security.public:/perfil/save}")
-    private String[] securityPublicPerfil;
+    private String[] securityPublicPerfil;  
+    
+    @Value("${social.security.public:/usuarioCon/update}")
+    private String[] securityPublicUsuarioPerfil;  
     
     @Autowired
     private SocialUserDetailsService userDetailsService;
@@ -49,7 +52,8 @@ public class SocialWebSecurityConfig extends WebSecurityConfigurerAdapter {
        webSecurity.ignoring()
                .antMatchers(securityPublic)
                .antMatchers(securityPublicUser)
-               .antMatchers(securityPublicPerfil);
+               .antMatchers(securityPublicPerfil)
+               .antMatchers(securityPublicUsuarioPerfil);
     }
     
     @Bean
