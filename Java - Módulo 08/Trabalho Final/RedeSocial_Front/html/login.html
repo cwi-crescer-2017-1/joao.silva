@@ -1,0 +1,50 @@
+<div class="login">
+    <div class="adSpace">
+        <div class="logo"></div>
+        <div class="ad_login">
+            <h1>SeedShare</h1>  
+            <h2>Uma rede social para quem gosta da natureza</h2>
+            <p>O SeedShare ajuda você a se conectar com outras pessoas ao redor do mundo e compartilhar seu amor pela natureza. Se junte a comunidade, divulgue suas ideias e comparilhe o conhecimento!<p>  
+        </div>    
+    </div>
+    <div class="userSpace">
+        <h1 class="adPortrait">SeedShare</h1>
+        <div class="buttonSpace">
+            <button type="button" ng-click="registrando=false" >Entrar</button>
+            <button type="button" ng-click="registrando=true" >Registrar</button>
+        </div>
+        <div class="formSpace">
+            <div class="formLogin" ng-hide="registrando">
+                <div class="inputForm">
+                    <label for=emailLogin>Digite seu email: </label>
+                    <input  ng-class="{erro : erroEmailLogin}" ng-model="usuarioLogin.email" id="emailLogin" type="text" placeholder="Ex.: usuario@email.com"><br/>
+                </div>
+                <div class="inputForm">
+                    <label for=emailLogin>Digite sua senha: </label>
+                    <input ng-class="{erro : erroSenhaLogin}" ng-model="usuarioLogin.senha" id="senhaLogin" type="password" placeholder="Ex.: 123465">
+                <button type="button" ng-click="login(usuarioLogin)">Logar</button>
+                </div>
+            </div>
+            <div class="formRegister" ng-show="registrando">
+                <input ng-class="{erro : erroEmail}" class="inputForm" ng-model="usuario.email" type="text" placeholder="Email"><required></required><br/>
+                <input ng-class="{erro : erroSenha || erroSenhaEConfirmacao}" class="inputForm" ng-model="usuario.senha" type="password" placeholder="Senha"><required></required><br/>
+                <input ng-class="{erro: erroConfirmacao || erroSenhaEConfirmacao}" class="inputForm" ng-model="confirmacaoSenha" type="password" placeholder="Confirmar Senha"><required></required><br/>
+                <input ng-class="{erro : erroNome}" class="inputForm" ng-model="perfil.nome" type="text" placeholder="Nome"><required></required><br/>
+                <input ng-class="{erro : erroFoto}" class="inputForm" ng-model="perfil.fotoUrl" type="text" placeholder="Url Foto"><br/>
+                <input ng-class="{erro : erroDataNascimento}" class="inputForm" ng-model="perfil.dataNascimento" type="date"><required></required><br/>
+                <div class="radioForm">
+                    <input class="inputRadio" type="radio" name="genero" id="masculino" ng-model="perfil.genero" value="Masculino">
+                    <label class="labelRadio" for="masculino">Masculino</label>
+                    <input class="inputRadio" type="radio" name="genero" id="feminino" ng-model="perfil.genero" value="Feminino">
+                    <label class="labelRadio" for="feminino">Feminino</label>
+                    <input class="inputRadio" type="radio" name="genero" id="outro" ng-model="perfil.genero" value="Outro">
+                    <label class="labelRadio" for="outro">Outro</label>
+                </div><required></required><br/>
+                <select class="selectForm" ng-model="perfil.estado" ng-class="{erro : erroEstado}">
+                     <option ng-repeat="estado in estados" ng-value="estado">{{estado.nome}} - {{estado.pais}}</option> 
+                </select><required></required>    
+                <button class="registerButton" type="button" ng-click="registrar()">Registrar</button>
+            </div>
+        </div>    
+    </div>
+</div>
