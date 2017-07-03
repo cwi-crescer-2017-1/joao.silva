@@ -1,11 +1,14 @@
 modulo.factory('servicePostagem',function($http,authService){
     let urlBase = 'http://localhost:8080/postagem/';
 
-    function registrar(descricao,urlImg){
+    function registrar(urlImg,descricao,perfil){
         let postagem = {};
+        console.log(urlImg);
+         console.log(descricao);
         postagem.descricao = descricao;
         postagem.urlImg = urlImg;
-        return $http.put(urlBase+'save',postagem);
+        postagem.perfil = perfil;
+        return $http.post(urlBase+'save',postagem);
     }
     function getPage(page,size){
         let usuario = {};
