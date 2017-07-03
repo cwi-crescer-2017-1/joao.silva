@@ -8,10 +8,14 @@ package br.com.crescer.service.Postagem;
 import br.com.crescer.entity.Postagem;
 import br.com.crescer.entity.Usuario;
 import br.com.crescer.repository.PostagemRepository;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,11 +34,12 @@ public class PostagemServiceImpl implements PostagemService{
     
     @Override
     public Page<Postagem> findPage(Usuario usuario,int page, int size) {
-        return postagemRepository.Postagem_findByUsuario(usuario.getId(), new PageRequest(page, size));
+        return postagemRepository.Postagem_findByUsuario(usuario.getId(), new PageRequest(page, size, new Sort(Sort.Direction.DESC, "dataPostagem")));
     }
 
     @Override
     public Postagem save(Postagem postagem) {
+        postagem.setData(new Date());
         return postagemRepository.save(postagem);
     }
 

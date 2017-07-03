@@ -31,6 +31,10 @@ public class PerfilServiceImpl implements PerfilService{
     public Page<Perfil> findPage(int page, int size) {
         return perfilRepository.findAll(new PageRequest(page, size));
     }
+    
+    public List<Perfil> findByName(String nome){
+        return perfilRepository.findByNome(nome);
+    }
 
     @Override
     public Perfil save(Perfil perfil) {
