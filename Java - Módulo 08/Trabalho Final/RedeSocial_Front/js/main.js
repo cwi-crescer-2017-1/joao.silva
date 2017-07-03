@@ -18,6 +18,15 @@ modulo.config(function ($routeProvider) {
     .otherwise({redirectTo: '/home'}); 
 }); 
 
+modulo.directive("imgback",function(){
+  return function(scope,element,attrs){
+    let url = attrs.imgback;
+    element.css({
+      'background-image': 'url(' + url +')',
+      'background-size' : '100% 100%'
+    });   
+  };
+});
 modulo.directive("required", function() {
   return {
     template: `<p style="color:red;display:inline-block;">*</p>`

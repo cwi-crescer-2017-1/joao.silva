@@ -8,6 +8,7 @@ package br.com.crescer.controller.Usuario;
 import br.com.crescer.entity.Usuario;
 import br.com.crescer.service.Usuario.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,7 @@ public class UsuarioControllerImpl implements UsuarioController{
     @Override
     @PostMapping(value = "/save")
     public Usuario save(@RequestBody Usuario usuario) {
+       usuario.setSenha(new BCryptPasswordEncoder(6).encode(usuario.getSenha())); 
        Usuario retorno = usuarioService.save(usuario); 
        if(retorno == null){ 
            throw new RuntimeException("Email já cadastrado");

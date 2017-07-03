@@ -132,6 +132,15 @@
 .ad:hover, .ad_2:hover{
     border: 7px solid rgba(192,217,217,1); 
 }
+.ListaPosts{
+    position: absolute;
+    left: 25%;
+    top: 16%;
+    width: 65%;
+    padding: 1%;
+    /*box-shadow: 3px 3px 3px 3px rgba(192,217,217,0.8);
+    border: 2px solid rgba(192,217,217,0.6);*/
+}
 .logo{
     background-image: url('../img/logo_2_120.png');
     background-repeat: no-repeat;
@@ -144,6 +153,52 @@
     left: 85%;
     bottom: 0%;
     opacity: 0.7;
+}
+.ListaPosts .post{
+    border: 2px solid rgba(192,217,217,0.6);
+    box-shadow: 5px 5px 5px rgba(192,217,217,0.8);
+    margin-bottom: 1%;
+}
+.ListaPosts .post .fotoPerfil{
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-right: 1%;    
+    display: inline-block;
+    width: 10%;
+}
+.ListaPosts .post .fotoPerfil img{
+    width: 100%;
+    height: 30%;
+    border-radius: 50%;
+    box-shadow: 3px 3px 3px rgba(192,217,217,0.8);
+}
+.ListaPosts .post .titulo{
+    display: inline-block;
+    font-family: 'Indie Flower', cursive;
+    font-size: 150%;
+}
+.ListaPosts .post .foto{
+    position: initial;
+    height: 500px;
+    width: 90%;
+    margin-bottom: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+    border-bottom: 5px solid rgba(192,217,217,0.6);
+}
+.ListaPosts .post .descricao{
+    margin-left: 5%;
+    margin-bottom: 2%;
+    font-size: 150%;
+    margin-top: 1%;
+}
+.ListaPosts .post .comentarioButton{
+    margin-left: 85%;
+    height: 5%;
+    width: auto;
+    border: 2px solid rgba(192,217,217,0.6);
+    box-shadow: 0px 5px 0px rgba(192,217,217,0.8);
 }
 @media (orientation: Portrait){
     *{

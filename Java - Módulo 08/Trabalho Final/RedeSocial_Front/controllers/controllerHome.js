@@ -1,6 +1,9 @@
 modulo.controller('controllerHome',['$scope','toastr','$location','authService','servicePostagem', function(model,toastr,$location,authService,servicePostagem){
     model.perfilCorrente = authService.getUsuario().perfil;
     model.nomeCorrente = model.perfilCorrente.nome;
+    model.verComentarios = false;
+    model.verComentarioClick = 0;
+    model.botaoComentario = "Mostrar comentários";
     let pagina = 1;
     let tamanhoPagina = 5;
     let nomeConfig = function(){
@@ -20,11 +23,23 @@ modulo.controller('controllerHome',['$scope','toastr','$location','authService',
         }
         return false;
     }
+    model.ativarDesativaComentarios = function(){
+        if(model.verComentarioClick === 0){
+            model.verComentarios = true;
+            model.verComentarioClick = 1;
+            model.botaoComentario = "Esconder comentários";
+        }else{
+            model.verComentarios = false;
+            model.verComentarioClick = 0;
+            model.botaoComentario = "Mostrar comentários";
+        }
+ 
+    }
     model.getPostagens = function(){
         servicePostagem.getPage(pagina,tamanhoPagina)
         .then(
             function (response) {
-            console.log(response.data);
+            model.postagens = response.data.content;
             },
             function (response) {
             toastr.error('Erro ao carregar as postagens');
