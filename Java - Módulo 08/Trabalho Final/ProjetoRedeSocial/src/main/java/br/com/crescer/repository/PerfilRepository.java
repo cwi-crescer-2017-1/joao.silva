@@ -6,10 +6,13 @@
 package br.com.crescer.repository;
 
 import br.com.crescer.entity.Perfil;
+import java.util.List;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * @author joao.silva
  */
 public interface PerfilRepository extends PagingAndSortingRepository<Perfil, Long>{
+
+    public List<Perfil> findByNome(String nome);
 }
