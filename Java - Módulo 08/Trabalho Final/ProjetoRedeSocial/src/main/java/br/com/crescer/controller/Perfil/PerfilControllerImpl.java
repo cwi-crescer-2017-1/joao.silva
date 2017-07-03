@@ -7,6 +7,7 @@ package br.com.crescer.controller.Perfil;
 
 import br.com.crescer.entity.Perfil;
 import br.com.crescer.service.Perfil.PerfilServiceImpl;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,4 +45,8 @@ public class PerfilControllerImpl implements PerfilController{
         return perfilService.findOne(id);
     }
     
+    @GetMapping(value = "/findByName/{nome}")
+    public List<Perfil> findByName(@PathVariable String nome){
+        return perfilService.findByName(nome);
+    }
 }
