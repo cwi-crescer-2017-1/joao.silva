@@ -12,21 +12,38 @@
         <p class="titulo">Solicitações</p>
     </div>
     <a class="ad" href="https://www.sosma.org.br/" target="_blank"></a>
-    <a class="ad_2" href="https://play.google.com/store/apps/details?id=br.com.appmeujardim&hl=pt_BR" target="_blank"></a>
 </div>
 <div class="ListaPosts">
+    <div class="novoPost">
+        <h1 class="tituloNovoPost">Faça seu post!</h1>
+        <input class="inputNovoPost" ng-model="postagemNova.fotoUrl" type="text" placeholder="Url Foto"><br/>
+        <input class="inputNovoPost" ng-model="postagemNova.texto" type="text" placeholder="Texto"><required></required><br/>
+        <button class="buttonNovoPost" type="button" ng-click="registrarPostagem()">Postar</button>
+    </div>    
     <div class="post" ng-repeat="postagem in postagens">
         <div class="fotoPerfil"><img ng-src={{postagem.perfil.fotoUrl}} alt="Perfil da postagem"></div>
-        <p class="titulo">{{postagem.perfil.nome}}</p>
+        <p class="titulo">{{postagem.perfil.nome}} - {{calculoData(postagem.data)}}</p>
         <div class="descricao">{{postagem.descricao}}</div>
         <div class='foto' ng-hide='isEmpty("{{postagem.urlImg}}")' imgback='{{postagem.urlImg}}' style= 'background-image : url("+url+"); background-size: 100% 100%'></div>   
         <button class="comentarioButton" type="button" ng-click="ativarDesativaComentarios()">{{botaoComentario}}</button>
+        <div ng-show="verComentarios" ng-repeat="comentario in postagem.comentarioSet">
+            <div class="comentario fotoComentario" ng-hide='isEmpty("{{comentario.perfil.fotoUrl}}")' imgback='{{comentario.perfil.fotoUrl}}' style= 'background-image : url("+url+"); background-size: 100% 100%'></div>
+            <div class="comentario">{{comentario.perfil.nome}}({{calculoData(comentario.data)}}): {{comentario.texto}}</div>     
+        </div>
     </div>    
 </div>    
 <div class="menu">
     <img class="logoPrincipal" src="../img/logo.png" alt="SeedShare">
     <h1 class="marca">SeedShare</h1>
-    <input class="inputSearch" ng-model="pesquisa" type="text" placeholder="Pesquisar perfil">
+    <input class="inputSearch" ng-model="pesquisaUsuario" type="text" placeholder="Pesquisar perfil">
     <button class="buttonSearch" type="button" ng-click="pesquisar()">Pesquisar</button>
+    <button ng-show="mostrarPesquisa" class="buttonSearch retirarPesquisa" type="button" ng-click="retirarPesquisa()">Retirar pesquisa</button>
 </div> 
+<div class="barraResultadoPesquisa" ng-show="mostrarPesquisa">
+    <div class="resultadoPesquisa" ng-repeat="perfil in perfisPesquisados">
+        <div class="fotoPerfilPesquisa"><img ng-src={{perfil.fotoUrl}} alt="{{perfil.nome}}"></div>
+        <p class="dadosPesquisa">Nome: {{perfil.nome}} - Estado: {{perfil.estado.nome}}/{{perfil.estado.pais}}</p>
+        <button class="buttonAddFriend" type="button" ng-click="adicionarAmigo(perfil)">Adicionar</button>
+    </div>
+</div>    
 <div class="logo"></div>
