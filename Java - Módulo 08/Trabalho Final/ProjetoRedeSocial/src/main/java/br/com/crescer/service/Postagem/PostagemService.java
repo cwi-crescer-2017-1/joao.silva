@@ -6,12 +6,18 @@
 package br.com.crescer.service.Postagem;
 
 import br.com.crescer.entity.Postagem;
-import br.com.crescer.service.LessBasicService;
+import br.com.crescer.entity.Usuario;
+import br.com.crescer.service.BasicService;
+import java.util.List;
+import org.springframework.data.domain.Page;
 
 /**
  *
  * @author joao.silva
  */
-public interface PostagemService extends LessBasicService<Postagem,Long>{
+public interface PostagemService extends BasicService<Postagem,Long>{
     
+    List<Postagem> findAll(Usuario usuario);
+    
+    Page<Postagem> findPage(Usuario usuario, int page, int size);
 }

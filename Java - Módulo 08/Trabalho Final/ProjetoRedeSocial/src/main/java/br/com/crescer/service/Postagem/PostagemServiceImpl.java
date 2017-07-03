@@ -6,6 +6,7 @@
 package br.com.crescer.service.Postagem;
 
 import br.com.crescer.entity.Postagem;
+import br.com.crescer.entity.Usuario;
 import br.com.crescer.repository.PostagemRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,13 @@ public class PostagemServiceImpl implements PostagemService{
     PostagemRepository postagemRepository;
 
     @Override
-    public List<Postagem> findAll() {
-        return (List<Postagem>) postagemRepository.findAll();
+    public List<Postagem> findAll(Usuario usuario) {
+        return (List<Postagem>) postagemRepository.Postagem_findByUsuario(usuario.getId());
     }
-
+    
     @Override
-    public Page<Postagem> findPage(int page, int size) {
-        return postagemRepository.findAll(new PageRequest(page, size));
+    public Page<Postagem> findPage(Usuario usuario,int page, int size) {
+        return postagemRepository.Postagem_findByUsuario(usuario.getId(), new PageRequest(page, size));
     }
 
     @Override
