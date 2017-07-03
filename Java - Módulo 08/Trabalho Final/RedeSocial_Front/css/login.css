@@ -1,0 +1,231 @@
+*{
+	box-sizing: border-box;
+  font-family: 'Crimson Text', serif;
+}
+body{
+  margin: 0;
+  padding: 0% 0% 0% 0%;
+  font-weight: 900;
+  font-size: 175%;
+}
+.login{
+   background: url("../img/background_login.jpg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: absolute;
+   top:0%;
+   bottom: 0%;
+   left: 0%;
+   right: 0%;
+}
+.login .userSpace{
+  background-color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  right: 0%;
+  width: 40%;
+  left: 60%;
+  top: 0%;
+  bottom: 0%;
+}
+.login .userSpace .buttonSpace{
+  position: absolute;
+  right: 15%;
+  left: 15%;
+  top: 10%;
+  bottom: 84%;
+  width: 70%;
+  height: 6%;
+  text-align: center;
+}
+.login .userSpace .buttonSpace button{
+  background: rgba(255, 255, 255, 0.0);
+  border-color: (255, 255, 255, 0.1);
+  width: 30%;
+  font-size: 3vh;
+  border: 0px;
+}
+.login .userSpace .buttonSpace button:nth-child(1){
+  margin-right: 10%;
+}
+.login .userSpace .buttonSpace button:hover{
+  box-shadow: 0 5px 0 green;
+}
+.login .adSpace .logo{
+  background: url("../img/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  position: fixed;
+  top: 0%;
+  right: 90%;
+  width: 10%;
+  height: 25%;
+  left: 0%;
+  bottom: 75%;
+}
+.login .adSpace .ad_login{
+  background-color: rgba(64, 204, 0, 0.4);
+  position: absolute;
+  left: 19%;
+  top: 10%;
+  height: 50%;
+  width: 31%;
+  bottom: 40%;
+  right: 50%;
+  padding-left: 1%;
+  border-radius: 5%;
+}
+.login .adSpace .ad_login h1{
+  font-weight: 900;
+  font-size: 175%;
+}
+.login .adSpace .ad_login h2{
+  font-weight: 700;
+  margin-top: 0%;
+  font-size: 125%;
+}
+.login .adSpace .ad_login p{
+  padding-top: 5%;
+  font-weight: 600;
+  font-size: 100%;
+}
+.login .userSpace .adPortrait{
+  text-align: center;
+  color: green;
+  font-weight: 900;
+  display: none;
+}
+.login .formSpace{
+  position: absolute;
+  top: 18%;
+  bottom: 12%;
+  left: 15%;
+  right: 15%;
+  width: 70%;
+  height: 70%;
+  border: 2px solid green;
+  border-radius: 10%;
+}
+.login .formSpace button{
+  position: absolute;
+  top: 82%;
+  bottom: 10%;
+  left: 30%;
+  width: 40%;
+  height: 8%;
+  font-size: 100%;
+  box-shadow: 0 5px 0 green;
+  background: rgba(255, 255, 255, 0.5);
+  border-bottom: 2% solid green;
+}
+.login .formSpace button:active{
+  top: 83%;
+  box-shadow:none;
+  border:0px;
+}
+.login .formSpace .inputForm{
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  font-size: 100%;
+}
+.login .formSpace .inputForm input{
+  width: 100%;
+  border: 0px;
+  background: rgba(255, 255, 255, 0.7);
+}
+.login .formSpace .formRegister{
+  padding-top: 5%;
+  font-size: 100%;
+}
+.login .formSpace .formRegister .inputForm{
+  width: 75%;
+  border: 0px;
+  margin-right: 0%;
+  background: rgba(255, 255, 255, 0.7);
+  margin-top: 2%;
+}
+.login .formSpace .formRegister .radioForm{
+  margin-top: 2%;
+  margin-left: 7%;
+  width: 75%;
+  margin-right: 3%;
+  color: black;
+  display: inline-block;
+  font-size: 85%;
+}
+.login .formSpace .formRegister .radioForm .inputRadio{
+  margin-left: 5%;
+  margin-top: 2%;
+}
+.login .formSpace .formRegister .radioForm .labelRadio:hover{
+  color: green;
+}
+.login .formSpace .formRegister .selectForm{
+  font-size: 100%;
+  margin-left: 10%;
+  margin-right: 0%;
+  width: 75%;
+  background: rgba(255, 255, 255, 0.7);
+  border: 0px;
+}
+.login .formSpace .formRegister .registerButton{
+  margin-top: 8%;
+}
+.login .formSpace .formRegister .registerButton:active{
+  margin-top: 8%;
+}
+@media (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2){
+    *{
+      font-size: 95%;
+    }
+}
+@media (min-aspect-ratio: 3/1){
+    *{
+      font-size: 90%;
+    }
+    .login .formSpace{
+      height: 80%;
+    }
+    .login .formSpace .formRegister .registerButton{
+      margin-top: 5%;
+    }
+    .login .formSpace .formRegister .registerButton:active{
+      margin-top: 3%;
+    }
+}
+@media (max-height:600px){
+   *{
+      font-size: 90%;
+    }
+}
+@media (max-height:300px){
+   *{
+      font-size: 80%;
+    }
+}
+@media (max-height:200px){
+   *{
+      font-size: 70%;
+    }
+}
+@media (orientation: Portrait){
+  	.login .userSpace{
+      right: 0%;
+      width: 100%;
+      left: 0%;
+      top: 0%;
+      bottom: 0%;
+    }
+    .login .userSpace .adPortrait{
+      display: block;
+    }
+    .login .adSpace .ad_login{
+      display:none;
+    }
+}
+.erro{
+  border: 2px solid red !important; 
+}

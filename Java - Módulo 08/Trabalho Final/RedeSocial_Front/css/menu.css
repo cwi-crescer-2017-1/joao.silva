@@ -1,0 +1,166 @@
+.menu{
+    position: fixed;
+    top: 0%;
+    height: 15%;
+    bottom: 85%;
+    right: 0%;
+    left: 0%;
+    width: 100%;
+    padding-left: 20%;
+    padding-top: 0%;
+    background-color:  rgba(144, 184, 19, 1);
+}
+.menu .inputSearch{
+    display: inline-block;
+    margin-left: 60%;
+}
+.menu .marca{
+    display: inline-block;
+    font-family: 'Indie Flower', cursive;
+    text-decoration: underline;
+    text-decoration-style: wavy; 
+    font-weight: 900;
+    font-size: 300%;    
+}
+.menu .inputSearch{
+    position: absolute;
+    border: 0px;
+    border-radius: 5%/25%;
+    width: 25%;
+    padding-left: 1%;
+    top: 40%;
+    height: 25%;
+    font-size: 150%;
+    right: 20%;
+}
+.menu .buttonSearch{
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    padding-top: 0%;
+    text-align: center;
+    border-radius: 5%;
+    width: 7%;
+    padding-left: 0.5%;
+    top: 38%;
+    height: 30%;
+    font-size: 125%;
+    right: 12%;
+    box-shadow: 0px 3px 0px green;
+}
+.menu .buttonSearch:active{
+    top: 40%;
+    box-shadow:none;
+}
+.menu .logoPrincipal{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+}
+.perfil, .amigos, .solicitacoes, .ad, .ad_2{
+    background-color: white;
+    position: fixed;
+    height: 15%;
+    width: 15%;
+    left: 2%;
+    border-left: 3px solid rgba(192,217,217,0.6);  
+    border-right: 3px solid rgba(192,217,217,0.6);  
+    box-shadow: 5px 5px 5px rgba(192,217,217,0.8);
+}
+.perfil{
+    border-top: 3px solid rgba(192,217,217,0.6);   
+    top: 18%;
+    overflow: hidden;
+}
+.amigos, .solicitacoes, .perfil{
+    padding-top: 1%;
+    padding-left: 0.5%;
+}
+.amigos{
+    top: 33%;
+}
+.solicitacoes{
+    top: 48%;
+}
+.ad, .ad_2{
+    background-size:100% 100%;
+    border-bottom: 3px solid rgba(192,217,217,0.6); 
+}
+.ad{
+    top:64%;
+    background-image: url('../img/sos-mata-atlantica.jpg');
+}
+.ad_2{
+    top:80%;
+    background-image: url('../img/meujardim.jpg');
+}
+.perfil .foto{
+    margin-left: 0%;
+    margin-top: 0%;
+    width: 35%;
+    height: 90%;
+    border-radius: 50%;
+    box-shadow: 3px 3px 3px rgba(192,217,217,0.8);
+    display: inline-block;
+}
+.perfil .foto img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.perfil .titulo{
+    display: inline-block;
+    font-family: 'Indie Flower', cursive;
+    font-size: 150%;
+    margin-left: 5%;
+}
+.perfil:hover, .amigos:hover, .solicitacoes:hover{
+    background-color: rgba(192,217,217,0.6);
+    border: 5px solid rgba(192,217,217,1);
+}
+.amigos .foto, .solicitacoes .foto{
+    width: 35%;
+    height: 90%;
+}
+.amigos .titulo, .solicitacoes .titulo{
+    display: inline-block;
+    font-family: 'Indie Flower', cursive;
+    font-size: 150%;
+    margin-left: 5%;
+}
+.ad:hover, .ad_2:hover{
+    border: 7px solid rgba(192,217,217,1); 
+}
+.logo{
+    background-image: url('../img/logo_2_120.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top:75%;
+    right: 0%;
+    height: 25%;
+    width: 12%;
+    left: 85%;
+    bottom: 0%;
+    opacity: 0.7;
+}
+@media (orientation: Portrait){
+    *{
+        font-size: 90%;
+    }
+  	.logo{
+      display: none;
+    }
+    .menu .buttonSearch{
+        width: 10%;
+        right: 8%;
+    }
+    .menu .marca{
+        margin-top: 7%;
+        margin-left: 7%;
+    }
+    .menu{
+        padding-left: 10%;
+    }
+}
