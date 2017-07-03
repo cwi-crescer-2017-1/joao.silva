@@ -6,7 +6,10 @@
 package br.com.crescer.repository;
 
 import br.com.crescer.entity.Usuario;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  * @author joao.silva
