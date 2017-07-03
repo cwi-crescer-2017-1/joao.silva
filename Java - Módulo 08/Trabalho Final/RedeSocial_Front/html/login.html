@@ -17,17 +17,17 @@
             <div class="formLogin" ng-hide="registrando">
                 <div class="inputForm">
                     <label for=emailLogin>Digite seu email: </label>
-                    <input  ng-class="{erro : erroEmailLogin}" ng-model="usuarioLogin.email" id="emailLogin" type="text" placeholder="Ex.: usuario@email.com"><br/>
+                    <input  ng-class="{erro : erroEmailLogin}" ng-model="usuarioLogin.username" id="emailLogin" type="text" placeholder="Ex.: usuario@email.com"><br/>
                 </div>
                 <div class="inputForm">
                     <label for=emailLogin>Digite sua senha: </label>
-                    <input ng-class="{erro : erroSenhaLogin}" ng-model="usuarioLogin.senha" id="senhaLogin" type="password" placeholder="Ex.: 123465">
+                    <input ng-class="{erro : erroSenhaLogin}" ng-model="usuarioLogin.password" id="senhaLogin" type="password" placeholder="Ex.: 123465">
                 <button type="button" ng-click="login(usuarioLogin)">Logar</button>
                 </div>
             </div>
             <div class="formRegister" ng-show="registrando">
-                <input ng-class="{erro : erroEmail}" class="inputForm" ng-model="usuario.email" type="text" placeholder="Email"><required></required><br/>
-                <input ng-class="{erro : erroSenha || erroSenhaEConfirmacao}" class="inputForm" ng-model="usuario.senha" type="password" placeholder="Senha"><required></required><br/>
+                <input ng-class="{erro : erroEmail}" class="inputForm" ng-model="usuario.username" type="text" placeholder="Email"><required></required><br/>
+                <input ng-class="{erro : erroSenha || erroSenhaEConfirmacao}" class="inputForm" ng-model="usuario.password" type="password" placeholder="Senha"><required></required><br/>
                 <input ng-class="{erro: erroConfirmacao || erroSenhaEConfirmacao}" class="inputForm" ng-model="confirmacaoSenha" type="password" placeholder="Confirmar Senha"><required></required><br/>
                 <input ng-class="{erro : erroNome}" class="inputForm" ng-model="perfil.nome" type="text" placeholder="Nome"><required></required><br/>
                 <input ng-class="{erro : erroFoto}" class="inputForm" ng-model="perfil.fotoUrl" type="text" placeholder="Url Foto"><br/>
