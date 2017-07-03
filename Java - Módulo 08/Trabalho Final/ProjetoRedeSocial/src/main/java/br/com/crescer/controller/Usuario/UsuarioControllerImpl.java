@@ -30,14 +30,21 @@ public class UsuarioControllerImpl implements UsuarioController{
     @Override
     @PostMapping(value = "/save")
     public Usuario save(@RequestBody Usuario usuario) {
-       usuario.setSenha(new BCryptPasswordEncoder(6).encode(usuario.getSenha())); 
+       usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha())); 
        Usuario retorno = usuarioService.save(usuario); 
-       if(retorno == null){ 
+       if(retorno == null){
            throw new RuntimeException("Email já cadastrado");
        }else{
            return retorno;
        }
        
+    }
+
+    @PostMapping(value = "/update")
+    public Usuario update(@RequestBody Usuario usuario) {
+       Usuario atual = usuarioService.findOne(usuario.getId());
+       usuario.setSenha(atual.getSenha());
+       return usuarioService.save(usuario);   
     }
     
     @Override
