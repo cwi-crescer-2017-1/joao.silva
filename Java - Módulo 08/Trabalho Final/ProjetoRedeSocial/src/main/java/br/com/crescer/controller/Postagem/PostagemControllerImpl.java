@@ -52,7 +52,7 @@ public class PostagemControllerImpl implements PostagemController{
     public void delete(@RequestBody Postagem e) {
         postagemService.delete(e);
     }
-
+    
     @Override
     @GetMapping(value = "/findOne/{id}")
     public Postagem findOne(@PathVariable Long id) {
