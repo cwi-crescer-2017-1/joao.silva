@@ -26,11 +26,11 @@
                 </div>
             </div>
             <div class="formRegister" ng-show="registrando">
-                <input ng-class="{erro : erroEmail}" class="inputForm" ng-model="usuario.username" type="text" placeholder="Email"><required></required><br/>
-                <input ng-class="{erro : erroSenha || erroSenhaEConfirmacao}" class="inputForm" ng-model="usuario.password" type="password" placeholder="Senha"><required></required><br/>
-                <input ng-class="{erro: erroConfirmacao || erroSenhaEConfirmacao}" class="inputForm" ng-model="confirmacaoSenha" type="password" placeholder="Confirmar Senha"><required></required><br/>
-                <input ng-class="{erro : erroNome}" class="inputForm" ng-model="perfil.nome" type="text" placeholder="Nome"><required></required><br/>
-                <input ng-class="{erro : erroFoto}" class="inputForm" ng-model="perfil.fotoUrl" type="text" placeholder="Url Foto"><br/>
+                <input ng-class="{erro : erroEmail}" class="inputForm" ng-model="usuario.username" maxlength="50" type="text" placeholder="Email"><required></required><br/>
+                <input ng-class="{erro : erroSenha || erroSenhaEConfirmacao}" class="inputForm" maxlength="300" ng-model="usuario.password" type="password" placeholder="Senha"><required></required><br/>
+                <input ng-class="{erro: erroConfirmacao || erroSenhaEConfirmacao}" class="inputForm" maxlength="300" ng-model="confirmacaoSenha" type="password" placeholder="Confirmar Senha"><required></required><br/>
+                <input ng-class="{erro : erroNome}" class="inputForm" ng-model="perfil.nome" type="text" maxlength="50" placeholder="Nome"><required></required><br/>
+                <input ng-class="{erro : erroFoto}" class="inputForm" ng-model="perfil.fotoUrl" type="text" maxlength="1800" placeholder="Url Foto"><br/>
                 <input ng-class="{erro : erroDataNascimento}" class="inputForm" ng-model="perfil.dataNascimento" type="date"><required></required><br/>
                 <div class="radioForm">
                     <input class="inputRadio" type="radio" name="genero" id="masculino" ng-model="perfil.genero" value="Masculino">

@@ -1,23 +1,23 @@
 <div class="opcoes">
-    <div class="perfil">
+    <div class="perfil" ng-click="trocarTela('ListaPosts')">
         <div class="foto"><img ng-src={{perfilCorrente.fotoUrl}} alt="Meu perfil"></div>
         <p class="titulo">{{nomeCorrente}}</p>
     </div>
-    <div class="amigos">
+    <div class="amigos" ng-click="trocarTela('ListaDeAmigos')">
         <img class="foto" src="../img/amigo_icone.png" alt="Meus amigos">
         <p class="titulo">Meus amigos</p>
     </div>
-    <div class="solicitacoes">
+    <div class="solicitacoes" ng-click="trocarTela('Solicitacoes')">
         <img class="foto" src="../img/friends_icone.png" alt="Solicitações">
         <p class="titulo">Solicitações</p>
     </div>
     <a class="ad" href="https://www.sosma.org.br/" target="_blank"></a>
 </div>
-<div class="ListaPosts">
+<div class="ListaPosts" ng-show="tela('ListaPosts')">
     <div class="novoPost">
         <h1 class="tituloNovoPost">Faça seu post!</h1>
-        <input class="inputNovoPost" ng-model="postagemNova.fotoUrl" type="text" placeholder="Url Foto"><br/>
-        <input class="inputNovoPost" ng-model="postagemNova.texto" type="text" placeholder="Texto"><required></required><br/>
+        <input class="inputNovoPost" ng-model="postagemNova.fotoUrl" type="text" max="9990" placeholder="Url Foto"><br/>
+        <input class="inputNovoPost" ng-model="postagemNova.texto" type="text" min="1" max="490" placeholder="Texto"><required></required><br/>
         <button class="buttonNovoPost" type="button" ng-click="registrarPostagem()">Postar</button>
     </div>    
     <div class="post" ng-repeat="postagem in postagens">
@@ -25,25 +25,64 @@
         <p class="titulo">{{postagem.perfil.nome}} - {{calculoData(postagem.data)}}</p>
         <div class="descricao">{{postagem.descricao}}</div>
         <div class='foto' ng-hide='isEmpty("{{postagem.urlImg}}")' imgback='{{postagem.urlImg}}' style= 'background-image : url("+url+"); background-size: 100% 100%'></div>   
-        <button class="comentarioButton" type="button" ng-click="ativarDesativaComentarios()">{{botaoComentario}}</button>
-        <div ng-show="verComentarios" ng-repeat="comentario in postagem.comentarioSet">
-            <div class="comentario fotoComentario" ng-hide='isEmpty("{{comentario.perfil.fotoUrl}}")' imgback='{{comentario.perfil.fotoUrl}}' style= 'background-image : url("+url+"); background-size: 100% 100%'></div>
-            <div class="comentario">{{comentario.perfil.nome}}({{calculoData(comentario.data)}}): {{comentario.texto}}</div>     
+        <div class="areaParaComentar">
+            <input class="inputNovoComentario" ng-model="comentarioNovo" type="text" min="1" max="300" placeholder="Digite seu comentário...">
+            <button class="buttonNovoComentario" type="button" ng-click="comentar(postagem,comentarioNovo)">Comentar</button>
         </div>
-    </div>    
-</div>    
+        <button class="curtirButton" ng-hide="postagem.curtida" type="button" ng-click="curtir(postagem)">Curtir</button>
+        <button class="descurtirButton" ng-show="postagem.curtida" type="button" ng-click="descurtir(postagem)">Descurtir</button>
+        <button class="comentarioButton" type="button" ng-click="ativarDesativaComentarios()">{{botaoComentario}}</button>
+        <div ng-show="verComentarios" class="campoComentario">
+            <div ng-repeat="comentario in postagem.comentarioSet">
+                <div class="comentario fotoComentario" ng-hide='isEmpty("{{comentario.perfil.fotoUrl}}")' imgback='{{comentario.perfil.fotoUrl}}' style= 'background-image : url("+url+"); background-size: 100% 100%'></div>
+                <div class="comentario">{{comentario.perfil.nome}}: {{comentario.texto}}</div>     
+            </div>
+        </div>
+    </div>  
+    <button class="CarregarMaisPostagens" type="button" ng-hide="paginaFinal" ng-click="carregarMaisPostagens()">Carregar mais postagens</button> 
+    <button class="CarregarMaisPostagens PaginaFinal" type="button" ng-show="paginaFinal" ng-click="carregarMaisPostagens()">Página Final</button>
+</div>   
+<div class="EdicaoPerfil" ng-show="tela('EdicaoPerfil')">
+</div>
+<div class="ListaDeAmigos" ng-show="tela('ListaDeAmigos')">
+    <div class="Amigo" ng-repeat="perfil in amigos">
+        <img class="foto" ng-src="{{perfil.fotoUrl}}"  alt="{{perfil.nome}}">
+        <p class="nome">{{perfil.nome}}</p><br/>
+        <p class="nomeEstado">{{perfil.estado.nome}}/{{perfil.estado.pais}}</p>
+        <button ng-show="perfil.isFriend && !perfil.pendingRequest && !perfil.isRequested" class="buttonRmvFriend" type="button" ng-click="removerAmigo(perfil)">Desfazer amizade</button>
+    </div>
+</div>
+<div class="Solicitacoes" ng-show="tela('Solicitacoes')">
+    <div class="SolicitacoesRecebidas" ng-repeat="perfil in solicitacoesRecebidas">
+        <img class="foto" ng-src="{{perfil.fotoUrl}}"  alt="{{perfil.nome}}">
+        <p class="nome">{{perfil.nome}}</p><br/>
+        <p class="nomeEstado">{{perfil.estado.nome}}/{{perfil.estado.pais}}</p>
+        <button ng-show="perfil.isRequested && !perfil.isFriend && !perfil.pendingRequest" class="buttonAcceptFriend" type="button" ng-click="aceitarSolicitacao(perfil,true)">Aceitar solicitação</button>
+    </div>
+    <div class="SolicitacoesEnviadas" ng-repeat="perfil in solicitacoesPendentes">
+        <img class="foto" ng-src="{{perfil.fotoUrl}}"  alt="{{perfil.nome}}">
+        <p class="nome">{{perfil.nome}}</p><br/>
+        <p class="nomeEstado">{{perfil.estado.nome}}/{{perfil.estado.pais}} - Sexo: {{perfil.sexo}} - Data de Nascimento: {{converterHoras(perfil.dataNascimento)}}</p>
+        <div ng-show="perfil.pendingRequest && !perfil.isRequested && !perfil.isFriend" class="solicitacaoPendente">Solicitação pendente</div>
+    </div>
+</div>          
 <div class="menu">
     <img class="logoPrincipal" src="../img/logo.png" alt="SeedShare">
     <h1 class="marca">SeedShare</h1>
     <input class="inputSearch" ng-model="pesquisaUsuario" type="text" placeholder="Pesquisar perfil">
     <button class="buttonSearch" type="button" ng-click="pesquisar()">Pesquisar</button>
+    <button class="buttonLogout" type="button" ng-click="logout()">Logout</button>
     <button ng-show="mostrarPesquisa" class="buttonSearch retirarPesquisa" type="button" ng-click="retirarPesquisa()">Retirar pesquisa</button>
 </div> 
 <div class="barraResultadoPesquisa" ng-show="mostrarPesquisa">
     <div class="resultadoPesquisa" ng-repeat="perfil in perfisPesquisados">
         <div class="fotoPerfilPesquisa"><img ng-src={{perfil.fotoUrl}} alt="{{perfil.nome}}"></div>
         <p class="dadosPesquisa">Nome: {{perfil.nome}} - Estado: {{perfil.estado.nome}}/{{perfil.estado.pais}}</p>
-        <button class="buttonAddFriend" type="button" ng-click="adicionarAmigo(perfil)">Adicionar</button>
+        <!--<button class="buttonViewFriend" type="button" ng-click="verPerfil(perfil)">Ver perfil</button>-->
+        <div ng-show="perfil.pendingRequest && !perfil.isRequested && !perfil.isFriend" class="solicitacaoPendente">Solicitação pendente</div>
+        <button ng-show="perfil.isRequested && !perfil.isFriend && !perfil.pendingRequest" class="buttonAcceptFriend" type="button" ng-click="aceitarSolicitacao(perfil,true)">Aceitar solicitação</button>
+        <button ng-show="!perfil.pendingRequest && !perfil.isFriend && !perfil.isRequested" class="buttonAddFriend" type="button" ng-click="solicitarAmigo(perfil)">Solicitar amizade</button>
+        <button ng-show="perfil.isFriend && !perfil.pendingRequest && !perfil.isRequested" class="buttonRmvFriend" type="button" ng-click="removerAmigo(perfil)">Desfazer amizade</button>
     </div>
 </div>    
 <div class="logo"></div>
