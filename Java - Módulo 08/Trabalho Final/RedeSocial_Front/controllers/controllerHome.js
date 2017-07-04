@@ -23,8 +23,8 @@ modulo.controller('controllerHome',['$scope','toastr','$location','authService',
 
     let nomeConfig = function(){
         let nome = model.perfilCorrente.nome;
-        if(nome.length>13){
-             let excesso = nome.length-13;
+        if(nome.length>9){
+             let excesso = nome.length-9;
              model.nomeCorrente = nome.substr(0,(nome.length-excesso));
              model.nomeCorrente = model.nomeCorrente.concat("...");
         }
@@ -45,7 +45,7 @@ modulo.controller('controllerHome',['$scope','toastr','$location','authService',
                         toastr.error('Erro ao pesquisar por usuários!');
                     });
         }else{
-            toastr.warning('Necessário inserir nome para pesquisa!');
+            //toastr.warning('Necessário inserir nome para pesquisa!');
         }
     }
     model.retirarPesquisa = function(){
@@ -159,6 +159,7 @@ modulo.controller('controllerHome',['$scope','toastr','$location','authService',
             function(response){
                 toastr.success('Removido com sucesso!');
                 model.pesquisar(model.pesquisaUsuario);
+                location.reload();
             },
             function(response){
                 toastr.error('Erro ocorrido ao remover o usuário!');
