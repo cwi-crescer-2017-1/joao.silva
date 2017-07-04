@@ -13,5 +13,6 @@ import br.com.crescer.service.LessBasicService;
  * @author joao.silva
  */
 public interface CurtidaService extends LessBasicService<Curtida,Long> {
-    
+    void remove(Long idPostagem, Long idPerfil);
+    Curtida save(Curtida curtida, Long idPostagem);
 }

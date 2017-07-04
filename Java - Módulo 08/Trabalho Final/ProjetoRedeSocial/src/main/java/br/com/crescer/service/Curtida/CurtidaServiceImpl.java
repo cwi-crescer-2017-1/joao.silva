@@ -6,7 +6,10 @@
 package br.com.crescer.service.Curtida;
 
 import br.com.crescer.entity.Curtida;
+import br.com.crescer.entity.Postagem;
 import br.com.crescer.repository.CurtidaRepository;
+import br.com.crescer.repository.PostagemRepository;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +25,9 @@ public class CurtidaServiceImpl implements CurtidaService{
     @Autowired
     CurtidaRepository curtidaRepository;
 
+    @Autowired
+    PostagemRepository postagemRepository;
+    
     @Override
     public List<Curtida> findAll() {
         return (List<Curtida>) curtidaRepository.findAll();
@@ -32,8 +38,19 @@ public class CurtidaServiceImpl implements CurtidaService{
         return curtidaRepository.findAll(new PageRequest(page, size));
     }
 
+    /**
+     *
+     * @param curtida
+     * @param idPostagem
+     * @return
+     */
     @Override
-    public Curtida save(Curtida curtida) {
+    public Curtida save(Curtida curtida, Long idPostagem) {
+        Curtida curtidaExistente = curtidaRepository.Curtida_findByIdPostagemAndIdPerfil(idPostagem, curtida.getPerfil().getId());
+        if(curtidaExistente!=null){return curtidaExistente;}
+        Postagem postagem = postagemRepository.findOne(idPostagem);
+        curtida.setPostagem(postagem);
+        curtida.setData(new Date());
         return curtidaRepository.save(curtida);
     }
 
@@ -41,9 +58,19 @@ public class CurtidaServiceImpl implements CurtidaService{
     public void delete(Curtida curtida) {
         curtidaRepository.delete(curtida);
     }
+    
+    @Override
+    public void remove(Long idPostagem, Long idPerfil){
+        curtidaRepository.remove(idPostagem, idPerfil);
+    }
 
     @Override
     public Curtida findOne(Long id) {
         return curtidaRepository.findOne(id);          
+    }
+
+    @Override
+    public Curtida save(Curtida e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
