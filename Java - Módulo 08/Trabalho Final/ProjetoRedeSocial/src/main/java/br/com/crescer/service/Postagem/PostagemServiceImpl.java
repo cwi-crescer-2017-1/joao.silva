@@ -32,11 +32,26 @@ public class PostagemServiceImpl implements PostagemService{
         return (List<Postagem>) postagemRepository.Postagem_findByUsuario(usuario.getId());
     }
     
+    public List<Postagem> findAllCurtidasByUsuario(Long idUsuario){
+        return postagemRepository.Postagem_findAllCurtidasByUsuario(idUsuario);
+    }
+    
     @Override
     public Page<Postagem> findPage(Usuario usuario,int page, int size) {
-        return postagemRepository.Postagem_findByUsuario(usuario.getId(), new PageRequest(page, size, new Sort(Sort.Direction.DESC, "dataPostagem")));
+        Page<Postagem> postagens = postagemRepository.Postagem_findByUsuario(usuario.getId(), new PageRequest(page, size, new Sort(Sort.Direction.DESC, "dataPostagem")));
+        List<Postagem> postagensCurtidas = postagemRepository.Postagem_findAllCurtidasByUsuario(usuario.getPerfil().getId());
+        for(Postagem p : postagens){
+            for(Postagem pc : postagensCurtidas){
+                if(p.getId().longValue() == pc.getId().longValue()){
+                    p.setCurtida(Boolean.TRUE);
+                    break;
+                }else{
+                    p.setCurtida(Boolean.FALSE);
+                }
+            }
+        }
+        return postagens;
     }
-
     @Override
     public Postagem save(Postagem postagem) {
         postagem.setData(new Date());
