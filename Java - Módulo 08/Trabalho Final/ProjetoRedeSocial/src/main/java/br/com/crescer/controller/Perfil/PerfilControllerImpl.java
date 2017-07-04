@@ -45,8 +45,20 @@ public class PerfilControllerImpl implements PerfilController{
         return perfilService.findOne(id);
     }
     
+    @Override
     @GetMapping(value = "/findByName/{nome}")
     public List<Perfil> findByName(@PathVariable String nome){
         return perfilService.findByName(nome);
+    }
+    
+    @Override
+    @GetMapping(value = "/findByName/WithFriendship/{idPerfil}/{nome}")
+    public List<Perfil> findByNameWithFriendship(@PathVariable Long idPerfil,@PathVariable String nome){
+        return perfilService.findByNameWithFriendship(idPerfil, nome);
+    }
+    @Override
+    @GetMapping(value = "/findAll/WithRelation/{idPerfil}")
+    public List<Perfil> fiendPeopleWithRelation(@PathVariable Long idPerfil){
+        return perfilService.fiendPeopleWithRelation(idPerfil);
     }
 }
