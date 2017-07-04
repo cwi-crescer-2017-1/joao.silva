@@ -6,7 +6,7 @@ body{
   margin: 0;
   padding: 0% 0% 0% 0%;
   font-weight: 900;
-  font-size: 175%;
+  font-size: 180%;
 }
 .login{
    background: url("../img/background_login.jpg");
@@ -225,7 +225,4 @@ body{
     .login .adSpace .ad_login{
       display:none;
     }
-}
-.erro{
-  border: 2px solid red !important; 
 }

@@ -50,6 +50,22 @@
     border: 2px solid rgba(192,217,217,0.6);  
     box-shadow: 0px 2px 2px rgba(192,217,217,0.8);
 }
+.menu .buttonLogout{
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    padding-top: 0%;
+    text-align: center;
+    border-radius: 5%;
+    width: 8%;
+    padding-left: 0.5%;
+    top: 38%;
+    height: 36%;
+    font-size: 125%;
+    right: 2%;
+    border: 2px solid rgba(192,217,217,0.6);  
+    box-shadow: 0px 2px 2px rgba(192,217,217,0.8);
+}
 .menu .buttonSearch.retirarPesquisa{
     right: 1%;
     width: 10%;
@@ -140,7 +156,7 @@
 .ad:hover, .ad_2:hover{
     border: 7px solid rgba(192,217,217,1); 
 }
-.ListaPosts{
+.ListaPosts, .EdicaoPerfil, .ListaDeAmigos, .Solicitacoes{
     position: absolute;
     left: 25%;
     top: 16%;
@@ -148,6 +164,11 @@
     padding: 1%;
     /*box-shadow: 3px 3px 3px 3px rgba(192,217,217,0.8);
     border: 2px solid rgba(192,217,217,0.6);*/
+}
+.EdicaoPerfil, .ListaDeAmigos, .Solicitacoes{
+    box-shadow: 3px 3px 3px 3px rgba(192,217,217,0.8);
+    border: 2px solid rgba(192,217,217,0.6);
+    margin-top: 1%;
 }
 .logo{
     background-image: url('../img/logo_2_120.png');
@@ -165,7 +186,7 @@
 .ListaPosts .post{
     border: 2px solid rgba(192,217,217,0.6);
     box-shadow: 5px 5px 5px rgba(192,217,217,0.8);
-    margin-bottom: 1%;
+    width: 100%;
 }
 .ListaPosts .post .fotoPerfil{
     margin-left: 2%;
@@ -183,7 +204,7 @@
 .ListaPosts .post .titulo{
     display: inline-block;
     font-family: 'Indie Flower', cursive;
-    font-size: 95%;
+    font-size: 110%;
     margin-left: 2%;
     width: auto;
 }
@@ -200,11 +221,10 @@
 .ListaPosts .post .descricao{
     margin-left: 5%;
     margin-bottom: 2%;
-    font-size: 100%;
+    font-size: 110%;
     margin-top: 1%;
 }
 .ListaPosts .post .comentarioButton{
-    margin-left: 70%;
     height: auto;
     width: auto;
     text-align: center;
@@ -212,6 +232,11 @@
     border: 3px solid rgba(192,217,217,0.6);
     box-shadow: 0px 5px 0px rgba(192,217,217,0.8);
     background-color: white;
+    margin-left: 57%;
+}
+.ListaPosts .post .campoComentario{
+    max-height: 250px;
+    overflow-y: auto; 
 }
 .ListaPosts .post .comentario{
     margin-left: 5%;
@@ -220,11 +245,12 @@
     height: auto;
     width: auto;
     font-family: 'Indie Flower', cursive;
-    font-size: 95%;
+    font-size: 110%;
     box-shadow: 0px 3px 0px rgba(192,217,217,0.8);
     border: 2px solid rgba(192,217,217,0.6);
     margin-bottom: 1%;
     background-color: rgba(192,217,217,0.6);
+    overflow-y: auto;
 }
 .ListaPosts .post .fotoComentario{
     position: initial;
@@ -237,6 +263,26 @@
     margin-top: 1%;
     border-bottom: 5px solid rgba(192,217,217,0.6);
     border: 2px solid rgba(192,217,217,0.6);
+}
+.ListaPosts .post .curtirButton, .ListaPosts .post .descurtirButton{
+    margin-left: 1%;
+    height: auto;
+    width: auto;
+    text-align: center;
+    margin-bottom: 1%;
+    border: 3px solid rgba(192,217,217,0.6);
+    box-shadow: 0px 5px 0px rgba(192,217,217,0.8);
+    background-color: white;
+}
+.ListaPosts .post .curtirButton{
+    margin-right: 3.4%;
+}
+.ListaPosts .post {
+    margin-bottom: 3px;
+    margin-top: 50px;
+    border: 3px solid rgba(192,217,217,0.6);
+    background-color: white;
+    display: inline-block;
 }
 .novoPost{
     box-shadow: 5px 5px 5px rgba(192,217,217,0.8);
@@ -260,9 +306,9 @@
 }
 .novoPost .buttonNovoPost{
     margin-bottom: 3px;
-    margin-left: 85%;
     border: 3px solid rgba(192,217,217,0.6);
     background-color: white;
+    display: inline-block;
 }
 .novoPost .buttonNovoPost:active{
     border:0px;
@@ -294,16 +340,153 @@
 }
 .barraResultadoPesquisa .resultadoPesquisa .buttonAddFriend{
     margin-bottom: 3px;
-    margin-left: 70%;
+    margin-left: 0%;
+    margin-right: 5%;
     border: 3px solid rgba(192,217,217,0.6);
-    background-color: white;
-}
-.barraResultadoPesquisa .resultadoPesquisa .buttonAddFriend:active{
     background-color: #00FF00;
+    width: 40%;
+    text-align: center;
+    font-size: 80%;
+    display: inline-block;
+}
+.barraResultadoPesquisa .resultadoPesquisa .buttonRmvFriend{
+    margin-bottom: 3px;
+    margin-left: 0%;
+    margin-right: 5%;
+    border: 3px solid rgba(192,217,217,0.6);
+    background-color: red;
+    width: 40%;
+    font-size: 80%;
+    text-align: center;
+    display: inline-block;
+}
+.barraResultadoPesquisa .resultadoPesquisa .solicitacaoPendente{
+    margin-bottom: 3px;
+    margin-left: 0%;
+    margin-right: 5%;
+    border: 3px solid rgba(192,217,217,0.6);
+    background-color: yellow;
+    width: 40%;
+    font-size: 80%;
+    text-align: center;
+    display: inline-block;
+}
+.barraResultadoPesquisa .resultadoPesquisa .buttonAcceptFriend{
+    margin-bottom: 3px;
+    margin-right: 5%;
+    margin-left: 0%;
+    border: 3px solid rgba(192,217,217,0.6);
+    background-color: #00C5CD;
+    width: 40%;
+    font-size: 80%;
+    text-align: center;
+    display: inline-block;
+}
+.barraResultadoPesquisa .resultadoPesquisa .buttonViewFriend{
+    margin-bottom: 3px;
+    margin-right: 5%;
+    margin-left: 5%;
+    border: 3px solid rgba(192,217,217,0.6);
+    background-color: rgba(192,217,217,0.7);
+    width: 40%;
+    font-size: 80%;
+    text-align: center;
+    display: inline-block;
+}
+.barraResultadoPesquisa .resultadoPesquisa .buttonAddFriend:active, 
+.barraResultadoPesquisa .resultadoPesquisa .buttonRmvFriend:active,
+.barraResultadoPesquisa .resultadoPesquisa .buttonViewFriend:active,
+.barraResultadoPesquisa .resultadoPesquisa .buttonAcceptFriend:active {
+    border: 0px;
+}
+.barraResultadoPesquisa .resultadoPesquisa .dadosPesquisa{
+    margin-left: 5%;
+    text-overflow: ellipsis;
+}
+.areaParaComentar{
+    border: 3px solid rgba(192,217,217,0.6);
+    background-color: rgba(192,217,217,0.7);
+    margin-top: 1%;
+    margin-bottom: 1%;
+    box-shadow: 0px 3px 3px rgba(192,217,217,0.6);
+}
+.areaParaComentar .inputNovoComentario{
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 1%;
+    width: 80%;
+    overflow-y: auto;
+    font-size: 110%;
+    margin-left: 1%;
+    border: 3px solid rgba(192,217,217,0.6);
+    display: inline-block;
+}
+.areaParaComentar .buttonNovoComentario{
+    border: 3px solid rgba(197, 197, 197,1);
+    background-color: rgba(197, 197, 197,1);
+    width: 15%;
+    font-size: 80%;
+    margin-left: 1%;
+    text-align: center;
+    display: inline-block;
+    box-shadow: 0px 3px 0px rgba(197, 197, 197,1);
+}
+.areaParaComentar .buttonNovoComentario:active{
+    margin-top: 5px;
+    box-shadow: 0px 0px 0px;
+}
+.ListaPosts .CarregarMaisPostagens{
+    font-size: 110%;
+    box-shadow: 0px 3px 0px rgba(197, 197, 197,1);
+    background-color: rgba(197, 197, 197,1);
+    border: 0px;
+    margin-left: 71%;
+    margin-top: 2%;
+}
+.ListaPosts .CarregarMaisPostagens.PaginaFinal{
+    margin-left: 83%;
+}
+.ListaDeAmigos .Amigo, .Solicitacoes .SolicitacoesRecebidas, .Solicitacoes .SolicitacoesEnviadas{
+    box-shadow: 0px 3px 0px rgba(197, 197, 197,1);
+    margin-bottom: 2%;
+}
+.ListaDeAmigos .Amigo .foto, .Solicitacoes .SolicitacoesRecebidas .foto, .Solicitacoes .SolicitacoesEnviadas .foto{
+    display: inline-block;
+}
+.ListaDeAmigos .Amigo img, .Solicitacoes .SolicitacoesRecebidas img, .Solicitacoes .SolicitacoesEnviadas img{
+    border-radius: 50%;
+    width: 125px;
+    height: 125px;
+    display: inline-block;
+}
+.ListaDeAmigos .Amigo .nome, .ListaDeAmigos .Amigo .nomeEstado, .Solicitacoes .SolicitacoesRecebidas .nome, .Solicitacoes .SolicitacoesRecebidas .nomeEstado, .Solicitacoes .SolicitacoesEnviadas .nome, .Solicitacoes .SolicitacoesEnviadas .nomeEstado{
+    margin-left: 4%;
+    margin-top: 0;
+    font-family: 'Indie Flower', cursive;
+    font-size: 150%;
+    font-weight: 900;
+    display: inline-block;
+}
+.ListaDeAmigos .Amigo .nomeEstado, .Solicitacoes .SolicitacoesEnviadas .nomeEstado, .Solicitacoes .SolicitacoesRecebidas .nomeEstado{
+    margin-left: 2%;
+    margin-top: 1%;
+}
+.ListaDeAmigos .Amigo .buttonRmvFriend, .Solicitacoes .SolicitacoesRecebidas .buttonAcceptFriend, .Solicitacoes .SolicitacoesEnviadas .solicitacaoPendente{
+    box-shadow: 0px 3px 0px rgba(197, 197, 197,1);
+    background-color: red;
+    border: 0px;
+    margin-left: 80%;
+    font-size: 110%;
+}
+.Solicitacoes .SolicitacoesRecebidas .buttonAcceptFriend{
+    background-color: #00FF00;
+}
+.Solicitacoes .SolicitacoesEnviadas .solicitacaoPendente{
+    background-color:yellow;
 }
 @media (orientation: Portrait){
     *{
-        font-size: 90%;
+        font-size: 100%;
     }
   	.logo{
       display: none;
@@ -319,4 +502,7 @@
     .menu{
         padding-left: 10%;
     }
+}
+.erro{
+  border: 2px solid red !important; 
 }
