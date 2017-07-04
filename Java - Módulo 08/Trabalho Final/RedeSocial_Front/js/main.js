@@ -21,7 +21,6 @@ modulo.config(function ($routeProvider) {
 modulo.directive("imgback",function(){
   return function(scope,element,attrs){
     let url = attrs.imgback;
-    console.log(url);
     element.css({
       'background-image': 'url(' + url +')',
       'background-size' : '100% 100%'
