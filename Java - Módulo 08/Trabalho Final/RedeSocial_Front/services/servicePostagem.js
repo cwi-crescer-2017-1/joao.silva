@@ -3,8 +3,6 @@ modulo.factory('servicePostagem',function($http,authService){
 
     function registrar(urlImg,descricao,perfil){
         let postagem = {};
-        console.log(urlImg);
-         console.log(descricao);
         postagem.descricao = descricao;
         postagem.urlImg = urlImg;
         postagem.perfil = perfil;
