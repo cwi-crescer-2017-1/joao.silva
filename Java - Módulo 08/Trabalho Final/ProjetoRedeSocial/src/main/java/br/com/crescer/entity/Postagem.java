@@ -5,7 +5,6 @@
  */
 package br.com.crescer.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -23,6 +22,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -50,7 +50,7 @@ public class Postagem implements Serializable {
     @Column(name = "ID")
     private Long id;
 
-    @Size(max = 2000)
+    @Size(max = 10000)
     @Column(name = "URL_IMG")
     private String urlImg;
 
@@ -74,6 +74,16 @@ public class Postagem implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "postagem")
     private Set<Curtida> curtidaSet;
 
+    @Transient
+    private Boolean curtida;
+    @Transient
+    public Boolean getCurtida(){
+        return this.curtida;
+    }
+    @Transient
+    public void setCurtida(Boolean curtida){
+        this.curtida = curtida;
+    }
     public Long getId() {
         return id;
     }
