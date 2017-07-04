@@ -13,8 +13,16 @@ modulo.factory('servicePerfil',function($http){
     function getFilterByName(nome){
         return $http.get(urlBase+'findByName/'+nome);
     }
+    function getFilterByNameWithFriendship(idPerfilCorrente,nome){
+        return $http.get(urlBase+'findByName/WithFriendship/'+idPerfilCorrente+'/'+nome);
+    }
+    function getFilterByRelation(idPerfilCorrente){
+        return $http.get(urlBase+'findAll/WithRelation/'+idPerfilCorrente);
+    }
     return { 
         registrar:registrar,
         getFilterByName:getFilterByName,
+        getFilterByNameWithFriendship:getFilterByNameWithFriendship,
+        getFilterByRelation:getFilterByRelation,
     }; 
 });
